@@ -82,3 +82,8 @@ C:\...\PROYEC_PARTE1.MD a PROYEC_PARTE7.MD             Con la prohibición de pr
 C:\BRUJULA CRIPTO\DOCUMENTACION\ERRORES\ERRORES_1VERIFICACION.MD
 Corrige todos los errores de este archivo de forma profesional y milimétrica comprobándolo contra la documentación                   FUENTES DE DOCUMENTACIÓN (Obligatorias):
 
+C:\...\TEXTOS_IMAGENES.MD
+
+C:\...\PROYEC_PARTE1.MD a PROYEC_PARTE7.MD                                                    1.Con la prohibición de prohibido especular pensar o creer La única verdad está en el código Y documentas la verdad
+2. Con la prohibición de prohibido CODIGO PLACEVO , FALSO,HARQUEADO,MOKEADO,COMENTADO ES LO QUE MAS ODIO JUNTO A LA ESPECULACION
+  JAMAS NUNCA NUNCA TE SALGAS DEL PROTOCOLO O TE DENUNCIARE
