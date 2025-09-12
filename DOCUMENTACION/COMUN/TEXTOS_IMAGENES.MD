@@ -142,7 +142,7 @@ Este documento detalla el contenido textual (copy), las metaetiquetas SEO (títu
   - **Precio (ES/EN):** `0€ / Siempre` | `$0 / Forever`
   - **Características:** `Diagnóstico Interactivo`, `Blog y Guías`, `Recuperación de Contraseña (Limitada)`, `Chatbot (Limitado)`.
 - **Columna 2: Premium (con un borde resaltado)**
-  - **Precio:** `[Precio] € 4,99 / HORA LAS DOS PRIMERAS HORAS` | `[Price] $ 5.99 / month`)
+  - **Precio:** `[Precio] € 4,99 / HORA LAS DOS PRIMERAS HORAS` | `[Price] $ 3.99 /HORA EL RESTO`)
   - **Botón (ES/EN):** `Obtener Premium` | `Get Premium`
   - **Características:**
     - `✅ Todo lo del plan Gratuito, y además:`
