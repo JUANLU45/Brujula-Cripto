@@ -146,7 +146,7 @@ Validación Cruzada y QA: Comparar resultado contra todos los documentos MD. Rea
 Finalizar: Solo al completar la validación, la carpeta se considera terminada.
  (JAMAS NUNCA NUNCA TE SALGAS DEL PROTOCOLO O TE DENUNCIARE
 
- C:\BRUJULA CRIPTO\DOCUMENTACION\ERRORES\ERRORES_1VERIFICACION.MD Y ya puedes arreglar todos los errores 1 a 1 incompatibilidad con el proyecto con todos los
+ C:\BRUJULA CRIPTO\packages\app\components\ui\Card.tsx  Siguiente archivo verificar los errores Y la compatibilidad con el proyecto 100 por 100 Y el cumplimiento de todas las prohibiciones
 PROHIBIDO CREAR ARCHIVOS  SIN VERIFICAR SI EXISTEN O SI LO REQUIERE EL PROYECTO..  
 PROHIBIDO ESPECULAR,CREER O PENSAR O PARCHEAR .PROHIBIHO CODIGO FALSO, PLCABO, HARQUEADO,MOKEADO O COMENTADO                                              archivos del proyecto   FUENTES DE DOCUMENTACIÓN (Obligatorias):
 

@@ -1,8 +1,7 @@
-import { IArticle, IContactFormData, IUser } from '@brujula-cripto/types';
+import type { IArticle, IContactFormData, IUser } from '@brujula-cripto/types';
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ||
-  'https://us-central1-brujula-cripto.cloudfunctions.net';
+  process.env.NEXT_PUBLIC_API_BASE_URL || 'https://us-central1-brujula-cripto.cloudfunctions.net';
 
 // Tipos para las respuestas de la API
 interface ApiResponse<T> {
@@ -69,10 +68,7 @@ class ApiClient {
     });
   }
 
-  async updateArticle(
-    id: string,
-    article: Partial<IArticle>,
-  ): Promise<ApiResponse<IArticle>> {
+  async updateArticle(id: string, article: Partial<IArticle>): Promise<ApiResponse<IArticle>> {
     return this.makeRequest<IArticle>('/updateArticle', {
       method: 'PUT',
       body: JSON.stringify({ id, ...article }),
@@ -91,9 +87,7 @@ class ApiClient {
     return this.makeRequest<IUser>('/getUserProfile');
   }
 
-  async updateUserProfile(
-    updates: Partial<IUser>,
-  ): Promise<ApiResponse<IUser>> {
+  async updateUserProfile(updates: Partial<IUser>): Promise<ApiResponse<IUser>> {
     return this.makeRequest<IUser>('/updateUserProfile', {
       method: 'PUT',
       body: JSON.stringify(updates),
@@ -101,9 +95,7 @@ class ApiClient {
   }
 
   // Pagos (Stripe)
-  async createCheckoutSession(
-    priceId: string,
-  ): Promise<ApiResponse<{ sessionUrl: string }>> {
+  async createCheckoutSession(priceId: string): Promise<ApiResponse<{ sessionUrl: string }>> {
     return this.makeRequest<{ sessionUrl: string }>('/createCheckout', {
       method: 'POST',
       body: JSON.stringify({ priceId }),
@@ -131,9 +123,7 @@ class ApiClient {
   }
 
   // Formulario de contacto
-  async submitContactForm(
-    formData: IContactFormData,
-  ): Promise<ApiResponse<void>> {
+  async submitContactForm(formData: IContactFormData): Promise<ApiResponse<void>> {
     return this.makeRequest<void>('/handleContactForm', {
       method: 'POST',
       body: JSON.stringify(formData),
@@ -156,9 +146,8 @@ export const api = new ApiClient();
 export const getArticleBySlug = (slug: string) => api.getArticleBySlug(slug);
 export const getArticles = () => api.getArticles();
 export const getArticleById = (id: string) => api.getArticleById(id);
-export const createArticle = (
-  article: Omit<IArticle, 'createdAt' | 'updatedAt'>,
-) => api.createArticle(article);
+export const createArticle = (article: Omit<IArticle, 'createdAt' | 'updatedAt'>) =>
+  api.createArticle(article);
 export const updateArticle = (id: string, article: Partial<IArticle>) =>
   api.updateArticle(id, article);
 export const deleteArticle = (id: string) => api.deleteArticle(id);
@@ -167,9 +156,7 @@ export const deleteArticle = (id: string) => api.deleteArticle(id);
 export const signOut = () => api.signOut();
 export const deleteUserAccount = () => api.deleteUserAccount();
 export const createStripePortalSession = () => api.createStripePortalSession();
-export const createCheckoutSession = (priceId: string) =>
-  api.createCheckoutSession(priceId);
+export const createCheckoutSession = (priceId: string) => api.createCheckoutSession(priceId);
 
 // Exportaciones para formulario de contacto
-export const submitContactForm = (formData: IContactFormData) =>
-  api.submitContactForm(formData);
+export const submitContactForm = (formData: IContactFormData) => api.submitContactForm(formData);
