@@ -1,0 +1,123 @@
+{
+  "homepage": {
+    "banner": {
+      "title": "Navega el Mundo Cripto con Confianza.",
+      "subtitle": "Herramientas reales para proteger y recuperar tus activos digitales. Tu tranquilidad es nuestra misión.",
+      "button": "Empezar Diagnóstico"
+    },
+    "valueProposition": {
+      "title": "Tu Escudo en el Ecosistema Digital",
+      "column1": {
+        "title": "Protección Proactiva",
+        "description": "Analiza los riesgos de tus wallets antes de que se conviertan en un problema."
+      },
+      "column2": {
+        "title": "Herramientas Reales",
+        "description": "Desde recuperación de contraseñas hasta rastreo de transacciones."
+      },
+      "column3": {
+        "title": "Guía Experta",
+        "description": "Conocimiento y chatbot para navegar con seguridad."
+      }
+    }
+  },
+  "recovery": {
+    "banner": {
+      "title": "Tranquilo, Estamos Aquí para Ayudarte.",
+      "subtitle": "Responde a unas preguntas simples y te guiaremos a la solución adecuada."
+    },
+    "wizard": {
+      "card1": "He perdido mi contraseña o seed phrase",
+      "card2": "Necesito ayuda con la seguridad de mi wallet",
+      "card3": "Quiero un servicio profesional",
+      "card4": "Necesito rastrear una transacción"
+    }
+  },
+  "pricing": {
+    "title": "Invierte en tu Tranquilidad.",
+    "subtitle": "Nuestras herramientas gratuitas te ayudan. Nuestra suscripción Premium te protege con privacidad total, un ecosistema completo y control absoluto—mejor que cualquier competidor.",
+    "free": {
+      "price": "0€ / Siempre",
+      "features": {
+        "1": "Diagnóstico Interactivo",
+        "2": "Blog y Guías",
+        "3": "Recuperación de Contraseña (Limitada)",
+        "4": "Chatbot (Limitado)"
+      }
+    },
+    "premium": {
+      "button": "Obtener Premium",
+      "features": {
+        "1": "✅ Todo lo del plan Gratuito, y además:",
+        "2": "🚀 **Máxima Potencia** en Recuperación de Contraseña",
+        "3": "🤖 **Chatbot Ilimitado** con Análisis de Wallet",
+        "4": "🛡️ **Análisis de Riesgos de Seguridad en Tiempo Real**",
+        "5": "📈 **Rastreo de Transacciones Avanzado**",
+        "6": "⭐ **Soporte Prioritario**"
+      }
+    }
+  },
+  "navigation": {
+    "blog": "Blog",
+    "tools": "Herramientas",
+    "security": "Guías de Seguridad",
+    "contact": "Contacto",
+    "dropdown": {
+      "recovery": "Diagnóstico y Recuperación",
+      "tracker": "Rastreador de Transacciones",
+      "services": "Directorio de Servicios"
+    }
+  },
+  "footer": {
+    "navigation": "Navegación",
+    "legal": "Legalidad",
+    "contact": "Contacto y Redes Sociales",
+    "copyright": "© 2025 Brújula Cripto. Todos los derechos reservados.",
+    "disclaimer": "Descargo de Responsabilidad General"
+  },
+  "buttons": {
+    "start": "Empezar",
+    "continue": "Continuar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar"
+  },
+  "admin": {
+    "auth": {
+      "title": "Acceso de Administrador",
+      "email": "Email",
+      "password": "Contraseña",
+      "login": "Iniciar Sesión"
+    },
+    "editor": {
+      "title": "Editor de Artículos",
+      "spanish": "Español",
+      "english": "Inglés",
+      "metadata": "Metadatos",
+      "save": "Guardar Artículo",
+      "publish": "Publicar"
+    },
+    "table": {
+      "title": "Gestión de Artículos",
+      "slug": "Slug",
+      "status": "Estado",
+      "created": "Creado",
+      "actions": "Acciones"
+    }
+  },
+  "blog": {
+    "card": {
+      "readMore": "Leer más",
+      "tags": "Etiquetas"
+    },
+    "list": {
+      "loading": "Cargando artículos...",
+      "noResults": "No se encontraron artículos"
+    }
+  },
+  "payments": {
+    "upgrade": "Mejorar a Premium",
+    "processing": "Procesando pago..."
+  }
+}

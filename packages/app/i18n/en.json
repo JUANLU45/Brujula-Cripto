@@ -1,0 +1,123 @@
+{
+  "homepage": {
+    "banner": {
+      "title": "Navigate the Crypto World with Confidence.",
+      "subtitle": "Real tools to protect and recover your digital assets. Your peace of mind is our mission.",
+      "button": "Start Diagnosis"
+    },
+    "valueProposition": {
+      "title": "Your Shield in the Digital Ecosystem",
+      "column1": {
+        "title": "Proactive Protection",
+        "description": "Analyze your wallets' risks before they become a problem."
+      },
+      "column2": {
+        "title": "Real Tools",
+        "description": "From password recovery to transaction tracking."
+      },
+      "column3": {
+        "title": "Expert Guide",
+        "description": "Knowledge and chatbot to navigate securely."
+      }
+    }
+  },
+  "recovery": {
+    "banner": {
+      "title": "Stay Calm, We're Here to Help.",
+      "subtitle": "Answer a few simple questions and we'll guide you to the right solution."
+    },
+    "wizard": {
+      "card1": "I've lost my password or seed phrase",
+      "card2": "I need help with my wallet security",
+      "card3": "I want a professional service",
+      "card4": "I need to track a transaction"
+    }
+  },
+  "pricing": {
+    "title": "Invest in Your Peace of Mind.",
+    "subtitle": "Our free tools help you. Our Premium subscription protects you with total privacy, a complete ecosystem, and full control—better than any competitor.",
+    "free": {
+      "price": "$0 / Forever",
+      "features": {
+        "1": "Interactive Diagnosis",
+        "2": "Blog and Guides",
+        "3": "Password Recovery (Limited)",
+        "4": "Chatbot (Limited)"
+      }
+    },
+    "premium": {
+      "button": "Get Premium",
+      "features": {
+        "1": "✅ Everything from Free plan, plus:",
+        "2": "🚀 **Maximum Power** in Password Recovery",
+        "3": "🤖 **Unlimited Chatbot** with Wallet Analysis",
+        "4": "🛡️ **Real-time Security Risk Analysis**",
+        "5": "📈 **Advanced Transaction Tracking**",
+        "6": "⭐ **Priority Support**"
+      }
+    }
+  },
+  "navigation": {
+    "blog": "Blog",
+    "tools": "Tools",
+    "security": "Security Guides",
+    "contact": "Contact",
+    "dropdown": {
+      "recovery": "Diagnosis & Recovery",
+      "tracker": "Transaction Tracker",
+      "services": "Service Directory"
+    }
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "contact": "Contact & Social Media",
+    "copyright": "© 2025 Crypto Compass. All rights reserved.",
+    "disclaimer": "General Disclaimer"
+  },
+  "buttons": {
+    "start": "Start",
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "admin": {
+    "auth": {
+      "title": "Administrator Access",
+      "email": "Email",
+      "password": "Password",
+      "login": "Sign In"
+    },
+    "editor": {
+      "title": "Article Editor",
+      "spanish": "Spanish",
+      "english": "English",
+      "metadata": "Metadata",
+      "save": "Save Article",
+      "publish": "Publish"
+    },
+    "table": {
+      "title": "Article Management",
+      "slug": "Slug",
+      "status": "Status",
+      "created": "Created",
+      "actions": "Actions"
+    }
+  },
+  "blog": {
+    "card": {
+      "readMore": "Read more",
+      "tags": "Tags"
+    },
+    "list": {
+      "loading": "Loading articles...",
+      "noResults": "No articles found"
+    }
+  },
+  "payments": {
+    "upgrade": "Upgrade to Premium",
+    "processing": "Processing payment..."
+  }
+}
