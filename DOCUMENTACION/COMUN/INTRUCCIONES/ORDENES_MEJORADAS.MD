@@ -1,3 +1,6 @@
+
+-----------OREDENES CARPETAS-----
+
 PRÓXIMA CARPETA: Y  OLVIDATE DE COMPILAR Y VERIFICAR ERRORES ASTA QUE NO ESTE TERMINADA LAS VERIFICACIONES..                                     ANTES DE COMPILAR COMPROBAR TODOS LOS PASOS DE NUEVO                                               VERIFICACIÓN COMPLETA:OBJETIVO: VERIFICAR carpetas para producción con centralización total.
 
 FUENTES DE DOCUMENTACIÓN (Obligatorias):
@@ -29,4 +32,4 @@ Validación Cruzada y QA: Comparar resultado contra todos los documentos MD. Rea
 Finalizar: Solo al completar la validación, la carpeta se considera terminada.
  JAMAS NUNCA NUNCA TE SALGAS DEL PROTOCOLO O TE DENUNCIARE
 
- 
+ -------------------------------------------------
