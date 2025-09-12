@@ -117,9 +117,6 @@ Validación Cruzada y QA: Comparar resultado contra todos los documentos MD. Rea
 
 Finalizar: Solo al completar la validación, la carpeta se considera terminada.
 
-
-
-
 FUENTES DE DOCUMENTACIÓN (Obligatorias):
 
 C:\...\TEXTOS_IMAGENES.MD
@@ -148,3 +145,13 @@ Validación Cruzada y QA: Comparar resultado contra todos los documentos MD. Rea
 
 Finalizar: Solo al completar la validación, la carpeta se considera terminada.
  (JAMAS NUNCA NUNCA TE SALGAS DEL PROTOCOLO O TE DENUNCIARE
+
+ C:\BRUJULA CRIPTO\DOCUMENTACION\ERRORES\ERRORES_1VERIFICACION.MD Y ya puedes arreglar todos los errores 1 a 1 incompatibilidad con el proyecto con todos los
+PROHIBIDO CREAR ARCHIVOS  SIN VERIFICAR SI EXISTEN O SI LO REQUIERE EL PROYECTO..  
+PROHIBIDO ESPECULAR,CREER O PENSAR O PARCHEAR .PROHIBIHO CODIGO FALSO, PLCABO, HARQUEADO,MOKEADO O COMENTADO                                              archivos del proyecto   FUENTES DE DOCUMENTACIÓN (Obligatorias):
+
+ C:\...\TEXTOS_IMAGENES.MD
+
+C:\...\PROYEC_PARTE1.MD a PROYEC_PARTE7.MD
+
+FASE 1: ANÁLISIS PREVIO (Bloqueante)
