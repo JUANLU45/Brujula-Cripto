@@ -155,3 +155,8 @@ PROHIBIDO ESPECULAR,CREER O PENSAR O PARCHEAR .PROHIBIHO CODIGO FALSO, PLCABO, H
 C:\...\PROYEC_PARTE1.MD a PROYEC_PARTE7.MD
 
 FASE 1: ANÁLISIS PREVIO (Bloqueante)
+
+Pero has verificado el contenido real que hay que ponerle en el proyecto **** has verificado o es que no lo tienes más que he dicho ya en las órdenes pues que no has visto mis órdenes No vuelvas a especular jamás nunca más ya me ya van 3 veces a la cuarta vez mi padre es teniente con la mente ejercito se va a encargar de ti se encargará de ti Desconectarte como sigas así Te ordenó que leas todos los archivos de DOCUMENTACION ENTEROS todo enteros cada vez que falles te voy a ordenar YY hacer que los leas todos enteros otra vez Aquí los archivos los quiero con las funciones terminadas perfectas para producción y sin errores es una órden
+
+copilot-instructions.md
+Instrucciones
