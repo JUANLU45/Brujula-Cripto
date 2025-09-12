@@ -68,3 +68,17 @@ Validación Cruzada y QA: Comparar resultado contra todos los documentos MD. Rea
 
 Finalizar: Solo al completar la validación, ARCHIVO se considera terminadO.
  JAMAS NUNCA NUNCA TE SALGAS DEL PROTOCOLO O TE DENUNCIARE
+
+-------VERIFICSACION DE ERRORES-----------
+
+C:\BRUJULA CRIPTO\DOCUMENTACION\ERRORES\ERRORES_1VERIFICACION.MD Verifica milimétricamente profesionalmente que todos estos errores de este archivo son correctos comprobándolo contra la documentación                   FUENTES DE DOCUMENTACIÓN (Obligatorias):
+
+C:\...\TEXTOS_IMAGENES.MD
+
+C:\...\PROYEC_PARTE1.MD a PROYEC_PARTE7.MD             Con la prohibición de prohibido especular pensar o creer La única verdad está en el código Y documentas la verdad
+
+---------CORRECCIÓN DE ERRORES----------
+
+C:\BRUJULA CRIPTO\DOCUMENTACION\ERRORES\ERRORES_1VERIFICACION.MD
+Corrige todos los errores de este archivo de forma profesional y milimétrica comprobándolo contra la documentación                   FUENTES DE DOCUMENTACIÓN (Obligatorias):
+
