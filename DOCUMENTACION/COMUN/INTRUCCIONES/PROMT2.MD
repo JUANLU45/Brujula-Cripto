@@ -91,7 +91,7 @@ Validación Cruzada y QA: Comparar resultado contra todos los documentos MD. Rea
 
 Finalizar: Solo al completar la validación, la carpeta se considera terminada.
 
- PRÓXIMA CARPETA: Y  OLVIDATE DE COMPILAR ASTA QUE NO ESTE TERMINADA LAS VERIFICACIONES..                                                          ANTES DE COMPILAR COMPROBAR TODOS LOS PASOS DE NUEVO                                                          VERIFICACIÓN COMPLETA:OBJETIVO: VERIFICAR carpetas para producción con centralización total.
+ PRÓXIMA CARPETA: Y  OLVIDATE DE COMPILAR Y VERIFICAR ERRORES ASTA QUE NO ESTE TERMINADA LAS VERIFICACIONES..                                     ANTES DE COMPILAR COMPROBAR TODOS LOS PASOS DE NUEVO                                               VERIFICACIÓN COMPLETA:OBJETIVO: VERIFICAR carpetas para producción con centralización total.
 
 FUENTES DE DOCUMENTACIÓN (Obligatorias):
 
@@ -106,7 +106,7 @@ IMPORTANTE
 QUE TODO ESTE CENTRALIZADO: usuarios, admin, idiomas, temas, import/export.
 INPORTANTE
 Que La carpeta contenga todos los componentes necesarios según los archivos de las instrucciones y que sus archivos estén completos para producción con todos y cada una de los métodos y funciones necesarias y que todo utilice la centralización
-
+-------------------------------------------
 FASE 2: PROTOCOLO POR CARPETA (Secuencial)
 
 Ejecutar: Implementar cambios según el plan de centralización y la documentación.
