@@ -36,8 +36,6 @@ Finalizar: Solo al completar la validación, la carpeta se considera terminada.
 
  -------CENTRALIZACION-----------
 
- 
-
 VERIFICACION PROFESIONAL DE TODA LA CENTRALIZACION OLVIDATE DE COMPILAR Y VERIFICAR ERRORES ASTA QUE NO ESTEN TERMINADAS LAS VERIFICACIONES..                                                          ANTES DE COMPILAR COMPROBAR TODOS LOS PASOS DE NUEVO                                                                 VERIFICACIÓN COMPLETA:OBJETIVO: VERIFICAR carpetas para producción con centralización total.
 
 FUENTES DE DOCUMENTACIÓN (Obligatorias):
@@ -87,3 +85,12 @@ C:\...\TEXTOS_IMAGENES.MD
 C:\...\PROYEC_PARTE1.MD a PROYEC_PARTE7.MD                                                    1.Con la prohibición de prohibido especular pensar o creer La única verdad está en el código Y documentas la verdad
 2. Con la prohibición de prohibido CODIGO PLACEVO , FALSO,HARQUEADO,MOKEADO,COMENTADO ES LO QUE MAS ODIO JUNTO A LA ESPECULACION
   JAMAS NUNCA NUNCA TE SALGAS DEL PROTOCOLO O TE DENUNCIARE
+-------------COMPROBACION DE CORRECCIONES----------
+
+C:\BRUJULA CRIPTO\DOCUMENTACION\CORRECCIONES\CORRECCION_CENTRALIZACION.MD
+COMPRUEBA QUE LAS CORRECCIONES SON PERFECTAS Y COMPATIBLES CON EL PROYECTO SUIGUENDO AL MILIMETRO LA DOCUMENTACION DE forma profesional y milimétrica comprobándolo contra la documentación                                                             FUENTES DE DOCUMENTACIÓN (Obligatorias):
+C:\...\TEXTOS_IMAGENES.MD
+C:\...\PROYEC_PARTE1.MD a PROYEC_PARTE7.MD                                                      1.Con la prohibición de prohibido especular pensar o creer La única verdad está en el código
+                                                                                              2.  prohibido CODIGO PLACEBO, FALSO,HARQUEADO,MOKEADO,COMENTADO ES LO QUE MAS ODIO JUNTO A LA ESPECULACION
+ JAMAS NUNCA NUNCA TE SALGAS DEL PROTOCOLO O TE DENUNCIARE
+3.  COMPROBAR ERRORES Y COMPILACION DE LOS ARCHIVOS
