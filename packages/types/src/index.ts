@@ -8,45 +8,45 @@
 export interface IArticle {
   /** Identificador único independiente del idioma */
   slug: string;
-  
+
   /** Contenido en español */
   es: {
     title: string;
     contentMarkdown: string;
     excerpt: string;
   };
-  
+
   /** Contenido en inglés */
   en: {
     title: string;
     contentMarkdown: string;
     excerpt: string;
   };
-  
+
   /** URL de la imagen principal */
   imageUrl: string;
-  
+
   /** Nombre del autor */
   authorName: string;
-  
+
   /** Categoría del artículo */
   category: string;
-  
+
   /** Tags asociados */
   tags: string[];
-  
+
   /** Fecha de creación */
   createdAt: Date;
-  
+
   /** Fecha de última actualización */
   updatedAt: Date;
-  
+
   /** Si el artículo es destacado */
   isFeatured: boolean;
-  
+
   /** Estado del artículo */
   status: 'draft' | 'published';
-  
+
   /** Origen del contenido */
   source: 'ai-generated' | 'manual';
 }
@@ -57,31 +57,31 @@ export interface IArticle {
 export interface IUser {
   /** UID de Firebase Auth */
   uid: string;
-  
+
   /** Email del usuario */
   email: string;
-  
+
   /** Nombre de usuario */
   displayName: string | null;
-  
+
   /** URL del avatar */
   photoURL: string | null;
-  
+
   /** Si es administrador */
   isAdmin: boolean;
-  
+
   /** Si tiene suscripción premium */
   isPremium: boolean;
-  
+
   /** Créditos de tiempo en segundos */
   usageCreditsInSeconds: number;
-  
+
   /** Fecha de creación */
   createdAt: Date;
-  
+
   /** Fecha de última actividad */
   lastLoginAt: Date;
-  
+
   /** Preferencias del usuario */
   preferences: {
     language: 'es' | 'en';
@@ -96,22 +96,22 @@ export interface IUser {
 export interface IChatConversation {
   /** ID único de la conversación */
   id: string;
-  
+
   /** UID del usuario */
   userId: string;
-  
+
   /** Título de la conversación */
   title: string;
-  
+
   /** Mensajes de la conversación */
   messages: IChatMessage[];
-  
+
   /** Fecha de creación */
   createdAt: Date;
-  
+
   /** Fecha de última actualización */
   updatedAt: Date;
-  
+
   /** Estado de la conversación */
   status: 'active' | 'archived';
 }
@@ -122,16 +122,16 @@ export interface IChatConversation {
 export interface IChatMessage {
   /** ID único del mensaje */
   id: string;
-  
+
   /** Rol del emisor */
   role: 'user' | 'assistant' | 'system';
-  
+
   /** Contenido del mensaje */
   content: string;
-  
+
   /** Timestamp del mensaje */
   timestamp: Date;
-  
+
   /** Metadatos opcionales */
   metadata?: {
     tokensUsed?: number;
@@ -146,36 +146,36 @@ export interface IChatMessage {
 export interface IProfessionalService {
   /** ID único del servicio */
   id: string;
-  
+
   /** Contenido bilingüe */
   es: {
     title: string;
     description: string;
     features: string[];
   };
-  
+
   en: {
     title: string;
     description: string;
     features: string[];
   };
-  
+
   /** Precio del servicio */
   price: {
     amount: number;
     currency: 'EUR' | 'USD';
     period: 'monthly' | 'yearly' | 'one-time';
   };
-  
+
   /** Si está disponible */
   isActive: boolean;
-  
+
   /** Categoría del servicio */
   category: string;
-  
+
   /** Fecha de creación */
   createdAt: Date;
-  
+
   /** Fecha de actualización */
   updatedAt: Date;
 }
