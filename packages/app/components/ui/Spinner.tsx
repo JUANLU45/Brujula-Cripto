@@ -18,14 +18,14 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
       <div
         ref={ref}
         className={cn(
-          // Base styles - Mobile First
-          'inline-block animate-spin rounded-full border-2 border-solid border-current border-r-transparent',
+          // Base styles - Mobile First con colores centralizados
+          'inline-block animate-spin rounded-full border-2 border-solid border-gray-600 border-r-transparent',
           // Size variants
           sizeClasses[size],
           // Accessibility
           'motion-reduce:animate-none',
           // Dark mode support
-          'text-foreground',
+          'dark:border-gray-300 dark:border-r-transparent',
           className,
         )}
         role="status"

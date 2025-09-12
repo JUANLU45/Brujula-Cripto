@@ -10,13 +10,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={cn(
-          // Base styles - Mobile First
-          'border-input bg-background flex h-10 w-full rounded-md border px-3 py-2 text-sm',
+          // Base styles - Mobile First con colores centralizados
+          'flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm',
           // Ring and focus states
-          'ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium',
+          'file:border-0 file:bg-transparent file:text-sm file:font-medium',
           // Placeholder and disabled states
-          'placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2',
-          'focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+          'placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2',
+          'focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+          // Dark mode
+          'dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder:text-gray-400',
+          'dark:focus-visible:ring-blue-400',
           className,
         )}
         ref={ref}
