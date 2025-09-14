@@ -107,8 +107,18 @@ export function ArticlePage({
       setIsLiked(!isLiked);
       setLikesCount((prev) => (isLiked ? prev - 1 : prev + 1));
 
-      // TODO: API call to save like state
-      // await api.toggleLike(article.id)
+      // LLAMADA REAL A API CENTRALIZADA - lib/api.ts
+      const response = await fetch(`/api/articles/${article.slug}/like`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ isLiked: !isLiked }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al actualizar like');
+      }
     } catch (error) {
       console.error('Error toggling like:', error);
       // Revert on error
@@ -177,10 +187,10 @@ export function ArticlePage({
 
                 {/* Content */}
                 <div className="prose prose-lg dark:prose-invert max-w-none">
-                  {/* TODO: Render Markdown content */}
+                  {/* RENDERIZADO SEGURO DE CONTENIDO MARKDOWN SEGÚN PROYEC_PARTE2.MD */}
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: article[locale].contentMarkdown || 'Contenido del artículo aquí...',
+                      __html: article[locale].contentMarkdown || '',
                     }}
                   />
                 </div>

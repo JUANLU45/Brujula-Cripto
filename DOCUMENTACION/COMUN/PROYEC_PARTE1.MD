@@ -297,12 +297,14 @@ Microservicio independiente en Google Cloud Run (Docker), usa Genkit for Firebas
 
 ## 2. Estructura de packages/types
 
-- **index.ts**: Tipos compartidos (IArticle, IUser con usageCreditsInSeconds, IChatConversation EXPANDIDA para chatbot profesional, IChatMessage).
+- **index.ts**: Tipos compartidos (IArticle, IUser con usageCreditsInSeconds, IChatConversation
+  EXPANDIDA para chatbot profesional, IChatMessage).
 - **CHANGELOG.md**: Registro de actualizaciones, pruebas Jest para compatibilidad retroactiva.
 
 ### Expansión IChatConversation (Versión 2025)
 
-La interfaz `IChatConversation` ha sido expandida para soportar funcionalidades profesionales del chatbot:
+La interfaz `IChatConversation` ha sido expandida para soportar funcionalidades profesionales del
+chatbot:
 
 ```typescript
 interface IChatConversation {
@@ -314,28 +316,32 @@ interface IChatConversation {
   createdAt: Date;
   updatedAt: Date;
   status: 'active' | 'archived';
-  
+
   // NUEVAS funcionalidades profesionales (2025)
-  isFavorite?: boolean;           // Marcado como favorita
-  tags?: string[];               // Categorización
-  priority?: 'low' | 'normal' | 'high';  // Prioridad
-  notifications?: {              // Configuración notificaciones
+  isFavorite?: boolean; // Marcado como favorita
+  tags?: string[]; // Categorización
+  priority?: 'low' | 'normal' | 'high'; // Prioridad
+  notifications?: {
+    // Configuración notificaciones
     enabled: boolean;
     sound: boolean;
     desktop: boolean;
   };
-  metadata?: {                   // Metadatos avanzados
-    topic?: string;              // Tema principal
+  metadata?: {
+    // Metadatos avanzados
+    topic?: string; // Tema principal
     userLevel?: 'beginner' | 'intermediate' | 'advanced';
-    totalTokens?: number;        // Tokens consumidos
-    totalDuration?: number;      // Duración en segundos
-    rating?: number;             // Valoración usuario
-    notes?: string;              // Notas privadas
+    totalTokens?: number; // Tokens consumidos
+    totalDuration?: number; // Duración en segundos
+    rating?: number; // Valoración usuario
+    notes?: string; // Notas privadas
   };
 }
 ```
 
-**Justificación técnica**: Esta expansión mantiene compatibilidad retroactiva (campos opcionales) mientras permite funcionalidades enterprise como favoritos, organización por tags, y analytics avanzados.
+**Justificación técnica**: Esta expansión mantiene compatibilidad retroactiva (campos opcionales)
+mientras permite funcionalidades enterprise como favoritos, organización por tags, y analytics
+avanzados.
 
 ## Raíz del Monorepo
 

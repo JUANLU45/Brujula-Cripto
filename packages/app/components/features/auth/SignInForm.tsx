@@ -1,5 +1,7 @@
 'use client';
 
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 import { useAuth } from '@/lib/auth/AuthProvider';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
@@ -54,13 +56,12 @@ export function SignInForm() {
           >
             {t('email')}
           </label>
-          <input
+          <Input
             id="email"
             type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
             placeholder={t('emailPlaceholder')}
           />
         </div>
@@ -72,26 +73,21 @@ export function SignInForm() {
           >
             {t('password')}
           </label>
-          <input
+          <Input
             id="password"
             type="password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
             placeholder={t('passwordPlaceholder')}
           />
         </div>
 
         {error && <div className="text-sm text-red-600 dark:text-red-400">{error}</div>}
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-600"
-        >
+        <Button type="submit" disabled={loading} className="w-full">
           {loading ? t('signingIn') : t('signIn')}
-        </button>
+        </Button>
 
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
@@ -104,11 +100,12 @@ export function SignInForm() {
           </div>
         </div>
 
-        <button
+        <Button
           type="button"
+          variant="outline"
           onClick={handleGoogleSignIn}
           disabled={loading}
-          className="flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+          className="w-full"
         >
           <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
             <path
@@ -129,12 +126,12 @@ export function SignInForm() {
             />
           </svg>
           {t('signInWithGoogle')}
-        </button>
+        </Button>
 
         <div className="space-y-2 text-center">
           <div>
             <a
-              href="/recuperar-password"
+              href={`/recuperar-password`}
               className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
             >
               {t('forgotPassword')}
@@ -143,7 +140,7 @@ export function SignInForm() {
           <div>
             <span className="text-sm text-gray-600 dark:text-gray-400">{t('noAccount')} </span>
             <a
-              href="/registro"
+              href={`/registro`}
               className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
             >
               {t('signUp')}

@@ -74,7 +74,8 @@ Frontend (packages/app): Se creará una nueva ruta /chatbot con los componentes 
 (ChatbotUI.tsx, ConversationList.tsx). El archivo lib/api.ts se ampliará para llamar a los endpoints
 del nuevo miniservicio. Backend (packages/functions): Se añadirán las funciones de pago de Stripe
 para la nueva suscripción, que modificarán el campo hasPremiumChatAccess en el perfil del usuario.
-Tipos (packages/types): Se añadirán las nuevas interfaces: IChatConversation (EXPANDIDA 2025) y IChatMessage.
+Tipos (packages/types): Se añadirán las nuevas interfaces: IChatConversation (EXPANDIDA 2025) y
+IChatMessage.
 
 ### Estado Implementación Chatbot (2025)
 
@@ -97,8 +98,7 @@ Tipos (packages/types): Se añadirán las nuevas interfaces: IChatConversation (
 - Endpoints API backend para conversaciones
 - Integración con sistema de créditos
 
-7. Experiencia de Usuario (UX) Espectacular
-   debe ser impecable:
+7. Experiencia de Usuario (UX) Espectacular debe ser impecable:
 
 Respuestas en Streaming: El chatbot escribirá las respuestas palabra por palabra, como ChatGPT,
 dando una sensación de "pensamiento" en tiempo real y mejorando la percepción de velocidad.

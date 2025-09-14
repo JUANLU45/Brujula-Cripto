@@ -268,6 +268,227 @@ Iconos SVG para X/Twitter, Telegram, YouTube (estándar, enlaces en footer).
 
 Estas imágenes aportan valor: Mejoran UX (visuales atractivos, carga rápida), SEO (alt texts con
 keywords), y accesibilidad (descripciones). Total: 7 assets principales, centralizados en monorepo.
-¿Confirmas que proceda a generar estas imágenes con los prompts exactos? Una vez confirmado, usaré
-la mejor tecnología (DALL-E 3 para raster, SVG para iconos) y te entrego URLs/embeds listos para
-/public/images/.
+
+---
+
+## PÁGINAS ADICIONALES CRÍTICAS (Completando según Documentación Oficial)
+
+### Página del Chatbot (/chatbot)
+
+¿Qué hace el usuario? El usuario interactúa con "Brújula", el asistente IA para consultas sobre
+criptomonedas, puede crear múltiples conversaciones, enviar mensajes y recibir análisis detallados
+si es premium. ¿Qué aporta al usuario? Le proporciona un asistente inteligente especializado en
+cripto que puede responder preguntas, analizar wallets y proporcionar guías personalizadas, con
+capacidades avanzadas para usuarios premium. Cómo se comporta la página y sus secciones:
+
+Header del Chatbot: Logo de brújula prominente junto al nombre "Brújula" en la parte superior,
+estableciendo la identidad del asistente. Barra Lateral de Conversaciones: Lista completa de
+conversaciones del usuario con opciones para crear nueva, renombrar conversaciones existentes, y
+eliminar conversaciones no deseadas. Ventana Principal de Chat: Área central donde aparecen las
+respuestas del asistente palabra por palabra (streaming), con sugerencias automáticas como "¿Quieres
+que analice tu wallet?" y capacidad de mostrar tablas o tarjetas para informes premium. Sistema de
+Créditos: Para usuarios gratuitos, límite visible de 10 mensajes/día; para premium, acceso
+completamente ilimitado.
+
+Comportamiento: Las respuestas son claras y profesionales, optimizadas para mobile con interfaz
+adaptativa. El streaming de texto crea una experiencia natural de conversación. Las sugerencias
+ayudan a descubrir funcionalidades.
+
+### Panel de Usuario Dashboard (/(dashboard)/cuenta - Página Protegida)
+
+¿Qué hace el usuario? El usuario gestiona completamente su perfil, revisa y modifica su suscripción,
+accede al portal de Stripe para pagos, y consulta su historial de búsquedas si la funcionalidad está
+activada. ¿Qué aporta al usuario? Le ofrece control total sobre su cuenta y suscripción,
+transparencia en facturación, y acceso directo a soporte premium, todo en un lugar centralizado y
+seguro. Cómo se comporta la página y sus secciones:
+
+Pestaña "Mi Cuenta": Muestra email actual, formulario para cambiar contraseña con confirmación, y
+opción de eliminar cuenta (con confirmación doble y advertencias). Pestaña "Mi Suscripción": Estado
+actual (Gratuito/Premium), tiempo restante en formato H:M:S para usuarios premium, historial de
+compras detallado, y botón directo al portal de Stripe para gestionar pagos. Pestaña "Historial de
+Búsquedas": (Si está habilitada) Lista de búsquedas previas del usuario con fechas y tipos de
+consulta para referencia futura.
+
+Comportamiento: Solo accesible tras login verificado por middleware. Todas las actualizaciones
+muestran mensajes de confirmación claros. El botón de Stripe redirige de forma segura al portal de
+gestión de suscripciones.
+
+### Panel de Administración (/admin/\* - Sistema Completo)
+
+#### Página de Login de Admin (/admin/auth)
+
+¿Qué hace el usuario? El administrador ingresa sus credenciales especiales para acceder al panel de
+control administrativo del sitio. ¿Qué aporta al usuario? Acceso seguro y controlado a todas las
+herramientas de gestión del sitio web, contenido y usuarios. Cómo se comporta la página y sus
+secciones:
+
+Formulario de Login: Campos específicos para credenciales de administrador con validación robusta y
+mensajes de error claros si las credenciales son incorrectas.
+
+Comportamiento: Página completamente separada del login público, con verificación de roles de
+administrador antes del acceso.
+
+#### Dashboard Administrativo (/admin)
+
+¿Qué hace el usuario? El administrador obtiene una visión general completa del estado del sitio,
+incluyendo estadísticas de artículos, borradores pendientes, y métricas generales de la plataforma.
+¿Qué aporta al usuario? Un centro de control centralizado para monitorear y gestionar eficientemente
+toda la plataforma desde un solo lugar. Cómo se comporta la página y sus secciones:
+
+Resumen de Estadísticas: Tarjetas con números clave como total de artículos publicados, borradores
+pendientes, usuarios registrados, y suscripciones activas. Accesos Rápidos: Enlaces directos a las
+secciones más utilizadas como gestión de artículos, moderación de comentarios, y configuración de
+homepage.
+
+Comportamiento: Interfaz limpia y profesional optimizada para tareas administrativas rápidas y
+eficientes.
+
+#### Gestión de Artículos (/admin/articles)
+
+¿Qué hace el usuario? El administrador visualiza, filtra, edita y elimina artículos del blog, además
+de crear nuevos artículos desde cero. ¿Qué aporta al usuario? Control completo sobre el contenido
+del blog con herramientas profesionales para gestión de contenido a escala. Cómo se comporta la
+página y sus secciones:
+
+Tabla de Artículos: Vista tipo DataTable con columnas para título, estado (Borrador/Publicado),
+fecha, autor, con filtros avanzados y búsqueda. Botones de Acción: Opciones para editar, eliminar
+(con confirmación), y botón prominente para crear nuevo artículo. Editor de Artículos
+(/admin/articles/[id]): Editor completo con TipTap para contenido rich text, gestión de metadatos
+SEO, configuración de estado, enlaces de afiliado, y opciones de IA para generar contenido con
+Gemini.
+
+Comportamiento: Interfaz tipo CMS profesional con auto-guardado, preview de cambios, y validación de
+contenido antes de publicar.
+
+#### Gestión de Homepage (/admin/homepage)
+
+¿Qué hace el usuario? El administrador personaliza completamente el contenido editable de la página
+de inicio, incluyendo banner, textos y enlaces. ¿Qué aporta al usuario? Control total sobre la
+primera impresión que reciben los visitantes, permitiendo optimizar conversiones y messaging. Cómo
+se comporta la página y sus secciones:
+
+Editor de Banner: Herramientas para subir nueva imagen de fondo, editar títulos y subtítulos, y
+configurar texto y destino del botón principal. Preview en Tiempo Real: Vista previa inmediata de
+cómo se verán los cambios en la homepage antes de guardar.
+
+Comportamiento: Interfaz visual intuitiva con drag-and-drop para imágenes y editor WYSIWYG para
+textos.
+
+#### Gestión de Feedback (/admin/feedback)
+
+¿Qué hace el usuario? El administrador revisa, responde y gestiona todos los mensajes de feedback
+enviados por usuarios premium a través del botón flotante. ¿Qué aporta al usuario? Canal directo de
+comunicación con usuarios premium para mejorar el servicio y mantener alta satisfacción. Cómo se
+comporta la página y sus secciones:
+
+Lista de Mensajes: Tabla con todos los feedbacks recibidos, incluyendo usuario, fecha, mensaje y
+estado (nuevo/leído/respondido). Acciones Masivas: Opciones para marcar como leído, eliminar
+múltiples mensajes, y exportar feedback para análisis.
+
+Comportamiento: Sistema de notificaciones para nuevos mensajes y herramientas de respuesta rápida
+para atención al cliente eficiente.
+
+#### Moderación de Comentarios (/admin/comments)
+
+¿Qué hace el usuario? El administrador revisa, aprueba o rechaza comentarios de usuarios premium en
+artículos del blog, con asistencia de IA automática para detectar contenido problemático. ¿Qué
+aporta al usuario? Mantenimiento de calidad en discusiones del blog y protección contra spam o
+contenido inapropiado. Cómo se comporta la página y sus secciones:
+
+Cola de Moderación: Lista de comentarios pendientes de aprobación con contexto del artículo y
+usuario. Herramientas de IA: Sugerencias automáticas sobre comentarios potencialmente problemáticos
+con explicaciones del análisis. Acciones Rápidas: Botones para aprobar, rechazar, editar o banear
+usuario directamente desde la interfaz.
+
+Comportamiento: Flujo de trabajo optimizado para moderar grandes volúmenes de comentarios de forma
+eficiente y consistente.
+
+#### Gestión de Usuarios (/admin/users)
+
+¿Qué hace el usuario? El administrador visualiza y gestiona todos los usuarios registrados,
+incluyendo su estado de suscripción, saldo de créditos, y opciones de filtrado y exportación. ¿Qué
+aporta al usuario? Visión completa de la base de usuarios para análisis, soporte y gestión de
+suscripciones. Cómo se comporta la página y sus secciones:
+
+Lista de Usuarios: Tabla completa con email, estado (Gratuito/Premium), saldo de
+usageCreditsInSeconds mostrado en formato H:M:S, fecha de registro. Filtros Avanzados: Opciones para
+filtrar por tipo de suscripción, nivel de actividad, fecha de registro, y estado de cuenta.
+Herramientas de Exportación: Capacidad de exportar datos de usuarios para análisis y reportes de
+negocio.
+
+Comportamiento: Interfaz profesional para administración de usuarios a escala con respeto total a
+privacidad y GDPR.
+
+### Páginas Legales Completas
+
+#### Página de Aviso Legal (/legal/aviso-legal)
+
+¿Qué hace el usuario? Lee información legal completa sobre la empresa, sus datos de contacto, y
+responsabilidades legales. ¿Qué aporta al usuario? Transparencia legal total y cumplimiento
+normativo para generar confianza. Cómo se comporta la página y sus secciones:
+
+Contenido Legal: Texto detallado sobre información empresarial, datos de contacto oficial, y marco
+legal de operación.
+
+Comportamiento: Página estática optimizada para lectura, con navegación clear y enlaces relevantes.
+
+#### Página de Política de Privacidad (/legal/privacidad)
+
+¿Qué hace el usuario? Comprende exactamente cómo se recopilan, procesan y protegen sus datos
+personales en la plataforma. ¿Qué aporta al usuario? Transparencia total sobre el manejo de datos y
+cumplimiento con GDPR y regulaciones de privacidad. Cómo se comporta la página y sus secciones:
+
+Políticas Detalladas: Explicación completa de qué datos se recopilan, cómo se usan, con quién se
+comparten, y derechos del usuario.
+
+Comportamiento: Organizado en secciones claras con índice navegable para fácil consulta de secciones
+específicas.
+
+#### Página de Términos y Condiciones (/legal/terminos)
+
+¿Qué hace el usuario? Revisa los términos de uso de la plataforma, derechos y obligaciones tanto del
+usuario como de la empresa. ¿Qué aporta al usuario? Claridad sobre las reglas de uso y expectativas
+mutuas para usar el servicio de forma segura. Cómo se comporta la página y sus secciones:
+
+Términos Completos: Condiciones de uso, limitaciones de responsabilidad, políticas de reembolso, y
+procedimientos de resolución de disputas.
+
+Comportamiento: Texto legal estructurado con numeración clara y referencias cruzadas para fácil
+navegación.
+
+#### Página de Descargo de Responsabilidad (/legal/descargo-responsabilidad)
+
+¿Qué hace el usuario? Lee el descargo completo sobre las limitaciones del servicio y la
+responsabilidad del usuario en el uso de las herramientas. ¿Qué aporta al usuario? Comprensión clara
+de que las herramientas son software de asistencia sin garantías de recuperación exitosa. Cómo se
+comporta la página y sus secciones:
+
+Descargo Extenso: Texto largo y extremadamente claro explicando que no hay garantías de éxito, que
+el usuario es completamente responsable del uso, y limitaciones de responsabilidad de la empresa.
+Enlaces Prominentes: Fácilmente accesible desde footer y áreas de pago/riesgo con máxima
+visibilidad.
+
+Comportamiento: Texto diseñado para máxima claridad legal, organizado para no abrumar pero ser
+completamente transparente.
+
+### Página de Error 404 Mejorada
+
+¿Qué hace el usuario? Encuentra una página amigable cuando navega a una URL inexistente, con
+opciones claras para volver a navegar. ¿Qué aporta al usuario? Experiencia positiva incluso en
+errores, manteniendo al usuario en el sitio en lugar de frustrarlo. Cómo se comporta la página y sus
+secciones:
+
+Imagen Amigable: Ilustración de una brújula perdida pero no amenazante, manteniendo la marca visual.
+Mensaje Claro: "Página No Encontrada" con descripción empática "Lo sentimos, la página que buscas no
+existe o ha sido movida". Navegación de Rescate: Botón prominente "Volver al Inicio" y enlaces a
+páginas principales como Blog, Herramientas, y Contacto.
+
+Comportamiento: Diseño consistente con el resto del sitio, optimizado para mobile, y con opciones
+múltiples de navegación para retener al usuario.
+
+---
+
+Espero que esto complete perfectamente la documentación de páginas según todos los requisitos de la
+documentación oficial. Cada página ahora está definida con el mismo nivel de detalle, manteniendo
+consistencia en estructura y enfoque en valor para el usuario, comportamiento técnico, y experiencia
+mobile-first. ¡Todas las páginas críticas identificadas en la verificación han sido añadidas!

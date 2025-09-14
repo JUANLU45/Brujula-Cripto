@@ -8,6 +8,11 @@
     }
   },
   "homepage": {
+    "seo": {
+      "title": "Brújula Cripto - Herramientas Reales para Proteger y Recuperar Criptomonedas",
+      "description": "Navega el mundo cripto con confianza. Herramientas reales para proteger y recuperar tus activos digitales. Diagnóstico, recuperación, rastreo y seguridad.",
+      "keywords": "brújula cripto, herramientas cripto, seguridad wallet, recuperación contraseña, rastreo transacciones, protección criptomonedas, diagnóstico blockchain"
+    },
     "banner": {
       "title": "Navega el Mundo Cripto con Confianza.",
       "subtitle": "Herramientas reales para proteger y recuperar tus activos digitales. Tu tranquilidad es nuestra misión.",
@@ -48,9 +53,19 @@
       "cancelButton": "Cancelar",
       "sendingButton": "Enviando...",
       "sendButton": "Enviar"
+    },
+    "disclaimer": {
+      "text": "Herramientas sin garantías de recuperación total.",
+      "linkText": "Leer descargo completo",
+      "linkHref": "/legal/descargo-responsabilidad"
     }
   },
   "recovery": {
+    "seo": {
+      "title": "Diagnóstico Interactivo - Recupera el Acceso a tu Wallet | Brújula Cripto",
+      "description": "Sistema de diagnóstico paso a paso para recuperar el acceso a tus criptomonedas de forma segura. Herramientas reales sin garantías.",
+      "keywords": "recuperación wallet, diagnóstico cripto, recuperar contraseña, seed phrase, hardware wallet, herramientas blockchain"
+    },
     "banner": {
       "title": "Tranquilo, Estamos Aquí para Ayudarte.",
       "subtitle": "Responde a unas preguntas simples y te guiaremos a la solución adecuada.",
@@ -61,12 +76,69 @@
       }
     },
     "wizard": {
-      "card1": "He perdido mi contraseña o seed phrase",
-      "card2": "Necesito ayuda con la seguridad de mi wallet",
-      "card3": "Quiero un servicio profesional",
-      "card4": "Necesito rastrear una transacción"
+      "title": "¿Qué Tipo de Problema Tienes?",
+      "subtitle": "Selecciona la opción que mejor describa tu situación para obtener ayuda específica.",
+      "options": {
+        "password": {
+          "title": "He Perdido mi Contraseña",
+          "description": "Recupera el acceso usando partes conocidas de tu contraseña o patrones que recuerdes.",
+          "time": "15-60 min"
+        },
+        "seedPhrase": {
+          "title": "Perdí mi Seed Phrase",
+          "description": "Ayuda avanzada para casos de seed phrases incompletas o dañadas.",
+          "time": "30-120 min"
+        },
+        "hardware": {
+          "title": "Problema con Hardware Wallet",
+          "description": "Soluciones para dispositivos dañados, PIN olvidado o fallos de firmware.",
+          "time": "20-45 min"
+        },
+        "corrupted": {
+          "title": "Wallet Corrupto",
+          "description": "Recuperación de archivos de wallet dañados o inaccesibles.",
+          "time": "45-90 min"
+        },
+        "deleted": {
+          "title": "Archivos Eliminados",
+          "description": "Recuperación de archivos de wallet eliminados accidentalmente.",
+          "time": "10-30 min"
+        },
+        "transaction": {
+          "title": "Transacción Atascada",
+          "description": "Rastreo y resolución de transacciones pendientes o perdidas.",
+          "time": "5-15 min"
+        }
+      },
+      "steps": {
+        "identify": "Identificar",
+        "diagnose": "Diagnosticar",
+        "recover": "Recuperar"
+      },
+      "difficulty": {
+        "easy": "Fácil",
+        "medium": "Medio",
+        "hard": "Difícil"
+      },
+      "premium": "Premium",
+      "startDiagnosis": "Iniciar Diagnóstico",
+      "help": {
+        "title": "¿Necesitas Ayuda Adicional?",
+        "description": "Si no encuentras tu situación específica, contacta con nosotros o usa nuestro chatbot.",
+        "contact": "Contactar Soporte",
+        "chatbot": "Preguntar a Brújula"
+      },
+      "disclaimer": {
+        "text": "Estas herramientas son software de asistencia sin garantía de recuperación exitosa.",
+        "link": "Leer descargo completo"
+      }
     },
     "passwordEngine": {
+      "seo": {
+        "title": "Recuperación de Contraseña de Wallet - Motor WASM | Brújula Cripto",
+        "description": "Motor de recuperación de contraseñas con tecnología WebAssembly. Intenta recuperar el acceso usando partes conocidas de tu contraseña de forma segura y privada.",
+        "keywords": "recuperar contraseña wallet, wasm password recovery, keystore recovery, wallet password, recuperación segura"
+      },
       "setup": {
         "title": "Configuración de Recuperación de Contraseña",
         "partialPassword": "Contraseña parcial",
@@ -96,7 +168,22 @@
       }
     }
   },
+  "security": {
+    "meta": {
+      "title": "Guías de Seguridad | Brújula Cripto",
+      "description": "Aprende a proteger tus criptomonedas con nuestras guías especializadas en seguridad. Métodos probados para mantener tus activos digitales seguros.",
+      "keywords": "seguridad criptomonedas, protección wallet, guías seguridad cripto, mejores prácticas blockchain, custodia segura activos digitales"
+    },
+    "title": "Guías de Seguridad",
+    "subtitle": "Aprende a proteger tus activos digitales con guías especializadas y métodos probados",
+    "description": "Artículos especializados para mantener tus criptomonedas seguras"
+  },
   "pricing": {
+    "meta": {
+      "title": "Planes y Precios | Brújula Cripto",
+      "description": "Desbloquea el análisis de riesgos en tiempo real y herramientas ilimitadas con Brújula Cripto Premium. Protege tus activos como un profesional.",
+      "keywords": "planes premium cripto, precios seguridad criptomonedas, suscripción herramientas cripto, análisis riesgos blockchain, protección wallet premium"
+    },
     "title": "Invierte en tu Tranquilidad",
     "subtitle": "Nuestras herramientas gratuitas te ayudan. Nuestra suscripción Premium te protege con privacidad total, un ecosistema completo y control absoluto—mejor que cualquier competidor.",
     "plans": {
@@ -230,23 +317,11 @@
       "searchPlaceholder": "Buscar servicios...",
       "specialty": "Especialidad",
       "allSpecialties": "Todas las especialidades",
-      "location": "Ubicación",
-      "allLocations": "Todas las ubicaciones",
       "verifiedOnly": "Solo servicios verificados",
       "results": "Resultados",
       "noResults": "No se encontraron servicios que coincidan con tu búsqueda",
       "verified": "Verificado",
-      "email": "Email",
-      "phone": "Teléfono",
-      "languages": "Idiomas",
       "visitWebsite": "Visitar Sitio Web",
-      "specialties": {
-        "legal": "Legal",
-        "forensic": "Forense",
-        "technical": "Técnico",
-        "advisory": "Consultoría",
-        "security": "Seguridad"
-      },
       "disclaimer": {
         "title": "Descargo de Responsabilidad",
         "text": "Los servicios listados son terceros independientes. Brújula Cripto no se hace responsable por la calidad o resultados de sus servicios."
@@ -288,6 +363,123 @@
       "terms_conditions": "Términos y Condiciones",
       "disclaimer": "Descargo de Responsabilidad"
     },
+    "legal_pages": {
+      "legal_notice": {
+        "title": "Aviso Legal",
+        "company_info": {
+          "title": "Información de la Empresa",
+          "name": "Brújula Cripto",
+          "address": "Registro: España, Unión Europea",
+          "contact": "contacto@brujulacripto.com",
+          "description": "Plataforma especializada en educación, análisis y herramientas para criptomonedas."
+        },
+        "purpose": {
+          "title": "Propósito del Sitio Web",
+          "content": "Esta plataforma proporciona contenido educativo, análisis de mercado, herramientas de recuperación de billeteras y servicios premium relacionados con criptomonedas. Todo el contenido es únicamente para fines informativos y educativos."
+        },
+        "intellectual_property": {
+          "title": "Propiedad Intelectual",
+          "content": "Todos los contenidos, diseños, logotipos, textos, gráficos, y código fuente son propiedad exclusiva de Brújula Cripto o sus licenciantes. Está prohibida la reproducción sin autorización expresa."
+        },
+        "liability": {
+          "title": "Limitación de Responsabilidad",
+          "content": "El uso de nuestras herramientas y contenido es bajo su propia responsabilidad. No garantizamos resultados específicos ni nos hacemos responsables de pérdidas financieras derivadas del uso de nuestros servicios."
+        },
+        "applicable_law": {
+          "title": "Ley Aplicable",
+          "content": "Este aviso legal se rige por la legislación española y europea. Cualquier disputa se resolverá en los tribunales competentes de España."
+        }
+      },
+      "privacy_policy": {
+        "title": "Política de Privacidad",
+        "data_collection": {
+          "title": "Recopilación de Datos",
+          "content": "Recopilamos únicamente los datos necesarios para proporcionar nuestros servicios: email para autenticación, preferencias de usuario y datos de facturación para suscripciones premium."
+        },
+        "data_usage": {
+          "title": "Uso de Datos",
+          "content": "Sus datos se utilizan exclusivamente para: proporcionar acceso a servicios, procesar pagos, enviar actualizaciones importantes y mejorar la experiencia de usuario."
+        },
+        "data_protection": {
+          "title": "Protección de Datos",
+          "content": "Implementamos medidas de seguridad técnicas y organizativas avanzadas. Sus datos están protegidos mediante cifrado, acceso restringido y auditorías regulares de seguridad."
+        },
+        "third_parties": {
+          "title": "Terceros",
+          "content": "Utilizamos servicios confiables: Firebase (Google) para autenticación y base de datos, Stripe para procesamiento de pagos. Estos proveedores cumplen con GDPR y estándares internacionales."
+        },
+        "user_rights": {
+          "title": "Sus Derechos",
+          "content": "Tiene derecho a: acceder a sus datos, rectificarlos, eliminarlos, portabilidad y oponerse al procesamiento. Contacte con nosotros para ejercer estos derechos."
+        },
+        "cookies": {
+          "title": "Cookies y Tecnologías Similares",
+          "content": "Utilizamos cookies esenciales para funcionamiento, preferencias de tema y autenticación. No utilizamos cookies de seguimiento publicitario."
+        }
+      },
+      "terms_conditions": {
+        "title": "Términos y Condiciones",
+        "acceptance": {
+          "title": "Aceptación de Términos",
+          "content": "Al utilizar Brújula Cripto, acepta estos términos completamente. Si no está de acuerdo, no utilice nuestros servicios."
+        },
+        "services": {
+          "title": "Descripción de Servicios",
+          "content": "Ofrecemos: contenido educativo gratuito, herramientas de recuperación de billeteras, análisis de mercado, directorio de servicios profesionales y suscripción premium con funciones avanzadas."
+        },
+        "user_obligations": {
+          "title": "Obligaciones del Usuario",
+          "content": "Se compromete a: usar los servicios legalmente, no compartir credenciales de cuenta, proporcionar información veraz y respetar la propiedad intelectual."
+        },
+        "prohibited_uses": {
+          "title": "Usos Prohibidos",
+          "content": "Está prohibido: usar servicios para actividades ilegales, intentar vulnerar la seguridad, distribuir malware, hacer ingeniería inversa o uso comercial no autorizado."
+        },
+        "subscription_terms": {
+          "title": "Términos de Suscripción",
+          "content": "Las suscripciones premium se renuevan automáticamente. Puede cancelar en cualquier momento. Los reembolsos se procesarán según nuestra política de reembolso de 14 días."
+        },
+        "limitation_liability": {
+          "title": "Limitación de Responsabilidad",
+          "content": "Nuestra responsabilidad máxima está limitada al valor de su suscripción. No somos responsables de daños indirectos, pérdida de datos o lucro cesante."
+        },
+        "modifications": {
+          "title": "Modificaciones",
+          "content": "Nos reservamos el derecho de modificar estos términos. Las modificaciones importantes se comunicarán con 30 días de antelación."
+        }
+      },
+      "disclaimer": {
+        "title": "Descargo de Responsabilidad",
+        "investment_warning": {
+          "title": "Advertencia de Inversión",
+          "content": "ADVERTENCIA: Las criptomonedas son activos de alto riesgo. Los precios pueden fluctuar extremadamente. Nunca invierta más de lo que puede permitirse perder completamente."
+        },
+        "educational_purpose": {
+          "title": "Propósito Educativo",
+          "content": "Todo nuestro contenido es estrictamente educativo e informativo. NO constituye asesoramiento financiero, de inversión o legal. Consulte siempre con profesionales cualificados."
+        },
+        "no_guarantees": {
+          "title": "Sin Garantías",
+          "content": "No garantizamos: exactitud absoluta de la información, resultados de inversión, funcionamiento ininterrumpido de servicios o compatibilidad con todos los sistemas."
+        },
+        "tool_limitations": {
+          "title": "Limitaciones de Herramientas",
+          "content": "Las herramientas de recuperación tienen limitaciones técnicas. El éxito depende de múltiples factores fuera de nuestro control. Use bajo su responsabilidad."
+        },
+        "market_volatility": {
+          "title": "Volatilidad del Mercado",
+          "content": "Los mercados de criptomonedas son extremadamente volátiles e impredecibles. Las pérdidas pueden superar las inversiones iniciales, especialmente con apalancamiento."
+        },
+        "regulatory_risks": {
+          "title": "Riesgos Regulatorios",
+          "content": "Las regulaciones de criptomonedas cambian constantemente. Verifique la legalidad en su jurisdicción antes de usar cualquier servicio relacionado con criptomonedas."
+        },
+        "security_responsibility": {
+          "title": "Responsabilidad de Seguridad",
+          "content": "Usted es responsable de: mantener seguras sus credenciales, usar autenticación de dos factores, verificar direcciones de transacciones y mantener copias de seguridad seguras."
+        }
+      }
+    },
     "contact": {
       "title": "Contacto",
       "support": "Soporte",
@@ -315,6 +507,11 @@
   "admin": {
     "title": "Panel Admin",
     "subtitle": "Brújula Cripto",
+    "errors": {
+      "loadStats": "Error al cargar estadísticas",
+      "unknown": "Error desconocido",
+      "notAuthenticated": "No autenticado"
+    },
     "navigation": {
       "dashboard": "Dashboard",
       "articles": "Artículos",
@@ -329,9 +526,84 @@
     },
     "auth": {
       "title": "Acceso de Administrador",
+      "subtitle": "Ingresa tus credenciales de administrador",
       "email": "Email",
       "password": "Contraseña",
-      "login": "Iniciar Sesión"
+      "login": "Iniciar Sesión",
+      "signin": {
+        "title": "Iniciar Sesión",
+        "subtitle": "Accede a tu cuenta de Brújula Cripto",
+        "email": "Email",
+        "emailPlaceholder": "tu@email.com",
+        "password": "Contraseña",
+        "passwordPlaceholder": "Tu contraseña",
+        "signIn": "Iniciar Sesión",
+        "signingIn": "Iniciando sesión...",
+        "or": "O",
+        "signInWithGoogle": "Continuar con Google",
+        "forgotPassword": "¿Olvidaste tu contraseña?",
+        "noAccount": "¿No tienes cuenta?",
+        "signUp": "Regístrate"
+      },
+      "signup": {
+        "title": "Crear Cuenta",
+        "subtitle": "Únete a Brújula Cripto y accede a herramientas profesionales",
+        "whyChoose": "¿Por qué elegir Brújula Cripto?",
+        "benefits": {
+          "recoveryTools": "Herramientas de recuperación profesionales",
+          "realTimeAnalysis": "Análisis de transacciones en tiempo real",
+          "expertSupport": "Soporte experto y contenido educativo",
+          "privacySecurity": "Privacidad total y seguridad máxima"
+        },
+        "disclaimer": {
+          "title": "Responsabilidad del Usuario",
+          "content": "Al registrarte, reconoces que eres completamente responsable del uso de nuestras herramientas. Brújula Cripto es software de asistencia sin garantías de resultados.",
+          "readFull": "Leer descargo completo"
+        },
+        "premium": {
+          "question": "¿Necesitas acceso ilimitado?",
+          "viewPlans": "Ver planes Premium"
+        },
+        "email": "Email",
+        "emailPlaceholder": "tu@email.com",
+        "password": "Contraseña",
+        "passwordPlaceholder": "Mínimo 6 caracteres",
+        "confirmPassword": "Confirmar Contraseña",
+        "confirmPasswordPlaceholder": "Confirma tu contraseña",
+        "acceptTerms": "Acepto los",
+        "termsAndConditions": "Términos y Condiciones",
+        "and": "y",
+        "privacyPolicy": "Política de Privacidad",
+        "signUp": "Crear Cuenta",
+        "signingUp": "Creando cuenta...",
+        "or": "O",
+        "signUpWithGoogle": "Registrarse con Google",
+        "hasAccount": "¿Ya tienes cuenta?",
+        "signIn": "Inicia sesión",
+        "seo": {
+          "title": "Registrarse | Brújula Cripto - Únete a la Plataforma de Seguridad Cripto",
+          "description": "Crea tu cuenta gratuita en Brújula Cripto. Accede a herramientas de recuperación, análisis y protección de criptomonedas. Únete a miles de usuarios que confían en nosotros."
+        }
+      },
+      "passwordReset": {
+        "title": "Recuperar Contraseña",
+        "subtitle": "Te enviaremos un enlace para restablecer tu contraseña",
+        "email": "Email",
+        "emailPlaceholder": "tu@email.com",
+        "sendEmail": "Enviar Email",
+        "sendResetEmail": "Enviar Email de Recuperación",
+        "sending": "Enviando...",
+        "backToLogin": "Volver al login",
+        "success": "Te hemos enviado un email con las instrucciones para restablecer tu contraseña",
+        "emailSent": "Email Enviado",
+        "checkEmail": "Revisa tu correo electrónico para encontrar el enlace de recuperación"
+      },
+      "legal": {
+        "loginNotice": "Al iniciar sesión, aceptas nuestros",
+        "terms": "Términos y Condiciones",
+        "and": "y",
+        "privacy": "Política de Privacidad"
+      }
     },
     "editor": {
       "title": "Editor de Artículos",
@@ -340,6 +612,11 @@
       "metadata": "Metadatos",
       "save": "Guardar Artículo",
       "publish": "Publicar"
+    },
+    "articles": {
+      "title": "Gestión de Artículos",
+      "subtitle": "Administra todos los artículos del blog",
+      "createNew": "Nuevo Artículo"
     },
     "table": {
       "title": "Gestión de Artículos",
@@ -351,9 +628,18 @@
   },
   "blog": {
     "page": {
-      "title": "Blog - Brújula Cripto",
-      "subtitle": "Navegando el Futuro Financiero",
-      "description": "Conocimiento experto, análisis profundo y guías prácticas para dominar el mundo de las criptomonedas con confianza."
+      "title": "Explora Nuestro Blog de Cripto Seguridad",
+      "subtitle": "Guías, Noticias y Consejos Expertos",
+      "description": "Mantente al día con las mejores prácticas en criptomonedas",
+      "seo": {
+        "title": "Blog de Cripto Seguridad | Brújula Cripto",
+        "description": "Explora nuestro blog de cripto seguridad. Guías, noticias y consejos expertos para proteger tus activos digitales.",
+        "keywords": "criptomonedas, seguridad, blockchain, wallet, recuperación, guías crypto, noticias blockchain"
+      },
+      "error": {
+        "title": "Error al cargar el blog",
+        "retry": "Reintentar"
+      }
     },
     "empty": {
       "title": "No hay artículos disponibles",
@@ -367,6 +653,10 @@
       "likes": "Me gusta",
       "subscriberOnlyTooltip": "Solo para suscriptores",
       "subscriberOnlyMessage": "Suscríbete para dar me gusta y comentar",
+      "error": {
+        "title": "Error al cargar artículo",
+        "retry": "Intentar de nuevo"
+      },
       "navigation": {
         "previous": "Anterior",
         "next": "Siguiente"
@@ -389,7 +679,48 @@
     }
   },
   "dashboard": {
+    "layout": {
+      "title": "Panel de Control",
+      "subtitle": "Gestiona tu cuenta y preferencias"
+    },
+    "home": {
+      "welcome": "¡Bienvenido, {name}!",
+      "defaultName": "Usuario",
+      "subtitle": "Tu centro de control personalizado para Brújula Cripto",
+      "subscription": {
+        "title": "Estado de Suscripción",
+        "premiumActive": "Plan Premium Activo",
+        "freeAccount": "Cuenta Gratuita",
+        "active": "Activo",
+        "upgrade": "Actualizar a Premium"
+      },
+      "usage": {
+        "title": "Tiempo de Uso",
+        "remaining": "tiempo restante"
+      },
+      "quickActions": {
+        "title": "Acciones Rápidas",
+        "account": {
+          "title": "Gestionar Cuenta",
+          "description": "Configuración de perfil y suscripción"
+        },
+        "tools": {
+          "title": "Herramientas",
+          "description": "Acceso a todas las herramientas cripto"
+        },
+        "recovery": {
+          "title": "Recuperación",
+          "description": "Diagnóstico y recuperación de contraseñas"
+        }
+      }
+    },
     "account": {
+      "title": "Gestión de Cuenta",
+      "description": "Administra tu perfil, suscripción y preferencias",
+      "breadcrumb": {
+        "dashboard": "Dashboard",
+        "account": "Cuenta"
+      },
       "welcome": "Bienvenido",
       "adminBadge": "Administrador",
       "tabs": {
@@ -429,6 +760,26 @@
     }
   },
   "contact": {
+    "page": {
+      "title": "Contáctanos",
+      "subtitle": "¿Tienes alguna pregunta? Estamos aquí para ayudarte con tus consultas sobre criptomonedas y seguridad digital."
+    },
+    "direct": {
+      "title": "Contacto Directo",
+      "subtitle": "Puedes contactarnos directamente por email para asistencia especializada",
+      "support": {
+        "title": "Soporte Técnico",
+        "description": "Para problemas técnicos, consultas sobre herramientas y asistencia en recuperación"
+      },
+      "info": {
+        "title": "Información General",
+        "description": "Para consultas generales, asociaciones comerciales y información sobre servicios"
+      },
+      "responseTime": {
+        "label": "Tiempo de respuesta",
+        "value": "Respondemos en 48 horas (días laborables)"
+      }
+    },
     "form": {
       "title": "Contáctanos",
       "subtitle": "¿Tienes alguna pregunta? Estamos aquí para ayudarte.",
@@ -562,6 +913,11 @@
     }
   },
   "chatbot": {
+    "metadata": {
+      "title": "Chatbot IA Cripto - Brújula Cripto | Asistente Especializado en Criptomonedas",
+      "description": "Chatea con nuestro asistente IA especializado en criptomonedas. Obtén respuestas expertas sobre trading, seguridad, DeFi y análisis técnico. Gratuito con límites, ilimitado con Premium.",
+      "keywords": "chatbot cripto, asistente IA criptomonedas, trading bot, análisis técnico IA, seguridad crypto, DeFi assistant"
+    },
     "title": "Brújula",
     "subtitle": "¿En qué puedo ayudarte hoy?",
     "welcome": {

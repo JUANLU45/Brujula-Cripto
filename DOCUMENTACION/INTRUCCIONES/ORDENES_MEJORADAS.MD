@@ -203,4 +203,42 @@ chequeo. Cero asunciones.
 8.Finalizar: Solo al completar la validación, la carpeta se considera terminada. JAMAS NUNCA NUNCA
 TE SALGAS DEL PROTOCOLO O TE DENUNCIARE No vuelvas a ejecutar un comando de limpieza o de
 compilación hasta que no estén los archivos completamente verificados y terminados y vistos para
-producción
+producción document filename="PAGES_CREATION_PROMPT.MD">
+
+# PRÓXIMA TAREA:
+
+VERIFICACIÓN COMPLETA: OBJETIVO: CREAR páginas principales para producción con centralización total.
+
+<ol>
+<li>Comprobar que cada página disponga de todos los elementos y usos de componentes existentes sin especulación sin pensar ni creer verificando contra la documentación que cumpla detalladamente cada sección y cada uso.</li>
+<li>FUENTES DE DOCUMENTACIÓN (Obligatorias):</li>
+</ol>
+<p>C:...\TEXTOS_IMAGENES.MD</p>
+<p>C:...\PROYEC_PARTE1.MD a PROYEC_PARTE7.MD</p>
+<p>C:...\PAGES_SPEC.MD</p>
+<p>C:...\IMAGES_PROMPTS.MD</p>
+<p>C:...\DIFERENCIAS.MD</p>
+<p>FASE 1: ANÁLISIS PREVIO (Bloqueante)</p>
+<p>Analiza los 11 documentos.</p>
+<ol start="3">
+<li>IMPORTANTE
+QUE TODO ESTE CENTRALIZADO: imports desde packages/types, usuarios via Firestore con uid, admin protegido, idiomas via [locale], temas claro/oscuro, consistencia ESLint/Prettier.</li>
+<li>IMPORTANTE NO DUPLICAR CÓDIGO Y
+Que cada página utilice solo componentes existentes según los archivos de las instrucciones y que sus implementaciones estén completas para producción con todos y cada uno de los métodos y funciones necesarias y que todo utilice la centralización. Revisar antes de usar: Verificar si el componente ya existe en components/features/ (ej. HomepageBanner.tsx, RecoveryWizard.tsx) y reutilizarlo sin crear nuevos.</li>
+<li>PROHIBIDO TOTAL EL CÓDIGO PLACEBO, FALSO, HARDCODEADO, MOCKED, COMENTADO ES LO QUE MAS ODIO JUNTO A LA ESPECULACION.</li>
+</ol>
+<p>FASE 2: PROTOCOLO POR PÁGINA (Secuencial)</p>
+<ol start="6">
+<li>Ejecutar: Implementar cada página según el plan de centralización y la documentación. Para cada página (ej. Homepage, Blog, etc.):
+<ul>
+<li>Usar ruta exacta de PROYEC_PARTE2.MD (ej. app/[locale]/(main)/page.tsx).</li>
+<li>Importar tipos compartidos (ej. IArticle de types).</li>
+<li>Reutilizar componentes existentes (ej. HomepageBanner.tsx editable via siteContent).</li>
+<li>Integrar interacciones definidas (ej. CTA enlaza a /recuperacion, no nuevo código).</li>
+<li>Asegurar mobile-first, a11y, multilingüe (ES/EN via locale).</li>
+</ul>
+</li>
+<li>Validación Cruzada y QA: Comparar resultado contra todos los documentos MD. Realizar doble chequeo. Cero asunciones. Verificar que no se cree ningún componente nuevo; solo usar y revisar existentes para aportar máximo valor: páginas interactivas, modernas, SEO-enfocadas con botones compartir donde aporte (ej. blog/articles para Web Share API en redes como X/Telegram).</li>
+</ol>
+<p>Finalizar: Solo al completar la validación, la página se considera terminada. La mejor tecnología 2025: Next.js 14+ App Router, Tailwind, react-hook-form para forms, react-markdown para contenido, next/image para imgs optimizadas (AVIF), GA4 para métricas.
+</p></document>

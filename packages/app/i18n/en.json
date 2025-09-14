@@ -8,6 +8,11 @@
     }
   },
   "homepage": {
+    "seo": {
+      "title": "Brújula Cripto - Real Tools to Protect and Recover Cryptocurrencies",
+      "description": "Maps the crypto world with confidence. Real tools to protect and recover your digital assets. Diagnosis, recovery, tracking and security.",
+      "keywords": "brújula cripto, crypto tools, wallet security, password recovery, transaction tracking, cryptocurrency protection, blockchain diagnosis"
+    },
     "banner": {
       "title": "Maps the Crypto World with Confidence.",
       "subtitle": "Real tools to protect and recover your digital assets. Your peace of mind is our mission.",
@@ -48,6 +53,11 @@
       "cancelButton": "Cancel",
       "sendingButton": "Sending...",
       "sendButton": "Send"
+    },
+    "disclaimer": {
+      "text": "Tools without guarantees of total recovery.",
+      "linkText": "Read full disclaimer",
+      "linkHref": "/legal/descargo-responsabilidad"
     }
   },
   "recovery": {
@@ -97,6 +107,11 @@
     }
   },
   "pricing": {
+    "meta": {
+      "title": "Plans & Pricing | Crypto Compass",
+      "description": "Unlock real-time risk analysis and unlimited tools with Crypto Compass Premium. Protect your assets like a professional.",
+      "keywords": "crypto premium plans, cryptocurrency security pricing, crypto tools subscription, blockchain risk analysis, premium wallet protection"
+    },
     "title": "Invest in Your Peace of Mind",
     "subtitle": "Our free tools help you. Our Premium subscription protects you with total privacy, a complete ecosystem, and full control—better than any competitor.",
     "plans": {
@@ -230,23 +245,11 @@
       "searchPlaceholder": "Search services...",
       "specialty": "Specialty",
       "allSpecialties": "All specialties",
-      "location": "Location",
-      "allLocations": "All locations",
       "verifiedOnly": "Verified services only",
       "results": "Results",
       "noResults": "No services found matching your search",
       "verified": "Verified",
-      "email": "Email",
-      "phone": "Phone",
-      "languages": "Languages",
       "visitWebsite": "Visit Website",
-      "specialties": {
-        "legal": "Legal",
-        "forensic": "Forensic",
-        "technical": "Technical",
-        "advisory": "Advisory",
-        "security": "Security"
-      },
       "disclaimer": {
         "title": "Disclaimer",
         "text": "Listed services are independent third parties. Crypto Compass is not responsible for the quality or results of their services."
@@ -288,6 +291,123 @@
       "terms_conditions": "Terms & Conditions",
       "disclaimer": "Disclaimer"
     },
+    "legal_pages": {
+      "legal_notice": {
+        "title": "Legal Notice",
+        "company_info": {
+          "title": "Company Information",
+          "name": "Brújula Cripto",
+          "address": "Registered: Spain, European Union",
+          "contact": "contact@brujulacripto.com",
+          "description": "Platform specialized in education, analysis and tools for cryptocurrencies."
+        },
+        "purpose": {
+          "title": "Website Purpose",
+          "content": "This platform provides educational content, market analysis, wallet recovery tools and premium services related to cryptocurrencies. All content is for informational and educational purposes only."
+        },
+        "intellectual_property": {
+          "title": "Intellectual Property",
+          "content": "All content, designs, logos, texts, graphics, and source code are exclusive property of Brújula Cripto or its licensors. Reproduction without express authorization is prohibited."
+        },
+        "liability": {
+          "title": "Limitation of Liability",
+          "content": "Use of our tools and content is at your own risk. We do not guarantee specific results nor are we responsible for financial losses derived from the use of our services."
+        },
+        "applicable_law": {
+          "title": "Applicable Law",
+          "content": "This legal notice is governed by Spanish and European legislation. Any dispute will be resolved in the competent courts of Spain."
+        }
+      },
+      "privacy_policy": {
+        "title": "Privacy Policy",
+        "data_collection": {
+          "title": "Data Collection",
+          "content": "We collect only data necessary to provide our services: email for authentication, user preferences and billing data for premium subscriptions."
+        },
+        "data_usage": {
+          "title": "Data Usage",
+          "content": "Your data is used exclusively to: provide service access, process payments, send important updates and improve user experience."
+        },
+        "data_protection": {
+          "title": "Data Protection",
+          "content": "We implement advanced technical and organizational security measures. Your data is protected through encryption, restricted access and regular security audits."
+        },
+        "third_parties": {
+          "title": "Third Parties",
+          "content": "We use trusted services: Firebase (Google) for authentication and database, Stripe for payment processing. These providers comply with GDPR and international standards."
+        },
+        "user_rights": {
+          "title": "Your Rights",
+          "content": "You have the right to: access your data, rectify it, delete it, portability and object to processing. Contact us to exercise these rights."
+        },
+        "cookies": {
+          "title": "Cookies and Similar Technologies",
+          "content": "We use essential cookies for functionality, theme preferences and authentication. We do not use advertising tracking cookies."
+        }
+      },
+      "terms_conditions": {
+        "title": "Terms and Conditions",
+        "acceptance": {
+          "title": "Acceptance of Terms",
+          "content": "By using Brújula Cripto, you fully accept these terms. If you disagree, do not use our services."
+        },
+        "services": {
+          "title": "Service Description",
+          "content": "We offer: free educational content, wallet recovery tools, market analysis, professional services directory and premium subscription with advanced features."
+        },
+        "user_obligations": {
+          "title": "User Obligations",
+          "content": "You commit to: use services legally, not share account credentials, provide truthful information and respect intellectual property."
+        },
+        "prohibited_uses": {
+          "title": "Prohibited Uses",
+          "content": "Prohibited: using services for illegal activities, attempting to breach security, distributing malware, reverse engineering or unauthorized commercial use."
+        },
+        "subscription_terms": {
+          "title": "Subscription Terms",
+          "content": "Premium subscriptions auto-renew. You can cancel anytime. Refunds will be processed according to our 14-day refund policy."
+        },
+        "limitation_liability": {
+          "title": "Limitation of Liability",
+          "content": "Our maximum liability is limited to the value of your subscription. We are not responsible for indirect damages, data loss or lost profits."
+        },
+        "modifications": {
+          "title": "Modifications",
+          "content": "We reserve the right to modify these terms. Important modifications will be communicated 30 days in advance."
+        }
+      },
+      "disclaimer": {
+        "title": "Disclaimer",
+        "investment_warning": {
+          "title": "Investment Warning",
+          "content": "WARNING: Cryptocurrencies are high-risk assets. Prices can fluctuate extremely. Never invest more than you can afford to lose completely."
+        },
+        "educational_purpose": {
+          "title": "Educational Purpose",
+          "content": "All our content is strictly educational and informational. It does NOT constitute financial, investment or legal advice. Always consult with qualified professionals."
+        },
+        "no_guarantees": {
+          "title": "No Guarantees",
+          "content": "We do not guarantee: absolute accuracy of information, investment results, uninterrupted service operation or compatibility with all systems."
+        },
+        "tool_limitations": {
+          "title": "Tool Limitations",
+          "content": "Recovery tools have technical limitations. Success depends on multiple factors beyond our control. Use at your own risk."
+        },
+        "market_volatility": {
+          "title": "Market Volatility",
+          "content": "Cryptocurrency markets are extremely volatile and unpredictable. Losses can exceed initial investments, especially with leverage."
+        },
+        "regulatory_risks": {
+          "title": "Regulatory Risks",
+          "content": "Cryptocurrency regulations constantly change. Verify legality in your jurisdiction before using any cryptocurrency-related service."
+        },
+        "security_responsibility": {
+          "title": "Security Responsibility",
+          "content": "You are responsible for: keeping your credentials secure, using two-factor authentication, verifying transaction addresses and maintaining secure backups."
+        }
+      }
+    },
     "contact": {
       "title": "Contact",
       "support": "Support",
@@ -310,6 +430,11 @@
   "admin": {
     "title": "Admin Panel",
     "subtitle": "Crypto Compass",
+    "errors": {
+      "loadStats": "Error loading statistics",
+      "unknown": "Unknown error",
+      "notAuthenticated": "Not authenticated"
+    },
     "navigation": {
       "dashboard": "Dashboard",
       "articles": "Articles",
@@ -324,9 +449,84 @@
     },
     "auth": {
       "title": "Administrator Access",
+      "subtitle": "Enter your administrator credentials",
       "email": "Email",
       "password": "Password",
-      "login": "Sign In"
+      "login": "Sign In",
+      "signin": {
+        "title": "Sign In",
+        "subtitle": "Access your Brújula Cripto account",
+        "email": "Email",
+        "emailPlaceholder": "your@email.com",
+        "password": "Password",
+        "passwordPlaceholder": "Your password",
+        "signIn": "Sign In",
+        "signingIn": "Signing in...",
+        "or": "Or",
+        "signInWithGoogle": "Continue with Google",
+        "forgotPassword": "Forgot your password?",
+        "noAccount": "Don't have an account?",
+        "signUp": "Sign up"
+      },
+      "signup": {
+        "title": "Create Account",
+        "subtitle": "Join Brújula Cripto and access professional tools",
+        "whyChoose": "Why choose Brújula Cripto?",
+        "benefits": {
+          "recoveryTools": "Professional recovery tools",
+          "realTimeAnalysis": "Real-time transaction analysis",
+          "expertSupport": "Expert support and educational content",
+          "privacySecurity": "Complete privacy and maximum security"
+        },
+        "disclaimer": {
+          "title": "User Responsibility",
+          "content": "By registering, you acknowledge that you are fully responsible for using our tools. Brújula Cripto is assistance software without result guarantees.",
+          "readFull": "Read full disclaimer"
+        },
+        "premium": {
+          "question": "Need unlimited access?",
+          "viewPlans": "View Premium plans"
+        },
+        "email": "Email",
+        "emailPlaceholder": "your@email.com",
+        "password": "Password",
+        "passwordPlaceholder": "Minimum 6 characters",
+        "confirmPassword": "Confirm Password",
+        "confirmPasswordPlaceholder": "Confirm your password",
+        "acceptTerms": "I accept the",
+        "termsAndConditions": "Terms and Conditions",
+        "and": "and",
+        "privacyPolicy": "Privacy Policy",
+        "signUp": "Create Account",
+        "signingUp": "Creating account...",
+        "or": "Or",
+        "signUpWithGoogle": "Sign up with Google",
+        "hasAccount": "Already have an account?",
+        "signIn": "Sign in",
+        "seo": {
+          "title": "Sign Up | Brújula Cripto - Join the Crypto Security Platform",
+          "description": "Create your free account at Brújula Cripto. Access recovery tools, analysis and cryptocurrency protection. Join thousands of users who trust us."
+        }
+      },
+      "passwordReset": {
+        "title": "Reset Password",
+        "subtitle": "We'll send you a link to reset your password",
+        "email": "Email",
+        "emailPlaceholder": "your@email.com",
+        "sendEmail": "Send Email",
+        "sendResetEmail": "Send Reset Email",
+        "sending": "Sending...",
+        "backToLogin": "Back to login",
+        "success": "We've sent you an email with instructions to reset your password",
+        "emailSent": "Email Sent",
+        "checkEmail": "Check your email for the recovery link"
+      },
+      "legal": {
+        "loginNotice": "By signing in, you agree to our",
+        "terms": "Terms and Conditions",
+        "and": "and",
+        "privacy": "Privacy Policy"
+      }
     },
     "editor": {
       "title": "Article Editor",
@@ -335,6 +535,11 @@
       "metadata": "Metadata",
       "save": "Save Article",
       "publish": "Publish"
+    },
+    "articles": {
+      "title": "Article Management",
+      "subtitle": "Manage all blog articles",
+      "createNew": "New Article"
     },
     "table": {
       "title": "Article Management",
@@ -346,9 +551,13 @@
   },
   "blog": {
     "page": {
-      "title": "Blog - Crypto Compass",
-      "subtitle": "Navigating the Financial Future",
-      "description": "Expert knowledge, deep analysis and practical guides to master the world of cryptocurrencies with confidence."
+      "title": "Explore Our Crypto Security Blog",
+      "subtitle": "Expert Guides, News and Tips",
+      "description": "Stay up to date with best practices in cryptocurrencies",
+      "error": {
+        "title": "Error loading blog",
+        "retry": "Try again"
+      }
     },
     "empty": {
       "title": "No articles available",
@@ -370,6 +579,10 @@
       "likes": "Likes",
       "subscriberOnlyTooltip": "Subscribers only",
       "subscriberOnlyMessage": "Subscribe to like and comment",
+      "error": {
+        "title": "Error loading article",
+        "retry": "Try again"
+      },
       "navigation": {
         "previous": "Previous",
         "next": "Next"
@@ -384,6 +597,26 @@
     }
   },
   "contact": {
+    "page": {
+      "title": "Contact Us",
+      "subtitle": "Have a question? We're here to help you with your cryptocurrency and digital security queries."
+    },
+    "direct": {
+      "title": "Direct Contact",
+      "subtitle": "You can contact us directly via email for specialized assistance",
+      "support": {
+        "title": "Technical Support",
+        "description": "For technical issues, tool inquiries, and recovery assistance"
+      },
+      "info": {
+        "title": "General Information",
+        "description": "For general inquiries, business partnerships, and service information"
+      },
+      "responseTime": {
+        "label": "Response time",
+        "value": "We respond within 48 hours (business days)"
+      }
+    },
     "form": {
       "title": "Contact Us",
       "subtitle": "Have a question? We're here to help.",
@@ -517,6 +750,11 @@
     }
   },
   "chatbot": {
+    "metadata": {
+      "title": "Crypto AI Chatbot - Brújula Cripto | Specialized Cryptocurrency Assistant",
+      "description": "Chat with our AI assistant specialized in cryptocurrencies. Get expert answers about trading, security, DeFi and technical analysis. Free with limits, unlimited with Premium.",
+      "keywords": "crypto chatbot, cryptocurrency AI assistant, trading bot, technical analysis AI, crypto security, DeFi assistant"
+    },
     "title": "Brújula",
     "subtitle": "How can I help you today?",
     "welcome": {
@@ -624,8 +862,59 @@
     "contactHelp": "Need help?",
     "contactLink": "Contact us"
   },
+  "security": {
+    "meta": {
+      "title": "Security Guides | Brújula Cripto",
+      "description": "Learn to protect your cryptocurrencies with our specialized security guides. Proven methods to keep your digital assets safe.",
+      "keywords": "cryptocurrency security, wallet protection, crypto security guides, blockchain best practices, secure digital asset custody"
+    },
+    "title": "Security Guides",
+    "subtitle": "Learn to protect your digital assets with specialized guides and proven methods",
+    "description": "Specialized articles to keep your cryptocurrencies safe"
+  },
   "dashboard": {
+    "layout": {
+      "title": "Dashboard",
+      "subtitle": "Manage your account and preferences"
+    },
+    "home": {
+      "welcome": "Welcome back, {name}!",
+      "defaultName": "User",
+      "subtitle": "Your personalized control center for Brújula Cripto",
+      "subscription": {
+        "title": "Subscription Status",
+        "premiumActive": "Premium Plan Active",
+        "freeAccount": "Free Account",
+        "active": "Active",
+        "upgrade": "Upgrade to Premium"
+      },
+      "usage": {
+        "title": "Usage Time",
+        "remaining": "remaining time"
+      },
+      "quickActions": {
+        "title": "Quick Actions",
+        "account": {
+          "title": "Manage Account",
+          "description": "Profile and subscription settings"
+        },
+        "tools": {
+          "title": "Tools",
+          "description": "Access to all crypto tools"
+        },
+        "recovery": {
+          "title": "Recovery",
+          "description": "Password diagnosis and recovery"
+        }
+      }
+    },
     "account": {
+      "title": "Account Management",
+      "description": "Manage your profile, subscription and preferences",
+      "breadcrumb": {
+        "dashboard": "Dashboard",
+        "account": "Account"
+      },
       "welcome": "Welcome",
       "adminBadge": "Administrator",
       "tabs": {
