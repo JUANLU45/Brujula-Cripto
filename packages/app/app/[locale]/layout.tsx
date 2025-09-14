@@ -12,6 +12,8 @@ export const metadata: Metadata = {
     'Tu guía experta para proteger, gestionar y recuperar tus criptoactivos. Herramientas reales y conocimiento para darte tranquilidad en el mundo cripto.',
 };
 
+import type * as React from 'react';
+
 export default async function LocaleLayout({
   children,
   params: { locale },

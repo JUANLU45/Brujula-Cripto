@@ -14,6 +14,7 @@ Este es un monorepo que incluye:
 ## 🚀 Tecnologías Principales
 
 ### Frontend
+
 - Next.js 14+ con App Router
 - TypeScript (modo estricto)
 - Tailwind CSS (Mobile-First)
@@ -24,6 +25,7 @@ Este es un monorepo que incluye:
 - Stripe SDK para pagos
 
 ### Backend
+
 - Firebase Cloud Functions v2
 - Cloud Firestore como base de datos
 - Firebase Authentication con Custom Claims
@@ -31,6 +33,7 @@ Este es un monorepo que incluye:
 - Google Secret Manager para secretos
 
 ### Microservicio IA
+
 - Genkit for Firebase
 - Vertex AI con Gemini Pro
 - Google Cloud Run para despliegue
@@ -80,6 +83,7 @@ middleware.ts               - Manejo de i18n
 ## 📊 Modelo de Datos
 
 ### Artículo (IArticle)
+
 ```typescript
 {
   slug: string;

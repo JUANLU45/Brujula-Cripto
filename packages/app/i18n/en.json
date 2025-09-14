@@ -1,4 +1,12 @@
 {
+  "brand": {
+    "name": "Crypto Compass",
+    "logo_alt": "Crypto Compass Logo",
+    "emails": {
+      "support": "soporte@brujulacripto.com",
+      "info": "info@brujulacripto.com"
+    }
+  },
   "homepage": {
     "banner": {
       "title": "Maps the Crypto World with Confidence.",
@@ -19,61 +27,277 @@
         "title": "Expert Guide",
         "description": "Knowledge and chatbot to navigate securely."
       }
+    },
+    "featuredPosts": {
+      "title": "Featured Articles",
+      "subtitle": "Discover our latest guides and expert cryptocurrency analysis.",
+      "noArticles": "No featured articles available.",
+      "prevSlide": "Previous article",
+      "nextSlide": "Next article",
+      "goToSlide": "Go to slide {number}"
+    },
+    "feedback": {
+      "buttonLabel": "Send Feedback",
+      "buttonText": "Feedback",
+      "modalTitle": "Send Feedback",
+      "closeModal": "Close modal",
+      "messageLabel": "Your message",
+      "placeholder": "Share your experience, suggestions or issues...",
+      "successMessage": "Thank you for your feedback! We have received it correctly.",
+      "errorMessage": "Error sending feedback. Please try again.",
+      "cancelButton": "Cancel",
+      "sendingButton": "Sending...",
+      "sendButton": "Send"
     }
   },
   "recovery": {
     "banner": {
       "title": "Stay Calm, We're Here to Help.",
-      "subtitle": "Answer a few simple questions and we'll guide you to the right solution."
+      "subtitle": "Answer a few simple questions and we'll guide you to the right solution.",
+      "features": {
+        "secure": "100% Secure",
+        "private": "Private",
+        "stepByStep": "Step by Step"
+      }
     },
     "wizard": {
       "card1": "I've lost my password or seed phrase",
       "card2": "I need help with my wallet security",
       "card3": "I want a professional service",
       "card4": "I need to track a transaction"
+    },
+    "passwordEngine": {
+      "setup": {
+        "title": "Password Recovery Setup",
+        "partialPassword": "Partial password",
+        "knownParts": "Known parts",
+        "passwordLength": "Password length",
+        "includeNumbers": "Include numbers",
+        "includeSymbols": "Include symbols",
+        "walletFile": "Wallet file",
+        "keystoreFile": "Keystore file",
+        "startRecovery": "Start Recovery"
+      },
+      "processing": {
+        "title": "Processing Recovery",
+        "timeElapsed": "Time elapsed",
+        "timeRemaining": "Time remaining",
+        "creditsUsed": "Credits used",
+        "currentOperation": "Current operation"
+      },
+      "results": {
+        "title": "Recovery Results",
+        "foundPasswords": "Found passwords",
+        "noResults": "No results found"
+      },
+      "error": {
+        "title": "Recovery Error",
+        "message": "An error occurred during the process"
+      }
     }
   },
   "pricing": {
-    "title": "Invest in Your Peace of Mind.",
+    "title": "Invest in Your Peace of Mind",
     "subtitle": "Our free tools help you. Our Premium subscription protects you with total privacy, a complete ecosystem, and full control—better than any competitor.",
-    "free": {
-      "price": "$0 / Forever",
-      "features": {
-        "1": "Interactive Diagnosis",
-        "2": "Blog and Guides",
-        "3": "Password Recovery (Limited)",
-        "4": "Chatbot (Limited)"
+    "plans": {
+      "free": {
+        "name": "Free Plan",
+        "description": "Basic tools to get started",
+        "features": {
+          "tools": "Basic tools",
+          "chatbot": "Limited chatbot",
+          "articles": "Blog access",
+          "support": "Community support"
+        }
+      },
+      "premium1h": {
+        "name": "Premium 1 Hour",
+        "description": "Perfect for quick cases",
+        "features": {
+          "fullAccess": "Full access",
+          "unlimitedTools": "Unlimited tools",
+          "prioritySupport": "Priority support",
+          "noWaitTime": "No wait time"
+        }
+      },
+      "premium5h": {
+        "name": "Premium 5 Hours",
+        "description": "Ideal for complex cases",
+        "features": {
+          "fullAccess": "Full access",
+          "unlimitedTools": "Unlimited tools",
+          "prioritySupport": "Priority support",
+          "noWaitTime": "No wait time",
+          "bestValue": "Best value"
+        }
+      },
+      "premium10h": {
+        "name": "Premium 10 Hours",
+        "description": "Maximum for critical cases",
+        "features": {
+          "fullAccess": "Full access",
+          "unlimitedTools": "Unlimited tools",
+          "prioritySupport": "Priority support",
+          "noWaitTime": "No wait time",
+          "maxValue": "Maximum value"
+        }
       }
     },
-    "premium": {
-      "button": "Get Premium",
-      "features": {
-        "1": "✅ Everything from Free plan, plus:",
-        "2": "🚀 **Maximum Power** in Password Recovery",
-        "3": "🤖 **Unlimited Chatbot** with Wallet Analysis",
-        "4": "🛡️ **Real-time Security Risk Analysis**",
-        "5": "📈 **Advanced Transaction Tracking**",
-        "6": "⭐ **Priority Support**"
+    "free": "Free",
+    "ofUsage": "of usage",
+    "save": "Save",
+    "popular": "Most Popular",
+    "currentPlan": "Current Plan",
+    "signUpFree": "Sign Up Free",
+    "selectPlan": "Select Plan",
+    "comparison": {
+      "title": "Why choose Brújula Cripto?",
+      "competitors": "Other Services",
+      "brujulaCripto": "Brújula Cripto",
+      "savings": "Your Savings",
+      "savingsAmount": "Up to 80% less",
+      "savingsDescription": "Compared to services that charge 20% of recovered amount",
+      "competitorFeatures": {
+        "subscription": "Monthly subscriptions",
+        "dataSharing": "Share your data",
+        "limitedTools": "Limited tools",
+        "noSupport": "Limited support"
+      },
+      "brujulaFeatures": {
+        "payPerUse": "Pay per use",
+        "privacy": "Total privacy",
+        "fullAccess": "Full access",
+        "expertSupport": "Expert support"
+      }
+    },
+    "disclaimer": "Tools without guarantees of total recovery.",
+    "readDisclaimer": "Read full disclaimer",
+    "errors": {
+      "paymentFailed": "Error processing payment. Please try again."
+    },
+    "legacy": {
+      "free": {
+        "price": "$0 / Forever",
+        "features": {
+          "1": "Interactive Diagnosis",
+          "2": "Blog and Guides",
+          "3": "Password Recovery (Limited)",
+          "4": "Chatbot (Limited)"
+        }
+      },
+      "premium": {
+        "button": "Get Premium",
+        "features": {
+          "1": "✅ Everything from Free plan, plus:",
+          "2": "🚀 **Maximum Power** in Password Recovery",
+          "3": "🤖 **Unlimited Chatbot** with Wallet Analysis",
+          "4": "🛡️ **Real-time Security Risk Analysis**",
+          "5": "📈 **Advanced Transaction Tracking**",
+          "6": "⭐ **Priority Support**"
+        }
+      }
+    }
+  },
+  "tools": {
+    "transactionTracker": {
+      "title": "Transaction Tracker",
+      "description": "Track and verify blockchain transactions in real-time. Enter a transaction hash or address to get detailed information.",
+      "searchLabel": "Transaction Hash or Address",
+      "searchPlaceholder": "0x123abc... or wallet address",
+      "search": "Track",
+      "searching": "Tracking...",
+      "transactionDetails": "Transaction Details",
+      "transactionHistory": "Transaction History",
+      "transactionHash": "Hash",
+      "status": "Status",
+      "from": "From",
+      "to": "To",
+      "value": "Value",
+      "timestamp": "Date",
+      "blockNumber": "Block",
+      "confirmations": "Confirmations",
+      "unknown": "Unknown",
+      "errors": {
+        "emptyInput": "Please enter a transaction hash or address",
+        "invalidFormat": "Invalid format. Check the hash or address",
+        "searchFailed": "Search failed. Please try again"
+      }
+    },
+    "serviceDirectory": {
+      "title": "Professional Services Directory",
+      "description": "Find professional services specialized in cryptocurrency recovery and security.",
+      "search": "Search",
+      "searchPlaceholder": "Search services...",
+      "specialty": "Specialty",
+      "allSpecialties": "All specialties",
+      "location": "Location",
+      "allLocations": "All locations",
+      "verifiedOnly": "Verified services only",
+      "results": "Results",
+      "noResults": "No services found matching your search",
+      "verified": "Verified",
+      "email": "Email",
+      "phone": "Phone",
+      "languages": "Languages",
+      "visitWebsite": "Visit Website",
+      "specialties": {
+        "legal": "Legal",
+        "forensic": "Forensic",
+        "technical": "Technical",
+        "advisory": "Advisory",
+        "security": "Security"
+      },
+      "disclaimer": {
+        "title": "Disclaimer",
+        "text": "Listed services are independent third parties. Crypto Compass is not responsible for the quality or results of their services."
       }
     }
   },
   "navigation": {
     "blog": "Blog",
-    "tools": "Tools",
-    "security": "Security Guides",
+    "tools": {
+      "title": "Tools",
+      "diagnosis_recovery": "Diagnosis & Recovery",
+      "diagnosis_recovery_desc": "Recover access to your wallets securely",
+      "transaction_tracker": "Transaction Tracker",
+      "transaction_tracker_desc": "Verify and track blockchain transactions",
+      "service_directory": "Service Directory",
+      "service_directory_desc": "Find trusted professional services"
+    },
+    "security_guides": "Security Guides",
     "contact": "Contact",
-    "dropdown": {
-      "recovery": "Diagnosis & Recovery",
-      "tracker": "Transaction Tracker",
-      "services": "Service Directory"
-    }
+    "language_selector": "Language selector",
+    "theme_toggle": "Toggle theme",
+    "mobile_menu": "Mobile menu",
+    "chatbot": "Chatbot"
   },
   "footer": {
-    "navigation": "Navigation",
-    "legal": "Legal",
-    "contact": "Contact & Social Media",
-    "copyright": "© 2025 Crypto Compass. All rights reserved.",
-    "disclaimer": "General Disclaimer"
+    "tagline": "Your compass in the crypto universe. We navigate together towards security.",
+    "navigation": {
+      "title": "Navigation",
+      "blog": "Blog",
+      "tools": "Tools",
+      "security": "Security Guides",
+      "contact": "Contact",
+      "chatbot": "Chatbot"
+    },
+    "legal": {
+      "title": "Legal",
+      "legal_notice": "Legal Notice",
+      "privacy_policy": "Privacy Policy",
+      "terms_conditions": "Terms & Conditions",
+      "disclaimer": "Disclaimer"
+    },
+    "contact": {
+      "title": "Contact",
+      "support": "Support",
+      "info": "Information",
+      "social": "Follow Us"
+    },
+    "copyright": "All rights reserved.",
+    "disclaimer_link": "Disclaimer",
+    "scroll_to_top": "Scroll to top",
+    "back_to_top": "Back to top"
   },
   "buttons": {
     "start": "Start",
@@ -84,6 +308,20 @@
     "edit": "Edit"
   },
   "admin": {
+    "title": "Admin Panel",
+    "subtitle": "Crypto Compass",
+    "navigation": {
+      "dashboard": "Dashboard",
+      "articles": "Articles",
+      "homepage": "Homepage",
+      "feedback": "Feedback",
+      "comments": "Comments",
+      "users": "Users"
+    },
+    "actions": {
+      "view_site": "View Site",
+      "logout": "Logout"
+    },
     "auth": {
       "title": "Administrator Access",
       "email": "Email",
@@ -107,6 +345,16 @@
     }
   },
   "blog": {
+    "page": {
+      "title": "Blog - Crypto Compass",
+      "subtitle": "Navigating the Financial Future",
+      "description": "Expert knowledge, deep analysis and practical guides to master the world of cryptocurrencies with confidence."
+    },
+    "empty": {
+      "title": "No articles available",
+      "description": "We will publish interesting content soon."
+    },
+    "urlCopied": "URL copied to clipboard",
     "card": {
       "readMore": "Read more",
       "tags": "Tags"
@@ -114,10 +362,311 @@
     "list": {
       "loading": "Loading articles...",
       "noResults": "No articles found"
+    },
+    "article": {
+      "actions": "Actions",
+      "share": "Share",
+      "sharing": "Sharing...",
+      "likes": "Likes",
+      "subscriberOnlyTooltip": "Subscribers only",
+      "subscriberOnlyMessage": "Subscribe to like and comment",
+      "navigation": {
+        "previous": "Previous",
+        "next": "Next"
+      }
     }
   },
   "payments": {
     "upgrade": "Upgrade to Premium",
-    "processing": "Processing payment..."
+    "processing": "Processing payment...",
+    "errors": {
+      "paymentFailed": "Error processing payment. Please try again."
+    }
+  },
+  "contact": {
+    "form": {
+      "title": "Contact Us",
+      "subtitle": "Have a question? We're here to help.",
+      "name": {
+        "label": "Name",
+        "placeholder": "Your full name",
+        "error": "Name must be at least 2 characters"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your@email.com",
+        "error": "Please enter a valid email address"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Write your message here...",
+        "error": "Message must be at least 10 characters"
+      },
+      "send": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! We'll get back to you soon.",
+      "error": "Error sending message. Please try again.",
+      "support": {
+        "title": "Support"
+      },
+      "info": {
+        "title": "Information"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Find answers organized by section",
+      "categories": {
+        "homepage": "Home",
+        "recovery": "Recovery",
+        "tools": "Tools",
+        "blog": "Blog",
+        "account": "Account",
+        "contact": "Contact"
+      },
+      "homepage": {
+        "whatIsBrujula": {
+          "question": "What is Brújula Cripto?",
+          "answer": "A platform for digital asset protection and recovery with specialized tools and security guides."
+        },
+        "howToStart": {
+          "question": "How do I start using the platform?",
+          "answer": "You can begin with our free interactive diagnostic in the Recovery section to assess your specific situation."
+        }
+      },
+      "recovery": {
+        "passwordRecovery": {
+          "question": "How does password recovery work?",
+          "answer": "Our tool uses advanced algorithms to test combinations based on the partial information you provide."
+        },
+        "diagnosticWizard": {
+          "question": "What is the interactive diagnostic?",
+          "answer": "A system that guides you step by step to identify the best solution according to your specific access loss situation."
+        }
+      },
+      "tools": {
+        "transactionTracker": {
+          "question": "How do I track a transaction?",
+          "answer": "Enter the transaction hash or address in our tracker to get detailed information about status and destination."
+        },
+        "serviceDirectory": {
+          "question": "What is the service directory?",
+          "answer": "A curated list of professional services specialized in cryptocurrency recovery and security."
+        }
+      },
+      "blog": {
+        "securityGuides": {
+          "question": "Where do I find security guides?",
+          "answer": "In our Blog section we have specialized articles on security and best practices to protect your assets."
+        },
+        "latestNews": {
+          "question": "Do you publish updated news?",
+          "answer": "Yes, our blog is regularly updated with the latest news and trends from the crypto world."
+        }
+      },
+      "account": {
+        "registration": {
+          "question": "Do I need to register to use the tools?",
+          "answer": "Some basic tools are available without registration, but creating an account gives you access to additional functionalities."
+        },
+        "usageCredits": {
+          "question": "How do time credits work?",
+          "answer": "The system uses time-based credits (seconds) for advanced tools. You receive initial credits when you register."
+        }
+      },
+      "contact": {
+        "supportEmail": {
+          "question": "How can I contact support?",
+          "answer": "You can write to us at soporte@brujulacripto.com or use the contact form on this page."
+        },
+        "responseTime": {
+          "question": "How long does it take to respond?",
+          "answer": "Our team typically responds within 24-48 hours during business days."
+        }
+      },
+      "contactSupport": {
+        "title": "Didn't find what you were looking for?",
+        "description": "Our support team is ready to help you with any specific questions.",
+        "button": "Contact Support"
+      }
+    }
+  },
+  "lib": {
+    "errors": {
+      "api": {
+        "unknown": "Unknown error",
+        "connection": "Connection error"
+      },
+      "auth": {
+        "providerRequired": "useAuth must be used within AuthProvider",
+        "getUserData": "Error getting user data:",
+        "signIn": "Error signing in",
+        "googleSignIn": "Error signing in with Google",
+        "createAccount": "Error creating account",
+        "resetPassword": "Error sending password reset email",
+        "signOut": "Error signing out"
+      },
+      "cache": {
+        "notConfigured": "Redis not configured",
+        "redisError": "Redis error:",
+        "unknown": "Unknown cache error"
+      },
+      "trackUsage": {
+        "error": "Error tracking usage:"
+      }
+    }
+  },
+  "chatbot": {
+    "title": "Brújula",
+    "subtitle": "How can I help you today?",
+    "welcome": {
+      "title": "Hello! I'm your cryptocurrency assistant",
+      "description": "Ask me about trading, technical analysis, security or any crypto topic."
+    },
+    "input": {
+      "placeholder": "Type your cryptocurrency question...",
+      "send": "Send",
+      "stop": "Stop"
+    },
+    "suggested": {
+      "title": "Suggested questions:",
+      "questions": [
+        "How does technical analysis work in cryptocurrencies?",
+        "What are the best security practices?",
+        "What is DeFi and how to get started?",
+        "How to interpret trading charts?"
+      ]
+    },
+    "messages": {
+      "user": "You",
+      "assistant": "Brújula",
+      "typing": "Typing...",
+      "error": "Error processing your message. Please try again.",
+      "limit": "You've reached the message limit. Upgrade your plan to continue.",
+      "count": "messages"
+    },
+    "freeLimit": "Free mode: 10 messages per day. Subscribe for unlimited access.",
+    "userLevel": {
+      "guest": "Guest",
+      "free": "Free",
+      "premium": "Premium",
+      "admin": "Admin"
+    },
+    "credits": {
+      "available": "Credits",
+      "timeAvailable": "Time available",
+      "unlimited": "Unlimited",
+      "noAccess": "No access",
+      "format": "H:M:S"
+    },
+    "conversations": {
+      "title": "Conversations"
+    },
+    "upsell": {
+      "guestTitle": "Join Brújula Cripto!",
+      "guestDescription": "Register for free and get 10 messages to try our specialized cryptocurrency chatbot.",
+      "limitTitle": "Limit Reached!",
+      "limitDescription": "You've used your 10 free messages. Subscribe for unlimited access and advanced analysis.",
+      "register": "Register Free",
+      "subscribe": "Subscribe"
+    },
+    "microphone": {
+      "startListening": "Press to speak",
+      "stopListening": "Press to stop",
+      "listening": "Listening...",
+      "notSupported": "Your browser doesn't support speech recognition",
+      "permissionDenied": "Microphone permissions denied",
+      "noSpeech": "No speech detected",
+      "audioError": "Error capturing audio",
+      "networkError": "Connection error",
+      "genericError": "Speech recognition error",
+      "speechPlaceholder": "Say something...",
+      "activateVoice": "Activate by voice"
+    },
+    "conversation": {
+      "new": "New conversation",
+      "history": "History",
+      "delete": "Delete conversation",
+      "empty": "No conversations",
+      "now": "Now",
+      "favorites": "Favorites",
+      "recent": "Recent",
+      "conversations": "conversations",
+      "favoriteCount": "favorites",
+      "confirmDelete": "Confirm deletion",
+      "favoriteTooltip": "Add to favorites",
+      "unfavoriteTooltip": "Remove from favorites",
+      "renameTooltip": "Rename conversation",
+      "renamePlaceholder": "Conversation name...",
+      "conversationDefault": "Conversation"
+    }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "Sorry, the page you are looking for does not exist. It may have been moved, deleted, or you may have entered an incorrect URL.",
+    "help": "Use the navigation above or the links below to find what you're looking for.",
+    "goHome": "Go Home",
+    "goBack": "Go Back",
+    "actions": {
+      "goHome": "Go Back Home",
+      "goToBlog": "Explore Blog",
+      "goToTools": "Tools"
+    },
+    "helpText": "Useful links to navigate:",
+    "links": {
+      "blog": "Blog",
+      "security": "Security Guides",
+      "recovery": "Recovery",
+      "chatbot": "Chatbot",
+      "contact": "Contact"
+    },
+    "footerText": "Need help? Use our compass to find the way.",
+    "contactHelp": "Need help?",
+    "contactLink": "Contact us"
+  },
+  "dashboard": {
+    "account": {
+      "welcome": "Welcome",
+      "adminBadge": "Administrator",
+      "tabs": {
+        "account": "Account",
+        "subscription": "Subscription",
+        "usage": "Credits Usage"
+      },
+      "account": {
+        "title": "Account Information",
+        "email": "Email",
+        "createdAt": "Registration Date",
+        "signOut": "Sign Out",
+        "deleteAccount": "Delete Account",
+        "deleteConfirm": "Are you sure you want to delete your account?",
+        "deleteConfirmFinal": "This action cannot be undone. Continue?"
+      },
+      "usage": {
+        "title": "Credits Status",
+        "timeRemaining": "Time Remaining",
+        "totalCredits": "Total Credits",
+        "usedCredits": "Used Credits",
+        "description": "Your credits are measured in seconds of advanced tools usage.",
+        "buyMore": "Buy More Credits",
+        "hoursFormat": "{hours}h {minutes}m {seconds}s"
+      },
+      "subscription": {
+        "title": "Subscription Status",
+        "free": "Free Plan",
+        "premium": "Premium Plan",
+        "freeDescription": "Limited access to basic tools",
+        "premiumDescription": "Full access to all tools",
+        "active": "Active",
+        "inactive": "Inactive",
+        "manageSubscription": "Manage Subscription",
+        "upgrade": "Upgrade to Premium"
+      }
+    }
+  },
+  "common": {
+    "tags": "Tags",
+    "articles": "Articles",
+    "categories": "Categories"
   }
 }

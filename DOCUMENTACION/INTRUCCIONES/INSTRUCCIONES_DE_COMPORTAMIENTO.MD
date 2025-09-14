@@ -13,7 +13,8 @@ Este es un monorepo TypeScript con estructura de paquetes compartidos:
 - `packages/microservice-ia/` - Microservicio de contenido IA con Genkit
 - `packages/types/` - **ÚNICA FUENTE DE VERDAD** para tipos TypeScript
 
-**Regla crítica**: SIEMPRE importar tipos desde `@brújula-cripto/types`. Nunca duplicar definiciones.
+**Regla crítica**: SIEMPRE importar tipos desde `@brújula-cripto/types`. Nunca duplicar
+definiciones.
 
 ## Principios No Negociables
 
@@ -197,7 +198,8 @@ middleware.ts            - Manejo de i18n con next-intl
 
 #### **COMANDOS CON SALIDAS PREPARADAS/AMAÑADAS**
 
-- **COMANDOS QUE NO BUSCAN DE VERDAD:** Cualquier comando que simule buscar pero tenga la salida ya preparada
+- **COMANDOS QUE NO BUSCAN DE VERDAD:** Cualquier comando que simule buscar pero tenga la salida ya
+  preparada
 - **COMANDOS FALSOS:** Comandos que aparentan hacer trabajo pero no hacen nada real
 - **VERIFICACIONES FALSAS:** Comandos que simulan verificar pero no verifican nada real
 - **SALIDAS PREPARADAS:** Cualquier comando con salida predeterminada que no refleje la realidad
@@ -244,14 +246,19 @@ firebase deploy                 # Puede fallar
 _Antes de escribir una sola línea de lógica, preparamos el entorno para forzar la calidad._
 
 1. **Instalar Dependencias:**
-    - En la raíz del monorepo (`/brújula-cripto/`), ejecutar el comando `pnpm install`. Esto leerá los `package.json` de cada paquete (`app`, `functions`, etc.) e instalará todas las dependencias necesarias de una sola vez.
+   - En la raíz del monorepo (`/brújula-cripto/`), ejecutar el comando `pnpm install`. Esto leerá
+     los `package.json` de cada paquete (`app`, `functions`, etc.) e instalará todas las
+     dependencias necesarias de una sola vez.
 
 2. **Configurar Calidad de Código:**
-    - Revisar los archivos `.eslintrc.json` y `.prettierrc` en la raíz. Asegurarse de que las extensiones correspondientes están instaladas en el editor de código (VSCode, etc.) para que el formateo y la detección de errores sean automáticos al guardar.
+   - Revisar los archivos `.eslintrc.json` y `.prettierrc` en la raíz. Asegurarse de que las
+     extensiones correspondientes están instaladas en el editor de código (VSCode, etc.) para que el
+     formateo y la detección de errores sean automáticos al guardar.
 
 3. **Configurar Variables de Entorno:**
-    - En cada paquete que lo necesite (`app`, `functions`, `microservice-ia`), crear un archivo `.env.local` a partir de su respectivo archivo `.env.example`.
-    - Rellenar las variables iniciales, como la configuración del proyecto de Firebase.
+   - En cada paquete que lo necesite (`app`, `functions`, `microservice-ia`), crear un archivo
+     `.env.local` a partir de su respectivo archivo `.env.example`.
+   - Rellenar las variables iniciales, como la configuración del proyecto de Firebase.
 
 ---
 
@@ -260,8 +267,10 @@ _Antes de escribir una sola línea de lógica, preparamos el entorno para forzar
 _Esta es la fase más crítica. Aquí definimos el "idioma" que hablará todo nuestro sistema._
 
 1. **Definir Tipos Centralizados:**
-    - **Archivo:** `packages/types/src/index.ts`
-    - **Acción:** Definir y exportar **todas** las interfaces de datos principales que se usarán en el proyecto. Empezar con las más importantes: `IArticle`, `IUser`, `IProfessionalService`. Sean extremadamente detallados. Si un campo puede ser nulo, defínanlo (`string | null`).
+   - **Archivo:** `packages/types/src/index.ts`
+   - **Acción:** Definir y exportar **todas** las interfaces de datos principales que se usarán en
+     el proyecto. Empezar con las más importantes: `IArticle`, `IUser`, `IProfessionalService`. Sean
+     extremadamente detallados. Si un campo puede ser nulo, defínanlo (`string | null`).
 
 ---
 
@@ -270,24 +279,32 @@ _Esta es la fase más crítica. Aquí definimos el "idioma" que hablará todo nu
 _Con los tipos ya definidos, construimos la lógica del servidor y las reglas de acceso._
 
 1. **Inicializar Firebase Admin:**
-    - **Archivo:** `packages/functions/src/lib/firebaseAdmin.ts`
-    - **Acción:** Configurar la inicialización del SDK de Firebase Admin para que sea un singleton (se ejecute una sola vez).
+   - **Archivo:** `packages/functions/src/lib/firebaseAdmin.ts`
+   - **Acción:** Configurar la inicialización del SDK de Firebase Admin para que sea un singleton
+     (se ejecute una sola vez).
 
 2. **Implementar Autenticación y Roles:**
-    - **Archivo:** `packages/functions/src/admin/setAdminRole.ts`
-    - **Acción:** Crear la Cloud Function protegida que permitirá asignar el `claim` de `admin: true` a un usuario por su email o UID.
+   - **Archivo:** `packages/functions/src/admin/setAdminRole.ts`
+   - **Acción:** Crear la Cloud Function protegida que permitirá asignar el `claim` de `admin: true`
+     a un usuario por su email o UID.
 
 3. **Desarrollar Endpoints de Admin:**
-    - **Archivo:** `packages/functions/src/admin/articleHandlers.ts`
-    - **Acción:** Implementar las funciones para `crear`, `actualizar` y `eliminar` artículos. **Importante:** Cada función debe, como primer paso, verificar el `claim` de administrador del usuario que la llama. Todas deben importar la interfaz `IArticle` desde `@brújula-cripto/types` para validar los datos.
+   - **Archivo:** `packages/functions/src/admin/articleHandlers.ts`
+   - **Acción:** Implementar las funciones para `crear`, `actualizar` y `eliminar` artículos.
+     **Importante:** Cada función debe, como primer paso, verificar el `claim` de administrador del
+     usuario que la llama. Todas deben importar la interfaz `IArticle` desde `@brújula-cripto/types`
+     para validar los datos.
 
 4. **Implementar Endpoints de Pagos:**
-    - **Archivos:** `packages/functions/src/payments/`
-    - **Acción:** Desarrollar las dos funciones de Stripe: `createCheckout.ts` y `stripeWebhooks.ts`. Configurar los secretos de Stripe en Google Secret Manager.
+   - **Archivos:** `packages/functions/src/payments/`
+   - **Acción:** Desarrollar las dos funciones de Stripe: `createCheckout.ts` y `stripeWebhooks.ts`.
+     Configurar los secretos de Stripe en Google Secret Manager.
 
 5. **Escribir Reglas de Seguridad:**
-    - **Archivo:** `firestore.rules` y `storage.rules`
-    - **Acción:** Escribir las reglas de seguridad detalladas que hemos definido. Probarlas usando los emuladores de Firebase. **No se escribe código de frontend hasta que las reglas de seguridad estén implementadas y probadas.**
+   - **Archivo:** `firestore.rules` y `storage.rules`
+   - **Acción:** Escribir las reglas de seguridad detalladas que hemos definido. Probarlas usando
+     los emuladores de Firebase. **No se escribe código de frontend hasta que las reglas de
+     seguridad estén implementadas y probadas.**
 
 ---
 
@@ -296,32 +313,44 @@ _Con los tipos ya definidos, construimos la lógica del servidor y las reglas de
 _Con un backend seguro y unos tipos definidos, podemos construir la interfaz con confianza._
 
 1. **Configurar Layout Global e Internacionalización (i18n):**
-    - **Archivos:** `packages/app/app/[locale]/layout.tsx`, `packages/app/i18n/`
-    - **Acción:** Construir el layout principal (incluyendo `Navbar.tsx` y `Footer.tsx`). Configurar `next-intl` con los archivos `es.json` y `en.json`. Todo el texto estático debe venir de estos archivos desde el principio. Implementar el `ThemeSwitcher` para el modo claro/oscuro.
+   - **Archivos:** `packages/app/app/[locale]/layout.tsx`, `packages/app/i18n/`
+   - **Acción:** Construir el layout principal (incluyendo `Navbar.tsx` y `Footer.tsx`). Configurar
+     `next-intl` con los archivos `es.json` y `en.json`. Todo el texto estático debe venir de estos
+     archivos desde el principio. Implementar el `ThemeSwitcher` para el modo claro/oscuro.
 
 2. **Construir la Librería de Componentes UI:**
-    - **Carpeta:** `packages/app/components/ui/`
-    - **Acción:** Crear todos los componentes atómicos reutilizables: `Button.tsx`, `Card.tsx`, `Input.tsx`, `Spinner.tsx`, etc. Deben ser componentes de presentación puros, sin lógica de negocio.
+   - **Carpeta:** `packages/app/components/ui/`
+   - **Acción:** Crear todos los componentes atómicos reutilizables: `Button.tsx`, `Card.tsx`,
+     `Input.tsx`, `Spinner.tsx`, etc. Deben ser componentes de presentación puros, sin lógica de
+     negocio.
 
 3. **Centralizar Llamadas a la API:**
-    - **Archivo:** `packages/app/lib/api.ts`
-    - **Acción:** Crear funciones cliente para **cada una** de las Cloud Functions que hemos desarrollado en la Fase 2. Por ejemplo, una función `updateArticle(id, data)` que dentro se encargue de llamar a la Cloud Function correspondiente. **Todo el frontend usará estas funciones centralizadas.**
+   - **Archivo:** `packages/app/lib/api.ts`
+   - **Acción:** Crear funciones cliente para **cada una** de las Cloud Functions que hemos
+     desarrollado en la Fase 2. Por ejemplo, una función `updateArticle(id, data)` que dentro se
+     encargue de llamar a la Cloud Function correspondiente. **Todo el frontend usará estas
+     funciones centralizadas.**
 
 4. **Desarrollar las Páginas Públicas:**
-    - **Carpetas:** `packages/app/app/[locale]/(main)/*`
-    - **Acción:** Construir las páginas públicas (Home, Blog, Lista de artículos) consumiendo los datos a través de las funciones de `lib/api.ts`.
+   - **Carpetas:** `packages/app/app/[locale]/(main)/*`
+   - **Acción:** Construir las páginas públicas (Home, Blog, Lista de artículos) consumiendo los
+     datos a través de las funciones de `lib/api.ts`.
 
 5. **Implementar la Herramienta de Recuperación:**
-    - **Archivo:** `packages/app/components/features/recovery/WasmPasswordEngine.tsx`
-    - **Acción:** Integrar el módulo de WebAssembly. Implementar el Web Worker para no congelar la UI.
+   - **Archivo:** `packages/app/components/features/recovery/WasmPasswordEngine.tsx`
+   - **Acción:** Integrar el módulo de WebAssembly. Implementar el Web Worker para no congelar la
+     UI.
 
 6. **Construir el Panel de Administración:**
-    - **Carpetas:** `packages/app/app/[locale]/(admin)/*`
-    - **Acción:** Crear la página de login, la tabla de artículos (`ArticleDataTable.tsx`) y el editor (`ArticleEditor.tsx`). Todas las acciones (guardar, borrar) deben usar las funciones de `lib/api.ts`.
+   - **Carpetas:** `packages/app/app/[locale]/(admin)/*`
+   - **Acción:** Crear la página de login, la tabla de artículos (`ArticleDataTable.tsx`) y el
+     editor (`ArticleEditor.tsx`). Todas las acciones (guardar, borrar) deben usar las funciones de
+     `lib/api.ts`.
 
 7. **Integrar el Flujo de Pagos (Stripe):**
-    - **Componente:** `packages/app/components/features/payments/UpgradeButton.tsx`
-    - **Acción:** Conectar el botón al flujo de checkout de Stripe a través de la función correspondiente en `lib/api.ts`.
+   - **Componente:** `packages/app/components/features/payments/UpgradeButton.tsx`
+   - **Acción:** Conectar el botón al flujo de checkout de Stripe a través de la función
+     correspondiente en `lib/api.ts`.
 
 ---
 
@@ -330,28 +359,32 @@ _Con un backend seguro y unos tipos definidos, podemos construir la interfaz con
 _Este servicio es autónomo y se puede desarrollar en paralelo a la Fase 3._
 
 1. **Construir el Flujo de Genkit:**
-    - **Archivo:** `packages/microservice-ia/src/flows/contentFlow.ts`
-    - **Acción:** Implementar el flujo completo como se ha definido: buscar noticias, generar contenido para `es` y `en`, validar con Zod (importando `IArticle` de `@brújula-cripto/types`) y guardar en Firestore como `'draft'`.
+   - **Archivo:** `packages/microservice-ia/src/flows/contentFlow.ts`
+   - **Acción:** Implementar el flujo completo como se ha definido: buscar noticias, generar
+     contenido para `es` y `en`, validar con Zod (importando `IArticle` de `@brújula-cripto/types`)
+     y guardar en Firestore como `'draft'`.
 
 2. **Configurar el Despliegue en Cloud Run:**
-    - **Archivo:** `packages/microservice-ia/Dockerfile`
-    - **Acción:** Crear el Dockerfile, construir la imagen y desplegarla en Google Cloud Run.
+   - **Archivo:** `packages/microservice-ia/Dockerfile`
+   - **Acción:** Crear el Dockerfile, construir la imagen y desplegarla en Google Cloud Run.
 
 3. **Programar el Trigger:**
-    - **Consola de Google Cloud:** Crear un trabajo en **Cloud Scheduler** para que llame al endpoint de Cloud Run diariamente.
+   - **Consola de Google Cloud:** Crear un trabajo en **Cloud Scheduler** para que llame al endpoint
+     de Cloud Run diariamente.
 
 ---
 
 ### **Fase 5: Pruebas Finales y Despliegue (Duración: ~2 días)**
 
 1. **Ejecutar todos los Tests:**
-    - Correr los tests unitarios (Vitest) y los de extremo a extremo (Playwright) para asegurar que no hay regresiones.
+   - Correr los tests unitarios (Vitest) y los de extremo a extremo (Playwright) para asegurar que
+     no hay regresiones.
 
 2. **Revisión Final de Configuración:**
-    - Verificar que todas las variables de entorno para producción son correctas.
-    - Asegurarse de que las reglas de seguridad de Firestore y Storage son las definitivas.
+   - Verificar que todas las variables de entorno para producción son correctas.
+   - Asegurarse de que las reglas de seguridad de Firestore y Storage son las definitivas.
 
 3. **Despliegue:**
-    - Desplegar las Cloud Functions (`pnpm --filter functions deploy`).
-    - Desplegar la aplicación de Next.js a Firebase Hosting.
-    - ¡Lanzamiento!
+   - Desplegar las Cloud Functions (`pnpm --filter functions deploy`).
+   - Desplegar la aplicación de Next.js a Firebase Hosting.
+   - ¡Lanzamiento!

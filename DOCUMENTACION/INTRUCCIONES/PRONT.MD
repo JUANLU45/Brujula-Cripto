@@ -4,7 +4,9 @@
 
 ### INTRODUCCIÓN
 
-Esta librería contiene una serie de prompts estandarizados para guiar a la IA en la generación de código consistente y de alta calidad, siguiendo las directivas y la arquitectura del proyecto. Utiliza los placeholders `[entre corchetes]` para insertar los detalles específicos de cada tarea.
+Esta librería contiene una serie de prompts estandarizados para guiar a la IA en la generación de
+código consistente y de alta calidad, siguiendo las directivas y la arquitectura del proyecto.
+Utiliza los placeholders `[entre corchetes]` para insertar los detalles específicos de cada tarea.
 
 ---
 

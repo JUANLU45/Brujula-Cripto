@@ -1,67 +1,22 @@
-// .eslintrc.json (raíz del monorepo) - Configuración estricta para ESLint v9+ con TypeScript, Next.js y reglas de producción robustas
-{
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": ["packages/*/tsconfig.json"],
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "env": {
-    "browser": true,
-    "node": true,
-    "es2021": true
-  },
-  "plugins": [
-    "@typescript-eslint",
-    "react",
-    "react-hooks",
-    "jsx-a11y",
-    "import",
-    "prettier"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:@typescript-eslint/strict",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:import/typescript",
-    "plugin:prettier/recommended",
-    "next/core-web-vitals"
-  ],
-  "rules": {
-    // Reglas generales para robustez y producción (sin errores, consistencia forzada)
-    "no-console": ["error", { "allow": ["warn", "error"] }],
-    "no-debugger": "error",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
-    "no-duplicate-imports": "error",
-    "prefer-const": "error",
-    "eqeqeq": ["error", "always"],
-    "curly": ["error", "all"],
-    "no-var": "error",
-    "prefer-arrow-callback": "error",
-    "prefer-template": "error",
-    "no-eval": "error",
-    "no-implied-eval": "error",
-    "require-await": "error",
-    "no-return-await": "error",
-    "no-await-in-loop": "warn",
-    "max-depth": ["warn", 4],
-    "complexity": ["warn", 10],
-    "max-lines": ["warn", { "max": 300, "skipBlankLines": true, "skipComments": true }],
-    "max-params": ["warn", 4],
+// .eslintrc.json (raíz del monorepo) - Configuración estricta para ESLint v9+ con TypeScript,
+Next.js y reglas de producción robustas { "root": true, "parser": "@typescript-eslint/parser",
+"parserOptions": { "ecmaVersion": "latest", "sourceType": "module", "project":
+["packages/*/tsconfig.json"], "ecmaFeatures": { "jsx": true } }, "settings": { "react": { "version":
+"detect" } }, "env": { "browser": true, "node": true, "es2021": true }, "plugins": [
+"@typescript-eslint", "react", "react-hooks", "jsx-a11y", "import", "prettier" ], "extends": [
+"eslint:recommended", "plugin:@typescript-eslint/recommended",
+"plugin:@typescript-eslint/recommended-requiring-type-checking", "plugin:@typescript-eslint/strict",
+"plugin:react/recommended", "plugin:react-hooks/recommended", "plugin:jsx-a11y/recommended",
+"plugin:import/typescript", "plugin:prettier/recommended", "next/core-web-vitals" ], "rules": { //
+Reglas generales para robustez y producción (sin errores, consistencia forzada) "no-console":
+["error", { "allow": ["warn", "error"] }], "no-debugger": "error", "no-unused-vars": "off",
+"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern":
+"^_" }], "no-duplicate-imports": "error", "prefer-const": "error", "eqeqeq": ["error", "always"],
+"curly": ["error", "all"], "no-var": "error", "prefer-arrow-callback": "error", "prefer-template":
+"error", "no-eval": "error", "no-implied-eval": "error", "require-await": "error",
+"no-return-await": "error", "no-await-in-loop": "warn", "max-depth": ["warn", 4], "complexity":
+["warn", 10], "max-lines": ["warn", { "max": 300, "skipBlankLines": true, "skipComments": true }],
+"max-params": ["warn", 4],
 
     // Reglas de TypeScript estrictas para evitar errores en producción
     "@typescript-eslint/explicit-module-boundary-types": "error",
@@ -150,48 +105,16 @@
 
     // Integración con Prettier (forzar formato consistente)
     "prettier/prettier": "error"
-  },
-  "overrides": [
-    {
-      "files": ["**/*.ts", "**/_.tsx"],
-      "rules": {
-        "@typescript-eslint/explicit-function-return-type": "error"
-      }
-    },
-    {
-      "files": ["packages/functions/**/_.ts"],
-      "rules": {
-        "no-console": "off" // Permitir console en backend para logging
-      }
-    }
-  ],
-  "ignorePatterns": ["node_modules/", "dist/", ".next/", "_.js", "_.d.ts"]
-}
 
-// .prettierrc (raíz del monorepo) - Configuración estricta para Prettier v3+ con Tailwind CSS y consistencia absoluta
-{
-  "singleQuote": true,
-  "jsxSingleQuote": false,
-  "quoteProps": "as-needed",
-  "trailingComma": "all",
-  "bracketSpacing": true,
-  "bracketSameLine": false,
-  "arrowParens": "always",
-  "semi": true,
-  "tabWidth": 2,
-  "printWidth": 100,
-  "useTabs": false,
-  "endOfLine": "lf",
-  "proseWrap": "always",
-  "htmlWhitespaceSensitivity": "css",
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindConfig": "./packages/app/tailwind.config.ts",
-  "overrides": [
-    {
-      "files": "*.md",
-      "options": {
-        "proseWrap": "preserve"
-      }
-    }
-  ]
-}
+}, "overrides": [ { "files": ["**/*.ts", "**/_.tsx"], "rules": {
+"@typescript-eslint/explicit-function-return-type": "error" } }, { "files":
+["packages/functions/**/_.ts"], "rules": { "no-console": "off" // Permitir console en backend para
+logging } } ], "ignorePatterns": ["node_modules/", "dist/", ".next/", "_.js", "_.d.ts"] }
+
+// .prettierrc (raíz del monorepo) - Configuración estricta para Prettier v3+ con Tailwind CSS y
+consistencia absoluta { "singleQuote": true, "jsxSingleQuote": false, "quoteProps": "as-needed",
+"trailingComma": "all", "bracketSpacing": true, "bracketSameLine": false, "arrowParens": "always",
+"semi": true, "tabWidth": 2, "printWidth": 100, "useTabs": false, "endOfLine": "lf", "proseWrap":
+"always", "htmlWhitespaceSensitivity": "css", "plugins": ["prettier-plugin-tailwindcss"],
+"tailwindConfig": "./packages/app/tailwind.config.ts", "overrides": [ { "files": "*.md", "options":
+{ "proseWrap": "preserve" } } ] }

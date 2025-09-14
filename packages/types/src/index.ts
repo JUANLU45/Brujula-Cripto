@@ -92,6 +92,7 @@ export interface IUser {
 
 /**
  * Interfaz para Conversaciones de Chat IA
+ * Expandida para crear el mejor chatbot profesional del mundo
  */
 export interface IChatConversation {
   /** ID único de la conversación */
@@ -114,6 +115,38 @@ export interface IChatConversation {
 
   /** Estado de la conversación */
   status: 'active' | 'archived';
+
+  /** Si la conversación está marcada como favorita para acceso rápido */
+  isFavorite?: boolean;
+
+  /** Tags para categorización y filtrado de conversaciones */
+  tags?: string[];
+
+  /** Prioridad de la conversación para ordenamiento */
+  priority?: 'low' | 'normal' | 'high';
+
+  /** Configuración de notificaciones para esta conversación */
+  notifications?: {
+    enabled: boolean;
+    sound: boolean;
+    desktop: boolean;
+  };
+
+  /** Metadatos adicionales de la conversación */
+  metadata?: {
+    /** Tema principal de la conversación */
+    topic?: string;
+    /** Nivel de confianza del usuario (principiante, intermedio, avanzado) */
+    userLevel?: 'beginner' | 'intermediate' | 'advanced';
+    /** Tokens totales consumidos en esta conversación */
+    totalTokens?: number;
+    /** Duración total de la conversación en segundos */
+    totalDuration?: number;
+    /** Valoración del usuario sobre la conversación */
+    rating?: number;
+    /** Notas privadas del usuario */
+    notes?: string;
+  };
 }
 
 /**

@@ -1,4 +1,13 @@
-import type { IArticle, IContactFormData, IUser } from '@brujula-cripto/types';
+import type {
+  ContactFormData,
+  IArticle,
+  IChatConversation,
+  IChatMessage,
+  IUser,
+} from '@brujula-cripto/types';
+
+// Importar trackUsage
+export { trackUsage } from './api/trackUsage';
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || 'https://us-central1-brujula-cripto.cloudfunctions.net';
@@ -123,7 +132,7 @@ class ApiClient {
   }
 
   // Formulario de contacto
-  async submitContactForm(formData: IContactFormData): Promise<ApiResponse<void>> {
+  async submitContactForm(formData: ContactFormData): Promise<ApiResponse<void>> {
     return this.makeRequest<void>('/handleContactForm', {
       method: 'POST',
       body: JSON.stringify(formData),
@@ -136,6 +145,81 @@ class ApiClient {
       method: 'POST',
       body: JSON.stringify({ email }),
     });
+  }
+
+  // === CHATBOT ENDPOINTS (PROYEC_PARTE7.MD) ===
+
+  // GET /conversations - Obtener todas las conversaciones del usuario
+  async getChatConversations(): Promise<ApiResponse<IChatConversation[]>> {
+    return this.makeRequest<IChatConversation[]>('/chatbot/conversations');
+  }
+
+  // POST /conversations - Crear nueva conversación
+  async createChatConversation(
+    conversation: Omit<IChatConversation, 'id' | 'createdAt' | 'updatedAt'>,
+  ): Promise<ApiResponse<IChatConversation>> {
+    return this.makeRequest<IChatConversation>('/chatbot/conversations', {
+      method: 'POST',
+      body: JSON.stringify(conversation),
+    });
+  }
+
+  // PUT /conversations/{id} - Actualizar conversación (renombrar, marcar favorito, etc.)
+  async updateChatConversation(
+    id: string,
+    updates: Partial<IChatConversation>,
+  ): Promise<ApiResponse<IChatConversation>> {
+    return this.makeRequest<IChatConversation>(`/chatbot/conversations/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(updates),
+    });
+  }
+
+  // DELETE /conversations/{id} - Eliminar conversación
+  async deleteChatConversation(id: string): Promise<ApiResponse<void>> {
+    return this.makeRequest<void>(`/chatbot/conversations/${id}`, {
+      method: 'DELETE',
+    });
+  }
+
+  // POST /conversations/{id}/messages - Enviar mensaje (con streaming)
+  async sendChatMessage(
+    conversationId: string,
+    message: Omit<IChatMessage, 'id' | 'timestamp'>,
+  ): Promise<ApiResponse<IChatMessage>> {
+    return this.makeRequest<IChatMessage>(`/chatbot/conversations/${conversationId}/messages`, {
+      method: 'POST',
+      body: JSON.stringify(message),
+    });
+  }
+
+  // Stream messages para respuestas en tiempo real
+  async streamChatMessage(
+    conversationId: string,
+    message: Omit<IChatMessage, 'id' | 'timestamp'>,
+    onChunk?: (chunk: string) => void,
+  ): Promise<ReadableStream<Uint8Array> | null> {
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/chatbot/conversations/${conversationId}/messages/stream`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(message),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return response.body;
+    } catch (error) {
+      console.error('Error in stream chat message:', error);
+      return null;
+    }
   }
 }
 
@@ -159,4 +243,22 @@ export const createStripePortalSession = () => api.createStripePortalSession();
 export const createCheckoutSession = (priceId: string) => api.createCheckoutSession(priceId);
 
 // Exportaciones para formulario de contacto
-export const submitContactForm = (formData: IContactFormData) => api.submitContactForm(formData);
+export const submitContactForm = (formData: ContactFormData) => api.submitContactForm(formData);
+
+// Exportaciones para chatbot (PROYEC_PARTE7.MD)
+export const getChatConversations = () => api.getChatConversations();
+export const createChatConversation = (
+  conversation: Omit<IChatConversation, 'id' | 'createdAt' | 'updatedAt'>,
+) => api.createChatConversation(conversation);
+export const updateChatConversation = (id: string, updates: Partial<IChatConversation>) =>
+  api.updateChatConversation(id, updates);
+export const deleteChatConversation = (id: string) => api.deleteChatConversation(id);
+export const sendChatMessage = (
+  conversationId: string,
+  message: Omit<IChatMessage, 'id' | 'timestamp'>,
+) => api.sendChatMessage(conversationId, message);
+export const streamChatMessage = (
+  conversationId: string,
+  message: Omit<IChatMessage, 'id' | 'timestamp'>,
+  onChunk?: (chunk: string) => void,
+) => api.streamChatMessage(conversationId, message, onChunk);
