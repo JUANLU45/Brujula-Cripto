@@ -23,6 +23,8 @@ firebase-debug.*.log*
 .firebaserc
 firebase-adminsdk-*.json
 service-account-*.json
+*firebase-adminsdk*.json
+brujula-cripto-firebase-adminsdk-*.json
 
 # Documentación sensible y claves
 DOCUMENTACION/IMPORTANTE/
@@ -32,6 +34,7 @@ DOCUMENTACION/IMPORTANTE/**
 sdk_firebase.md
 claves_*.md
 credenciales_*.json
+**/GOOGLE/CLAVES/**
 
 # Logs
 logs

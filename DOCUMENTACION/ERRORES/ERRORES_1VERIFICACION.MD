@@ -1,63 +1,147 @@
-ANÁLISIS DE CENTRALIZACIÓN DE IDIOMAS ❌ VIOLACIONES CRÍTICAS DETECTADAS: ARCHIVOS DE TRADUCCIÓN
-VACÍOS
-
-es.json - VACÍO en.json - VACÍO Documentación especifica: "Todo el texto estático debe venir de
-estos archivos" CONFIGURACIÓN INCOMPLETA
-
-request.ts referencia ../messages/${locale}.json Pero los archivos están en es.json y en.json Ruta
-incorrecta: messages/ vs i18n/ COMPONENTES CON TEXTOS SIN TRADUCCIONES
-
-Todos los componentes usan useTranslations() correctamente Pero faltan las claves de traducción en
-los archivos JSON ✅ ELEMENTOS CORRECTAMENTE CENTRALIZADOS: Configuración de next-intl:
-
-routing.ts ✅ Configurado correctamente middleware.ts ✅ Integra i18n con auth next.config.js ✅
-Plugin configurado Uso en componentes:
-
-useTranslations() implementado en todos los componentes Patrón consistente de uso 3. TEMAS
-CENTRALIZADOS Texto buscado para next-themes|theme|dark.*mode|light.*mode|claro.*oscuro
-(**/DOCUMENTACION/COMUN/**), resultados 17 Texto buscado para
-next-themes|ThemeProvider|ThemeSwitcher|useTheme (**/packages/app/**), 1 resultado Se buscaron
-archivos que coinciden con \*\*/*theme\*.tsx, no hay coincidencias
-
-Se buscaron archivos que coinciden con \**/*Theme\*.tsx, no hay coincidencias
-
-Texto buscado para dark:|dark:bg|dark:text (**/packages/app/**), resultados 20 Leer layout.tsx
-
-Leer layout.tsx
-
-🔍 ANÁLISIS DE CENTRALIZACIÓN DE TEMAS ❌ VIOLACIONES MASIVAS DETECTADAS: PROVEEDOR DE TEMAS AUSENTE
-
-No existe ThemeProvider global layout.tsx está VACÍO Documentación exige: "Implementar el
-ThemeSwitcher para el modo claro/oscuro" COMPONENTE THEMESWITCHER AUSENTE
-
-No existe ningún ThemeSwitcher.tsx Documentación especifica: "Un icono de sol/luna" CONFIGURACIÓN
-INCOMPLETA
-
-next-themes instalado pero sin configurar No hay proveedor global configurado ✅ ELEMENTOS
-PARCIALMENTE CORRECTOS: Estilos dark: implementados: Componentes UI usan clases dark: correctamente
-Colores estándar de Tailwind ✅ (tras corrección previa) 4. IMPORT/EXPORT CENTRALIZADOS Texto
-buscado para import._\.\./\.\.|import._\./\./\./|import.\*\./\./\./\./ (**/packages/app/**),
-resultados 16 Leer tsconfig.json
-
-🔍 ANÁLISIS DE CENTRALIZACIÓN DE IMPORT/EXPORT ❌ VIOLACIONES MASIVAS DETECTADAS: RUTAS RELATIVAS
-MASIVAS
-
-Todos los componentes usan rutas relativas: ../../../lib/api Documentación exige: Path aliases con
-@/ tsconfig.json ✅ Configurado correctamente IMPORTACIONES INCORRECTAS
-
-import { createArticle } from '../../../lib/api' DEBE SER: import { createArticle } from '@/lib/api'
-✅ CONFIGURACIÓN CORRECTA: Path aliases en tsconfig.json: @/_, @/components/_, @/lib/\* ✅
-Configurados @brujula-cripto/types ✅ Referencia correcta 📋 RESUMEN FASE 4 - CENTRALIZACIONES
-CRÍTICAS ❌ VIOLACIONES DETECTADAS:
-
-1. USUARIOS/ADMIN - FALTA IMPLEMENTACIÓN Firebase Auth configurado ✅ Custom claims implementados ✅
-   FALTA: AuthProvider global funcional
-2. IDIOMAS - CONFIGURACIÓN INCOMPLETA next-intl configurado ✅ Middleware integrado ✅ FALTA:
-   Archivos de traducción en.json VACÍOS ERROR: Ruta incorrecta en request.ts
-3. TEMAS - SIN IMPLEMENTAR next-themes instalado ✅ FALTA: ThemeProvider global FALTA: ThemeSwitcher
-   component FALTA: Layout con providers
-4. IMPORT/EXPORT - VIOLACIÓN MASIVA Path aliases configurados ✅ VIOLACIÓN: Todos los componentes
-   usan rutas relativas DEBE CORREGIRSE: '../../../' → '@/' 🚨 PRIORIDAD MÁXIMA: Completar archivos
-   de traducción (es.json/en.json) Implementar ThemeProvider + ThemeSwitcher Corregir TODAS las
-   importaciones relativas Implementar AuthProvider funcional ¿Continuar con las correcciones de
-   estas violaciones críticas?
+INFO 2025-09-14T22:08:32.137114879Z Step #2 - "pack": pass: google.utils.label-image@0.0.2
+  {
+    "textPayload": "Step #2 - \"pack\": pass: google.utils.label-image@0.0.2",
+    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-577",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "brujula-cripto",
+        "build_trigger_id": "",
+        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04"
+      }
+    },
+    "timestamp": "2025-09-14T22:08:32.137114879Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
+      "build_step": "Step #2 - \"pack\""
+    },
+    "logName": "projects/brujula-cripto/logs/cloudbuild",
+    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
+  }
+INFO 2025-09-14T22:08:32.137115321Z Step #2 - "pack": ERROR: No buildpack groups passed detection.
+  {
+    "textPayload": "Step #2 - \"pack\": ERROR: No buildpack groups passed detection.",
+    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-578",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "brujula-cripto",
+        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-09-14T22:08:32.137115321Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
+      "build_step": "Step #2 - \"pack\""
+    },
+    "logName": "projects/brujula-cripto/logs/cloudbuild",
+    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
+  }
+INFO 2025-09-14T22:08:32.137115750Z Step #2 - "pack": ERROR: failed to detect: buildpack(s) failed with err
+  {
+    "textPayload": "Step #2 - \"pack\": ERROR: failed to detect: buildpack(s) failed with err",
+    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-579",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04",
+        "project_id": "brujula-cripto"
+      }
+    },
+    "timestamp": "2025-09-14T22:08:32.137115750Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
+      "build_step": "Step #2 - \"pack\""
+    },
+    "logName": "projects/brujula-cripto/logs/cloudbuild",
+    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
+  }
+INFO 2025-09-14T22:08:32.353895785Z Step #2 - "pack": ERROR: failed to build: executing lifecycle: failed with status code: 21
+  {
+    "textPayload": "Step #2 - \"pack\": ERROR: failed to build: executing lifecycle: failed with status code: 21",
+    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-580",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "brujula-cripto",
+        "build_trigger_id": "",
+        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04"
+      }
+    },
+    "timestamp": "2025-09-14T22:08:32.353895785Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
+      "build_step": "Step #2 - \"pack\""
+    },
+    "logName": "projects/brujula-cripto/logs/cloudbuild",
+    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
+  }
+INFO 2025-09-14T22:08:32.581687277Z Finished Step #2 - "pack"
+  {
+    "textPayload": "Finished Step #2 - \"pack\"",
+    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-581",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04",
+        "project_id": "brujula-cripto",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-09-14T22:08:32.581687277Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/brujula-cripto/logs/cloudbuild",
+    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
+  }
+INFO 2025-09-14T22:08:32.581800294Z ERROR
+  {
+    "textPayload": "ERROR",
+    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-582",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04",
+        "project_id": "brujula-cripto"
+      }
+    },
+    "timestamp": "2025-09-14T22:08:32.581800294Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/brujula-cripto/logs/cloudbuild",
+    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
+  }
+INFO 2025-09-14T22:08:32.581819665Z ERROR: build step 2 "gcr.io/k8s-skaffold/pack" failed: step exited with non-zero status: 1
+  {
+    "textPayload": "ERROR: build step 2 \"gcr.io/k8s-skaffold/pack\" failed: step exited with non-zero status: 1",
+    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-583",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "brujula-cripto",
+        "build_trigger_id": "",
+        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04"
+      }
+    },
+    "timestamp": "2025-09-14T22:08:32.581819665Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/brujula-cripto/logs/cloudbuild",
+    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
+  }
