@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Permitir acceso completo a bots SEO
+Allow: /es/
+Allow: /en/
+
+# Disallow admin areas (si existen)
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://brujulacripto.com/sitemap.xml

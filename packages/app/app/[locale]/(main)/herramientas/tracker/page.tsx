@@ -4,10 +4,11 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 interface TrackerPageProps {
-  params: { locale: 'es' | 'en' };
+  params: Promise<{ locale: 'es' | 'en' }>;
 }
 
-export async function generateMetadata({ params }: TrackerPageProps): Promise<Metadata> {
+export async function generateMetadata(props: TrackerPageProps): Promise<Metadata> {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'tools.transactionTracker.title',
@@ -16,7 +17,8 @@ export async function generateMetadata({ params }: TrackerPageProps): Promise<Me
   });
 }
 
-export default async function TrackerPage({ params }: TrackerPageProps) {
+export default async function TrackerPage(props: TrackerPageProps) {
+  const params = await props.params;
   const { locale } = params;
   const t = await getTranslations('tools.transactionTracker');
 

@@ -8,13 +8,14 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
-  };
+  }>;
 }
 
 // Metadatos SEO centralizados
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata(props: PageProps) {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'homepage.seo.title',
@@ -136,7 +137,8 @@ function DisclaimerSection({ locale }: { locale: 'es' | 'en' }) {
 }
 
 // Página principal de inicio
-export default function HomePage({ params }: PageProps) {
+export default async function HomePage(props: PageProps) {
+  const params = await props.params;
   const { locale } = params;
 
   return (

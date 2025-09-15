@@ -5,12 +5,13 @@ import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
 interface AvisoLegalPageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: AvisoLegalPageProps): Promise<Metadata> {
+export async function generateMetadata(props: AvisoLegalPageProps): Promise<Metadata> {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'legal_pages.legal_notice.title',
@@ -19,7 +20,8 @@ export async function generateMetadata({ params }: AvisoLegalPageProps): Promise
   });
 }
 
-export default async function AvisoLegalPage({ params }: AvisoLegalPageProps) {
+export default async function AvisoLegalPage(props: AvisoLegalPageProps) {
+  const params = await props.params;
   const t = await getTranslations('legal_pages.legal_notice');
   const navT = await getTranslations('navigation');
 

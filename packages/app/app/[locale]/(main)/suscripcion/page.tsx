@@ -4,12 +4,13 @@ import PricingPage from '@/components/features/pricing/PricingPage';
 import { generateSEOMetadata } from '@/lib/seo';
 
 interface SuscripcionPageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: SuscripcionPageProps) {
+export async function generateMetadata(props: SuscripcionPageProps) {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'pricing.meta.title',
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: SuscripcionPageProps) {
   });
 }
 
-export default function SuscripcionPage({ params }: SuscripcionPageProps) {
+export default async function SuscripcionPage({ params }: SuscripcionPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
       {/* Sección Principal PricingPage.tsx */}

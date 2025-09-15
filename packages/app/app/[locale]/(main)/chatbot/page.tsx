@@ -3,14 +3,18 @@ import { generateSEOMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
 
 interface ChatbotPageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
-  };
+  }>;
 }
 
-export async function generateMetadata({
-  params: { locale },
-}: ChatbotPageProps): Promise<Metadata> {
+export async function generateMetadata(props: ChatbotPageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   return generateSEOMetadata({
     locale,
     titleKey: 'chatbot.metadata.title',
@@ -20,7 +24,13 @@ export async function generateMetadata({
   });
 }
 
-export default function ChatbotPage({ params: { locale } }: ChatbotPageProps) {
+export default async function ChatbotPage(props: ChatbotPageProps) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">

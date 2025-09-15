@@ -5,14 +5,15 @@ import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 interface ArticlePageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
     slug: string;
-  };
+  }>;
 }
 
 // METADATA SEO DINÁMICO SEGÚN PROYEC_PARTE2.MD
-export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
+export async function generateMetadata(props: ArticlePageProps): Promise<Metadata> {
+  const params = await props.params;
   const { locale, slug } = params;
 
   try {
@@ -64,7 +65,8 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 }
 
-export default async function ArticleSlugPage({ params }: ArticlePageProps) {
+export default async function ArticleSlugPage(props: ArticlePageProps) {
+  const params = await props.params;
   const { locale, slug } = params;
   const t = await getTranslations('blog.article');
 

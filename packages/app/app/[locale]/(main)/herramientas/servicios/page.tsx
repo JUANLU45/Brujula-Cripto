@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 interface ServiciosPageProps {
-  params: { locale: 'es' | 'en' };
+  params: Promise<{ locale: 'es' | 'en' }>;
 }
 
 // Interfaz REAL según PROYEC_PARTE3.MD
@@ -49,7 +49,8 @@ async function getProfessionalServices(): Promise<ProfessionalService[]> {
 }
 
 // METADATA SEO SEGÚN PROYEC_PARTE2.MD
-export async function generateMetadata({ params }: ServiciosPageProps): Promise<Metadata> {
+export async function generateMetadata(props: ServiciosPageProps): Promise<Metadata> {
+  const params = await props.params;
   const { locale } = params;
 
   return {
@@ -84,7 +85,8 @@ export async function generateMetadata({ params }: ServiciosPageProps): Promise<
   };
 }
 
-export default async function ServiciosPage({ params }: ServiciosPageProps) {
+export default async function ServiciosPage(props: ServiciosPageProps) {
+  const params = await props.params;
   const { locale } = params;
   const t = await getTranslations('tools.serviceDirectory');
 

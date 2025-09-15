@@ -3,14 +3,20 @@
 import { useAuth } from '@/lib/auth/AuthProvider';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, use } from 'react';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export default function DashboardLayout({ children, params }: DashboardLayoutProps) {
+export default function DashboardLayout(props: DashboardLayoutProps) {
+  const params = use(props.params);
+
+  const {
+    children
+  } = props;
+
   const t = useTranslations('dashboard.layout');
   const { user, loading } = useAuth();
   const router = useRouter();

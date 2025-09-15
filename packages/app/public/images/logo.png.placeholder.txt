@@ -1,0 +1,12 @@
+PLACEHOLDER: logo.png
+USED IN: seo.ts:123 (JSON-LD structured data)
+IMPLEMENTATION: Schema.org ImageObject para organización
+FORMAT: PNG (transparencia requerida)
+DIMENSIONS: 512x512px (cuadrado escalable)
+QUALITY: Máxima (representa marca)
+MAX WEIGHT: 50KB
+CONFIGURATION:
+- Fondo transparente obligatorio
+- Alta resolución para múltiples usos
+- Compresión PNG optimizada
+STATUS: TEMPORARY PLACEHOLDER - REPLACE WITH REAL IMAGE

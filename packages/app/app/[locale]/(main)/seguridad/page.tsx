@@ -3,12 +3,13 @@ import { SecurityGuides } from '@/components/features/blog/SecurityGuides';
 import { generateSEOMetadata } from '@/lib/seo';
 
 interface SeguridadPageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: SeguridadPageProps) {
+export async function generateMetadata(props: SeguridadPageProps) {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'security.meta.title',
@@ -18,7 +19,8 @@ export async function generateMetadata({ params }: SeguridadPageProps) {
   });
 }
 
-export default function SeguridadPage({ params }: SeguridadPageProps) {
+export default async function SeguridadPage(props: SeguridadPageProps) {
+  const params = await props.params;
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
       {/* Sección Principal SecurityGuides.tsx */}

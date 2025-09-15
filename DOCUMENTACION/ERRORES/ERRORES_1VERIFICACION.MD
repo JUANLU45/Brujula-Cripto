@@ -1,147 +1,64 @@
-INFO 2025-09-14T22:08:32.137114879Z Step #2 - "pack": pass: google.utils.label-image@0.0.2
-  {
-    "textPayload": "Step #2 - \"pack\": pass: google.utils.label-image@0.0.2",
-    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-577",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "project_id": "brujula-cripto",
-        "build_trigger_id": "",
-        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04"
-      }
-    },
-    "timestamp": "2025-09-14T22:08:32.137114879Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
-      "build_step": "Step #2 - \"pack\""
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
-  }
-INFO 2025-09-14T22:08:32.137115321Z Step #2 - "pack": ERROR: No buildpack groups passed detection.
-  {
-    "textPayload": "Step #2 - \"pack\": ERROR: No buildpack groups passed detection.",
-    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-578",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "project_id": "brujula-cripto",
-        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04",
-        "build_trigger_id": ""
-      }
-    },
-    "timestamp": "2025-09-14T22:08:32.137115321Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
-      "build_step": "Step #2 - \"pack\""
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
-  }
-INFO 2025-09-14T22:08:32.137115750Z Step #2 - "pack": ERROR: failed to detect: buildpack(s) failed with err
-  {
-    "textPayload": "Step #2 - \"pack\": ERROR: failed to detect: buildpack(s) failed with err",
-    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-579",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "build_trigger_id": "",
-        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04",
-        "project_id": "brujula-cripto"
-      }
-    },
-    "timestamp": "2025-09-14T22:08:32.137115750Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
-      "build_step": "Step #2 - \"pack\""
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
-  }
-INFO 2025-09-14T22:08:32.353895785Z Step #2 - "pack": ERROR: failed to build: executing lifecycle: failed with status code: 21
-  {
-    "textPayload": "Step #2 - \"pack\": ERROR: failed to build: executing lifecycle: failed with status code: 21",
-    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-580",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "project_id": "brujula-cripto",
-        "build_trigger_id": "",
-        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04"
-      }
-    },
-    "timestamp": "2025-09-14T22:08:32.353895785Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
-      "build_step": "Step #2 - \"pack\""
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
-  }
-INFO 2025-09-14T22:08:32.581687277Z Finished Step #2 - "pack"
-  {
-    "textPayload": "Finished Step #2 - \"pack\"",
-    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-581",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04",
-        "project_id": "brujula-cripto",
-        "build_trigger_id": ""
-      }
-    },
-    "timestamp": "2025-09-14T22:08:32.581687277Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
-      "build_step": "MAIN"
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
-  }
-INFO 2025-09-14T22:08:32.581800294Z ERROR
-  {
-    "textPayload": "ERROR",
-    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-582",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "build_trigger_id": "",
-        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04",
-        "project_id": "brujula-cripto"
-      }
-    },
-    "timestamp": "2025-09-14T22:08:32.581800294Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
-      "build_step": "MAIN"
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
-  }
-INFO 2025-09-14T22:08:32.581819665Z ERROR: build step 2 "gcr.io/k8s-skaffold/pack" failed: step exited with non-zero status: 1
-  {
-    "textPayload": "ERROR: build step 2 \"gcr.io/k8s-skaffold/pack\" failed: step exited with non-zero status: 1",
-    "insertId": "303ea8ee-801f-45bd-8c3b-72dd54559e04-583",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "project_id": "brujula-cripto",
-        "build_trigger_id": "",
-        "build_id": "303ea8ee-801f-45bd-8c3b-72dd54559e04"
-      }
-    },
-    "timestamp": "2025-09-14T22:08:32.581819665Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-14-002,backen-brujula-cripto,7f00f7c69c679892db2075b94b8525c4747f0e9f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK",
-      "build_step": "MAIN"
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-14T22:08:32.751931662Z"
-  }
+📋 VERIFICACIÓN COMPLETA DEL PROBLEMA - SIN ESPECULACIÓN
+🔍 ANÁLISIS REAL DE ARCHIVOS:
+ESTRUCTURA ACTUAL DETECTADA:
+
+app/[locale]/├── (admin)/│   ├── page.tsx          ← AdminDashboardPage (Panel administrador)│   └── layout.tsx        ← AdminLayout con AdminSidebar├── (dashboard)/│   ├── page.tsx          ← DashboardHomePage (Panel usuario)│   └── layout.tsx        ← DashboardLayout con protección auth├── (main)/│   ├── page.tsx          ← Homepage principal│   └── layout.tsx        ← MainLayout con Navbar/Footer└── admin/    └── page.tsx          ← ARCHIVO VACÍO
+CONFLICTO CONFIRMADO:
+RUTAS QUE CHOCAN:
+
+page.tsx → Resuelve a /es, /en
+page.tsx → Resuelve a /es, /en
+page.tsx → Resuelve a /es, /en
+Next.js no puede decidir cuál usar para la ruta raíz.
+
+FUNCIÓN DE CADA PÁGINA VERIFICADA:
+page.tsx: Dashboard administrativo con estadísticas
+
+Componente: AdminDashboardPage
+Layout: AdminSidebar para navegación admin
+Target: Administradores del sistema
+page.tsx: Panel de usuario registrado
+
+Componente: DashboardHomePage
+Layout: Protección de ruta con useAuth()
+Target: Usuarios premium/registrados
+page.tsx: Página de inicio pública
+
+Componente: Homepage con banner, carousel, tools
+Layout: Navbar + Footer públicos
+Target: Visitantes públicos
+page.tsx: ARCHIVO VACÍO - sin función
+
+🔧 DOCUMENTACIÓN VS CÓDIGO:
+SEGÚN PROYEC_PARTE2.MD:
+
+
+├── (dashboard)/         # Nueva Ruta Protegida│   ├── layout.tsx       # Layout para área protegida│   └── cuenta/│       └── page.tsx     # Panel de Control del Usuario
+PROBLEMA: La documentación especifica page.tsx pero el código tiene page.tsx directamente.
+
+✅ SOLUCIÓN CORRECTA Y ROBUSTA:
+1. MANTENER (main) COMO HOMEPAGE:
+
+page.tsx → /es, /en (página principal)
+2. MOVER (admin) A RUTA ESPECÍFICA:
+
+page.tsx → page.tsx → /es/admin, /en/admin
+3. MOVER (dashboard) SEGÚN DOCUMENTACIÓN:
+
+page.tsx → page.tsx → /es/cuenta, /en/cuenta
+4. ELIMINAR ARCHIVO DUPLICADO:
+
+Borrar page.tsx (vacío y duplicado)
+📊 COMPATIBILIDAD VERIFICADA:
+IMPORTACIONES VERIFICADAS:
+
+✅ Todas usan @/components/* correctamente
+✅ Tipos de @brujula-cripto/types importados
+✅ next-intl configurado en todos
+✅ Layouts específicos funcionando
+AUTENTICACIÓN VERIFICADA:
+
+✅ (admin) usa verificación manual con getAuthToken()
+✅ (dashboard) usa useAuth() hook
+✅ (main) es público sin restricciones
+Esta es la solución exacta y robusta basada en código real verificado.

@@ -5,16 +5,17 @@ import { Spinner } from '@/components/ui/Spinner';
 import { IArticle } from '@brujula-cripto/types';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 
 interface ArticleEditorPageProps {
-  params: {
+  params: Promise<{
     locale: string;
     id: string;
-  };
+  }>;
 }
 
-export default function ArticleEditorPage({ params }: ArticleEditorPageProps) {
+export default function ArticleEditorPage(props: ArticleEditorPageProps) {
+  const params = use(props.params);
   const t = useTranslations('admin.editor');
   const router = useRouter();
   const [loading, setLoading] = useState(true);

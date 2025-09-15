@@ -1,0 +1,27 @@
+{
+  "name": "Brújula Cripto",
+  "short_name": "Brújula Cripto",
+  "description": "Tu guía experta en el mundo de las criptomonedas",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#10B981",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["finance", "education", "business"],
+  "lang": "es",
+  "scope": "/",
+  "prefer_related_applications": false
+}

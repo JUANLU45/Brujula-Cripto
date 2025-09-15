@@ -9,13 +9,14 @@ import { getTranslations } from 'next-intl/server';
 // Comportamiento: Muestra un mensaje si hay errores y envía el formulario al soporte.
 
 interface ContactPageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
-  };
+  }>;
 }
 
 // GENERACIÓN DE METADATA SEO - CUMPLE DOCUMENTACIÓN PROYEC_PARTE2.MD
-export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
+export async function generateMetadata(props: ContactPageProps): Promise<Metadata> {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'contact.page.title',

@@ -1,13 +1,15 @@
-'use client';
+'use client';;
+import { use } from "react";
 
 import { AdminLoginForm } from '@/components/features/admin/AdminLoginForm';
 import { useTranslations } from 'next-intl';
 
 interface AdminAuthPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export default function AdminAuthPage({ params }: AdminAuthPageProps) {
+export default function AdminAuthPage(props: AdminAuthPageProps) {
+  const params = use(props.params);
   const t = useTranslations('admin.auth');
 
   return (

@@ -5,14 +5,13 @@ import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
 interface DescargoResponsabilidadPageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
-  };
+  }>;
 }
 
-export async function generateMetadata({
-  params,
-}: DescargoResponsabilidadPageProps): Promise<Metadata> {
+export async function generateMetadata(props: DescargoResponsabilidadPageProps): Promise<Metadata> {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'legal_pages.disclaimer.title',
@@ -21,9 +20,8 @@ export async function generateMetadata({
   });
 }
 
-export default async function DescargoResponsabilidadPage({
-  params,
-}: DescargoResponsabilidadPageProps) {
+export default async function DescargoResponsabilidadPage(props: DescargoResponsabilidadPageProps) {
+  const params = await props.params;
   const t = await getTranslations('legal_pages.disclaimer');
   const navT = await getTranslations('navigation');
 

@@ -3,10 +3,11 @@ import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 
 interface PageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const t = await getTranslations('recovery.passwordEngine.seo');
 
   return {

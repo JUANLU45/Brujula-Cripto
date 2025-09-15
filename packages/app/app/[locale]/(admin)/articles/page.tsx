@@ -1,4 +1,5 @@
-'use client';
+'use client';;
+import { use } from "react";
 
 import { ArticleDataTable } from '@/components/features/admin/ArticleDataTable';
 import { Button } from '@/components/ui/Button';
@@ -6,10 +7,11 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 interface AdminArticlesPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export default function AdminArticlesPage({ params }: AdminArticlesPageProps) {
+export default function AdminArticlesPage(props: AdminArticlesPageProps) {
+  const params = use(props.params);
   const t = useTranslations('admin.articles');
 
   return (

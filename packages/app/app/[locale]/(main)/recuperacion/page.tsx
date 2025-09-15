@@ -4,12 +4,13 @@ import { generateSEOMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
 
 interface RecuperacionPageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: RecuperacionPageProps): Promise<Metadata> {
+export async function generateMetadata(props: RecuperacionPageProps): Promise<Metadata> {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'recovery.seo.title',

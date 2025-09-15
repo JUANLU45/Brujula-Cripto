@@ -6,10 +6,11 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 interface PageProps {
-  params: { locale: 'es' | 'en' };
+  params: Promise<{ locale: 'es' | 'en' }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'auth.signup.seo.title',

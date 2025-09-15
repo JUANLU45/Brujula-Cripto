@@ -170,18 +170,16 @@ Imágenes: next/image para optimización (AVIF).
 
 Analítica: Google Analytics 4 (GA4).
 
-
-
-LEE LA DOCUMENTACION ES UNA ORDEN Y PROHIBIDO PLACEBO, ARQUEADO,MOKADO O FALSO AVISO CREAR LA PAGINA TAL Y COMO ESPECIFICA LOS DOCUMENTOS ,  y que cumplan con una centralización total de componentes, datos E IDIOMAS CENTRALIZADOS CON SUS CLAVES Y CONFIGURACIONES DE LA. C:\BRUJULA CRIPTO\packages\app\components\features\blog\SecurityGuides.tsx
-Antes de iniciar el desarrollo, es imprescindible realizar un análisis exhaustivo de los 8
-documentos de referencia del proyecto. La implementación de cada página debe cumplir detalladamente
-con cada sección y caso de uso especificado en ellos.
-Fuentes de Documentación Obligatorias:
+LEE LA DOCUMENTACION ES UNA ORDEN Y PROHIBIDO PLACEBO, ARQUEADO,MOKADO O FALSO AVISO CREAR LA PAGINA
+TAL Y COMO ESPECIFICA LOS DOCUMENTOS , y que cumplan con una centralización total de componentes,
+datos E IDIOMAS CENTRALIZADOS CON SUS CLAVES Y CONFIGURACIONES DE LA. C:\BRUJULA
+CRIPTO\packages\app\components\features\blog\SecurityGuides.tsx Antes de iniciar el desarrollo, es
+imprescindible realizar un análisis exhaustivo de los 8 documentos de referencia del proyecto. La
+implementación de cada página debe cumplir detalladamente con cada sección y caso de uso
+especificado en ellos. Fuentes de Documentación Obligatorias:
 
 C:\BRUJULA CRIPTO\DOCUMENTACION\COMUN\PAGINAS.MD Los 8 documentos desde C:...\PROYEC_PARTE1.MD hasta
-PROYEC_PARTE7.MD
-C:\BRUJULA CRIPTO\DOCUMENTACION\COMUN\PAGINAS.MD
-Principios Fundamentales:
+PROYEC_PARTE7.MD C:\BRUJULA CRIPTO\DOCUMENTACION\COMUN\PAGINAS.MD Principios Fundamentales:
 
 Centralización Absoluta: Todos los elementos deben estar centralizados. Esto incluye imports desde
 packages/types, la gestión de usuarios a través de Firestore con su uid, la protección de rutas de
@@ -232,32 +230,24 @@ Añadir funcionalidades de valor donde sea apropiado, como botones para comparti
 
 Finalización y Criterios de Aceptación:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ------------------SUBCRIPCION------
 
-
-LEE LA DOCUMENTACION ES UNA ORDEN Y PROHIBIDO PLACEBO, ARQUEADO,MOKADO O FALSO AVISO CREAR LA PAGINA TAL Y COMO ESPECIFICA LOS DOCUMENTOS ,  y que cumplan con una centralización total de componentes, datos E IDIOMAS CENTRALIZADOS CON SUS CLAVES Y CONFIGURACIONES DE LA. PAGINAS:C:\BRUJULA CRIPTO\packages\app\app\[locale]\(main)\suscripcion\page.tsx IMPORTANTE usando perfectamente sin duplicar la navegaciom centrralizada Y SUS COMPONETES:C:\BRUJULA CRIPTO\packages\app\components\features\pricing\PricingPage.tsx,C:\BRUJULA CRIPTO\packages\app\components\features\pricing\CompetitorComparison.tsx,C:\BRUJULA CRIPTO\packages\app\components\features\pricing\UpgradeButton.tsx,C:\BRUJULA CRIPTO\packages\app\components\features\pricing\PricingTier.tsx,VERIFICAR EL SEO CENTRALIZADO: C:\BRUJULA CRIPTO\packages\app\lib\seo.ts
-Antes de iniciar el desarrollo, es imprescindible realizar un análisis exhaustivo de los 8
-documentos de referencia del proyecto. La implementación de cada página debe cumplir detalladamente
-con cada sección y caso de uso especificado en ellos.
-Fuentes de Documentación Obligatorias:
+LEE LA DOCUMENTACION ES UNA ORDEN Y PROHIBIDO PLACEBO, ARQUEADO,MOKADO O FALSO AVISO CREAR LA PAGINA
+TAL Y COMO ESPECIFICA LOS DOCUMENTOS , y que cumplan con una centralización total de componentes,
+datos E IDIOMAS CENTRALIZADOS CON SUS CLAVES Y CONFIGURACIONES DE LA. PAGINAS:C:\BRUJULA
+CRIPTO\packages\app\app\[locale]\(main)\suscripcion\page.tsx IMPORTANTE usando perfectamente sin
+duplicar la navegaciom centrralizada Y SUS COMPONETES:C:\BRUJULA
+CRIPTO\packages\app\components\features\pricing\PricingPage.tsx,C:\BRUJULA
+CRIPTO\packages\app\components\features\pricing\CompetitorComparison.tsx,C:\BRUJULA
+CRIPTO\packages\app\components\features\pricing\UpgradeButton.tsx,C:\BRUJULA
+CRIPTO\packages\app\components\features\pricing\PricingTier.tsx,VERIFICAR EL SEO CENTRALIZADO:
+C:\BRUJULA CRIPTO\packages\app\lib\seo.ts Antes de iniciar el desarrollo, es imprescindible realizar
+un análisis exhaustivo de los 8 documentos de referencia del proyecto. La implementación de cada
+página debe cumplir detalladamente con cada sección y caso de uso especificado en ellos. Fuentes de
+Documentación Obligatorias:
 
 C:\BRUJULA CRIPTO\DOCUMENTACION\COMUN\PAGINAS.MD Los 8 documentos desde C:...\PROYEC_PARTE1.MD hasta
-PROYEC_PARTE7.MD
-C:\BRUJULA CRIPTO\DOCUMENTACION\COMUN\PAGINAS.MD
-Principios Fundamentales:
+PROYEC_PARTE7.MD C:\BRUJULA CRIPTO\DOCUMENTACION\COMUN\PAGINAS.MD Principios Fundamentales:
 
 Centralización Absoluta: Todos los elementos deben estar centralizados. Esto incluye imports desde
 packages/types, la gestión de usuarios a través de Firestore con su uid, la protección de rutas de

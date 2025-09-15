@@ -5,12 +5,13 @@ import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
 interface PrivacidadPageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: PrivacidadPageProps): Promise<Metadata> {
+export async function generateMetadata(props: PrivacidadPageProps): Promise<Metadata> {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'legal_pages.privacy_policy.title',
@@ -19,7 +20,8 @@ export async function generateMetadata({ params }: PrivacidadPageProps): Promise
   });
 }
 
-export default async function PrivacidadPage({ params }: PrivacidadPageProps) {
+export default async function PrivacidadPage(props: PrivacidadPageProps) {
+  const params = await props.params;
   const t = await getTranslations('legal_pages.privacy_policy');
   const navT = await getTranslations('navigation');
 

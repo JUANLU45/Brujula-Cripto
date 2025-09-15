@@ -3,11 +3,12 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 interface PageProps {
-  params: { locale: 'es' | 'en' };
+  params: Promise<{ locale: 'es' | 'en' }>;
 }
 
 // METADATA SEO SEGÚN PROYEC_PARTE2.MD
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const t = await getTranslations({ locale: params.locale, namespace: 'auth.passwordReset.seo' });
 
   return {
@@ -69,7 +70,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function RecuperarPasswordPage({ params }: PageProps) {
+export default async function RecuperarPasswordPage(props: PageProps) {
+  const params = await props.params;
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 dark:bg-gray-900 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">

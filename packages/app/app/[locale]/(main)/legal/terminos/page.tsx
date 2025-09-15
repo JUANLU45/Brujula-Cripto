@@ -5,12 +5,13 @@ import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
 interface TerminosPageProps {
-  params: {
+  params: Promise<{
     locale: 'es' | 'en';
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: TerminosPageProps): Promise<Metadata> {
+export async function generateMetadata(props: TerminosPageProps): Promise<Metadata> {
+  const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
     titleKey: 'legal_pages.terms_conditions.title',
@@ -19,7 +20,8 @@ export async function generateMetadata({ params }: TerminosPageProps): Promise<M
   });
 }
 
-export default async function TerminosPage({ params }: TerminosPageProps) {
+export default async function TerminosPage(props: TerminosPageProps) {
+  const params = await props.params;
   const t = await getTranslations('legal_pages.terms_conditions');
   const navT = await getTranslations('navigation');
 
