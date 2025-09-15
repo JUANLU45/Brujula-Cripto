@@ -2,7 +2,7 @@
 # Basado en https://firebase.google.com/docs/app-hosting/configure
 
 # Directorio raíz donde está la aplicación Next.js
-rootDirectory: packages/app
+rootDirectory: dist/app-deploy
 
 # Configuración de Cloud Run
 runConfig:

@@ -1,33 +1,53 @@
-o de la compilación
-Detalles de la ejecución
-Artefactos de compilación
-Barra de herramientas del visor de registros
+
 ERROR: build step 2 "gcr.io/k8s-skaffold/pack" failed: step exited with non-zero status: 1
 ERROR
 Finished Step #2 - "pack"
 ERROR: failed to build: executing lifecycle: failed with status code: 51
 ERROR: failed to build: exit status 1
-{"reason":"Missing Lock File","code":"fah/missing-lock-file","userFacingMessage":"Missing dependency lock file at path '/workspace'. Please run your package manager's install command and redeploy.","rawLog":""}
-failed to build: (error ID: d54d8837):
+* 13 dependencies were removed: @upstash/redis@^1.35.3, @types/stripe@^8.0.417, @typescript-eslint/eslint-plugin@^8.43.0, @typescript-eslint/parser@^8.43.0, eslint@^8.0.0, eslint-config-prettier@^10.1.8, eslint-plugin-import@^2.32.0, eslint-plugin-jsx-a11y@^6.10.2, eslint-plugin-prettier@^5.5.4, eslint-plugin-react@^7.37.5, eslint-plugin-react-hooks@^5.2.0, prettier@^3.0.0, prettier-plugin-tailwindcss@^0.6.14
+* 4 dependencies were added: autoprefixer@^10.4.14, postcss@^8.4.24, @brujula-cripto/types@workspace:*, tailwindcss@^3.4.0
+  specifiers in the lockfile don't match specifiers in package.json:
+  Failure reason:
+Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
+installing pnpm dependencies: (error ID: 8622936f):
+failed to build: (error ID: a4b27013):
 --------------------------------------------------------------------------------
+Done "pnpm install (CI=true NODE_ENV=production)" (598.447758ms)
+* 13 dependencies were removed: @upstash/redis@^1.35.3, @types/stripe@^8.0.417, @typescript-eslint/eslint-plugin@^8.43.0, @typescript-eslint/parser@^8.43.0, eslint@^8.0.0, eslint-config-prettier@^10.1.8, eslint-plugin-import@^2.32.0, eslint-plugin-jsx-a11y@^6.10.2, eslint-plugin-prettier@^5.5.4, eslint-plugin-react@^7.37.5, eslint-plugin-react-hooks@^5.2.0, prettier@^3.0.0, prettier-plugin-tailwindcss@^0.6.14
+* 4 dependencies were added: autoprefixer@^10.4.14, postcss@^8.4.24, @brujula-cripto/types@workspace:*, tailwindcss@^3.4.0
+  specifiers in the lockfile don't match specifiers in package.json:
+  Failure reason:
+Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+ ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
+Running "pnpm install (CI=true NODE_ENV=production)"
+--------------------------------------------------------------------------------
+Setting environment variable PATH=/layers/google.nodejs.pnpm/pnpm_engine/bin:/layers/google.nodejs.runtime/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2025/09/15 20:22:14 [DEBUG] GET https://github.com/pnpm/pnpm/releases/download/v10.16.1/pnpm-linux-x64
+Installing pnpm v10.16.1
+***** CACHE MISS: "pnpm_engine"
+2025/09/15 20:22:14 [DEBUG] GET https://registry.npmjs.org/pnpm
+=== Node.js - Pnpm (google.nodejs.pnpm@0.1.0) ===
+Installing nextjs adaptor 14.0.18
+***** CACHE MISS: "npm_modules"
 === Node.js - Firebasenextjs (google.nodejs.firebasenextjs@0.0.1) ===
-2025/09/15 19:24:01 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-20.19.5.tar.gz
+2025/09/15 20:22:04 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-20.19.5.tar.gz
 Installing Node.js v20.19.5.
-2025/09/15 19:24:00 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+2025/09/15 20:22:03 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
 Adding image label google.runtime-version: nodejs20
-2025/09/15 19:23:59 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+2025/09/15 20:22:02 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
 === Node.js - Runtime (google.nodejs.runtime@1.0.0) ===
 target distro name/version labels not found, reading /etc/os-release file
 ===> BUILDING
 ===> RESTORING
 google.nodejs.firebasebundle 0.0.1
-google.nodejs.npm            1.1.0
+google.nodejs.pnpm           0.1.0
 google.nodejs.firebasenextjs 0.0.1
 google.nodejs.runtime        1.0.0
 4 of 6 buildpacks participating
 target distro name/version labels not found, reading /etc/os-release file
 ===> DETECTING
-Image with name "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto:build-2025-09-15-006" not found
+Image with name "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto:build-2025-09-15-007" not found
 ===> ANALYZING
 Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/google-22/run/base:public-image-next
 Digest: sha256:013f07ad78f08a5c30f4551c892bff7d1cb17e0477928b61e2cfd59259dc3abd
@@ -66,30 +86,31 @@ f9fd97b5f6be: Pull complete
 1a82443b3661: Pull complete
 fe0a88c014e5: Pull complete
 154f0f7b14e3: Pull complete
-e6178d2c0976: Download complete
-e6178d2c0976: Verifying Checksum
 34ce8ba30961: Download complete
 34ce8ba30961: Verifying Checksum
 4f4fb700ef54: Download complete
 4f4fb700ef54: Verifying Checksum
+e6178d2c0976: Download complete
+e6178d2c0976: Verifying Checksum
 32a82df25502: Download complete
 32a82df25502: Verifying Checksum
-f62498225526: Download complete
-f62498225526: Verifying Checksum
 26be9f471823: Download complete
 26be9f471823: Verifying Checksum
+f62498225526: Download complete
+f62498225526: Verifying Checksum
 04d64eaa21a1: Download complete
 04d64eaa21a1: Verifying Checksum
 a5068009acf2: Download complete
 a5068009acf2: Verifying Checksum
 141e2ce4e516: Download complete
+141e2ce4e516: Verifying Checksum
 3ddbc9e6bfc5: Pull complete
-deb16786ef0a: Download complete
-deb16786ef0a: Verifying Checksum
-645fc18b48a7: Download complete
-645fc18b48a7: Verifying Checksum
 6f2a27843bec: Download complete
 6f2a27843bec: Verifying Checksum
+645fc18b48a7: Download complete
+645fc18b48a7: Verifying Checksum
+deb16786ef0a: Download complete
+deb16786ef0a: Verifying Checksum
 dd90444dd62d: Download complete
 dd90444dd62d: Verifying Checksum
 ce6f506b29a7: Download complete
@@ -111,52 +132,53 @@ f9fd97b5f6be: Verifying Checksum
 854baa11db51: Download complete
 854baa11db51: Verifying Checksum
 5838cd6ac79d: Pull complete
-154f0f7b14e3: Download complete
-154f0f7b14e3: Verifying Checksum
-fe0a88c014e5: Download complete
-fe0a88c014e5: Verifying Checksum
 3ddbc9e6bfc5: Download complete
 3ddbc9e6bfc5: Verifying Checksum
+fe0a88c014e5: Download complete
+fe0a88c014e5: Verifying Checksum
+154f0f7b14e3: Download complete
+154f0f7b14e3: Verifying Checksum
 327b25842d12: Pull complete
 badea724a8c0: Download complete
+badea724a8c0: Verifying Checksum
+5838cd6ac79d: Download complete
+5838cd6ac79d: Verifying Checksum
 6cafdb7f18e6: Download complete
 6cafdb7f18e6: Verifying Checksum
-5838cd6ac79d: Download complete
 327b25842d12: Download complete
 327b25842d12: Verifying Checksum
 4f4fb700ef54: Waiting
+e6178d2c0976: Waiting
+26be9f471823: Waiting
+4f4fb700ef54: Pulling fs layer
+32a82df25502: Waiting
+f62498225526: Waiting
+e6178d2c0976: Pulling fs layer
+34ce8ba30961: Pulling fs layer
+04d64eaa21a1: Waiting
+26be9f471823: Pulling fs layer
+141e2ce4e516: Waiting
+a5068009acf2: Waiting
+645fc18b48a7: Waiting
+deb16786ef0a: Waiting
+32a82df25502: Pulling fs layer
+6f2a27843bec: Waiting
+dd90444dd62d: Waiting
+ce6f506b29a7: Waiting
 e221c05b186e: Waiting
 75fd8f34727f: Waiting
 595f49c579de: Waiting
 f9fd97b5f6be: Waiting
-548e8977beab: Waiting
-854baa11db51: Waiting
-e6178d2c0976: Waiting
-34ce8ba30961: Waiting
-26be9f471823: Waiting
-32a82df25502: Waiting
-f62498225526: Waiting
-1a82443b3661: Waiting
-04d64eaa21a1: Waiting
-fe0a88c014e5: Waiting
-154f0f7b14e3: Waiting
-141e2ce4e516: Waiting
-3ddbc9e6bfc5: Waiting
-a5068009acf2: Waiting
-645fc18b48a7: Waiting
-badea724a8c0: Waiting
-deb16786ef0a: Waiting
-6f2a27843bec: Waiting
-dd90444dd62d: Waiting
-ce6f506b29a7: Waiting
-4f4fb700ef54: Pulling fs layer
-e6178d2c0976: Pulling fs layer
-34ce8ba30961: Pulling fs layer
-26be9f471823: Pulling fs layer
-32a82df25502: Pulling fs layer
 f62498225526: Pulling fs layer
 04d64eaa21a1: Pulling fs layer
+548e8977beab: Waiting
+854baa11db51: Waiting
+1a82443b3661: Waiting
+fe0a88c014e5: Waiting
+154f0f7b14e3: Waiting
+3ddbc9e6bfc5: Waiting
 141e2ce4e516: Pulling fs layer
+badea724a8c0: Waiting
 a5068009acf2: Pulling fs layer
 645fc18b48a7: Pulling fs layer
 deb16786ef0a: Pulling fs layer
@@ -192,6 +214,7 @@ Digest: sha256:221c0c0d9a90f46f108bb888a1da9e99c82ff631e8b1c63b0223ea951752bd53
 396c31837116: Download complete
 396c31837116: Verifying Checksum
 9776b10d5c8c: Download complete
+9776b10d5c8c: Verifying Checksum
 52cb9ac3197f: Pulling fs layer
 9776b10d5c8c: Pulling fs layer
 396c31837116: Pulling fs layer
@@ -254,7 +277,7 @@ env:
   memoryMiB: 512
   cpu: 1
 runConfig:
-2025/09/15 19:23:47 Final app hosting schema:
+2025/09/15 20:21:50 Final app hosting schema:
   - RUNTIME
   - BUILD
   availability:
@@ -309,7 +332,7 @@ env:
   memoryMiB: 512
   cpu: 1
 runConfig:
-2025/09/15 19:23:47 Final app hosting schema:
+2025/09/15 20:21:50 Final app hosting schema:
 us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250803_18_04_RC00
 Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250803_18_04_RC00
 Digest: sha256:74f45144ae5f4403279d881e73acf9eb6198e88aa7737e15cd7bd6dc528ed5a2
@@ -329,10 +352,10 @@ Using default tag: latest
 Pulling image: ubuntu
 Starting Step #0 - "ubuntu"
 BUILD
-19267dd0d12b7b71069c96a1085b6e718c716fc2
+550742b40e5782d6b31979306f7f950ec28e1602
 GitCommit:
-HEAD is now at 19267dd CAMBIO 2 PARA SOLUCIONAR DESPLIEGUE
- * branch            19267dd0d12b7b71069c96a1085b6e718c716fc2 -> FETCH_HEAD
+HEAD is now at 550742b 3 configuracion despliegue
+ * branch            550742b40e5782d6b31979306f7f950ec28e1602 -> FETCH_HEAD
 From https://github.com/JUANLU45/Brujula-Cripto
 Initialized empty Git repository in /workspace/.git/
 hint: 	git branch -m <name>
@@ -346,4 +369,4 @@ hint: of your new repositories, which will suppress this warning, call:
 hint: is subject to change. To configure the initial branch name to use in all
 hint: Using 'master' as the name for the initial branch. This default branch name
 FETCHSOURCE
-starting build "774f2f87-8977-4465-ab06-b785dd56bab7"
+starting build "52a1b3d6-b079-4429-9c91-db8536b70d16"
