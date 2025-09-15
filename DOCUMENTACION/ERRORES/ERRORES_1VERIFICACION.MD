@@ -1,161 +1,120 @@
-
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-337"
+{
+insertId: "9b7c67eb-ff3e-411d-b105-6d5e86e7ba7b-499"
 labels: {2}
 logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:18.254033552Z"
+receiveTimestamp: "2025-09-15T21:36:53.646671717Z"
 resource: {2}
 severity: "INFO"
-textPayload: "Step #2 - "pack": Installing Node.js v20.19.5."
-timestamp: "2025-09-15T20:57:17.398826354Z"
+textPayload: "Step #2 - "pack":     at ChildProcess._handle.onexit (node:internal/child_process:293:12)"
+timestamp: "2025-09-15T21:36:53.210366322Z"
 }
-2025-09-15 22:57:17.398
-Step #2 - "pack": 2025/09/15 20:57:17 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-20.19.5.tar.gz
+2025-09-15 23:36:53.210
+Step #2 - "pack": 
 
 {
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-338"
+insertId: "9b7c67eb-ff3e-411d-b105-6d5e86e7ba7b-500"
 labels: {2}
 logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:18.254033552Z"
+receiveTimestamp: "2025-09-15T21:36:53.646671717Z"
 resource: {2}
 severity: "INFO"
-textPayload: "Step #2 - "pack": 2025/09/15 20:57:17 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-20.19.5.tar.gz"
-timestamp: "2025-09-15T20:57:17.398838287Z"
+textPayload: "Step #2 - "pack": "
+timestamp: "2025-09-15T21:36:53.210366726Z"
 }
-2025-09-15 22:57:22.014
-Step #2 - "pack": === Node.js - Firebasenextjs (google.nodejs.firebasenextjs@0.0.1) ===
+2025-09-15 23:36:53.210
+Step #2 - "pack": Node.js v22.19.0"}
 
 {
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-339"
+insertId: "9b7c67eb-ff3e-411d-b105-6d5e86e7ba7b-501"
 labels: {2}
 logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:22.277273181Z"
+receiveTimestamp: "2025-09-15T21:36:53.646671717Z"
 resource: {2}
 severity: "INFO"
-textPayload: "Step #2 - "pack": === Node.js - Firebasenextjs (google.nodejs.firebasenextjs@0.0.1) ==="
-timestamp: "2025-09-15T20:57:22.014621407Z"
+textPayload: "Step #2 - "pack": Node.js v22.19.0"}"
+timestamp: "2025-09-15T21:36:53.210367528Z"
 }
-2025-09-15 22:57:22.047
-Step #2 - "pack": --------------------------------------------------------------------------------
-
-{
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-340"
-labels: {2}
-logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:22.277273181Z"
-resource: {2}
-severity: "INFO"
-textPayload: "Step #2 - "pack": --------------------------------------------------------------------------------"
-timestamp: "2025-09-15T20:57:22.047008880Z"
-}
-2025-09-15 22:57:22.047
-Step #2 - "pack": failed to build: (error ID: d54d8837):
-
-{
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-341"
-labels: {2}
-logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:22.277273181Z"
-resource: {2}
-severity: "INFO"
-textPayload: "Step #2 - "pack": failed to build: (error ID: d54d8837):"
-timestamp: "2025-09-15T20:57:22.047021613Z"
-}
-2025-09-15 22:57:22.047
-Step #2 - "pack": {"reason":"Missing Lock File","code":"fah/missing-lock-file","userFacingMessage":"Missing dependency lock file at path '/workspace'. Please run your package manager's install command and redeploy.","rawLog":""}
-
-{
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-342"
-labels: {2}
-logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:22.277273181Z"
-resource: {2}
-severity: "INFO"
-textPayload: "Step #2 - "pack": {"reason":"Missing Lock File","code":"fah/missing-lock-file","userFacingMessage":"Missing dependency lock file at path '/workspace'. Please run your package manager's install command and redeploy.","rawLog":""}"
-timestamp: "2025-09-15T20:57:22.047024567Z"
-}
-2025-09-15 22:57:22.048
+2025-09-15 23:36:53.212
 Step #2 - "pack": ERROR: failed to build: exit status 1
 
 {
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-343"
+insertId: "9b7c67eb-ff3e-411d-b105-6d5e86e7ba7b-502"
 labels: {2}
 logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:22.277273181Z"
+receiveTimestamp: "2025-09-15T21:36:53.646671717Z"
 resource: {2}
 severity: "INFO"
 textPayload: "Step #2 - "pack": ERROR: failed to build: exit status 1"
-timestamp: "2025-09-15T20:57:22.048372568Z"
+timestamp: "2025-09-15T21:36:53.212601935Z"
 }
-2025-09-15 22:57:23.063
+2025-09-15 23:36:56.154
 Step #2 - "pack": ERROR: failed to build: executing lifecycle: failed with status code: 51
 
 {
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-344"
+insertId: "9b7c67eb-ff3e-411d-b105-6d5e86e7ba7b-503"
 labels: {2}
 logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:23.274762124Z"
+receiveTimestamp: "2025-09-15T21:36:56.620007968Z"
 resource: {2}
 severity: "INFO"
 textPayload: "Step #2 - "pack": ERROR: failed to build: executing lifecycle: failed with status code: 51"
-timestamp: "2025-09-15T20:57:23.063742589Z"
+timestamp: "2025-09-15T21:36:56.154392440Z"
 }
-2025-09-15 22:57:23.357
+2025-09-15 23:36:56.451
 Finished Step #2 - "pack"
 
 {
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-345"
-labels: {2}
+insertId: "9b7c67eb-ff3e-411d-b105-6d5e86e7ba7b-504"
+labels: {
+build_step: "MAIN"
+build_tags: "fah,build-2025-09-15-010,backen-brujula-cripto,07c5c55ef7688e2bc3613c767a8598e10009f96f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+}
 logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:23.504644406Z"
-resource: {2}
+receiveTimestamp: "2025-09-15T21:36:56.620007968Z"
+resource: {
+labels: {3}
+type: "build"
+}
 severity: "INFO"
 textPayload: "Finished Step #2 - "pack""
-timestamp: "2025-09-15T20:57:23.357160919Z"
+timestamp: "2025-09-15T21:36:56.451325969Z"
 }
-2025-09-15 22:57:23.357
+2025-09-15 23:36:56.451
 ERROR
 
 {
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-346"
+insertId: "9b7c67eb-ff3e-411d-b105-6d5e86e7ba7b-505"
 labels: {
 build_step: "MAIN"
-build_tags: "fah,build-2025-09-15-008,backen-brujula-cripto,66c2b34bd5272cdd641bdaf781b10a2cd1b891c3,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+build_tags: "fah,build-2025-09-15-010,backen-brujula-cripto,07c5c55ef7688e2bc3613c767a8598e10009f96f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
 }
 logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:23.504644406Z"
+receiveTimestamp: "2025-09-15T21:36:56.620007968Z"
 resource: {
-labels: {
-build_id: "8d08d399-7e3b-4882-bb2f-8d867b6e5949"
-build_trigger_id: ""
-project_id: "brujula-cripto"
-}
+labels: {3}
 type: "build"
 }
 severity: "INFO"
 textPayload: "ERROR"
-timestamp: "2025-09-15T20:57:23.357271046Z"
+timestamp: "2025-09-15T21:36:56.451417756Z"
 }
-2025-09-15 22:57:23.357
+2025-09-15 23:36:56.451
 ERROR: build step 2 "gcr.io/k8s-skaffold/pack" failed: step exited with non-zero status: 1
 
 {
-insertId: "8d08d399-7e3b-4882-bb2f-8d867b6e5949-347"
+insertId: "9b7c67eb-ff3e-411d-b105-6d5e86e7ba7b-506"
 labels: {
 build_step: "MAIN"
-build_tags: "fah,build-2025-09-15-008,backen-brujula-cripto,66c2b34bd5272cdd641bdaf781b10a2cd1b891c3,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+build_tags: "fah,build-2025-09-15-010,backen-brujula-cripto,07c5c55ef7688e2bc3613c767a8598e10009f96f,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
 }
 logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-15T20:57:23.504644406Z"
+receiveTimestamp: "2025-09-15T21:36:56.620007968Z"
 resource: {
-labels: {
-build_id: "8d08d399-7e3b-4882-bb2f-8d867b6e5949"
-build_trigger_id: ""
-project_id: "brujula-cripto"
-}
+labels: {3}
 type: "build"
 }
 severity: "INFO"
 textPayload: "ERROR: build step 2 "gcr.io/k8s-skaffold/pack" failed: step exited with non-zero status: 1"
-timestamp: "2025-09-15T20:57:23.357291112Z"
+timestamp: "2025-09-15T21:36:56.451445318Z"
 }
-Se muestran los registros del período especificado en la búsqueda. Para ver más resultados, actualiza tu búsqueda.
+Se muestran los registros del período especificado en la búsqueda. Para ver más resultados, actua
