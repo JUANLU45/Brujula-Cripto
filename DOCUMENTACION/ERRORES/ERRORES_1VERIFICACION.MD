@@ -7,11 +7,11 @@ ERROR: failed to build: exit status 1
 failed to build: (error ID: d54d8837):
 --------------------------------------------------------------------------------
 === Node.js - Firebasenextjs (google.nodejs.firebasenextjs@0.0.1) ===
-2025/09/15 17:40:00 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-22.19.0.tar.gz
+2025/09/15 19:12:50 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-22.19.0.tar.gz
 Installing Node.js v22.19.0.
-2025/09/15 17:40:00 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+2025/09/15 19:12:50 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
 Adding image label google.runtime-version: nodejs22
-2025/09/15 17:40:00 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+2025/09/15 19:12:50 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
 === Node.js - Runtime (google.nodejs.runtime@1.0.0) ===
 target distro name/version labels not found, reading /etc/os-release file
 ===> BUILDING
@@ -23,7 +23,7 @@ google.nodejs.runtime        1.0.0
 4 of 6 buildpacks participating
 target distro name/version labels not found, reading /etc/os-release file
 ===> DETECTING
-Image with name "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto:build-2025-09-15-004" not found
+Image with name "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto:build-2025-09-15-005" not found
 ===> ANALYZING
 Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/google-22/run/base:public-image-next
 Digest: sha256:013f07ad78f08a5c30f4551c892bff7d1cb17e0477928b61e2cfd59259dc3abd
@@ -32,6 +32,7 @@ Digest: sha256:013f07ad78f08a5c30f4551c892bff7d1cb17e0477928b61e2cfd59259dc3abd
 61cee00d3550: Verifying Checksum
 d3053ac7c171: Pull complete
 d3053ac7c171: Download complete
+d3053ac7c171: Verifying Checksum
 61cee00d3550: Pulling fs layer
 d3053ac7c171: Pulling fs layer
 e6fdc8487bfe: Already exists
@@ -62,64 +63,65 @@ f9fd97b5f6be: Pull complete
 fe0a88c014e5: Pull complete
 154f0f7b14e3: Pull complete
 4f4fb700ef54: Download complete
-4f4fb700ef54: Verifying Checksum
 e6178d2c0976: Download complete
 e6178d2c0976: Verifying Checksum
 34ce8ba30961: Download complete
 34ce8ba30961: Verifying Checksum
-32a82df25502: Download complete
-32a82df25502: Verifying Checksum
 26be9f471823: Download complete
 26be9f471823: Verifying Checksum
 f62498225526: Download complete
 f62498225526: Verifying Checksum
-04d64eaa21a1: Download complete
-04d64eaa21a1: Verifying Checksum
+32a82df25502: Download complete
+32a82df25502: Verifying Checksum
 141e2ce4e516: Download complete
 141e2ce4e516: Verifying Checksum
+04d64eaa21a1: Download complete
+04d64eaa21a1: Verifying Checksum
 a5068009acf2: Download complete
 a5068009acf2: Verifying Checksum
 3ddbc9e6bfc5: Pull complete
 645fc18b48a7: Download complete
 645fc18b48a7: Verifying Checksum
-deb16786ef0a: Download complete
 6f2a27843bec: Download complete
 6f2a27843bec: Verifying Checksum
-ce6f506b29a7: Download complete
-ce6f506b29a7: Verifying Checksum
+deb16786ef0a: Download complete
+deb16786ef0a: Verifying Checksum
 dd90444dd62d: Download complete
 dd90444dd62d: Verifying Checksum
 e221c05b186e: Download complete
 e221c05b186e: Verifying Checksum
-595f49c579de: Download complete
-595f49c579de: Verifying Checksum
+ce6f506b29a7: Download complete
+ce6f506b29a7: Verifying Checksum
 75fd8f34727f: Download complete
 75fd8f34727f: Verifying Checksum
-badea724a8c0: Pull complete
 f9fd97b5f6be: Download complete
 f9fd97b5f6be: Verifying Checksum
+badea724a8c0: Pull complete
+595f49c579de: Download complete
+595f49c579de: Verifying Checksum
 6cafdb7f18e6: Pull complete
 1a82443b3661: Download complete
 1a82443b3661: Verifying Checksum
-548e8977beab: Download complete
-548e8977beab: Verifying Checksum
 854baa11db51: Download complete
 854baa11db51: Verifying Checksum
-3ddbc9e6bfc5: Download complete
-3ddbc9e6bfc5: Verifying Checksum
+548e8977beab: Download complete
+548e8977beab: Verifying Checksum
 5838cd6ac79d: Pull complete
 154f0f7b14e3: Download complete
 154f0f7b14e3: Verifying Checksum
 fe0a88c014e5: Download complete
 fe0a88c014e5: Verifying Checksum
+3ddbc9e6bfc5: Download complete
+3ddbc9e6bfc5: Verifying Checksum
 327b25842d12: Pull complete
 badea724a8c0: Download complete
 badea724a8c0: Verifying Checksum
 6cafdb7f18e6: Download complete
 6cafdb7f18e6: Verifying Checksum
+5838cd6ac79d: Download complete
+5838cd6ac79d: Verifying Checksum
 327b25842d12: Download complete
 327b25842d12: Verifying Checksum
-5838cd6ac79d: Download complete
 4f4fb700ef54: Waiting
 e6178d2c0976: Waiting
 34ce8ba30961: Waiting
@@ -188,7 +190,6 @@ Digest: sha256:221c0c0d9a90f46f108bb888a1da9e99c82ff631e8b1c63b0223ea951752bd53
 396c31837116: Download complete
 396c31837116: Verifying Checksum
 9776b10d5c8c: Download complete
-9776b10d5c8c: Verifying Checksum
 52cb9ac3197f: Pulling fs layer
 9776b10d5c8c: Pulling fs layer
 396c31837116: Pulling fs layer
@@ -197,6 +198,42 @@ Using default tag: latest
 Pulling image: gcr.io/k8s-skaffold/pack
 Starting Step #2 - "pack"
 Finished Step #1 - "preparer"
+  - RUNTIME
+  - BUILD
+  availability:
+  value: production
+- variable: NODE_ENV
+  - RUNTIME
+  - BUILD
+  availability:
+  value: 1:442091888028:web:3d32e54527f7b784797c59
+- variable: NEXT_PUBLIC_FIREBASE_APP_ID
+  - RUNTIME
+  - BUILD
+  availability:
+  value: "442091888028"
+- variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+  - RUNTIME
+  - BUILD
+  availability:
+  value: brujula-cripto.firebasestorage.app
+- variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+  - RUNTIME
+  - BUILD
+  availability:
+  value: brujula-cripto
+- variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+  - RUNTIME
+  - BUILD
+  availability:
+  value: brujula-cripto.firebaseapp.com
+- variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+  - RUNTIME
+  - BUILD
+  availability:
+  value: AIzaSyDzJaHoJ4AuNn28nH4v0gZGb4wRD3ZlEMw
+- variable: NEXT_PUBLIC_FIREBASE_API_KEY
+  - RUNTIME
   - BUILD
   availability:
   value: '{"apiKey":"AIzaSyDzJaHoJ4AuNn28nH4v0gZGb4wRD3ZlEMw","appId":"1:442091888028:web:3d32e54527f7b784797c59","authDomain":"brujula-cripto.firebaseapp.com","databaseURL":"","messagingSenderId":"442091888028","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}'
@@ -207,7 +244,51 @@ Finished Step #1 - "preparer"
   value: '{"databaseURL":"","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}'
 - variable: FIREBASE_CONFIG
 env:
-2025/09/15 17:39:46 Final app hosting schema:
+  cpuAlwaysAllocated: null
+  vpcAccess: null
+  minInstances: 0
+  maxInstances: 10
+  concurrency: 80
+  memoryMiB: 512
+  cpu: 1
+runConfig:
+2025/09/15 19:12:37 Final app hosting schema:
+  - RUNTIME
+  - BUILD
+  availability:
+  value: production
+- variable: NODE_ENV
+  - RUNTIME
+  - BUILD
+  availability:
+  value: 1:442091888028:web:3d32e54527f7b784797c59
+- variable: NEXT_PUBLIC_FIREBASE_APP_ID
+  - RUNTIME
+  - BUILD
+  availability:
+  value: "442091888028"
+- variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+  - RUNTIME
+  - BUILD
+  availability:
+  value: brujula-cripto.firebasestorage.app
+- variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+  - RUNTIME
+  - BUILD
+  availability:
+  value: brujula-cripto
+- variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+  - RUNTIME
+  - BUILD
+  availability:
+  value: brujula-cripto.firebaseapp.com
+- variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+  - RUNTIME
+  - BUILD
+  availability:
+  value: AIzaSyDzJaHoJ4AuNn28nH4v0gZGb4wRD3ZlEMw
+- variable: NEXT_PUBLIC_FIREBASE_API_KEY
+  - RUNTIME
   - BUILD
   availability:
   value: '{"apiKey":"AIzaSyDzJaHoJ4AuNn28nH4v0gZGb4wRD3ZlEMw","appId":"1:442091888028:web:3d32e54527f7b784797c59","authDomain":"brujula-cripto.firebaseapp.com","databaseURL":"","messagingSenderId":"442091888028","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}'
@@ -218,17 +299,24 @@ env:
   value: '{"databaseURL":"","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}'
 - variable: FIREBASE_CONFIG
 env:
-2025/09/15 17:39:46 Final app hosting schema:
-2025/09/15 17:39:46 FIREBASE_CONFIG has no availability specified, applying the default of 'BUILD' and 'RUNTIME'
-us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250817_18_04_RC00
-Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250817_18_04_RC00
-Digest: sha256:3b09b2f1585b2f4b5d41e674e5dd7ccb20941a0d6c5ea02c23a007c4b5213ada
-5fd97b0155af: Pull complete
-5fd97b0155af: Download complete
-5fd97b0155af: Verifying Checksum
-5fd97b0155af: Pulling fs layer
-base_20250817_18_04_RC00: Pulling from serverless-runtimes/utilities/preparer
-Pulling image: us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250817_18_04_RC00
+  cpuAlwaysAllocated: null
+  vpcAccess: null
+  minInstances: 0
+  maxInstances: 10
+  concurrency: 80
+  memoryMiB: 512
+  cpu: 1
+runConfig:
+2025/09/15 19:12:37 Final app hosting schema:
+us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250803_18_04_RC00
+Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250803_18_04_RC00
+Digest: sha256:74f45144ae5f4403279d881e73acf9eb6198e88aa7737e15cd7bd6dc528ed5a2
+8486ffade544: Pull complete
+8486ffade544: Download complete
+8486ffade544: Verifying Checksum
+8486ffade544: Pulling fs layer
+base_20250803_18_04_RC00: Pulling from serverless-runtimes/utilities/preparer
+Pulling image: us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250803_18_04_RC00
 Starting Step #1 - "preparer"
 Finished Step #0 - "ubuntu"
 docker.io/library/ubuntu:latest
@@ -239,10 +327,10 @@ Using default tag: latest
 Pulling image: ubuntu
 Starting Step #0 - "ubuntu"
 BUILD
-1c736cf674f469ab1c347c328b4c660aa4acf643
+3d99c4113d5f44bd2ec1bdf7e5ca81ad8c0cd39c
 GitCommit:
-HEAD is now at 1c736cf Merge branch 'main' of https://github.com/JUANLU45/Brujula-Cripto
- * branch            1c736cf674f469ab1c347c328b4c660aa4acf643 -> FETCH_HEAD
+HEAD is now at 3d99c41 REPARACION RAIZ PARA DESPLIGUE
+ * branch            3d99c4113d5f44bd2ec1bdf7e5ca81ad8c0cd39c -> FETCH_HEAD
 From https://github.com/JUANLU45/Brujula-Cripto
 Initialized empty Git repository in /workspace/.git/
 hint: 	git branch -m <name>
@@ -256,4 +344,4 @@ hint: of your new repositories, which will suppress this warning, call:
 hint: is subject to change. To configure the initial branch name to use in all
 hint: Using 'master' as the name for the initial branch. This default branch name
 FETCHSOURCE
-starting build "92565607-c2e8-4c38-bb6e-eeeeb46cb7e9
+starting build "c671aacb-d60c-46a7-90de-fc8ed2d3b150"

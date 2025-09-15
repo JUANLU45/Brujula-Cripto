@@ -2,6 +2,10 @@
   "name": "@brujula-cripto/app",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "20",
+    "pnpm": "9.14.2"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
