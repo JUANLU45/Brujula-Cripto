@@ -62,8 +62,9 @@ pnpm lint
 
 ```
 app/[locale]/(main)/        - Área pública (es/en)
-app/[locale]/(admin)/       - Panel administrativo
-middleware.ts               - Manejo de i18n
+app/[locale]/(dashboard)/   - Área protegida de usuario (ej. cuenta)
+app/[locale]/admin/*        - Panel administrativo seguro
+middleware.ts               - Manejo de autenticación, rutas protegidas y redirecciones
 ```
 
 ## 🔧 Configuración de Desarrollo
