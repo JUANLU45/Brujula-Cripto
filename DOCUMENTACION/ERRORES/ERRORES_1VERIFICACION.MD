@@ -1,3 +1,7 @@
+o de la compilación
+Detalles de la ejecución
+Artefactos de compilación
+Barra de herramientas del visor de registros
 ERROR: build step 2 "gcr.io/k8s-skaffold/pack" failed: step exited with non-zero status: 1
 ERROR
 Finished Step #2 - "pack"
@@ -7,11 +11,11 @@ ERROR: failed to build: exit status 1
 failed to build: (error ID: d54d8837):
 --------------------------------------------------------------------------------
 === Node.js - Firebasenextjs (google.nodejs.firebasenextjs@0.0.1) ===
-2025/09/15 19:12:50 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-22.19.0.tar.gz
-Installing Node.js v22.19.0.
-2025/09/15 19:12:50 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
-Adding image label google.runtime-version: nodejs22
-2025/09/15 19:12:50 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+2025/09/15 19:24:01 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-20.19.5.tar.gz
+Installing Node.js v20.19.5.
+2025/09/15 19:24:00 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+Adding image label google.runtime-version: nodejs20
+2025/09/15 19:23:59 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
 === Node.js - Runtime (google.nodejs.runtime@1.0.0) ===
 target distro name/version labels not found, reading /etc/os-release file
 ===> BUILDING
@@ -23,7 +27,7 @@ google.nodejs.runtime        1.0.0
 4 of 6 buildpacks participating
 target distro name/version labels not found, reading /etc/os-release file
 ===> DETECTING
-Image with name "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto:build-2025-09-15-005" not found
+Image with name "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto:build-2025-09-15-006" not found
 ===> ANALYZING
 Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/google-22/run/base:public-image-next
 Digest: sha256:013f07ad78f08a5c30f4551c892bff7d1cb17e0477928b61e2cfd59259dc3abd
@@ -62,50 +66,50 @@ f9fd97b5f6be: Pull complete
 1a82443b3661: Pull complete
 fe0a88c014e5: Pull complete
 154f0f7b14e3: Pull complete
-4f4fb700ef54: Download complete
 e6178d2c0976: Download complete
 e6178d2c0976: Verifying Checksum
 34ce8ba30961: Download complete
 34ce8ba30961: Verifying Checksum
-26be9f471823: Download complete
-26be9f471823: Verifying Checksum
-f62498225526: Download complete
-f62498225526: Verifying Checksum
+4f4fb700ef54: Download complete
+4f4fb700ef54: Verifying Checksum
 32a82df25502: Download complete
 32a82df25502: Verifying Checksum
-141e2ce4e516: Download complete
-141e2ce4e516: Verifying Checksum
+f62498225526: Download complete
+f62498225526: Verifying Checksum
+26be9f471823: Download complete
+26be9f471823: Verifying Checksum
 04d64eaa21a1: Download complete
 04d64eaa21a1: Verifying Checksum
 a5068009acf2: Download complete
 a5068009acf2: Verifying Checksum
+141e2ce4e516: Download complete
 3ddbc9e6bfc5: Pull complete
+deb16786ef0a: Download complete
+deb16786ef0a: Verifying Checksum
 645fc18b48a7: Download complete
 645fc18b48a7: Verifying Checksum
 6f2a27843bec: Download complete
 6f2a27843bec: Verifying Checksum
-deb16786ef0a: Download complete
-deb16786ef0a: Verifying Checksum
 dd90444dd62d: Download complete
 dd90444dd62d: Verifying Checksum
-e221c05b186e: Download complete
-e221c05b186e: Verifying Checksum
 ce6f506b29a7: Download complete
 ce6f506b29a7: Verifying Checksum
+e221c05b186e: Download complete
+e221c05b186e: Verifying Checksum
+badea724a8c0: Pull complete
 75fd8f34727f: Download complete
 75fd8f34727f: Verifying Checksum
-f9fd97b5f6be: Download complete
-f9fd97b5f6be: Verifying Checksum
-badea724a8c0: Pull complete
 595f49c579de: Download complete
 595f49c579de: Verifying Checksum
+f9fd97b5f6be: Download complete
+f9fd97b5f6be: Verifying Checksum
 6cafdb7f18e6: Pull complete
 1a82443b3661: Download complete
 1a82443b3661: Verifying Checksum
-854baa11db51: Download complete
-854baa11db51: Verifying Checksum
 548e8977beab: Download complete
 548e8977beab: Verifying Checksum
+854baa11db51: Download complete
+854baa11db51: Verifying Checksum
 5838cd6ac79d: Pull complete
 154f0f7b14e3: Download complete
 154f0f7b14e3: Verifying Checksum
@@ -115,38 +119,36 @@ fe0a88c014e5: Verifying Checksum
 3ddbc9e6bfc5: Verifying Checksum
 327b25842d12: Pull complete
 badea724a8c0: Download complete
-badea724a8c0: Verifying Checksum
 6cafdb7f18e6: Download complete
 6cafdb7f18e6: Verifying Checksum
 5838cd6ac79d: Download complete
-5838cd6ac79d: Verifying Checksum
 327b25842d12: Download complete
 327b25842d12: Verifying Checksum
 4f4fb700ef54: Waiting
-e6178d2c0976: Waiting
-34ce8ba30961: Waiting
-26be9f471823: Waiting
-32a82df25502: Waiting
-f62498225526: Waiting
-04d64eaa21a1: Waiting
-141e2ce4e516: Waiting
-a5068009acf2: Waiting
-645fc18b48a7: Waiting
-deb16786ef0a: Waiting
-6f2a27843bec: Waiting
-dd90444dd62d: Waiting
-ce6f506b29a7: Waiting
 e221c05b186e: Waiting
 75fd8f34727f: Waiting
 595f49c579de: Waiting
 f9fd97b5f6be: Waiting
 548e8977beab: Waiting
 854baa11db51: Waiting
+e6178d2c0976: Waiting
+34ce8ba30961: Waiting
+26be9f471823: Waiting
+32a82df25502: Waiting
+f62498225526: Waiting
 1a82443b3661: Waiting
+04d64eaa21a1: Waiting
 fe0a88c014e5: Waiting
 154f0f7b14e3: Waiting
+141e2ce4e516: Waiting
 3ddbc9e6bfc5: Waiting
+a5068009acf2: Waiting
+645fc18b48a7: Waiting
 badea724a8c0: Waiting
+deb16786ef0a: Waiting
+6f2a27843bec: Waiting
+dd90444dd62d: Waiting
+ce6f506b29a7: Waiting
 4f4fb700ef54: Pulling fs layer
 e6178d2c0976: Pulling fs layer
 34ce8ba30961: Pulling fs layer
@@ -252,7 +254,7 @@ env:
   memoryMiB: 512
   cpu: 1
 runConfig:
-2025/09/15 19:12:37 Final app hosting schema:
+2025/09/15 19:23:47 Final app hosting schema:
   - RUNTIME
   - BUILD
   availability:
@@ -307,7 +309,7 @@ env:
   memoryMiB: 512
   cpu: 1
 runConfig:
-2025/09/15 19:12:37 Final app hosting schema:
+2025/09/15 19:23:47 Final app hosting schema:
 us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250803_18_04_RC00
 Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250803_18_04_RC00
 Digest: sha256:74f45144ae5f4403279d881e73acf9eb6198e88aa7737e15cd7bd6dc528ed5a2
@@ -327,10 +329,10 @@ Using default tag: latest
 Pulling image: ubuntu
 Starting Step #0 - "ubuntu"
 BUILD
-3d99c4113d5f44bd2ec1bdf7e5ca81ad8c0cd39c
+19267dd0d12b7b71069c96a1085b6e718c716fc2
 GitCommit:
-HEAD is now at 3d99c41 REPARACION RAIZ PARA DESPLIGUE
- * branch            3d99c4113d5f44bd2ec1bdf7e5ca81ad8c0cd39c -> FETCH_HEAD
+HEAD is now at 19267dd CAMBIO 2 PARA SOLUCIONAR DESPLIEGUE
+ * branch            19267dd0d12b7b71069c96a1085b6e718c716fc2 -> FETCH_HEAD
 From https://github.com/JUANLU45/Brujula-Cripto
 Initialized empty Git repository in /workspace/.git/
 hint: 	git branch -m <name>
@@ -344,4 +346,4 @@ hint: of your new repositories, which will suppress this warning, call:
 hint: is subject to change. To configure the initial branch name to use in all
 hint: Using 'master' as the name for the initial branch. This default branch name
 FETCHSOURCE
-starting build "c671aacb-d60c-46a7-90de-fc8ed2d3b150"
+starting build "774f2f87-8977-4465-ab06-b785dd56bab7"
