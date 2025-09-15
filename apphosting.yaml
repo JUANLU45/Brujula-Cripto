@@ -1,8 +1,23 @@
 # Firebase App Hosting Configuration - Formato Oficial
 # Basado en https://firebase.google.com/docs/app-hosting/configure
 
-# Directorio raíz donde está la aplicación Next.js
-rootDirectory: dist/app-deploy
+# 1. El directorio raíz es la raíz del monorepo.
+#    Esto es CRÍTICO para que Firebase detecte pnpm-lock.yaml.
+rootDirectory: .
+
+# 2. Le decimos a Firebase que use pnpm para instalar TODO el monorepo.
+#    El filtro --filter app asegura que solo se instalen las dependencias
+#    necesarias para la aplicación 'app' y sus dependencias internas (como 'types').
+installCommand: pnpm install --filter app
+
+# 3. Le decimos a Firebase cómo construir la aplicación específica.
+#    pnpm --filter app build ejecutará el script 'build' SOLO del package.json de 'app'.
+buildCommand: pnpm --filter app build
+
+# 4. Le decimos a Firebase dónde está la aplicación Next.js compilada
+#    y cómo ejecutarla en producción.
+runCommand: pnpm --filter app start
+outputDirectory: packages/app/.next
 
 # Configuración de Cloud Run
 runConfig:

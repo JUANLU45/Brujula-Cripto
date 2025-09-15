@@ -93,3 +93,6 @@ COPIAS BAUKUMP/
 **/BACKUP/
 *.backup
 *.bak
+
+# Ignorar toda la carpeta de documentación
+DOCUMENTACION/
