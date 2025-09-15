@@ -2,6 +2,9 @@
   "name": "brujula-cripto",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "pnpm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "pnpm --filter app dev",
     "build": "pnpm -r build",
