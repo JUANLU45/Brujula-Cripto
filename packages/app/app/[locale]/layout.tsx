@@ -1,3 +1,5 @@
+import type * as React from 'react';
+
 import { notFound } from 'next/navigation';
 
 import type { Metadata } from 'next';
@@ -15,12 +17,10 @@ export const metadata: Metadata = {
     'Tu guía experta para proteger, gestionar y recuperar tus criptoactivos. Herramientas reales y conocimiento para darte tranquilidad en el mundo cripto.',
 };
 
-import type * as React from 'react';
-
 export default async function LocaleLayout(props: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<JSX.Element> {
   const params = await props.params;
 
   const { locale } = params;
@@ -28,7 +28,7 @@ export default async function LocaleLayout(props: {
   const { children } = props;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as 'es' | 'en')) {
     notFound();
   }
 

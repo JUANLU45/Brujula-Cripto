@@ -69,8 +69,8 @@ export function AdminLoginForm({ onSuccess, redirectTo = '/admin' }: AdminLoginF
 
       if (err instanceof Error) {
         // Handle specific Firebase Auth errors
-        if (typeof (err as any).code === 'string') {
-          switch ((err as any).code) {
+        if (typeof (err as unknown as { code?: string }).code === 'string') {
+          switch ((err as unknown as { code: string }).code) {
             case 'auth/user-not-found':
             case 'auth/wrong-password':
             case 'auth/invalid-credential':
@@ -106,7 +106,7 @@ export function AdminLoginForm({ onSuccess, redirectTo = '/admin' }: AdminLoginF
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{t('subtitle')}</p>
         </div>
 
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-6" onSubmit={(e) => void handleSubmit(e)}>
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="sr-only">

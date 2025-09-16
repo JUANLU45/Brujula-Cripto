@@ -32,9 +32,9 @@ export function ArticleDataTable({
   showStatusFilter = true,
   showSearch = true,
   itemsPerPage = 20,
-}: ArticleDataTableProps) {
+}: ArticleDataTableProps): JSX.Element {
   const t = useTranslations('admin.articles');
-  const router = useRouter();
+  const _router = useRouter();
 
   const [articles, setArticles] = useState<IArticle[]>(initialArticles);
   const [filteredArticles, setFilteredArticles] = useState<IArticle[]>([]);
@@ -50,7 +50,7 @@ export function ArticleDataTable({
 
   // Load articles
   useEffect(() => {
-    const loadArticles = async () => {
+    const loadArticles = async (): Promise<void> => {
       if (initialArticles.length > 0) {
         setArticles(initialArticles);
         return;
@@ -70,7 +70,7 @@ export function ArticleDataTable({
           throw new Error(t('errors.loadFailed'));
         }
 
-        const data = await response.json();
+        const data = (await response.json()) as { articles?: IArticle[] };
         setArticles(data.articles || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : t('errors.unknown'));
@@ -79,7 +79,7 @@ export function ArticleDataTable({
       }
     };
 
-    loadArticles();
+    void loadArticles();
   }, [initialArticles, t]);
 
   // Filter articles
@@ -105,8 +105,9 @@ export function ArticleDataTable({
 
     // Apply author filter
     if (filters.author && filters.author.trim()) {
+      const authorFilter = filters.author;
       filtered = filtered.filter((article) =>
-        article.authorName.toLowerCase().includes(filters.author!.toLowerCase()),
+        article.authorName.toLowerCase().includes(authorFilter.toLowerCase()),
       );
     }
 
@@ -117,20 +118,20 @@ export function ArticleDataTable({
     setCurrentPage(1); // Reset to first page when filters change
   }, [articles, filters]);
 
-  const getAuthToken = async () => {
+  const getAuthToken = async (): Promise<string> => {
     // Get Firebase Auth token for admin API calls
     const user = auth.currentUser;
     if (!user) {
       throw new Error(t('errors.notAuthenticated'));
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
-  const handleFilterChange = (key: keyof ArticleFilters, value: string) => {
+  const handleFilterChange = (key: keyof ArticleFilters, value: string): void => {
     setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleSelectAll = () => {
+  const handleSelectAll = (): void => {
     if (selectedArticles.size === filteredArticles.length) {
       setSelectedArticles(new Set());
     } else {
@@ -138,7 +139,7 @@ export function ArticleDataTable({
     }
   };
 
-  const handleSelectArticle = (slug: string) => {
+  const handleSelectArticle = (slug: string): void => {
     const newSelected = new Set(selectedArticles);
     if (newSelected.has(slug)) {
       newSelected.delete(slug);
@@ -148,7 +149,7 @@ export function ArticleDataTable({
     setSelectedArticles(newSelected);
   };
 
-  const handleDeleteSelected = async () => {
+  const handleDeleteSelected = async (): Promise<void> => {
     if (selectedArticles.size === 0) {
       return;
     }
@@ -179,7 +180,10 @@ export function ArticleDataTable({
     }
   };
 
-  const handleStatusChange = async (slug: string, newStatus: 'published' | 'draft') => {
+  const handleStatusChange = async (
+    slug: string,
+    newStatus: 'published' | 'draft',
+  ): Promise<void> => {
     try {
       const token = await getAuthToken();
       const response = await fetch(`/api/admin/articles/${slug}`, {
@@ -206,7 +210,7 @@ export function ArticleDataTable({
     }
   };
 
-  const formatDate = (date: Date) => {
+  const formatDate = (date: Date): string => {
     return new Intl.DateTimeFormat('es-ES', {
       year: 'numeric',
       month: 'short',
@@ -244,7 +248,7 @@ export function ArticleDataTable({
         <div className="flex items-center space-x-3">
           {selectedArticles.size > 0 && (
             <Button
-              onClick={handleDeleteSelected}
+              onClick={() => void handleDeleteSelected()}
               className="bg-red-600 text-white hover:bg-red-700"
               disabled={loading}
             >
@@ -378,7 +382,10 @@ export function ArticleDataTable({
                     <select
                       value={article.status}
                       onChange={(e) =>
-                        handleStatusChange(article.slug, e.target.value as 'published' | 'draft')
+                        void handleStatusChange(
+                          article.slug,
+                          e.target.value as 'published' | 'draft',
+                        )
                       }
                       title={t('table.changeStatus')}
                       className={`rounded-full px-2 py-1 text-xs font-semibold ${

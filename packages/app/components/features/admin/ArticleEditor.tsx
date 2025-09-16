@@ -48,7 +48,11 @@ interface TabState {
   section: 'content' | 'metadata';
 }
 
-export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: ArticleEditorProps) {
+export function ArticleEditor({
+  articleSlug,
+  initialData,
+  mode = 'create',
+}: ArticleEditorProps): JSX.Element {
   const t = useTranslations('admin.editor');
   const router = useRouter();
 
@@ -132,7 +136,7 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
 
   // Load article data for editing
   useEffect(() => {
-    const loadArticle = async () => {
+    const loadArticle = async (): Promise<void> => {
       if (mode === 'create' || !articleSlug) {
         return;
       }
@@ -152,7 +156,7 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
           throw new Error(t('errors.loadFailed'));
         }
 
-        const article: IArticle = await response.json();
+        const article: IArticle = (await response.json()) as IArticle;
         setFormData({
           slug: article.slug,
           es: article.es,
@@ -175,15 +179,15 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
       }
     };
 
-    loadArticle();
+    void loadArticle();
   }, [articleSlug, mode, t, editorEs, editorEn]);
 
-  const getAuthToken = async () => {
+  const getAuthToken = async (): Promise<string> => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error(t('errors.notAuthenticated'));
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
   const updateFormData = useCallback((language: 'es' | 'en', field: string, value: string) => {
@@ -196,11 +200,15 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
     }));
   }, []);
 
-  const handleInputChange = (field: keyof ArticleFormData, value: any) => {
+  const handleInputChange = (field: keyof ArticleFormData, value: string | string[]): void => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const generateSlugFromTitle = () => {
+  const handleBooleanChange = (field: keyof ArticleFormData, value: boolean): void => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const generateSlugFromTitle = (): void => {
     const title = formData.es.title || formData.en.title;
     if (!title) {
       return;
@@ -216,7 +224,7 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
     handleInputChange('slug', slug);
   };
 
-  const handleAddTag = () => {
+  const handleAddTag = (): void => {
     const tag = tagInput.trim();
     if (tag && !formData.tags.includes(tag)) {
       handleInputChange('tags', [...formData.tags, tag]);
@@ -224,14 +232,14 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
     }
   };
 
-  const handleRemoveTag = (tagToRemove: string) => {
+  const handleRemoveTag = (tagToRemove: string): void => {
     handleInputChange(
       'tags',
       formData.tags.filter((tag) => tag !== tagToRemove),
     );
   };
 
-  const handleImageUpload = async (file: File) => {
+  const handleImageUpload = async (file: File): Promise<void> => {
     setImageUploading(true);
     setError(null);
 
@@ -252,7 +260,8 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
         throw new Error(t('errors.uploadFailed'));
       }
 
-      const { imageUrl } = await response.json();
+      const result = (await response.json()) as unknown;
+      const { imageUrl } = result as { imageUrl: string };
       handleInputChange('imageUrl', imageUrl);
     } catch (err) {
       setError(err instanceof Error ? err.message : t('errors.uploadFailed'));
@@ -282,7 +291,8 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
           throw new Error(t('errors.uploadFailed'));
         }
 
-        const { imageUrl } = await response.json();
+        const result = (await response.json()) as unknown;
+        const { imageUrl } = result as { imageUrl: string };
 
         // Insert image into current editor
         const currentEditor = activeTab.language === 'es' ? editorEs : editorEn;
@@ -667,7 +677,7 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
                   id="featured"
                   type="checkbox"
                   checked={formData.isFeatured}
-                  onChange={(e) => handleInputChange('isFeatured', e.target.checked)}
+                  onChange={(e) => handleBooleanChange('isFeatured', e.target.checked)}
                   className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                 />
                 <label htmlFor="featured" className="ml-2 text-sm text-gray-700 dark:text-gray-300">

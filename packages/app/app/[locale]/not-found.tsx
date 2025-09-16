@@ -7,7 +7,7 @@ interface NotFoundProps {
   };
 }
 
-export default function NotFound({ params }: NotFoundProps) {
+export default function NotFound({ params }: NotFoundProps): JSX.Element {
   // En Next.js 14, not-found.tsx no recibe params directamente
   // Se obtiene el locale del contexto de la aplicación
   const locale = params?.locale || 'es';
