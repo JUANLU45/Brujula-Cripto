@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, use } from 'react';
+import { use, useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -13,7 +13,7 @@ interface DashboardLayoutProps {
   params: Promise<{ locale: string }>;
 }
 
-export default function DashboardLayout(props: DashboardLayoutProps) {
+export default function DashboardLayout(props: DashboardLayoutProps): JSX.Element | null {
   const params = use(props.params);
 
   const { children } = props;

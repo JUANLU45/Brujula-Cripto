@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { useTranslations } from 'next-intl';
@@ -17,7 +18,7 @@ interface PageProps {
 }
 
 // Metadatos SEO centralizados
-export async function generateMetadata(props: PageProps) {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
@@ -29,7 +30,7 @@ export async function generateMetadata(props: PageProps) {
 }
 
 // Componente para sección de herramientas según PAGINAS.MD
-function ToolsSection({ locale }: { locale: 'es' | 'en' }) {
+function ToolsSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
   const t = useTranslations('common.navigation');
 
   const tools = [
@@ -119,7 +120,7 @@ function ToolsSection({ locale }: { locale: 'es' | 'en' }) {
 }
 
 // Componente disclaimer según PAGINAS.MD
-function DisclaimerSection({ locale }: { locale: 'es' | 'en' }) {
+function DisclaimerSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
   const t = useTranslations('homepage.disclaimer');
 
   return (
@@ -140,7 +141,7 @@ function DisclaimerSection({ locale }: { locale: 'es' | 'en' }) {
 }
 
 // Página principal de inicio
-export default async function HomePage(props: PageProps) {
+export default async function HomePage(props: PageProps): Promise<JSX.Element> {
   const params = await props.params;
   const { locale } = params;
 

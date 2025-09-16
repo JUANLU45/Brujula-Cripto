@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { useAuth } from '@/lib/auth/AuthProvider';
 
-export default function DashboardHomePage() {
+export default function DashboardHomePage(): JSX.Element {
   const t = useTranslations('dashboard.home');
   const { user, userData } = useAuth();
 

@@ -1,6 +1,7 @@
 // Página de Guías de Seguridad - packages/app/app/[locale]/(main)/seguridad/page.tsx
 import { SecurityGuides } from '@/components/features/blog/SecurityGuides';
 import { generateSEOMetadata } from '@/lib/seo';
+import { Metadata } from 'next';
 
 interface SeguridadPageProps {
   params: Promise<{
@@ -8,7 +9,7 @@ interface SeguridadPageProps {
   }>;
 }
 
-export async function generateMetadata(props: SeguridadPageProps) {
+export async function generateMetadata(props: SeguridadPageProps): Promise<Metadata> {
   const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
@@ -19,7 +20,7 @@ export async function generateMetadata(props: SeguridadPageProps) {
   });
 }
 
-export default async function SeguridadPage(props: SeguridadPageProps) {
+export default async function SeguridadPage(props: SeguridadPageProps): Promise<JSX.Element> {
   const params = await props.params;
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">

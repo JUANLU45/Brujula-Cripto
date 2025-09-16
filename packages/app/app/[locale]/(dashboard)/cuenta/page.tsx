@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 
 import { UserDashboard } from '@/components/features/dashboard/UserDashboard';
 
-export default function CuentaPage() {
+export default function CuentaPage(): JSX.Element {
   const t = useTranslations('dashboard.account');
 
   return (

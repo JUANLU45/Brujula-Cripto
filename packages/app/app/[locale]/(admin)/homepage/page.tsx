@@ -59,7 +59,7 @@ export default function AdminHomepagePage(): JSX.Element {
         }
 
         const data = (await response.json()) as { content: HomepageContent };
-        setFormData(data.content || formData);
+        setFormData((prev) => data.content || prev);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error desconocido');
       } finally {
@@ -75,7 +75,7 @@ export default function AdminHomepagePage(): JSX.Element {
     if (!user) {
       throw new Error('No autenticado');
     }
-    return user.getIdToken();
+    return await user.getIdToken();
   };
 
   const handleInputChange = (field: keyof HomepageContent, value: string): void => {
@@ -206,30 +206,42 @@ export default function AdminHomepagePage(): JSX.Element {
           </h2>
           <div className="space-y-4">
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label
+                htmlFor="bannerTitle_es"
+                className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Título Principal
               </label>
               <Input
+                id="bannerTitle_es"
                 value={formData.bannerTitle_es}
                 onChange={(e) => handleInputChange('bannerTitle_es', e.target.value)}
                 placeholder="Título del banner en español"
               />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label
+                htmlFor="bannerSubtitle_es"
+                className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Subtítulo
               </label>
               <Input
+                id="bannerSubtitle_es"
                 value={formData.bannerSubtitle_es}
                 onChange={(e) => handleInputChange('bannerSubtitle_es', e.target.value)}
                 placeholder="Subtítulo en español"
               />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label
+                htmlFor="bannerButtonText_es"
+                className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Texto del Botón
               </label>
               <Input
+                id="bannerButtonText_es"
                 value={formData.bannerButtonText_es}
                 onChange={(e) => handleInputChange('bannerButtonText_es', e.target.value)}
                 placeholder="Texto del botón en español"
@@ -245,30 +257,42 @@ export default function AdminHomepagePage(): JSX.Element {
           </h2>
           <div className="space-y-4">
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label
+                htmlFor="bannerTitle_en"
+                className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Main Title
               </label>
               <Input
+                id="bannerTitle_en"
                 value={formData.bannerTitle_en}
                 onChange={(e) => handleInputChange('bannerTitle_en', e.target.value)}
                 placeholder="Banner title in English"
               />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label
+                htmlFor="bannerSubtitle_en"
+                className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Subtitle
               </label>
               <Input
+                id="bannerSubtitle_en"
                 value={formData.bannerSubtitle_en}
                 onChange={(e) => handleInputChange('bannerSubtitle_en', e.target.value)}
                 placeholder="Subtitle in English"
               />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label
+                htmlFor="bannerButtonText_en"
+                className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Button Text
               </label>
               <Input
+                id="bannerButtonText_en"
                 value={formData.bannerButtonText_en}
                 onChange={(e) => handleInputChange('bannerButtonText_en', e.target.value)}
                 placeholder="Button text in English"

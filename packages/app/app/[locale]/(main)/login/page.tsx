@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function LoginPage(props: Props) {
+export default async function LoginPage(props: Props): Promise<JSX.Element> {
   const params = await props.params;
   const t = await getTranslations('auth.signin');
   const tLegal = await getTranslations('auth.legal');

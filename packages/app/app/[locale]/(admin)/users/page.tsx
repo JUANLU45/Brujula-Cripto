@@ -36,7 +36,7 @@ export default function AdminUsersPage(): JSX.Element {
   const [usersPerPage] = useState(20);
 
   useEffect(() => {
-    const loadUsers = async () => {
+    const loadUsers = async (): Promise<void> => {
       try {
         setLoading(true);
         setError(null);
@@ -51,7 +51,8 @@ export default function AdminUsersPage(): JSX.Element {
           throw new Error('Error al cargar usuarios');
         }
 
-        const data = await response.json();
+        const result = (await response.json()) as unknown;
+        const data = result as { users: User[] };
         setUsers(data.users || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error desconocido');
@@ -60,7 +61,7 @@ export default function AdminUsersPage(): JSX.Element {
       }
     };
 
-    loadUsers();
+    void loadUsers();
   }, []);
 
   // Filter users
@@ -87,7 +88,7 @@ export default function AdminUsersPage(): JSX.Element {
     setCurrentPage(1); // Reset to first page when filtering
   }, [users, searchTerm, roleFilter]);
 
-  const getAuthToken = async () => {
+  const getAuthToken = async (): Promise<string> => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error('No autenticado');
@@ -103,7 +104,7 @@ export default function AdminUsersPage(): JSX.Element {
     return `${hours}h ${minutes}m ${secs}s`;
   };
 
-  const handleUpdateCredits = async (uid: string, newCredits: number) => {
+  const handleUpdateCredits = async (uid: string, newCredits: number): Promise<void> => {
     try {
       setUpdating(uid);
       setError(null);
@@ -134,7 +135,7 @@ export default function AdminUsersPage(): JSX.Element {
     }
   };
 
-  const handleToggleAdmin = async (uid: string, isAdmin: boolean) => {
+  const handleToggleAdmin = async (uid: string, isAdmin: boolean): Promise<void> => {
     try {
       setUpdating(uid);
       setError(null);
@@ -163,7 +164,7 @@ export default function AdminUsersPage(): JSX.Element {
     }
   };
 
-  const exportUsers = async () => {
+  const exportUsers = async (): Promise<void> => {
     try {
       const response = await fetch('/api/admin/users/export', {
         headers: {
@@ -216,7 +217,7 @@ export default function AdminUsersPage(): JSX.Element {
             Administra usuarios, créditos y permisos
           </p>
         </div>
-        <Button onClick={exportUsers}>Exportar CSV</Button>
+        <Button onClick={() => void exportUsers()}>Exportar CSV</Button>
       </div>
 
       {/* Filters */}
@@ -336,7 +337,7 @@ export default function AdminUsersPage(): JSX.Element {
                             user.usageCreditsInSeconds.toString(),
                           );
                           if (newCredits !== null) {
-                            handleUpdateCredits(user.uid, parseInt(newCredits) || 0);
+                            void handleUpdateCredits(user.uid, parseInt(newCredits) || 0);
                           }
                         }}
                         disabled={updating === user.uid}
@@ -346,7 +347,7 @@ export default function AdminUsersPage(): JSX.Element {
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => handleToggleAdmin(user.uid, !!user.isAdmin)}
+                        onClick={() => void handleToggleAdmin(user.uid, !!user.isAdmin)}
                         disabled={updating === user.uid}
                       >
                         {updating === user.uid

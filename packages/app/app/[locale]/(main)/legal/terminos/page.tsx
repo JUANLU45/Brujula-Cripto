@@ -22,7 +22,7 @@ export async function generateMetadata(props: TerminosPageProps): Promise<Metada
   });
 }
 
-export default async function TerminosPage(props: TerminosPageProps) {
+export default async function TerminosPage(props: TerminosPageProps): Promise<JSX.Element> {
   const params = await props.params;
   const t = await getTranslations('legal_pages.terms_conditions');
   const navT = await getTranslations('navigation');

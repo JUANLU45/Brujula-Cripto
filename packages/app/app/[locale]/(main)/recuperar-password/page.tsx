@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 
 import { PasswordResetForm } from '@/components/features/auth/PasswordResetForm';
 
@@ -10,7 +9,6 @@ interface PageProps {
 // METADATA SEO SEGÚN PROYEC_PARTE2.MD
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
-  const t = await getTranslations({ locale: params.locale, namespace: 'auth.passwordReset.seo' });
 
   return {
     title: {
@@ -71,7 +69,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   };
 }
 
-export default async function RecuperarPasswordPage(props: PageProps) {
+export default async function RecuperarPasswordPage(props: PageProps): Promise<JSX.Element> {
   const params = await props.params;
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 dark:bg-gray-900 sm:px-6 lg:px-8">

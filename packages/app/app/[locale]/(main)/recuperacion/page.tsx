@@ -21,7 +21,7 @@ export async function generateMetadata(props: RecuperacionPageProps): Promise<Me
   });
 }
 
-export default function RecuperacionPage() {
+export default function RecuperacionPage(): JSX.Element {
   return (
     <div className="min-h-screen">
       <DiagnosisBanner />

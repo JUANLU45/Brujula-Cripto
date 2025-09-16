@@ -94,7 +94,7 @@ export default function AdminCommentsPage(): JSX.Element {
     if (!user) {
       throw new Error('No autenticado');
     }
-    return user.getIdToken();
+    return await user.getIdToken();
   };
 
   const handleModerateComment = async (
@@ -139,7 +139,7 @@ export default function AdminCommentsPage(): JSX.Element {
     }
   };
 
-  const triggerAIModeration = async () => {
+  const triggerAIModeration = async (): Promise<void> => {
     try {
       setError(null);
 
@@ -162,7 +162,7 @@ export default function AdminCommentsPage(): JSX.Element {
     }
   };
 
-  const getStatusColor = (status: Comment['status']) => {
+  const getStatusColor = (status: Comment['status']): string => {
     switch (status) {
       case 'pending':
         return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
@@ -177,7 +177,7 @@ export default function AdminCommentsPage(): JSX.Element {
     }
   };
 
-  const getStatusText = (status: Comment['status']) => {
+  const getStatusText = (status: Comment['status']): string => {
     switch (status) {
       case 'pending':
         return 'Pendiente';
@@ -212,7 +212,7 @@ export default function AdminCommentsPage(): JSX.Element {
             Administra y modera los comentarios del blog
           </p>
         </div>
-        <Button onClick={triggerAIModeration}>Ejecutar Moderación IA</Button>
+        <Button onClick={() => void triggerAIModeration()}>Ejecutar Moderación IA</Button>
       </div>
 
       {/* Filters */}
@@ -281,7 +281,7 @@ export default function AdminCommentsPage(): JSX.Element {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => handleModerateComment(comment.id, 'approve')}
+                      onClick={() => void handleModerateComment(comment.id, 'approve')}
                       disabled={moderating === comment.id}
                     >
                       Aprobar
@@ -289,7 +289,7 @@ export default function AdminCommentsPage(): JSX.Element {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => handleModerateComment(comment.id, 'reject')}
+                      onClick={() => void handleModerateComment(comment.id, 'reject')}
                       disabled={moderating === comment.id}
                     >
                       Rechazar
@@ -299,7 +299,7 @@ export default function AdminCommentsPage(): JSX.Element {
                 <Button
                   variant="destructive"
                   size="sm"
-                  onClick={() => handleModerateComment(comment.id, 'delete')}
+                  onClick={() => void handleModerateComment(comment.id, 'delete')}
                   disabled={moderating === comment.id}
                 >
                   {moderating === comment.id ? 'Eliminando...' : 'Eliminar'}

@@ -26,6 +26,15 @@ export default function AdminDashboardPage(): JSX.Element {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const getAuthToken = async (): Promise<string> => {
+    // Get Firebase auth token
+    const user = auth.currentUser;
+    if (!user) {
+      throw new Error(t('errors.notAuthenticated'));
+    }
+    return await user.getIdToken();
+  };
+
   useEffect(() => {
     const loadDashboardData = async (): Promise<void> => {
       try {
@@ -53,16 +62,7 @@ export default function AdminDashboardPage(): JSX.Element {
     };
 
     void loadDashboardData();
-  }, []);
-
-  const getAuthToken = async (): Promise<string> => {
-    // Get Firebase auth token
-    const user = auth.currentUser;
-    if (!user) {
-      throw new Error(t('errors.notAuthenticated'));
-    }
-    return user.getIdToken();
-  };
+  }, [getAuthToken, t]);
 
   if (loading) {
     return (

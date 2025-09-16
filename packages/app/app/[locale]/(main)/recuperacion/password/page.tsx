@@ -40,7 +40,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   };
 }
 
-export default function RecuperacionPasswordPage() {
+export default function RecuperacionPasswordPage(): JSX.Element {
   return (
     <div className="min-h-screen bg-gray-50 py-12 dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
