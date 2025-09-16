@@ -5,7 +5,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module",
     "projectService": true,
-    "tsconfigRootDir": "C:\\BRUJULA CRIPTO",
+    "tsconfigRootDir": ".",
     "ecmaFeatures": {
       "jsx": true
     }
