@@ -1,8 +1,10 @@
 'use client';
 
-import { useAuth } from '@/lib/auth/AuthProvider';
-import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
+
+import { useTranslations } from 'next-intl';
+
+import { useAuth } from '@/lib/auth/AuthProvider';
 
 export function PasswordResetForm() {
   const t = useTranslations('auth.passwordReset');

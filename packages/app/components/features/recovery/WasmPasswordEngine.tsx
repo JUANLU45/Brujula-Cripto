@@ -1,7 +1,8 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
+
+import { useTranslations } from 'next-intl';
 
 import UpgradeButton from '@/components/features/payments/UpgradeButton';
 import { Button } from '@/components/ui/Button';
@@ -143,7 +144,9 @@ function WasmPasswordEngine({
   }, []);
 
   const generatePasswordCombinations = async () => {
-    if (!hasCredits) return;
+    if (!hasCredits) {
+      return;
+    }
 
     try {
       // Iniciar seguimiento de uso REAL

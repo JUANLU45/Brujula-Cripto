@@ -1,7 +1,8 @@
+import type { Metadata } from 'next';
+
 import { DiagnosisBanner } from '@/components/features/recovery/DiagnosisBanner';
 import { RecoveryWizard } from '@/components/features/recovery/RecoveryWizard';
 import { generateSEOMetadata } from '@/lib/seo';
-import { Metadata } from 'next';
 
 interface RecuperacionPageProps {
   params: Promise<{

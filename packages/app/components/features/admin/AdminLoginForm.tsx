@@ -1,14 +1,17 @@
 'use client';
 
+import { useState } from 'react';
+
+import { useRouter } from 'next/navigation';
+
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Spinner } from '@/components/ui/Spinner';
 import { auth } from '@/lib/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 interface AdminLoginFormProps {
   onSuccess?: () => void;
@@ -29,7 +32,9 @@ export function AdminLoginForm({ onSuccess, redirectTo = '/admin' }: AdminLoginF
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
-    if (error) setError(null);
+    if (error) {
+      setError(null);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {

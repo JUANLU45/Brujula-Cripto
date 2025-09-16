@@ -1,8 +1,10 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { useTranslations } from 'next-intl';
 import { useMemo, useState } from 'react';
+
+import { useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
 
 // Interfaz REAL según PROYEC_PARTE3.MD - Colección professionalServices
 interface Service {

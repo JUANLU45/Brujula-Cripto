@@ -1,11 +1,14 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/utils';
-import { useLocale, useTranslations } from 'next-intl';
+import * as React from 'react';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import * as React from 'react';
+
+import { useLocale, useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
+import { cn } from '@/lib/utils';
 
 // Iconos SVG inline
 const DashboardIcon = ({ className }: { className?: string }) => (

@@ -1,11 +1,14 @@
+import { Suspense } from 'react';
+
+import Link from 'next/link';
+
+import { useTranslations } from 'next-intl';
+
 import { FeaturedPostsCarousel } from '@/components/features/homepage/FeaturedPostsCarousel';
 import { FeedbackButton } from '@/components/features/homepage/FeedbackButton';
 import { HomepageBanner } from '@/components/features/homepage/HomepageBanner';
 import { ValueProposition } from '@/components/features/homepage/ValueProposition';
 import { generateSEOMetadata } from '@/lib/seo';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { Suspense } from 'react';
 
 interface PageProps {
   params: Promise<{

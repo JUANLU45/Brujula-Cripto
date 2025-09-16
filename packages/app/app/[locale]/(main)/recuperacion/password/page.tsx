@@ -1,6 +1,7 @@
-import WasmPasswordEngine from '@/components/features/recovery/WasmPasswordEngine';
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { Metadata } from 'next';
+
+import WasmPasswordEngine from '@/components/features/recovery/WasmPasswordEngine';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -28,8 +29,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     alternates: {
       canonical: `/${params.locale}/recuperacion/password`,
       languages: {
-        'es': '/es/recuperacion/password',
-        'en': '/en/recuperacion/password',
+        es: '/es/recuperacion/password',
+        en: '/en/recuperacion/password',
       },
     },
     robots: {
@@ -48,8 +49,8 @@ export default function RecuperacionPasswordPage() {
             Recuperación de Contraseña
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-            Utiliza nuestro motor de recuperación para intentar recuperar el acceso a tu wallet utilizando 
-            partes conocidas de tu contraseña o patrones que recuerdes.
+            Utiliza nuestro motor de recuperación para intentar recuperar el acceso a tu wallet
+            utilizando partes conocidas de tu contraseña o patrones que recuerdes.
           </p>
         </div>
 
@@ -60,7 +61,11 @@ export default function RecuperacionPasswordPage() {
           <div className="flex">
             <div className="flex-shrink-0">
               <svg className="h-5 w-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                <path
+                  fillRule="evenodd"
+                  d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                  clipRule="evenodd"
+                />
               </svg>
             </div>
             <div className="ml-3">
@@ -68,11 +73,11 @@ export default function RecuperacionPasswordPage() {
                 Descargo de Responsabilidad
               </h3>
               <p className="mt-2 text-sm text-amber-700 dark:text-amber-300">
-                Esta herramienta es software de asistencia sin garantía de recuperación exitosa. 
-                El usuario es completamente responsable de su uso. No ofrecemos garantías de resultados 
-                y no somos responsables de pérdidas. {' '}
-                <a 
-                  href="/legal/descargo-responsabilidad" 
+                Esta herramienta es software de asistencia sin garantía de recuperación exitosa. El
+                usuario es completamente responsable de su uso. No ofrecemos garantías de resultados
+                y no somos responsables de pérdidas.{' '}
+                <a
+                  href="/legal/descargo-responsabilidad"
                   className="font-medium underline hover:no-underline"
                   target="_blank"
                   rel="noopener noreferrer"

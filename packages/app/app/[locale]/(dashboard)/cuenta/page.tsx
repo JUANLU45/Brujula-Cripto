@@ -1,7 +1,8 @@
 'use client';
 
-import { UserDashboard } from '@/components/features/dashboard/UserDashboard';
 import { useTranslations } from 'next-intl';
+
+import { UserDashboard } from '@/components/features/dashboard/UserDashboard';
 
 export default function CuentaPage() {
   const t = useTranslations('dashboard.account');

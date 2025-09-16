@@ -1,8 +1,9 @@
-'use client';;
-import { use } from "react";
+'use client';
+import { use } from 'react';
+
+import { useTranslations } from 'next-intl';
 
 import { AdminLoginForm } from '@/components/features/admin/AdminLoginForm';
-import { useTranslations } from 'next-intl';
 
 interface AdminAuthPageProps {
   params: Promise<{ locale: string }>;

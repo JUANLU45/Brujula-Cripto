@@ -1,11 +1,15 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/utils';
-import { useLocale, useTranslations } from 'next-intl';
+import * as React from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import * as React from 'react';
+
+import { useLocale, useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
+import { cn } from '@/lib/utils';
+
 // Usando iconos SVG simples sin dependencias externas
 const ChevronUpIcon = ({ className }: { className?: string }) => (
   <svg

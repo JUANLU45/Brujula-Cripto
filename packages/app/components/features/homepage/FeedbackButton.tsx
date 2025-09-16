@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
+
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { useAuth } from '@/lib/auth/AuthProvider';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 
 interface FeedbackButtonProps {
   customText?: string;
@@ -29,7 +31,9 @@ export function FeedbackButton({
   const shouldShow = user && userData?.isPremium && isEnabled;
 
   const handleFeedbackSubmit = async () => {
-    if (!feedbackText.trim() || !user) return;
+    if (!feedbackText.trim() || !user) {
+      return;
+    }
 
     setIsSubmitting(true);
     setSubmitStatus('idle');

@@ -14,7 +14,7 @@ export default function NotFound({ params }: NotFoundProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-      <NotFoundPage locale={locale as 'es' | 'en'} className="w-full" />
+      <NotFoundPage locale={locale} className="w-full" />
     </div>
   );
 }

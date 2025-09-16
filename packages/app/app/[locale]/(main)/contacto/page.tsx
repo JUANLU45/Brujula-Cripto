@@ -1,8 +1,9 @@
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+
 import ContactFAQ from '@/components/features/contact/ContactFAQ';
 import ContactForm from '@/components/features/contact/ContactForm';
 import { generateSEOMetadata } from '@/lib/seo';
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 
 // PÁGINA DE CONTACTO - CUMPLE DOCUMENTACIÓN PAGINAS.MD
 // Formulario: Campos para nombre, email y mensaje, con un botón para enviar.

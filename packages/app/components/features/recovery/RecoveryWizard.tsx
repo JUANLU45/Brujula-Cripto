@@ -1,9 +1,12 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+
+import { useRouter } from 'next/navigation';
+
+import { useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
 
 interface RecoveryOption {
   id: string;

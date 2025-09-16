@@ -1,10 +1,12 @@
 'use client';
 
+import { useState } from 'react';
+
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { createCheckoutSession } from '@/lib/api';
 import { useAuth } from '@/lib/auth/AuthProvider';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 
 interface UpgradeButtonProps {
   planId?: string;
@@ -93,9 +95,15 @@ export function UpgradeButton({
   };
 
   const getButtonText = () => {
-    if (customText) return customText;
-    if (isProcessing) return t('processing');
-    if (!user) return 'Registrarse para Premium';
+    if (customText) {
+      return customText;
+    }
+    if (isProcessing) {
+      return t('processing');
+    }
+    if (!user) {
+      return 'Registrarse para Premium';
+    }
     return 'Desbloquear Potencia Total';
   };
 
@@ -111,7 +119,9 @@ export function UpgradeButton({
               checked={consentChecked}
               onChange={(e) => {
                 setConsentChecked(e.target.checked);
-                if (e.target.checked) setError('');
+                if (e.target.checked) {
+                  setError('');
+                }
               }}
               className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500"
             />

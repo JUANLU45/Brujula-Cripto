@@ -1,8 +1,10 @@
+import { notFound } from 'next/navigation';
+
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+
 import { BlogPage } from '@/components/features/blog/BlogPage';
 import { generateSEOMetadata } from '@/lib/seo';
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
-import { notFound } from 'next/navigation';
 
 interface BlogPageProps {
   params: Promise<{ locale: 'es' | 'en' }>;

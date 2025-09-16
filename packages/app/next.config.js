@@ -3,11 +3,8 @@ const nextConfig = {
   // 🚨 CRÍTICO: Firebase App Hosting requiere standalone output
   output: 'standalone',
 
-  // Configuración para internacionalización
-  i18n: {
-    locales: ['es', 'en'],
-    defaultLocale: 'es',
-  },
+  // NOTA: i18n se maneja con next-intl y middleware en App Router
+  // La configuración i18n nativa de Next.js NO es compatible con App Router
 
   // Configuración de imágenes
   images: {

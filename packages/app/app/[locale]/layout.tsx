@@ -1,9 +1,12 @@
-import { routing } from '@/i18n/routing';
+import { notFound } from 'next/navigation';
+
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from 'next-themes';
-import { notFound } from 'next/navigation';
+
+import { routing } from '@/i18n/routing';
+
 import '../globals.css';
 
 export const metadata: Metadata = {
@@ -14,21 +17,15 @@ export const metadata: Metadata = {
 
 import type * as React from 'react';
 
-export default async function LocaleLayout(
-  props: {
-    children: React.ReactNode;
-    params: Promise<{ locale: string }>;
-  }
-) {
+export default async function LocaleLayout(props: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
   const params = await props.params;
 
-  const {
-    locale
-  } = params;
+  const { locale } = params;
 
-  const {
-    children
-  } = props;
+  const { children } = props;
 
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {

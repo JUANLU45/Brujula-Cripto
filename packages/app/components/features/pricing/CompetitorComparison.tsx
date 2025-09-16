@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
+
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 
 interface ComparisonTab {
   id: string;

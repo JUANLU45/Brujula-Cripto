@@ -1,11 +1,13 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
+
+import type { IChatConversation, IChatMessage } from '@brujula-cripto/types';
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { useSpeechToText } from '@/hooks/useSpeechToText';
-import { IChatConversation, IChatMessage } from '@brujula-cripto/types';
-import { useTranslations } from 'next-intl';
-import { useEffect, useRef, useState } from 'react';
 
 // Iconos SVG inline para evitar dependencias externas - CUMPLE DOCUMENTACIÓN NAVBAR.TSX
 const SendIcon = ({ className }: { className?: string }) => (
@@ -114,7 +116,9 @@ export function ChatbotUI({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isLoading || !onSendMessage) return;
+    if (!input.trim() || isLoading || !onSendMessage) {
+      return;
+    }
 
     const message = input.trim();
     setInput('');

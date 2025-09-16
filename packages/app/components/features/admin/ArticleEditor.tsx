@@ -1,18 +1,21 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import { Input } from '@/components/ui/Input';
-import { Spinner } from '@/components/ui/Spinner';
-import { auth } from '@/lib/firebase';
-import { IArticle } from '@brujula-cripto/types';
+import { useCallback, useEffect, useState } from 'react';
+
+import { useRouter } from 'next/navigation';
+
+import type { IArticle } from '@brujula-cripto/types';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
+import { Input } from '@/components/ui/Input';
+import { Spinner } from '@/components/ui/Spinner';
+import { auth } from '@/lib/firebase';
 
 interface ArticleEditorProps {
   articleSlug?: string;
@@ -130,7 +133,9 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
   // Load article data for editing
   useEffect(() => {
     const loadArticle = async () => {
-      if (mode === 'create' || !articleSlug) return;
+      if (mode === 'create' || !articleSlug) {
+        return;
+      }
 
       setLoading(true);
       setError(null);
@@ -175,7 +180,9 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
 
   const getAuthToken = async () => {
     const user = auth.currentUser;
-    if (!user) throw new Error(t('errors.notAuthenticated'));
+    if (!user) {
+      throw new Error(t('errors.notAuthenticated'));
+    }
     return await user.getIdToken();
   };
 
@@ -195,7 +202,9 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
 
   const generateSlugFromTitle = () => {
     const title = formData.es.title || formData.en.title;
-    if (!title) return;
+    if (!title) {
+      return;
+    }
 
     const slug = title
       .toLowerCase()
@@ -269,7 +278,9 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
           body: formDataUpload,
         });
 
-        if (!response.ok) throw new Error(t('errors.uploadFailed'));
+        if (!response.ok) {
+          throw new Error(t('errors.uploadFailed'));
+        }
 
         const { imageUrl } = await response.json();
 
@@ -308,7 +319,9 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
         }),
       });
 
-      if (!response.ok) throw new Error(t('errors.aiFailed'));
+      if (!response.ok) {
+        throw new Error(t('errors.aiFailed'));
+      }
 
       const { content } = await response.json();
 
@@ -497,7 +510,9 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
                       accept="image/*"
                       onChange={(e) => {
                         const file = e.target.files?.[0];
-                        if (file) insertImageToEditor(file);
+                        if (file) {
+                          insertImageToEditor(file);
+                        }
                       }}
                       className="hidden"
                       id="editor-image-upload"
@@ -685,7 +700,9 @@ export function ArticleEditor({ articleSlug, initialData, mode = 'create' }: Art
                   accept="image/*"
                   onChange={(e) => {
                     const file = e.target.files?.[0];
-                    if (file) handleImageUpload(file);
+                    if (file) {
+                      handleImageUpload(file);
+                    }
                   }}
                   className="hidden"
                   id="featured-image-upload"

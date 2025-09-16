@@ -1,15 +1,18 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+import type { IArticle } from '@brujula-cripto/types';
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Spinner } from '@/components/ui/Spinner';
 import { auth } from '@/lib/firebase';
-import { IArticle } from '@brujula-cripto/types';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 interface ArticleDataTableProps {
   initialArticles?: IArticle[];
@@ -117,7 +120,9 @@ export function ArticleDataTable({
   const getAuthToken = async () => {
     // Get Firebase Auth token for admin API calls
     const user = auth.currentUser;
-    if (!user) throw new Error(t('errors.notAuthenticated'));
+    if (!user) {
+      throw new Error(t('errors.notAuthenticated'));
+    }
     return await user.getIdToken();
   };
 
@@ -144,7 +149,9 @@ export function ArticleDataTable({
   };
 
   const handleDeleteSelected = async () => {
-    if (selectedArticles.size === 0) return;
+    if (selectedArticles.size === 0) {
+      return;
+    }
 
     if (!window.confirm(t('confirmDeleteSelected', { count: selectedArticles.size }))) {
       return;
@@ -184,7 +191,9 @@ export function ArticleDataTable({
         body: JSON.stringify({ status: newStatus }),
       });
 
-      if (!response.ok) throw new Error(t('errors.updateFailed'));
+      if (!response.ok) {
+        throw new Error(t('errors.updateFailed'));
+      }
 
       // Update article status in state
       setArticles((prev) =>

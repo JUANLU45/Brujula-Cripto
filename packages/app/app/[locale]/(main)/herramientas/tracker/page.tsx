@@ -1,7 +1,8 @@
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+
 import { TransactionTracker } from '@/components/features/tools/TransactionTracker';
 import { generateSEOMetadata } from '@/lib/seo';
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 
 interface TrackerPageProps {
   params: Promise<{ locale: 'es' | 'en' }>;

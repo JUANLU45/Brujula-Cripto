@@ -1,14 +1,17 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
+import { useSearchParams } from 'next/navigation';
+
+import type { IArticle } from '@brujula-cripto/types';
+import { useTranslations } from 'next-intl';
+
 import { ArticleCard } from '@/components/features/blog/ArticleCard';
 import { BlogSearchBar } from '@/components/features/blog/BlogSearchBar';
 import { PaginationControls } from '@/components/features/blog/PaginationControls';
 import { Button } from '@/components/ui/Button';
 import { Spinner } from '@/components/ui/Spinner';
-import { IArticle } from '@brujula-cripto/types';
-import { useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 interface ArticleListProps {
   locale: 'es' | 'en';
@@ -77,13 +80,12 @@ export function ArticleList({
       try {
         // Fetch articles from the API
         const response = await fetch(
-          '/api/articles?' +
-            new URLSearchParams({
-              locale,
-              status: 'published',
-              ...(featuredOnly && { featured: 'true' }),
-              limit: '100', // Load all for client-side filtering
-            }),
+          `/api/articles?${new URLSearchParams({
+            locale,
+            status: 'published',
+            ...(featuredOnly && { featured: 'true' }),
+            limit: '100', // Load all for client-side filtering
+          })}`,
         );
 
         if (!response.ok) {

@@ -2,7 +2,7 @@
 // Fuente: PROYEC_PARTE1.MD línea 194
 // Propósito: Handlers para CRUD de artículos (crear/editar/eliminar/publicar), integración IA para moderación comentarios
 
-import { IArticle } from '@brujula-cripto/types';
+import type { IArticle } from '@brujula-cripto/types';
 import { getApps, initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { onCall } from 'firebase-functions/v2/https';

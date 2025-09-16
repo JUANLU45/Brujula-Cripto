@@ -1,10 +1,12 @@
 'use client';
 
+import Link from 'next/link';
+
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { useAuth } from '@/lib/auth/AuthProvider';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 
 export default function DashboardHomePage() {
   const t = useTranslations('dashboard.home');

@@ -1,6 +1,7 @@
+import type { Metadata } from 'next';
+
 import { ChatbotLayout } from '@/components/features/chatbot/ChatbotLayout';
 import { generateSEOMetadata } from '@/lib/seo';
-import { Metadata } from 'next';
 
 interface ChatbotPageProps {
   params: Promise<{
@@ -11,9 +12,7 @@ interface ChatbotPageProps {
 export async function generateMetadata(props: ChatbotPageProps): Promise<Metadata> {
   const params = await props.params;
 
-  const {
-    locale
-  } = params;
+  const { locale } = params;
 
   return generateSEOMetadata({
     locale,
@@ -27,9 +26,7 @@ export async function generateMetadata(props: ChatbotPageProps): Promise<Metadat
 export default async function ChatbotPage(props: ChatbotPageProps) {
   const params = await props.params;
 
-  const {
-    locale
-  } = params;
+  const { locale } = params;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">

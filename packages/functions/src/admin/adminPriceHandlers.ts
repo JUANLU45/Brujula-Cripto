@@ -268,7 +268,7 @@ export const calculateCost = onCall(async (request) => {
 
     // Calcular costo según la lógica documentada
     let totalCost = 0;
-    let breakdown: any = {
+    const breakdown: any = {
       hours,
       currency: pricingConfig.firstTwoHours.currency,
     };

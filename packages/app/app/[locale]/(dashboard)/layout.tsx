@@ -1,9 +1,12 @@
 'use client';
 
-import { useAuth } from '@/lib/auth/AuthProvider';
-import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
 import { useEffect, use } from 'react';
+
+import { useRouter } from 'next/navigation';
+
+import { useTranslations } from 'next-intl';
+
+import { useAuth } from '@/lib/auth/AuthProvider';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -13,9 +16,7 @@ interface DashboardLayoutProps {
 export default function DashboardLayout(props: DashboardLayoutProps) {
   const params = use(props.params);
 
-  const {
-    children
-  } = props;
+  const { children } = props;
 
   const t = useTranslations('dashboard.layout');
   const { user, loading } = useAuth();

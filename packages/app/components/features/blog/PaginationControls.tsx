@@ -1,8 +1,10 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { useTranslations } from 'next-intl';
 import { useRouter, useSearchParams } from 'next/navigation';
+
+import { useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
 
 interface PaginationControlsProps {
   currentPage: number;

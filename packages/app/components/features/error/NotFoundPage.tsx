@@ -1,9 +1,11 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
 
 // Iconos SVG inline para evitar dependencias externas - CUMPLE DOCUMENTACIÓN NAVBAR.TSX
 const HomeIcon = ({ className }: { className?: string }) => (

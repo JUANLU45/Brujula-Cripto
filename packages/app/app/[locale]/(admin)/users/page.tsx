@@ -1,12 +1,14 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Spinner } from '@/components/ui/Spinner';
 import { auth } from '@/lib/firebase';
-import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
 
 interface User {
   uid: string;
@@ -87,7 +89,9 @@ export default function AdminUsersPage() {
 
   const getAuthToken = async () => {
     const user = auth.currentUser;
-    if (!user) throw new Error('No autenticado');
+    if (!user) {
+      throw new Error('No autenticado');
+    }
     return await user.getIdToken();
   };
 

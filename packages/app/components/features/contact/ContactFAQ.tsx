@@ -1,8 +1,10 @@
 'use client';
 
-import { Card } from '@/components/ui/Card';
-import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+
+import { useTranslations } from 'next-intl';
+
+import { Card } from '@/components/ui/Card';
 
 // Iconos SVG inline para evitar dependencias externas - CUMPLE DOCUMENTACIÓN NAVBAR.TSX
 const ChevronDownIcon = ({ className }: { className?: string }) => (

@@ -1,10 +1,12 @@
-'use client';;
-import { use } from "react";
+'use client';
+import { use } from 'react';
+
+import Link from 'next/link';
+
+import { useTranslations } from 'next-intl';
 
 import { ArticleDataTable } from '@/components/features/admin/ArticleDataTable';
 import { Button } from '@/components/ui/Button';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 
 interface AdminArticlesPageProps {
   params: Promise<{ locale: string }>;

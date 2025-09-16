@@ -1,13 +1,16 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import { IArticle } from '@brujula-cripto/types';
-import { useTranslations } from 'next-intl';
+import { useState } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
+
+import type { IArticle } from '@brujula-cripto/types';
+import { useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
 
 interface ArticleCardProps {
   article: IArticle;
@@ -47,7 +50,9 @@ export function ArticleCard({
   };
 
   const handleShare = async () => {
-    if (!showSharing) return;
+    if (!showSharing) {
+      return;
+    }
 
     setIsSharing(true);
     try {
@@ -75,7 +80,9 @@ export function ArticleCard({
   };
 
   const handleLike = async () => {
-    if (!showInteractions) return;
+    if (!showInteractions) {
+      return;
+    }
 
     try {
       // Call real API endpoint for like functionality

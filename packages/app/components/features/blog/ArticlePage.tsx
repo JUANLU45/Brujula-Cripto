@@ -1,10 +1,12 @@
 'use client';
 
+import { useState } from 'react';
+
+import type { IArticle } from '@brujula-cripto/types';
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { IArticle } from '@brujula-cripto/types';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 
 // Iconos SVG inline para evitar dependencias externas - CUMPLE DOCUMENTACIÓN NAVBAR.TSX
 const ChevronLeftIcon = ({ className }: { className?: string }) => (
@@ -101,7 +103,9 @@ export function ArticlePage({
   };
 
   const handleLike = async () => {
-    if (!isSubscribed) return;
+    if (!isSubscribed) {
+      return;
+    }
 
     try {
       setIsLiked(!isLiked);

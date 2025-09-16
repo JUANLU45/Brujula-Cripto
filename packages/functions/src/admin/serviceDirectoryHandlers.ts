@@ -101,13 +101,24 @@ export const updateService = onCall(async (request) => {
     };
 
     // Solo actualizar campos proporcionados
-    if (name !== undefined) updateData.name = name.trim();
-    if (description !== undefined) updateData.description = description.trim();
-    if (website !== undefined) updateData.website = website.trim();
-    if (logoUrl !== undefined) updateData.logoUrl = logoUrl.trim();
-    if (specialties !== undefined)
+    if (name !== undefined) {
+      updateData.name = name.trim();
+    }
+    if (description !== undefined) {
+      updateData.description = description.trim();
+    }
+    if (website !== undefined) {
+      updateData.website = website.trim();
+    }
+    if (logoUrl !== undefined) {
+      updateData.logoUrl = logoUrl.trim();
+    }
+    if (specialties !== undefined) {
       updateData.specialties = Array.isArray(specialties) ? specialties : [];
-    if (isVerified !== undefined) updateData.isVerified = Boolean(isVerified);
+    }
+    if (isVerified !== undefined) {
+      updateData.isVerified = Boolean(isVerified);
+    }
 
     const db = getFirestore();
     const serviceRef = db.collection('professionalServices').doc(serviceId);

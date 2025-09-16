@@ -1,8 +1,10 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+
+import { useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
 
 interface UpgradeButtonProps {
   planId: string;

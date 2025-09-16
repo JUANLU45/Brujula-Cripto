@@ -95,7 +95,9 @@ export function useSpeechToText(locale: 'es' | 'en' = 'es'): UseSpeechToTextRetu
   // Configurar reconocimiento de voz
   useEffect(() => {
     const recognition = recognitionRef.current;
-    if (!recognition) return;
+    if (!recognition) {
+      return;
+    }
 
     // Configuración del reconocimiento
     recognition.continuous = false; // Parar automáticamente
@@ -163,7 +165,9 @@ export function useSpeechToText(locale: 'es' | 'en' = 'es'): UseSpeechToTextRetu
 
   const startListening = useCallback(() => {
     const recognition = recognitionRef.current;
-    if (!recognition || isListening) return;
+    if (!recognition || isListening) {
+      return;
+    }
 
     setError(null);
     setTranscript('');
@@ -178,7 +182,9 @@ export function useSpeechToText(locale: 'es' | 'en' = 'es'): UseSpeechToTextRetu
 
   const stopListening = useCallback(() => {
     const recognition = recognitionRef.current;
-    if (!recognition || !isListening) return;
+    if (!recognition || !isListening) {
+      return;
+    }
 
     try {
       recognition.stop();

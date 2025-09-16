@@ -1,9 +1,10 @@
 'use client';
 
+import type { IArticle } from '@brujula-cripto/types';
+import { useTranslations } from 'next-intl';
+
 import { ArticleList } from '@/components/features/blog/ArticleList';
 import { Card } from '@/components/ui/Card';
-import { IArticle } from '@brujula-cripto/types';
-import { useTranslations } from 'next-intl';
 
 interface SecurityGuidesProps {
   locale: 'es' | 'en';

@@ -1,9 +1,10 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { createCheckoutSession } from '@/lib/api';
 import { useAuth } from '@/lib/auth/AuthProvider';
-import { useTranslations } from 'next-intl';
 
 interface PricingOption {
   id: string;
@@ -102,7 +103,9 @@ export function PricingTier({
   };
 
   const calculateSavings = (option: PricingOption): number => {
-    if (option.id === 'free') return 0;
+    if (option.id === 'free') {
+      return 0;
+    }
     const pricePerHour = option.price / (option.creditsInSeconds / 3600);
     const basePrice = 9.99; // Precio por hora del plan básico
     return Math.round(((basePrice - pricePerHour) / basePrice) * 100);

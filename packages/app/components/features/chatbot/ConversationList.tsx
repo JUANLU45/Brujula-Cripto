@@ -1,10 +1,12 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { useState } from 'react';
+
 import { type IChatConversation } from '@brujula-cripto/types';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
 
 // SVG Inline Icons (NO @heroicons)
 const TrashIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
@@ -113,10 +115,18 @@ export default function ConversationList({
     const now = new Date();
     const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
 
-    if (diffInMinutes < 1) return t('now');
-    if (diffInMinutes < 60) return `${diffInMinutes}m`;
-    if (diffInMinutes < 1440) return `${Math.floor(diffInMinutes / 60)}h`;
-    if (diffInMinutes < 10080) return `${Math.floor(diffInMinutes / 1440)}d`;
+    if (diffInMinutes < 1) {
+      return t('now');
+    }
+    if (diffInMinutes < 60) {
+      return `${diffInMinutes}m`;
+    }
+    if (diffInMinutes < 1440) {
+      return `${Math.floor(diffInMinutes / 60)}h`;
+    }
+    if (diffInMinutes < 10080) {
+      return `${Math.floor(diffInMinutes / 1440)}d`;
+    }
 
     return date.toLocaleDateString('es-ES', {
       day: '2-digit',
@@ -126,11 +136,13 @@ export default function ConversationList({
 
   const getConversationPreview = (conversation: IChatConversation) => {
     const lastMessage = conversation.messages[conversation.messages.length - 1];
-    if (!lastMessage) return '';
+    if (!lastMessage) {
+      return '';
+    }
 
     // Truncar contenido largo
     const content = lastMessage.content.replace(/[*#`]/g, '').trim();
-    return content.length > 60 ? content.substring(0, 60) + '...' : content;
+    return content.length > 60 ? `${content.substring(0, 60)}...` : content;
   };
 
   const handleDelete = (conversationId: string) => {
@@ -325,8 +337,12 @@ function ConversationCard({
               onChange={(e) => onEditTitleChange(e.target.value)}
               className="flex-1 rounded border border-gray-300 bg-white px-2 py-1 text-sm dark:border-gray-600 dark:bg-gray-800"
               onKeyDown={(e) => {
-                if (e.key === 'Enter') onSaveEdit();
-                if (e.key === 'Escape') onCancelEdit();
+                if (e.key === 'Enter') {
+                  onSaveEdit();
+                }
+                if (e.key === 'Escape') {
+                  onCancelEdit();
+                }
               }}
               placeholder={t('renamePlaceholder')}
               title={t('renameTooltip')}

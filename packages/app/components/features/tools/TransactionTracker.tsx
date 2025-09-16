@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
+
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { useAuth } from '@/lib/auth/AuthProvider';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 
 interface TransactionResult {
   hash: string;
@@ -111,7 +113,9 @@ export function TransactionTracker({ maxRetries = 3, retryDelay = 1000 }: Transa
   };
 
   const formatTimestamp = (timestamp?: number): string => {
-    if (!timestamp) return t('unknown');
+    if (!timestamp) {
+      return t('unknown');
+    }
     return new Date(timestamp).toLocaleString();
   };
 

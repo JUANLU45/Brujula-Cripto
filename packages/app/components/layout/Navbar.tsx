@@ -1,12 +1,15 @@
 'use client';
 
-import { cn } from '@/lib/utils';
-import { useLocale, useTranslations } from 'next-intl';
-import { useTheme } from 'next-themes';
+import * as React from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import * as React from 'react';
+
+import { useLocale, useTranslations } from 'next-intl';
+import { useTheme } from 'next-themes';
+
+import { cn } from '@/lib/utils';
 
 // Iconos SVG inline para evitar dependencias externas
 const ChevronDownIcon = ({ className }: { className?: string }) => (

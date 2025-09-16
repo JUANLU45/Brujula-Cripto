@@ -4,7 +4,8 @@
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": ["packages/*/tsconfig.json"],
+    "projectService": true,
+    "tsconfigRootDir": "C:\\BRUJULA CRIPTO",
     "ecmaFeatures": {
       "jsx": true
     }

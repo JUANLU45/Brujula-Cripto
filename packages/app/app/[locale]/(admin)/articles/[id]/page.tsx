@@ -1,11 +1,14 @@
 'use client';
 
+import { useEffect, useState, use } from 'react';
+
+import { useRouter } from 'next/navigation';
+
+import type { IArticle } from '@brujula-cripto/types';
+import { useTranslations } from 'next-intl';
+
 import { ArticleEditor } from '@/components/features/admin/ArticleEditor';
 import { Spinner } from '@/components/ui/Spinner';
-import { IArticle } from '@brujula-cripto/types';
-import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState, use } from 'react';
 
 interface ArticleEditorPageProps {
   params: Promise<{
@@ -61,7 +64,9 @@ export default function ArticleEditorPage(props: ArticleEditorPageProps) {
     // Get Firebase auth token
     const { auth } = await import('@/lib/firebase');
     const user = auth.currentUser;
-    if (!user) throw new Error('No autenticado');
+    if (!user) {
+      throw new Error('No autenticado');
+    }
     return await user.getIdToken();
   };
 

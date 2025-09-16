@@ -1,14 +1,17 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+import type { IArticle } from '@brujula-cripto/types';
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Spinner } from '@/components/ui/Spinner';
 import { auth } from '@/lib/firebase';
-import { IArticle } from '@brujula-cripto/types';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 interface DashboardStats {
   totalArticles: number;
@@ -57,7 +60,9 @@ export default function AdminDashboardPage() {
   const getAuthToken = async () => {
     // Get Firebase auth token
     const user = auth.currentUser;
-    if (!user) throw new Error(t('errors.notAuthenticated'));
+    if (!user) {
+      throw new Error(t('errors.notAuthenticated'));
+    }
     return await user.getIdToken();
   };
 

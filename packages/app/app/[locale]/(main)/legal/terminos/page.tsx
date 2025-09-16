@@ -1,8 +1,10 @@
+import Link from 'next/link';
+
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+
 import { Button } from '@/components/ui/Button';
 import { generateSEOMetadata } from '@/lib/seo';
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
 
 interface TerminosPageProps {
   params: Promise<{

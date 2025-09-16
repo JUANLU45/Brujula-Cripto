@@ -1,13 +1,16 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
+import Image from 'next/image';
+
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Spinner } from '@/components/ui/Spinner';
 import { auth } from '@/lib/firebase';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 interface HomepageContent {
   bannerImageUrl: string;
@@ -69,18 +72,24 @@ export default function AdminHomepagePage() {
 
   const getAuthToken = async () => {
     const user = auth.currentUser;
-    if (!user) throw new Error('No autenticado');
+    if (!user) {
+      throw new Error('No autenticado');
+    }
     return await user.getIdToken();
   };
 
   const handleInputChange = (field: keyof HomepageContent, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    if (success) setSuccess(null);
+    if (success) {
+      setSuccess(null);
+    }
   };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) return;
+    if (!file) {
+      return;
+    }
 
     try {
       setUploading(true);

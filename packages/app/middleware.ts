@@ -1,5 +1,6 @@
+import type { NextRequest } from 'next/server';
+
 import createMiddleware from 'next-intl/middleware';
-import { NextRequest } from 'next/server';
 
 // Configuración para next-intl
 const intlMiddleware = createMiddleware({

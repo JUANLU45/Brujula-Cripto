@@ -1,6 +1,7 @@
-import { PasswordResetForm } from '@/components/features/auth/PasswordResetForm';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+
+import { PasswordResetForm } from '@/components/features/auth/PasswordResetForm';
 
 interface PageProps {
   params: Promise<{ locale: 'es' | 'en' }>;

@@ -1,9 +1,10 @@
+import { CheckCircle2, ChevronRight, Shield, TrendingUp, Users } from 'lucide-react';
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+
 import { SignUpForm } from '@/components/features/auth/SignUpForm';
 import { Card } from '@/components/ui/Card';
 import { generateSEOMetadata } from '@/lib/seo';
-import { CheckCircle2, ChevronRight, Shield, TrendingUp, Users } from 'lucide-react';
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 
 interface PageProps {
   params: Promise<{ locale: 'es' | 'en' }>;

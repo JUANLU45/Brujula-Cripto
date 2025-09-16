@@ -1,5 +1,10 @@
 'use client';
 
+import { useCallback, useEffect, useState } from 'react';
+
+import type { IChatConversation, IChatMessage, IUser } from '@brujula-cripto/types';
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import {
   createChatConversation,
@@ -8,9 +13,7 @@ import {
   sendChatMessage,
   updateChatConversation,
 } from '@/lib/api';
-import { IChatConversation, IChatMessage, IUser } from '@brujula-cripto/types';
-import { useTranslations } from 'next-intl';
-import { useCallback, useEffect, useState } from 'react';
+
 import { ChatbotUI } from './ChatbotUI';
 import ConversationList from './ConversationList';
 
@@ -99,27 +102,30 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
 
   // Badge de usuario con información avanzada
   const getUserBadge = () => {
-    if (isAdmin)
+    if (isAdmin) {
       return {
         text: t('userLevel.admin') || 'Admin',
         icon: <ShieldIcon />,
         color: 'bg-red-600',
         credits: tCredits('unlimited') || 'Ilimitado',
       };
-    if (isPremium)
+    }
+    if (isPremium) {
       return {
         text: t('userLevel.premium') || 'Premium',
         icon: <CrownIcon />,
         color: 'bg-amber-600',
         credits: formattedCredits,
       };
-    if (isRegistered)
+    }
+    if (isRegistered) {
       return {
         text: t('userLevel.free') || 'Free',
         icon: <UserIcon />,
         color: 'bg-gray-600',
         credits: formattedCredits,
       };
+    }
     return {
       text: t('userLevel.guest') || 'Guest',
       icon: <UserIcon />,
@@ -150,7 +156,9 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
   }, [activeConversationId, conversationsData]);
 
   const loadConversations = useCallback(async () => {
-    if (!user) return;
+    if (!user) {
+      return;
+    }
 
     setIsLoading(true);
     setError(null);
@@ -177,7 +185,9 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
         return;
       }
 
-      if (!user) return;
+      if (!user) {
+        return;
+      }
 
       if (isRegistered) {
         setMessageCount((prev) => prev + 1);
@@ -276,7 +286,9 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
   );
 
   const handleNewConversation = useCallback(async () => {
-    if (!user) return;
+    if (!user) {
+      return;
+    }
 
     try {
       const newConversation: Omit<IChatConversation, 'id' | 'createdAt' | 'updatedAt'> = {
@@ -305,7 +317,9 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
   const handleToggleFavorite = useCallback(
     async (conversationId: string) => {
       const conversation = conversationsData.find((conv) => conv.id === conversationId);
-      if (!conversation) return;
+      if (!conversation) {
+        return;
+      }
 
       try {
         const updatedConversation = {
@@ -334,7 +348,9 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
   const handleRenameConversation = useCallback(
     async (conversationId: string, newTitle: string) => {
       const conversation = conversationsData.find((conv) => conv.id === conversationId);
-      if (!conversation) return;
+      if (!conversation) {
+        return;
+      }
 
       try {
         const updatedConversation = {
@@ -360,7 +376,9 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
 
   // Modal de Upselling
   const UpsellModal = () => {
-    if (!showUpsellModal) return null;
+    if (!showUpsellModal) {
+      return null;
+    }
 
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">

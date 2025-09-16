@@ -1,7 +1,8 @@
+import type { ReactNode } from 'react';
+
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { AuthProvider } from '@/lib/auth/AuthProvider';
-import { ReactNode } from 'react';
 
 interface MainLayoutProps {
   children: ReactNode;

@@ -1,10 +1,11 @@
 'use client';
 
-import { auth, db } from '@/lib/firebase';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+
 import type { IUser } from '@brujula-cripto/types';
+import type { User } from 'firebase/auth';
 import {
   GoogleAuthProvider,
-  User,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   sendPasswordResetEmail,
@@ -14,7 +15,8 @@ import {
 } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useTranslations } from 'next-intl';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+
+import { auth, db } from '@/lib/firebase';
 
 interface AuthContextType {
   user: User | null;

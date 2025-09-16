@@ -1,8 +1,10 @@
-import { ArticlePage } from '@/components/features/blog/ArticlePage';
-import { IArticle } from '@brujula-cripto/types';
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+
+import type { IArticle } from '@brujula-cripto/types';
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+
+import { ArticlePage } from '@/components/features/blog/ArticlePage';
 
 interface ArticlePageProps {
   params: Promise<{

@@ -1,12 +1,14 @@
 'use client';
 
+import { useState } from 'react';
+
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { createStripePortalSession } from '@/lib/api';
 import { useAuth } from '@/lib/auth/AuthProvider';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 
 // Iconos SVG inline para evitar dependencias externas - CUMPLE DOCUMENTACIÓN NAVBAR.TSX
 const ClockIcon = ({ className }: { className?: string }) => (

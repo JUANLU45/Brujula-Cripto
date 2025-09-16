@@ -1,11 +1,13 @@
 'use client';
 
+import { useState } from 'react';
+
+import type { IArticle } from '@brujula-cripto/types';
+import { useTranslations } from 'next-intl';
+
 import { ArticleList } from '@/components/features/blog/ArticleList';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { IArticle } from '@brujula-cripto/types';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 
 interface BlogPageProps {
   locale: 'es' | 'en';

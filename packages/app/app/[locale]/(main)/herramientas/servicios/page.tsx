@@ -1,8 +1,9 @@
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+
 import { ServiceDirectory } from '@/components/features/tools/ServiceDirectory';
 import { db } from '@/lib/firebase';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 
 interface ServiciosPageProps {
   params: Promise<{ locale: 'es' | 'en' }>;

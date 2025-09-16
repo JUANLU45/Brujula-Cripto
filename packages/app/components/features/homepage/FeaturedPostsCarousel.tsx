@@ -1,10 +1,13 @@
 'use client';
 
-import { ArticleCard } from '@/components/features/blog/ArticleCard';
+import { useEffect, useState } from 'react';
+
+import { usePathname } from 'next/navigation';
+
 import type { IArticle } from '@brujula-cripto/types';
 import { useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+
+import { ArticleCard } from '@/components/features/blog/ArticleCard';
 
 interface FeaturedPostsCarouselProps {
   articles?: IArticle[];
@@ -22,7 +25,7 @@ export function FeaturedPostsCarousel({ articles = [] }: FeaturedPostsCarouselPr
     .slice(0, 5);
 
   // Determinar locale actual desde la URL
-  const currentLocale = (pathname.startsWith('/en') ? 'en' : 'es') as 'es' | 'en';
+  const currentLocale = pathname.startsWith('/en') ? 'en' : 'es';
 
   // Responsive: ajustar número de artículos visibles
   useEffect(() => {
