@@ -18,7 +18,6 @@ export function SecurityGuides({
   className = '',
 }: SecurityGuidesProps): JSX.Element {
   const t = useTranslations('navigation');
-  const tCommon = useTranslations('common');
 
   // Filtrar artículos por categoría "seguridad"
   const securityArticles = articles.filter(
