@@ -19,7 +19,14 @@
     "node": true,
     "es2021": true
   },
-  "plugins": ["@typescript-eslint", "react", "jsx-a11y", "import", "prettier"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "jsx-a11y",
+    "import",
+    "prettier",
+    "@next/eslint-plugin-next"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",

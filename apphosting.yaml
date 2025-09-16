@@ -27,58 +27,46 @@ runConfig:
   cpu: 1
   memoryMiB: 512
 
-# Variables de entorno (formato oficial)
+# Variables de entorno referenciando secretos de Cloud Secret Manager (seguro para versionar)
 env:
-  - variable: FIREBASE_CONFIG
-    value: '{"databaseURL":"","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}'
-    availability:
-      - BUILD
-      - RUNTIME
-
-  - variable: FIREBASE_WEBAPP_CONFIG
-    value: '{"apiKey":"AIzaSyDzJaHoJ4AuNn28nH4v0gZGb4wRD3ZlEMw","appId":"1:442091888028:web:3d32e54527f7b784797c59","authDomain":"brujula-cripto.firebaseapp.com","databaseURL":"","messagingSenderId":"442091888028","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}'
-    availability:
-      - BUILD
-      - RUNTIME
-
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
-    value: AIzaSyDzJaHoJ4AuNn28nH4v0gZGb4wRD3ZlEMw
+    secret: NEXT_PUBLIC_FIREBASE_API_KEY
     availability:
       - BUILD
       - RUNTIME
 
   - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-    value: brujula-cripto.firebaseapp.com
+    secret: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
     availability:
       - BUILD
       - RUNTIME
 
   - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
-    value: brujula-cripto
+    secret: NEXT_PUBLIC_FIREBASE_PROJECT_ID
     availability:
       - BUILD
       - RUNTIME
 
   - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-    value: brujula-cripto.firebasestorage.app
+    secret: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
     availability:
       - BUILD
       - RUNTIME
 
   - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-    value: '442091888028'
+    secret: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
     availability:
       - BUILD
       - RUNTIME
 
   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
-    value: 1:442091888028:web:3d32e54527f7b784797c59
+    secret: NEXT_PUBLIC_FIREBASE_APP_ID
     availability:
       - BUILD
       - RUNTIME
 
-  - variable: NODE_ENV
-    value: production
+  - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    secret: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
     availability:
       - BUILD
       - RUNTIME

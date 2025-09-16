@@ -1,16 +1,6 @@
-'use client';
-
 import AdminSidebar from '@/components/layout/AdminSidebar';
-import { useTranslations } from 'next-intl';
 
-interface AdminLayoutProps {
-  children: React.ReactNode;
-  params: { locale: string };
-}
-
-export default function AdminLayout({ children, params }: AdminLayoutProps) {
-  const t = useTranslations('admin.layout');
-
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="flex">
