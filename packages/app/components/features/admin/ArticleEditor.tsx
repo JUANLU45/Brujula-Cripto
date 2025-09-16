@@ -306,7 +306,10 @@ export function ArticleEditor({
     [activeTab.language, editorEs, editorEn, t],
   );
 
-  const generateWithAI = async (language: 'es' | 'en', field: 'title' | 'excerpt' | 'content') => {
+  const generateWithAI = async (
+    language: 'es' | 'en',
+    field: 'title' | 'excerpt' | 'content',
+  ): Promise<void> => {
     setLoading(true);
     setError(null);
 
@@ -348,7 +351,7 @@ export function ArticleEditor({
     }
   };
 
-  const handleSave = async (publishNow = false) => {
+  const handleSave = async (publishNow = false): Promise<void> => {
     setSaving(true);
     setError(null);
 

@@ -2,6 +2,7 @@
 import CompetitorComparison from '@/components/features/pricing/CompetitorComparison';
 import PricingPage from '@/components/features/pricing/PricingPage';
 import { generateSEOMetadata } from '@/lib/seo';
+import { Metadata } from 'next';
 
 interface SuscripcionPageProps {
   params: Promise<{
@@ -9,7 +10,7 @@ interface SuscripcionPageProps {
   }>;
 }
 
-export async function generateMetadata(props: SuscripcionPageProps) {
+export async function generateMetadata(props: SuscripcionPageProps): Promise<Metadata> {
   const params = await props.params;
   return generateSEOMetadata({
     locale: params.locale,
@@ -20,7 +21,7 @@ export async function generateMetadata(props: SuscripcionPageProps) {
   });
 }
 
-export default async function SuscripcionPage({ params }: SuscripcionPageProps) {
+export default function SuscripcionPage({ params: _params }: SuscripcionPageProps): JSX.Element {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
       {/* Sección Principal PricingPage.tsx */}

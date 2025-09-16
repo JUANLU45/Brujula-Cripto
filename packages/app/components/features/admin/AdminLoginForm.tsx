@@ -18,7 +18,10 @@ interface AdminLoginFormProps {
   redirectTo?: string;
 }
 
-export function AdminLoginForm({ onSuccess, redirectTo = '/admin' }: AdminLoginFormProps) {
+export function AdminLoginForm({
+  onSuccess,
+  redirectTo = '/admin',
+}: AdminLoginFormProps): JSX.Element {
   const t = useTranslations('admin.login');
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -28,7 +31,7 @@ export function AdminLoginForm({ onSuccess, redirectTo = '/admin' }: AdminLoginF
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
@@ -37,7 +40,7 @@ export function AdminLoginForm({ onSuccess, redirectTo = '/admin' }: AdminLoginF
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setLoading(true);
     setError(null);
