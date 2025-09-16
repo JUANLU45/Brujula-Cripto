@@ -22,7 +22,12 @@ interface BlogPageProps {
   className?: string;
 }
 
-export function BlogPage({ locale, articles = [], bannerConfig, className = '' }: BlogPageProps) {
+export function BlogPage({
+  locale,
+  articles = [],
+  bannerConfig,
+  className = '',
+}: BlogPageProps): JSX.Element {
   const t = useTranslations('blog');
   const tCommon = useTranslations('common');
   const [bannerImage, setBannerImage] = useState(
@@ -37,7 +42,7 @@ export function BlogPage({ locale, articles = [], bannerConfig, className = '' }
     isEditable: bannerConfig?.isEditable || false,
   };
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();

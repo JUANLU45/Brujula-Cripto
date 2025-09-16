@@ -34,7 +34,7 @@ export function ArticleCard({
   showInteractions = true,
   compact = false,
   className = '',
-}: ArticleCardProps) {
+}: ArticleCardProps): JSX.Element {
   const t = useTranslations('blog.card');
   const router = useRouter();
   const pathname = usePathname();
@@ -45,11 +45,11 @@ export function ArticleCard({
   const content = article[locale];
   const articleUrl = `${pathname.includes('/en') ? '/en' : ''}/blog/${article.slug}`;
 
-  const handleTagClick = (tag: string) => {
+  const handleTagClick = (tag: string): void => {
     router.push(`${pathname.includes('/en') ? '/en' : ''}/blog?tag=${encodeURIComponent(tag)}`);
   };
 
-  const handleShare = async () => {
+  const handleShare = async (): Promise<void> => {
     if (!showSharing) {
       return;
     }
@@ -79,7 +79,7 @@ export function ArticleCard({
     }
   };
 
-  const handleLike = async () => {
+  const handleLike = async (): Promise<void> => {
     if (!showInteractions) {
       return;
     }
@@ -101,7 +101,7 @@ export function ArticleCard({
     }
   };
 
-  const formatDate = (date: Date) => {
+  const formatDate = (date: Date): string => {
     return new Intl.DateTimeFormat(locale, {
       year: 'numeric',
       month: 'long',

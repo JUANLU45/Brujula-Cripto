@@ -43,7 +43,7 @@ export function ArticleList({
   featuredOnly = false,
   compact = false,
   className = '',
-}: ArticleListProps) {
+}: ArticleListProps): JSX.Element {
   const t = useTranslations('blog.list');
   const searchParams = useSearchParams();
 
@@ -68,7 +68,7 @@ export function ArticleList({
 
   // Load articles
   useEffect(() => {
-    const loadArticles = async () => {
+    const loadArticles = async (): Promise<void> => {
       if (initialArticles.length > 0) {
         setArticles(initialArticles);
         return;
@@ -92,7 +92,7 @@ export function ArticleList({
           throw new Error(t('errors.loadFailed'));
         }
 
-        const data = await response.json();
+        const data = (await response.json()) as { articles: IArticle[] };
         setArticles(data.articles || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : t('errors.unknown'));
@@ -101,7 +101,7 @@ export function ArticleList({
       }
     };
 
-    loadArticles();
+    void loadArticles();
   }, [locale, featuredOnly, initialArticles, t]);
 
   // Filter and paginate articles
@@ -152,7 +152,7 @@ export function ArticleList({
     setCurrentPage(currentPageNum);
   }, [articles, filters, page, itemsPerPage, locale]);
 
-  const handleCategoryChange = (category: string) => {
+  const handleCategoryChange = (category: string): void => {
     setSelectedCategory(category);
     // Update URL with new category filter
     const url = new URL(window.location.href);
@@ -165,7 +165,7 @@ export function ArticleList({
     window.history.replaceState({}, '', url.toString());
   };
 
-  const handleRetry = () => {
+  const handleRetry = (): void => {
     setError(null);
     // Trigger reload by updating a dependency
     setLoading(true);
@@ -240,7 +240,7 @@ export function ArticleList({
             <span className="text-muted-foreground text-sm">{t('activeFilters')}:</span>
             {filters.search && (
               <span className="bg-muted text-muted-foreground rounded-full px-2 py-1 text-xs">
-                {t('search')}: "{filters.search}"
+                {t('search')}: &quot;{filters.search}&quot;
               </span>
             )}
             {filters.category && (

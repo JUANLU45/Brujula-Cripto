@@ -12,7 +12,11 @@ interface SecurityGuidesProps {
   className?: string;
 }
 
-export function SecurityGuides({ locale, articles = [], className = '' }: SecurityGuidesProps) {
+export function SecurityGuides({
+  locale,
+  articles = [],
+  className = '',
+}: SecurityGuidesProps): JSX.Element {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
 

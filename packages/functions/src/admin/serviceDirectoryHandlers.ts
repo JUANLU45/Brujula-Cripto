@@ -17,7 +17,7 @@ interface ServiceData {
 /**
  * Verificar si el usuario es administrador
  */
-const verifyAdminUser = async (authUser: any): Promise<void> => {
+const verifyAdminUser = async (authUser: { uid: string } | undefined): Promise<void> => {
   if (!authUser) {
     throw new HttpsError('unauthenticated', 'Usuario no autenticado');
   }
@@ -40,7 +40,14 @@ export const createService = onCall(async (request) => {
   try {
     await verifyAdminUser(request.auth);
 
-    const { name, description, website, logoUrl, specialties, isVerified } = request.data;
+    const { name, description, website, logoUrl, specialties, isVerified } = request.data as {
+      name: string;
+      description: string;
+      website: string;
+      logoUrl?: string;
+      specialties?: string[];
+      isVerified?: boolean;
+    };
 
     // Validación de campos requeridos
     if (!name || !description || !website) {

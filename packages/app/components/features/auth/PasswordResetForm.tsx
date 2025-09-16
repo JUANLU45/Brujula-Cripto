@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 
 import { useAuth } from '@/lib/auth/AuthProvider';
 
-export function PasswordResetForm() {
+export function PasswordResetForm(): JSX.Element {
   const t = useTranslations('auth.passwordReset');
   const { resetPassword } = useAuth();
 
@@ -15,7 +15,7 @@ export function PasswordResetForm() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setLoading(true);
     setError('');

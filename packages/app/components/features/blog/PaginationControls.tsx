@@ -28,7 +28,7 @@ export function PaginationControls({
   showPageNumbers = true,
   maxVisiblePages = 5,
   compact = false,
-}: PaginationControlsProps) {
+}: PaginationControlsProps): JSX.Element {
   const t = useTranslations('pagination');
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -36,19 +36,19 @@ export function PaginationControls({
   const startItem = (currentPage - 1) * itemsPerPage + 1;
   const endItem = Math.min(currentPage * itemsPerPage, totalItems);
 
-  const createPageUrl = (page: number) => {
+  const createPageUrl = (page: number): string => {
     const params = new URLSearchParams(searchParams);
     params.set('page', page.toString());
     return `${baseUrl}?${params.toString()}`;
   };
 
-  const navigateToPage = (page: number) => {
+  const navigateToPage = (page: number): void => {
     if (page >= 1 && page <= totalPages && page !== currentPage) {
       router.push(createPageUrl(page));
     }
   };
 
-  const getVisiblePages = () => {
+  const getVisiblePages = (): number[] => {
     const halfVisible = Math.floor(maxVisiblePages / 2);
     let startPage = Math.max(1, currentPage - halfVisible);
     let endPage = Math.min(totalPages, currentPage + halfVisible);
@@ -67,7 +67,7 @@ export function PaginationControls({
 
   // No mostrar paginación si solo hay una página
   if (totalPages <= 1) {
-    return null;
+    return <></>;
   }
 
   const visiblePages = getVisiblePages();

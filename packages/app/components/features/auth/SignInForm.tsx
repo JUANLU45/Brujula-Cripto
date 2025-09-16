@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { useAuth } from '@/lib/auth/AuthProvider';
 
-export function SignInForm() {
+export function SignInForm(): JSX.Element {
   const t = useTranslations('auth.signin');
   const { signInWithEmail, signInWithGoogle } = useAuth();
   const router = useRouter();
@@ -20,7 +20,7 @@ export function SignInForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -35,7 +35,7 @@ export function SignInForm() {
     }
   };
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignIn = async (): Promise<void> => {
     setLoading(true);
     setError('');
 

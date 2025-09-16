@@ -21,11 +21,14 @@ export const createArticle = onCall(async (request) => {
     throw new Error('Sin permisos de administrador');
   }
 
-  const articleData: Partial<IArticle> = request.data;
+  const articleData = request.data as Partial<IArticle>;
 
   try {
     // Verificar slug único
-    const existingDoc = await db.collection('articles').doc(articleData.slug!).get();
+    if (!articleData.slug) {
+      throw new Error('El slug es requerido');
+    }
+    const existingDoc = await db.collection('articles').doc(articleData.slug).get();
     if (existingDoc.exists) {
       throw new Error('El slug ya existe');
     }
@@ -40,7 +43,7 @@ export const createArticle = onCall(async (request) => {
     };
 
     // Guardar en Firestore
-    await db.collection('articles').doc(articleData.slug!).set(newArticle);
+    await db.collection('articles').doc(articleData.slug).set(newArticle);
 
     return { success: true, slug: articleData.slug };
   } catch (error) {
@@ -56,7 +59,7 @@ export const updateArticle = onCall(async (request) => {
     throw new Error('Sin permisos de administrador');
   }
 
-  const { slug, updateData } = request.data;
+  const { slug, updateData } = request.data as { slug: string; updateData: Partial<IArticle> };
 
   try {
     const articleRef = db.collection('articles').doc(slug);
@@ -88,7 +91,7 @@ export const deleteArticle = onCall(async (request) => {
     throw new Error('Sin permisos de administrador');
   }
 
-  const { slug } = request.data;
+  const { slug } = request.data as { slug: string };
 
   try {
     await db.collection('articles').doc(slug).delete();
@@ -106,7 +109,7 @@ export const publishArticle = onCall(async (request) => {
     throw new Error('Sin permisos de administrador');
   }
 
-  const { slug } = request.data;
+  const { slug } = request.data as { slug: string };
 
   try {
     const articleRef = db.collection('articles').doc(slug);
@@ -135,13 +138,17 @@ export const listArticles = onCall(async (request) => {
     throw new Error('Sin permisos de administrador');
   }
 
-  const { status, limit = 50 } = request.data || {};
+  const { status, limit = 50 } = (request.data as { status?: string; limit?: number }) || {};
 
   try {
     let query = db.collection('articles').orderBy('updatedAt', 'desc');
 
     if (status) {
-      query = query.where('status', '==', status) as any;
+      query = query.where(
+        'status',
+        '==',
+        status,
+      ) as FirebaseFirestore.Query<FirebaseFirestore.DocumentData>;
     }
 
     const snapshot = await query.limit(limit).get();

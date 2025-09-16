@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 
 import { useAuth } from '@/lib/auth/AuthProvider';
 
-export function SignUpForm() {
+export function SignUpForm(): JSX.Element {
   const t = useTranslations('auth.signup');
   const { signUpWithEmail, signInWithGoogle } = useAuth();
   const router = useRouter();
@@ -20,7 +20,7 @@ export function SignUpForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -47,7 +47,7 @@ export function SignUpForm() {
     }
   };
 
-  const handleGoogleSignUp = async () => {
+  const handleGoogleSignUp = async (): Promise<void> => {
     setLoading(true);
     setError('');
 

@@ -9,19 +9,19 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 
 // Iconos SVG inline para evitar dependencias externas - CUMPLE DOCUMENTACIÓN NAVBAR.TSX
-const ChevronLeftIcon = ({ className }: { className?: string }) => (
+const ChevronLeftIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
   </svg>
 );
 
-const ChevronRightIcon = ({ className }: { className?: string }) => (
+const ChevronRightIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
   </svg>
 );
 
-const ShareIcon = ({ className }: { className?: string }) => (
+const ShareIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -32,7 +32,7 @@ const ShareIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const HeartIcon = ({ className }: { className?: string }) => (
+const HeartIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -43,7 +43,7 @@ const HeartIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const HeartSolidIcon = ({ className }: { className?: string }) => (
+const HeartSolidIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
     <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
   </svg>
@@ -65,7 +65,7 @@ export function ArticlePage({
   nextArticle,
   isSubscribed = false,
   className = '',
-}: ArticlePageProps) {
+}: ArticlePageProps): JSX.Element {
   const t = useTranslations('blog');
   const tCommon = useTranslations('common');
 
@@ -74,7 +74,7 @@ export function ArticlePage({
   const [likesCount, setLikesCount] = useState(0);
 
   // Web Share API implementation (from ArticleCard.tsx)
-  const handleShare = async () => {
+  const handleShare = async (): Promise<void> => {
     setIsSharing(true);
     try {
       if (navigator.share) {
@@ -102,7 +102,7 @@ export function ArticlePage({
     }
   };
 
-  const handleLike = async () => {
+  const handleLike = async (): Promise<void> => {
     if (!isSubscribed) {
       return;
     }
@@ -131,7 +131,7 @@ export function ArticlePage({
     }
   };
 
-  const formatDate = (date: string) => {
+  const formatDate = (date: string): string => {
     return new Intl.DateTimeFormat(locale, {
       year: 'numeric',
       month: 'long',
@@ -233,7 +233,7 @@ export function ArticlePage({
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={handleShare}
+                      onClick={() => void handleShare()}
                       disabled={isSharing}
                       className="w-full justify-start"
                     >
@@ -245,7 +245,7 @@ export function ArticlePage({
                     <Button
                       variant={isLiked ? 'default' : 'outline'}
                       size="sm"
-                      onClick={handleLike}
+                      onClick={() => void handleLike()}
                       disabled={!isSubscribed}
                       className="w-full justify-start"
                       title={!isSubscribed ? t('article.subscriberOnlyTooltip') : ''}

@@ -1,377 +1,508 @@
 
 
-C:\BRUJULA CRIPTO\packages\app\components\layout\AdminSidebar.tsx      
-   14:63  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-   30:62  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-   46:58  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-   62:58  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-   78:59  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-   94:60  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-  160:55  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-  168:27  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-  170:5   error  Unexpected console statement     no-console
+C:\BRUJULA CRIPTO\packages\app\components\features\blog\SecurityGuides.tsx
+  15:8  error  Missing return type on function                         
+                            @typescript-eslint/explicit-function-return-type
+  15:8  error  Missing return type on function                         
+                            @typescript-eslint/explicit-module-boundary-types
+  17:9  error  'tCommon' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotLayout.tsx
+   21:70  error    Missing return type on function                     
+                                                                       
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   32:71  error    Missing return type on function                     
+                                                                       
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   38:70  error    Missing return type on function                     
+                                                                       
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   49:71  error    Missing return type on function                     
+                                                                       
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   55:72  error    Missing return type on function                     
+                                                                       
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   67:8   error    Missing return type on function                     
+                                                                       
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   67:8   warning  Function 'ChatbotLayout' has a complexity of 25. Maximum allowed is 10                                                     
+                                                                       
+ complexity
+   67:8   error    Missing return type on function                     
+                                                                       
+                                                                       
+ @typescript-eslint/explicit-module-boundary-types
+  104:27  error    Missing return type on function                     
+                                                                       
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+  142:7   error    Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator                                
+ @typescript-eslint/no-floating-promises
+  144:6   warning  React Hook useEffect has a missing dependency: 'loadConversations'. Either include it or remove the dependency array                                                                              
+ react-hooks/exhaustive-deps
+  182:5   warning  Async arrow function has a complexity of 12. Maximum allowed is 10                                                         
+                                                                       
+ complexity
+  213:45  error    Forbidden non-null assertion                        
+                                                                       
+                                                                       
+ @typescript-eslint/no-non-null-assertion
+  241:50  error    Forbidden non-null assertion                        
+                                                                       
+                                                                       
+ @typescript-eslint/no-non-null-assertion
+  247:72  error    Forbidden non-null assertion                        
+                                                                       
+                                                                       
+ @typescript-eslint/no-non-null-assertion
+  259:5   warning  React Hook useCallback has an unnecessary dependency: 'conversationsData'. Either exclude it or remove the dependency array                                                                       
+ react-hooks/exhaustive-deps
+  262:61  error    Missing return type on function                     
+                                                                       
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+  304:41  error    Forbidden non-null assertion                        
+                                                                       
+                                                                       
+ @typescript-eslint/no-non-null-assertion
+  361:1   warning  File has too many lines (474). Maximum allowed is 300                                                                      
+                                                                       
+ max-lines
+  378:23  warning  Arrow function has a complexity of 12. Maximum allowed is 10                                                               
+                                                                       
+ complexity
+  378:26  error    Missing return type on function                     
+                                                                       
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+  427:9   error    Visible, non-interactive elements with click handlers must have at least one keyboard listener                             
+                                                                       
+ jsx-a11y/click-events-have-key-events
+  427:9   error    Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element 
+ jsx-a11y/no-static-element-interactions
+  500:36  error    Promise-returning function provided to attribute where a void return was expected                                          
+                                                                       
+ @typescript-eslint/no-misused-promises
+  501:33  error    Promise-returning function provided to attribute where a void return was expected                                          
+                                                                       
+ @typescript-eslint/no-misused-promises
+  502:32  error    Promise-returning function provided to attribute where a void return was expected                                          
+                                                                       
+ @typescript-eslint/no-misused-promises
+  503:36  error    Promise-returning function provided to attribute where a void return was expected                                          
+                                                                       
+ @typescript-eslint/no-misused-promises
+  526:26  error    Forbidden non-null assertion                        
+                                                                       
+                                                                       
+ @typescript-eslint/no-non-null-assertion
+
+C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotUI.tsx
+   13:58  error    Missing return type on function                     
+                                      @typescript-eslint/explicit-function-return-type
+   24:61  error    Missing return type on function                     
+                                      @typescript-eslint/explicit-function-return-type
+   30:58  error    Missing return type on function                     
+                                      @typescript-eslint/explicit-function-return-type
+   42:64  error    Missing return type on function                     
+                                      @typescript-eslint/explicit-function-return-type
+   53:67  error    Missing return type on function                     
+                                      @typescript-eslint/explicit-function-return-type
+   74:8   error    Missing return type on function                     
+                                      @typescript-eslint/explicit-function-return-type
+   74:8   warning  Function 'ChatbotUI' has a complexity of 33. Maximum allowed is 10                        complexity
+   74:8   error    Missing return type on function                     
+                                      @typescript-eslint/explicit-module-boundary-types
+   76:3   error    'conversations' is assigned a value but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  117:51  error    Missing return type on function                     
+                                      @typescript-eslint/explicit-function-return-type
+  149:35  error    Missing return type on function                     
+                                      @typescript-eslint/explicit-function-return-type
+  156:37  error    Missing return type on function                     
+                                      @typescript-eslint/explicit-function-return-type
+  168:45  error    Missing return type on function                     
+                                      @typescript-eslint/explicit-function-return-type
+  327:26  error    Promise-returning function provided to attribute where a void return was expected         @typescript-eslint/no-misused-promises
+  339:1   warning  File has too many lines (367). Maximum allowed is 300                                     max-lines
+
+C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ConversationList.tsx
+   12:71  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   23:73  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   34:70  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   40:71  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   57:4   error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   73:70  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   98:16  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+   98:16  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-module-boundary-types
+  113:43  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+  137:68  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+  148:49  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+  159:61  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+  166:29  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+  174:31  error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+  209:17  error    Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby 
+ jsx-a11y/accessible-emoji
+  241:19  error    Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby 
+ jsx-a11y/accessible-emoji
+  301:6   error    Unexpected any. Specify a different type            
+                                                                       
+ @typescript-eslint/no-explicit-any
+  304:1   error    Missing return type on function                     
+                                                                       
+ @typescript-eslint/explicit-function-return-type
+  304:1   warning  Function 'ConversationCard' has a complexity of 13. Maximum allowed is 10                                                  
+ complexity
+  337:1   warning  File has too many lines (417). Maximum allowed is 300                                                                      
+ max-lines
+  347:28  error    Unsafe assignment of an `any` value                 
+                                                                       
+ @typescript-eslint/no-unsafe-assignment
+  347:28  error    Unsafe call of a(n) `any` typed value               
+                                                                       
+ @typescript-eslint/no-unsafe-call
+  348:22  error    Unsafe assignment of an `any` value                 
+                                                                       
+ @typescript-eslint/no-unsafe-assignment
+  348:22  error    Unsafe call of a(n) `any` typed value               
+                                                                       
+ @typescript-eslint/no-unsafe-call
+  349:15  warning  The autoFocus prop should not be used, as it can reduce usability and accessibility for users                              
+ jsx-a11y/no-autofocus
+  372:41  error    Unsafe call of a(n) `any` typed value               
+                                                                       
+ @typescript-eslint/no-unsafe-call
+  416:24  error    Unsafe assignment of an `any` value                 
+                                                                       
+ @typescript-eslint/no-unsafe-assignment
+  416:50  error    Unsafe call of a(n) `any` typed value               
+                                                                       
+ @typescript-eslint/no-unsafe-call
+  416:75  error    Unsafe call of a(n) `any` typed value               
+                                                                       
+ @typescript-eslint/no-unsafe-call
+  431:22  error    Unsafe assignment of an `any` value                 
+                                                                       
+ @typescript-eslint/no-unsafe-assignment
+  431:22  error    Unsafe call of a(n) `any` typed value               
+                                                                       
+ @typescript-eslint/no-unsafe-call
+  449:22  error    Unsafe assignment of an `any` value                 
+                                                                       
+ @typescript-eslint/no-unsafe-assignment
+  449:58  error    Unsafe call of a(n) `any` typed value               
+                                                                       
+ @typescript-eslint/no-unsafe-call
+  449:79  error    Unsafe call of a(n) `any` typed value               
+                                                                       
+ @typescript-eslint/no-unsafe-call
+
+C:\BRUJULA CRIPTO\packages\app\components\features\contact\ContactFAQ.tsx
+   10:65  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
+   22:63  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
+   45:8   error  Missing return type on function  @typescript-eslint/explicit-function-return-type
+   45:8   error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
+  148:39  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
+
+C:\BRUJULA CRIPTO\packages\app\components\features\contact\ContactForm.tsx
+  28:8   error    Missing return type on function                      
+                              @typescript-eslint/explicit-function-return-type
+  28:8   warning  Function 'ContactForm' has a complexity of 11. Maximum allowed is 10               complexity
+  28:8   error    Missing return type on function                      
+                              @typescript-eslint/explicit-module-boundary-types
+  45:50  error    Missing return type on function                      
+                              @typescript-eslint/explicit-function-return-type
+  95:22  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises   
+
+C:\BRUJULA CRIPTO\packages\app\components\features\dashboard\UserDashboard.tsx
+   14:59  error    Missing return type on function                     
+                               @typescript-eslint/explicit-function-return-type
+   30:64  error    Missing return type on function                     
+                               @typescript-eslint/explicit-function-return-type
+   46:58  error    Missing return type on function                     
+                               @typescript-eslint/explicit-function-return-type
+   77:8   error    Missing return type on function                     
+                               @typescript-eslint/explicit-function-return-type
+   77:8   warning  Function 'UserDashboard' has a complexity of 13. Maximum allowed is 10             complexity
+   77:8   error    Missing return type on function                     
+                               @typescript-eslint/explicit-module-boundary-types
+  241:33  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises  
+  250:33  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises  
+  349:1   warning  File has too many lines (328). Maximum allowed is 300                              max-lines
+  352:31  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises  
+
+C:\BRUJULA CRIPTO\packages\app\components\features\error\NotFoundPage.tsx
+   11:58  error  Missing return type on function                       
+                              @typescript-eslint/explicit-function-return-type
+   22:60  error  Missing return type on function                       
+                              @typescript-eslint/explicit-function-return-type
+   34:69  error  Missing return type on function                       
+                              @typescript-eslint/explicit-function-return-type
+   99:8   error  Missing return type on function                       
+                              @typescript-eslint/explicit-function-return-type
+   99:8   error  Missing return type on function                       
+                              @typescript-eslint/explicit-module-boundary-types
+  101:9   error  'tCommon' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars        
+  104:27  error  Missing return type on function                       
+                              @typescript-eslint/explicit-function-return-type
+  108:29  error  Missing return type on function                       
+                              @typescript-eslint/explicit-function-return-type
+  112:30  error  Missing return type on function                       
+                              @typescript-eslint/explicit-function-return-type
+
+C:\BRUJULA CRIPTO\packages\app\components\features\homepage\FeaturedPostsCarousel.tsx
+  16:8   error  Missing return type on function  @typescript-eslint/explicit-function-return-type
+  16:8   error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
+  32:29  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
+  44:15  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
+  47:24  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
+  55:24  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
+
+C:\BRUJULA CRIPTO\packages\app\components\features\homepage\FeedbackButton.tsx
+   17:8   error    Missing return type on function                     
+                                                                       
+                                                                       
+                                                                       
+                @typescript-eslint/explicit-function-return-type       
+   17:8   warning  Function 'FeedbackButton' has a complexity of 12. Maximum allowed is 10                                                    
+                                                                       
+                                                                       
+                complexity
+   17:8   error    Missing return type on function                     
+                                                                       
+                                                                       
+                                                                       
+                @typescript-eslint/explicit-module-boundary-types      
+   33:41  error    Missing return type on function                     
+                                                                       
+                                                                       
+                                                                       
+                @typescript-eslint/explicit-function-return-type       
+   64:14  error    'error' is defined but never used                   
+                                                                       
+                                                                       
+                                                                       
+                @typescript-eslint/no-unused-vars
+   71:32  error    Missing return type on function                     
+                                                                       
+                                                                       
+                                                                       
+                @typescript-eslint/explicit-function-return-type       
+   96:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  193:25  error    Promise-returning function provided to attribute where a void return was expected                                          
+                                                                       
+                                                                       
+                @typescript-eslint/no-misused-promises
+
+C:\BRUJULA CRIPTO\packages\app\components\features\payments\CompetitorComparison.tsx
+  322:1  warning  File has too many lines (452). Maximum allowed is 300
+  max-lines
+
+C:\BRUJULA CRIPTO\packages\app\components\features\payments\PricingTier.tsx
+   26:8   error  Missing return type on function                       
+                               @typescript-eslint/explicit-function-return-type
+   26:8   error  Missing return type on function                       
+                               @typescript-eslint/explicit-module-boundary-types
+   32:17  error  'userData' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars       
+  114:51  error  Missing return type on function                       
+                               @typescript-eslint/explicit-function-return-type
+  222:25  error  Promise-returning function provided to attribute where a void return was expected    @typescript-eslint/no-misused-promises  
+
+C:\BRUJULA CRIPTO\packages\app\components\features\payments\UpgradeButton.tsx
+   22:8   error    Missing return type on function                     
+                               @typescript-eslint/explicit-function-return-type
+   22:8   warning  Function 'UpgradeButton' has a complexity of 11. Maximum allowed is 10             complexity
+   22:8   error    Missing return type on function                     
+                               @typescript-eslint/explicit-module-boundary-types
+   39:34  error    Missing return type on function                     
+                               @typescript-eslint/explicit-function-return-type
+   75:29  error    Missing return type on function                     
+                               @typescript-eslint/explicit-function-return-type
+   86:32  error    Missing return type on function                     
+                               @typescript-eslint/explicit-function-return-type
+   97:28  error    Missing return type on function                     
+                               @typescript-eslint/explicit-function-return-type
+  157:17  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises  
+
+C:\BRUJULA CRIPTO\packages\app\components\features\pricing\PricingPage.tsx
+  132:14  error  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\BRUJULA CRIPTO\packages\app\components\features\pricing\UpgradeButton.tsx
+   55:34  warning  Async arrow function has a complexity of 14. Maximum allowed is 10                                                         
+                                                                       
+ complexity
+  115:19  error    This assertion is unnecessary since it does not change the type of the expression                                          
+                                                                       
+ @typescript-eslint/no-unnecessary-type-assertion
+  121:17  error    This assertion is unnecessary since it does not change the type of the expression                                          
+                                                                       
+ @typescript-eslint/no-unnecessary-type-assertion
+  149:9   error    Visible, non-interactive elements with click handlers must have at least one keyboard listener                             
+                                                                       
+ jsx-a11y/click-events-have-key-events
+  149:9   error    Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element 
+ jsx-a11y/no-static-element-interactions
+  255:25  error    Promise-returning function provided to attribute where a void return was expected                                          
+                                                                       
+ @typescript-eslint/no-misused-promises
+
+C:\BRUJULA CRIPTO\packages\app\components\features\recovery\RecoveryWizard.tsx
+  213:21  error  Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby  jsx-a11y/accessible-emoji
+
+C:\BRUJULA CRIPTO\packages\app\components\features\recovery\WasmPasswordEngine.tsx
+   27:1   warning  Function 'WasmPasswordEngine' has a complexity of 12. Maximum allowed is 10  complexity
+  198:14  error    '_error' is defined but never used                  
+                         @typescript-eslint/no-unused-vars
+  341:1   warning  File has too many lines (484). Maximum allowed is 300                        max-lines
+
+C:\BRUJULA CRIPTO\packages\app\components\features\tools\ServiceDirectory.tsx
+  149:27  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\BRUJULA CRIPTO\packages\app\components\features\tools\TransactionTracker.tsx
+   96:17  error  Unsafe assignment of an `any` value                   
+@typescript-eslint/no-unsafe-assignment
+   97:11  error  Unsafe return of a value of type `any[]`              
+@typescript-eslint/no-unsafe-return
+  104:17  error  Unsafe assignment of an `any` value                   
+@typescript-eslint/no-unsafe-assignment
+  105:11  error  Unsafe return of a value of type `any`                
+@typescript-eslint/no-unsafe-return
+  105:30  error  Unsafe member access .transactions on an `any` value  @typescript-eslint/no-unsafe-member-access
 
 C:\BRUJULA CRIPTO\packages\app\components\layout\Footer.tsx
-   14:63  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-   26:65  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-   38:61  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-   50:62  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-   66:19  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-   66:19  error    Missing return type on function                     
-   @typescript-eslint/explicit-module-boundary-types
-   73:26  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-  329:1   warning  File has too many lines (325). Maximum allowed is 300  max-lines
+  329:1  warning  File has too many lines (325). Maximum allowed is 300
+  max-lines
 
 C:\BRUJULA CRIPTO\packages\app\components\layout\Navbar.tsx
-   15:65  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-   27:62  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-   43:57  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-   59:58  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-   75:59  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-   91:59  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-  103:19  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-  103:19  error    Missing return type on function                     
-   @typescript-eslint/explicit-module-boundary-types
-  146:46  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-  152:26  error    Missing return type on function                     
-   @typescript-eslint/explicit-function-return-type
-  332:1   warning  File has too many lines (330). Maximum allowed is 300  max-lines
-
-C:\BRUJULA CRIPTO\packages\app\components\ui\ThemeSwitcher.tsx
-  7:8  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-  7:8  error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
-
-C:\BRUJULA CRIPTO\packages\app\hooks\useSpeechToText.ts
-   47:53  error  Unexpected any. Specify a different type              
-           @typescript-eslint/no-explicit-any
-   48:51  error  Unexpected any. Specify a different type              
-           @typescript-eslint/no-explicit-any
-   49:75  error  Unexpected any. Specify a different type              
-           @typescript-eslint/no-explicit-any
-   50:71  error  Unexpected any. Specify a different type              
-           @typescript-eslint/no-explicit-any
-   57:1   error  Unexpected var, use let or const instead              
-           no-var
-   83:72  error  Unexpected any. Specify a different type              
-           @typescript-eslint/no-explicit-any
-   83:77  error  Unsafe member access .webkitSpeechRecognition on an `any` value  @typescript-eslint/no-unsafe-member-access
-  109:30  error  Missing return type on function                       
-           @typescript-eslint/explicit-function-return-type
-  114:60  error  Missing return type on function                       
-           @typescript-eslint/explicit-function-return-type
-  130:28  error  Missing return type on function                       
-           @typescript-eslint/explicit-function-return-type
-  134:64  error  Missing return type on function                       
-           @typescript-eslint/explicit-function-return-type
-  159:15  error  Missing return type on function                       
-           @typescript-eslint/explicit-function-return-type
-
-C:\BRUJULA CRIPTO\packages\app\i18n\request.ts
-  13:5   error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
-  13:50  error  Unsafe member access .default on an `any` value  @typescript-eslint/no-unsafe-member-access
+  332:1  warning  File has too many lines (330). Maximum allowed is 300
+  max-lines
 
 C:\BRUJULA CRIPTO\packages\app\lib\api.ts
-   37:13  error  Unsafe assignment of an `any` value                   
-                     @typescript-eslint/no-unsafe-assignment
-   42:11  error  Unsafe assignment of an `any` value                   
-                     @typescript-eslint/no-unsafe-assignment
-   42:23  error  Unsafe member access .error on an `any` value         
-                     @typescript-eslint/no-unsafe-member-access        
-   48:9   error  Unsafe assignment of an `any` value                   
-                     @typescript-eslint/no-unsafe-assignment
-   59:3   error  Async method 'getArticles' has no 'await' expression  
-                     require-await
-   63:3   error  Async method 'getArticleById' has no 'await' expression                    require-await
-   67:3   error  Async method 'getArticleBySlug' has no 'await' expression                  require-await
-   71:3   error  Async method 'createArticle' has no 'await' expression
-                     require-await
-   80:3   error  Async method 'updateArticle' has no 'await' expression
-                     require-await
-   87:3   error  Async method 'deleteArticle' has no 'await' expression
-                     require-await
-   88:29  error  void is only valid as a return type or generic type argument               @typescript-eslint/no-invalid-void-type
-   95:3   error  Async method 'getUserProfile' has no 'await' expression                    require-await
-   99:3   error  Async method 'updateUserProfile' has no 'await' expression                 require-await
-  107:3   error  Async method 'createCheckoutSession' has no 'await' expression             require-await
-  115:3   error  Async method 'createStripePortalSession' has no 'await' expression         require-await
-  122:3   error  Async method 'signOut' has no 'await' expression      
-                     require-await
-  123:29  error  void is only valid as a return type or generic type argument               @typescript-eslint/no-invalid-void-type
-  128:3   error  Async method 'deleteUserAccount' has no 'await' expression                 require-await
-  129:29  error  void is only valid as a return type or generic type argument               @typescript-eslint/no-invalid-void-type
-  135:3   error  Async method 'submitContactForm' has no 'await' expression                 require-await
-  136:29  error  void is only valid as a return type or generic type argument               @typescript-eslint/no-invalid-void-type
-  143:3   error  Async method 'setAdminRole' has no 'await' expression 
-                     require-await
-  144:29  error  void is only valid as a return type or generic type argument               @typescript-eslint/no-invalid-void-type
-  153:3   error  Async method 'getChatConversations' has no 'await' expression              require-await
-  158:3   error  Async method 'createChatConversation' has no 'await' expression            require-await
-  168:3   error  Async method 'updateChatConversation' has no 'await' expression            require-await
-  179:3   error  Async method 'deleteChatConversation' has no 'await' expression            require-await
-  180:29  error  void is only valid as a return type or generic type argument               @typescript-eslint/no-invalid-void-type
-  186:3   error  Async method 'sendChatMessage' has no 'await' expression                   require-await
-  200:5   error  'onChunk' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
-  230:48  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  230:48  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  231:31  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  231:31  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  232:44  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  232:44  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  233:83  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  233:83  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  235:71  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  235:71  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  237:43  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  237:43  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  240:27  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  240:27  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  241:37  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  241:37  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  242:45  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  242:45  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  243:56  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  243:56  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  246:62  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  246:62  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  249:40  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  249:40  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  252:3   error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  252:3   error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  253:89  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  253:89  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  255:52  error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  255:52  error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  259:3   error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  259:3   error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
-  264:3   error  Missing return type on function                       
-                     @typescript-eslint/explicit-function-return-type  
-  264:3   error  Missing return type on function                       
-                     @typescript-eslint/explicit-module-boundary-types 
+   60:12  error  Redundant use of `await` on a return value  no-return-await
+   64:12  error  Redundant use of `await` on a return value  no-return-await
+   68:12  error  Redundant use of `await` on a return value  no-return-await
+   74:12  error  Redundant use of `await` on a return value  no-return-await
+   81:12  error  Redundant use of `await` on a return value  no-return-await
+   88:12  error  Redundant use of `await` on a return value  no-return-await
+   96:12  error  Redundant use of `await` on a return value  no-return-await
+  100:12  error  Redundant use of `await` on a return value  no-return-await
+  108:12  error  Redundant use of `await` on a return value  no-return-await
+  116:12  error  Redundant use of `await` on a return value  no-return-await
+  123:12  error  Redundant use of `await` on a return value  no-return-await
+  129:12  error  Redundant use of `await` on a return value  no-return-await
+  136:12  error  Redundant use of `await` on a return value  no-return-await
+  144:12  error  Redundant use of `await` on a return value  no-return-await
+  154:12  error  Redundant use of `await` on a return value  no-return-await
+  161:12  error  Redundant use of `await` on a return value  no-return-await
+  172:12  error  Redundant use of `await` on a return value  no-return-await
+  180:12  error  Redundant use of `await` on a return value  no-return-await
+  190:12  error  Redundant use of `await` on a return value  no-return-await
 
 C:\BRUJULA CRIPTO\packages\app\lib\api\trackUsage.ts
   40:3  error  Unsafe return of a value of type `Promise<any>`  @typescript-eslint/no-unsafe-return
 
 C:\BRUJULA CRIPTO\packages\app\lib\auth\AuthProvider.tsx
-   7:1   error    'firebase/auth' import is duplicated                 
-                                                 no-duplicate-imports  
-  45:27  error    Missing return type on function                      
-                                                 @typescript-eslint/explicit-function-return-type
-  45:27  error    Missing return type on function                      
-                                                 @typescript-eslint/explicit-module-boundary-types
-  63:50  error    Promise returned in function argument where a void return was expected                                @typescript-eslint/no-misused-promises
-  91:15  error    Missing return type on function                      
-                                                 @typescript-eslint/explicit-function-return-type
-  92:6   warning  React Hook useEffect has a missing dependency: 't'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-
-C:\BRUJULA CRIPTO\packages\app\lib\seo.ts
-  89:8  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-  89:8  error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
-
-C:\BRUJULA CRIPTO\packages\app\lib\stripe.ts
-   4:34  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
-  20:15  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
-  21:15  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
-  22:16  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
+  91:50  error    Promise returned in function argument where a void return was expected                                @typescript-eslint/no-misused-promises
+  96:6   warning  React Hook useEffect has a missing dependency: 't'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
 
 C:\BRUJULA CRIPTO\packages\app\middleware.ts
-  41:16  error  Missing return type on function                        
-                            @typescript-eslint/explicit-function-return-type
-  41:16  error  Missing return type on function                        
-                            @typescript-eslint/explicit-module-boundary-types
-  42:21  error  'search' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  2:1  error  'next/server' import is duplicated                       
+                 no-duplicate-imports
+  2:1  error  All imports in the declaration are only used as types. Use `import type`  @typescript-eslint/consistent-type-imports
 
 C:\BRUJULA CRIPTO\packages\functions\src\admin\adminPriceHandlers.ts   
-   17:16  error    Unexpected any. Specify a different type            
-                    @typescript-eslint/no-explicit-any
-   24:42  error    Unexpected any. Specify a different type            
-                    @typescript-eslint/no-explicit-any
-   30:41  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
-   30:50  error    Unsafe member access .uid on an `any` value         
-                    @typescript-eslint/no-unsafe-member-access
-   93:43  warning  Async arrow function has a complexity of 12. Maximum allowed is 10      complexity
-   97:11  error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
-  146:12  error    Forbidden non-null assertion                        
-                    @typescript-eslint/no-non-null-assertion
-  147:9   error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
-  150:15  error    Forbidden non-null assertion                        
-                    @typescript-eslint/no-non-null-assertion
-  153:12  error    Forbidden non-null assertion                        
-                    @typescript-eslint/no-non-null-assertion
-  154:9   error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
-  157:15  error    Forbidden non-null assertion                        
-                    @typescript-eslint/no-non-null-assertion
-  160:18  error    Forbidden non-null assertion                        
-                    @typescript-eslint/no-non-null-assertion
-  203:18  error    Forbidden non-null assertion                        
-                    @typescript-eslint/no-non-null-assertion
-  238:11  error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
-  271:22  error    Unexpected any. Specify a different type            
-                    @typescript-eslint/no-explicit-any
-  278:17  error    Unsafe member access .firstTwoHoursUsed on an `any` value               @typescript-eslint/no-unsafe-member-access
-  279:17  error    Unsafe member access .firstTwoHoursCost on an `any` value               @typescript-eslint/no-unsafe-member-access
-  280:17  error    Unsafe member access .additionalHoursUsed on an `any` value             @typescript-eslint/no-unsafe-member-access
-  281:17  error    Unsafe member access .additionalHoursCost on an `any` value             @typescript-eslint/no-unsafe-member-access
-  289:17  error    Unsafe member access .firstTwoHoursUsed on an `any` value               @typescript-eslint/no-unsafe-member-access
-  290:17  error    Unsafe member access .firstTwoHoursCost on an `any` value               @typescript-eslint/no-unsafe-member-access
-  291:17  error    Unsafe member access .additionalHoursUsed on an `any` value             @typescript-eslint/no-unsafe-member-access
-  292:17  error    Unsafe member access .additionalHoursCost on an `any` value             @typescript-eslint/no-unsafe-member-access
-  295:15  error    Unsafe member access .totalCost on an `any` value   
-                    @typescript-eslint/no-unsafe-member-access
-  300:7   error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
+   93:43  warning  Async arrow function has a complexity of 19. Maximum allowed is 10  complexity
+  245:11  error    Unsafe assignment of an `any` value                 
+                @typescript-eslint/no-unsafe-assignment
+  278:22  error    Unexpected any. Specify a different type            
+                @typescript-eslint/no-explicit-any
+  285:17  error    Unsafe member access .firstTwoHoursUsed on an `any` value           @typescript-eslint/no-unsafe-member-access
+  286:17  error    Unsafe member access .firstTwoHoursCost on an `any` value           @typescript-eslint/no-unsafe-member-access
+  287:17  error    Unsafe member access .additionalHoursUsed on an `any` value         @typescript-eslint/no-unsafe-member-access
+  288:17  error    Unsafe member access .additionalHoursCost on an `any` value         @typescript-eslint/no-unsafe-member-access
+  296:17  error    Unsafe member access .firstTwoHoursUsed on an `any` value           @typescript-eslint/no-unsafe-member-access
+  297:17  error    Unsafe member access .firstTwoHoursCost on an `any` value           @typescript-eslint/no-unsafe-member-access
+  298:17  error    Unsafe member access .additionalHoursUsed on an `any` value         @typescript-eslint/no-unsafe-member-access
+  299:17  error    Unsafe member access .additionalHoursCost on an `any` value         @typescript-eslint/no-unsafe-member-access
+  302:15  error    Unsafe member access .totalCost on an `any` value   
+                @typescript-eslint/no-unsafe-member-access
+  307:7   error    Unsafe assignment of an `any` value                 
+                @typescript-eslint/no-unsafe-assignment
 
 C:\BRUJULA CRIPTO\packages\functions\src\admin\articleHandlers.ts      
-   24:9   error  Unsafe assignment of an `any` value                   
-                                                                @typescript-eslint/no-unsafe-assignment
-   28:61  error  Forbidden non-null assertion                          
-                                                                @typescript-eslint/no-non-null-assertion
-   43:41  error  Forbidden non-null assertion                          
-                                                                @typescript-eslint/no-non-null-assertion
-   59:9   error  Unsafe assignment of an `any` value                   
-                                                                @typescript-eslint/no-unsafe-assignment
-   62:54  error  Unsafe argument of type `any` assigned to a parameter of type `string`                                                @typescript-eslint/no-unsafe-argument
-   70:11  error  Unsafe assignment of an `any` value                   
-                                                                @typescript-eslint/no-unsafe-assignment
-   75:29  error  Unsafe argument of type `any` assigned to a parameter of type `{ [x: string]: any; } & AddPrefixToKeys<string, any>`  @typescript-eslint/no-unsafe-argument
-   77:29  error  Unsafe assignment of an `any` value                   
-                                                                @typescript-eslint/no-unsafe-assignment
-   91:9   error  Unsafe assignment of an `any` value                   
-                                                                @typescript-eslint/no-unsafe-assignment
-   94:41  error  Unsafe argument of type `any` assigned to a parameter of type `string`                                                @typescript-eslint/no-unsafe-argument
-   95:29  error  Unsafe assignment of an `any` value                   
-                                                                @typescript-eslint/no-unsafe-assignment
-  109:9   error  Unsafe assignment of an `any` value                   
-                                                                @typescript-eslint/no-unsafe-assignment
-  112:54  error  Unsafe argument of type `any` assigned to a parameter of type `string`                                                @typescript-eslint/no-unsafe-argument
-  124:29  error  Unsafe assignment of an `any` value                   
-                                                                @typescript-eslint/no-unsafe-assignment
-  138:9   error  Unsafe assignment of an `any` value                   
-                                                                @typescript-eslint/no-unsafe-assignment
-  144:7   error  Unsafe assignment of an `any` value                   
-                                                                @typescript-eslint/no-unsafe-assignment
-  144:54  error  Unexpected any. Specify a different type              
-                                                                @typescript-eslint/no-explicit-any
-  147:40  error  Unsafe argument of type `any` assigned to a parameter of type `number`                                                @typescript-eslint/no-unsafe-argument
+  147:15  error  This assertion is unnecessary since it does not change the type of the expression  @typescript-eslint/no-unnecessary-type-assertion
 
 C:\BRUJULA CRIPTO\packages\functions\src\admin\serviceDirectoryHandlers.ts
-   20:42  error    Unexpected any. Specify a different type            
+   95:37  warning  Async arrow function has a complexity of 12. Maximum allowed is 10      complexity
+   99:11  error    Unsafe assignment of an `any` value                 
+                    @typescript-eslint/no-unsafe-assignment
+  106:59  error    Unexpected any. Specify a different type            
                     @typescript-eslint/no-explicit-any
-   26:41  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
-   26:50  error    Unsafe member access .uid on an `any` value         
-                    @typescript-eslint/no-unsafe-member-access
-   43:11  error    Unsafe assignment of an `any` value                 
+  112:7   error    Unsafe assignment of an `any` value                 
                     @typescript-eslint/no-unsafe-assignment
-   54:7   error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
-   54:13  error    Unsafe call of a(n) `any` typed value               
+  112:25  error    Unsafe call of a(n) `any` typed value               
                     @typescript-eslint/no-unsafe-call
-   54:18  error    Unsafe member access .trim on an `any` value        
+  112:30  error    Unsafe member access .trim on an `any` value        
                     @typescript-eslint/no-unsafe-member-access
-   55:7   error    Unsafe assignment of an `any` value                 
+  115:7   error    Unsafe assignment of an `any` value                 
                     @typescript-eslint/no-unsafe-assignment
-   55:20  error    Unsafe call of a(n) `any` typed value               
+  115:32  error    Unsafe call of a(n) `any` typed value               
                     @typescript-eslint/no-unsafe-call
-   55:32  error    Unsafe member access .trim on an `any` value        
+  115:44  error    Unsafe member access .trim on an `any` value        
                     @typescript-eslint/no-unsafe-member-access
-   56:7   error    Unsafe assignment of an `any` value                 
+  118:7   error    Unsafe assignment of an `any` value                 
                     @typescript-eslint/no-unsafe-assignment
-   56:16  error    Unsafe call of a(n) `any` typed value               
+  118:28  error    Unsafe call of a(n) `any` typed value               
                     @typescript-eslint/no-unsafe-call
-   56:24  error    Unsafe member access .trim on an `any` value        
+  118:36  error    Unsafe member access .trim on an `any` value        
                     @typescript-eslint/no-unsafe-member-access
-   57:7   error    Unsafe assignment of an `any` value                 
+  121:7   error    Unsafe assignment of an `any` value                 
                     @typescript-eslint/no-unsafe-assignment
-   57:16  error    Unsafe call of a(n) `any` typed value               
+  121:28  error    Unsafe call of a(n) `any` typed value               
                     @typescript-eslint/no-unsafe-call
-   57:25  error    Unsafe member access .trim on an `any` value        
+  121:36  error    Unsafe member access .trim on an `any` value        
                     @typescript-eslint/no-unsafe-member-access
-   58:7   error    Unsafe assignment of type `any[]` to a variable of type `string[]`      @typescript-eslint/no-unsafe-assignment
-   88:37  warning  Async arrow function has a complexity of 12. Maximum allowed is 10      complexity
-   92:11  error    Unsafe assignment of an `any` value                 
+  131:66  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
+  163:11  error    Unsafe assignment of an `any` value                 
                     @typescript-eslint/no-unsafe-assignment
-   99:59  error    Unexpected any. Specify a different type            
-                    @typescript-eslint/no-explicit-any
-  105:7   error    Unsafe assignment of an `any` value                 
+  170:66  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
+  236:11  error    Unsafe assignment of an `any` value                 
                     @typescript-eslint/no-unsafe-assignment
-  105:25  error    Unsafe call of a(n) `any` typed value               
-                    @typescript-eslint/no-unsafe-call
-  105:30  error    Unsafe member access .trim on an `any` value        
-                    @typescript-eslint/no-unsafe-member-access
-  108:7   error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
-  108:32  error    Unsafe call of a(n) `any` typed value               
-                    @typescript-eslint/no-unsafe-call
-  108:44  error    Unsafe member access .trim on an `any` value        
-                    @typescript-eslint/no-unsafe-member-access
-  111:7   error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
-  111:28  error    Unsafe call of a(n) `any` typed value               
-                    @typescript-eslint/no-unsafe-call
-  111:36  error    Unsafe member access .trim on an `any` value        
-                    @typescript-eslint/no-unsafe-member-access
-  114:7   error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
-  114:28  error    Unsafe call of a(n) `any` typed value               
-                    @typescript-eslint/no-unsafe-call
-  114:36  error    Unsafe member access .trim on an `any` value        
-                    @typescript-eslint/no-unsafe-member-access
-  124:66  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
-  156:11  error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
-  163:66  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
-  229:11  error    Unsafe assignment of an `any` value                 
-                    @typescript-eslint/no-unsafe-assignment
-  236:72  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
+  243:72  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
 
 C:\BRUJULA CRIPTO\packages\functions\src\admin\setAdminRole.ts
   20:9   error  Unsafe assignment of an `any` value                    
@@ -473,9 +604,3 @@ C:\BRUJULA CRIPTO\packages\functions\src\public\handleContactForm.ts
    92:26  error  Unsafe member access .message on an `any` value  @typescript-eslint/no-unsafe-member-access
   106:9   error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
   106:36  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
-
-✖ 832 problems (784 errors, 48 warnings)
-
- ELIFECYCLE  Command failed with exit code 1.
-PS C:\BRUJULA CRIPTO> 
-PS C:\BRUJULA CRIPTO>

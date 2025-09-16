@@ -200,7 +200,7 @@ class ApiClient {
   async streamChatMessage(
     conversationId: string,
     message: Omit<IChatMessage, 'id' | 'timestamp'>,
-    _onChunk?: (chunk: string) => void,
+    _onChunk?: (chunk: string) => null,
   ): Promise<ReadableStream<Uint8Array> | null> {
     try {
       const response = await fetch(
@@ -276,6 +276,6 @@ export const sendChatMessage = (
 export const streamChatMessage = (
   conversationId: string,
   message: Omit<IChatMessage, 'id' | 'timestamp'>,
-  onChunk?: (chunk: string) => void,
+  onChunk?: (chunk: string) => null,
 ): Promise<ReadableStream<Uint8Array> | null> =>
   api.streamChatMessage(conversationId, message, onChunk);

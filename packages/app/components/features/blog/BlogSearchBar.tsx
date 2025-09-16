@@ -14,13 +14,13 @@ interface BlogSearchBarProps {
   placeholder?: string;
 }
 
-export function BlogSearchBar({ initialValue = '', placeholder }: BlogSearchBarProps) {
+export function BlogSearchBar({ initialValue = '', placeholder }: BlogSearchBarProps): JSX.Element {
   const [searchTerm, setSearchTerm] = useState(initialValue);
   const router = useRouter();
   const searchParams = useSearchParams();
   const t = useTranslations('blog.search');
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent): void => {
     e.preventDefault();
 
     const params = new URLSearchParams(searchParams);
