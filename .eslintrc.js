@@ -1,26 +1,27 @@
-{
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-    "projectService": true,
-    "tsconfigRootDir": ".",
-    "ecmaFeatures": {
-      "jsx": true
+// .eslintrc.js
+module.exports = {
+  root: true,
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: true, // Usar "project" en lugar de "projectService"
+    tsconfigRootDir: __dirname, // <-- ESTA ES LA SOLUCIÓN
+    ecmaFeatures: {
+      jsx: true
     }
   },
-  "settings": {
-    "react": {
-      "version": "detect"
+  settings: {
+    react: {
+      version: "detect"
     }
   },
-  "env": {
-    "browser": true,
-    "node": true,
-    "es2021": true
+  env: {
+    browser: true,
+    node: true,
+    es2021: true
   },
-  "plugins": [
+  plugins: [
     "@typescript-eslint",
     "react",
     "jsx-a11y",
@@ -28,7 +29,7 @@
     "prettier",
     "@next/eslint-plugin-next"
   ],
-  "extends": [
+  extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
@@ -39,7 +40,7 @@
     "plugin:prettier/recommended",
     "next/core-web-vitals"
   ],
-  "rules": {
+  rules: {
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-debugger": "error",
     "no-unused-vars": "off",
@@ -147,19 +148,19 @@
     "import/no-useless-path-segments": "error",
     "prettier/prettier": "error"
   },
-  "overrides": [
+  overrides: [
     {
-      "files": ["**/*.ts", "**/*.tsx"],
-      "rules": {
+      files: ["**/*.ts", "**/*.tsx"],
+      rules: {
         "@typescript-eslint/explicit-function-return-type": "error"
       }
     },
     {
-      "files": ["packages/functions/**/*.ts"],
-      "rules": {
+      files: ["packages/functions/**/*.ts"],
+      rules: {
         "no-console": "off"
       }
     }
   ],
-  "ignorePatterns": ["node_modules/", "dist/", ".next/", "*.js", "*.d.ts"]
-}
+  ignorePatterns: ["node_modules/", "dist/", ".next/", "*.js", "*.d.ts"]
+};
