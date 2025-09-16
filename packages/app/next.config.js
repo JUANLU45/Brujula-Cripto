@@ -4,16 +4,23 @@ const nextConfig = {
   output: 'standalone',
 
   // Configuración para internacionalización
-  experimental: {
-    // Habilitar features experimentales si es necesario
+  i18n: {
+    locales: ['es', 'en'],
+    defaultLocale: 'es',
   },
-
-  // Optimizaciones de build
-  swcMinify: true,
 
   // Configuración de imágenes
   images: {
-    domains: ['firebasestorage.googleapis.com', 'storage.googleapis.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+      },
+    ],
     formats: ['image/webp', 'image/avif'],
   },
 
