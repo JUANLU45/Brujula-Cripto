@@ -32,7 +32,7 @@ export default function UpgradeButton({
   disabled = false,
   onSuccess,
   onError,
-}: UpgradeButtonProps) {
+}: UpgradeButtonProps): JSX.Element {
   const t = useTranslations('pricing');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
@@ -40,19 +40,19 @@ export default function UpgradeButton({
   const [isProcessing, setIsProcessing] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (): void => {
     setIsModalOpen(true);
     setErrorMessage(null);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (): void => {
     setIsModalOpen(false);
     setAcceptedTerms(false);
     setAcceptedDisclaimer(false);
     setErrorMessage(null);
   };
 
-  const handleProceedToPayment = async () => {
+  const handleProceedToPayment = async (): Promise<void> => {
     if (!acceptedTerms || !acceptedDisclaimer) {
       setErrorMessage(
         'Debes aceptar los términos y el descargo de responsabilidad para continuar.',
@@ -82,20 +82,20 @@ export default function UpgradeButton({
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
+        const errorData = (await response.json()) as { message?: string };
         throw new Error(errorData.message || 'Error al crear la sesión de pago');
       }
 
-      const { sessionId, checkoutUrl } = await response.json();
+      const result = (await response.json()) as { sessionId?: string; checkoutUrl?: string };
 
       // Redirigir a Stripe Checkout
-      if (checkoutUrl) {
-        window.location.href = checkoutUrl;
-      } else if (sessionId) {
+      if (result.checkoutUrl) {
+        window.location.href = result.checkoutUrl;
+      } else if (result.sessionId) {
         // Usar Stripe.js para redirigir
         const stripe = (window as any).Stripe;
         if (stripe) {
-          const { error } = await stripe.redirectToCheckout({ sessionId });
+          const { error } = await stripe.redirectToCheckout({ sessionId: result.sessionId });
           if (error) {
             throw new Error(error.message);
           }
@@ -104,8 +104,8 @@ export default function UpgradeButton({
         }
       }
 
-      if (onSuccess) {
-        onSuccess(sessionId);
+      if (onSuccess && result.sessionId) {
+        onSuccess(result.sessionId);
       }
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : t('errors.paymentFailed');

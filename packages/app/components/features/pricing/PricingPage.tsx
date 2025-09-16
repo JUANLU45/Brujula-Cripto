@@ -21,7 +21,7 @@ interface PricingPlan {
   disabled?: boolean;
 }
 
-export default function PricingPage() {
+export default function PricingPage(): JSX.Element {
   const t = useTranslations('pricing');
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
@@ -101,7 +101,7 @@ export default function PricingPage() {
     },
   ];
 
-  const handlePlanSelect = async (planId: string) => {
+  const handlePlanSelect = async (planId: string): Promise<void> => {
     setSelectedPlan(planId);
 
     if (planId === 'free') {
@@ -127,9 +127,9 @@ export default function PricingPage() {
         throw new Error('Error al crear sesión de pago');
       }
 
-      const { checkoutUrl } = await response.json();
-      window.location.href = checkoutUrl;
-    } catch (error) {
+      const result = (await response.json()) as { checkoutUrl: string };
+      window.location.href = result.checkoutUrl;
+    } catch (error: unknown) {
       // Mostrar error al usuario
       alert('Error al procesar el pago. Por favor, inténtalo de nuevo.');
     }
@@ -221,7 +221,7 @@ export default function PricingPage() {
                   size="lg"
                   className="w-full"
                   disabled={plan.disabled}
-                  onClick={() => handlePlanSelect(plan.id)}
+                  onClick={() => void handlePlanSelect(plan.id)}
                 >
                   {plan.id === 'free' ? t('signUpFree') : t('selectPlan')}
                 </Button>

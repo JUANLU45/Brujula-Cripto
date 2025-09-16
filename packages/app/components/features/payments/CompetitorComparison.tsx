@@ -31,8 +31,8 @@ interface CompetitorComparisonProps {
 
 export function CompetitorComparison({
   showCalculator = true,
-  compactMode = false,
-}: CompetitorComparisonProps) {
+  compactMode: _compactMode = false,
+}: CompetitorComparisonProps): JSX.Element {
   const t = useTranslations('comparison');
 
   const [activeTab, setActiveTab] = useState<'features' | 'pricing' | 'calculator'>('features');

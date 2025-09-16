@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-export function ValueProposition() {
+export function ValueProposition(): JSX.Element {
   const t = useTranslations('homepage.valueProposition');
 
   return (

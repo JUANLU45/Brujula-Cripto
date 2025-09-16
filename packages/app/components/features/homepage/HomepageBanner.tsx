@@ -21,7 +21,7 @@ export function HomepageBanner({
   bannerSubtitle,
   bannerButtonText,
   bannerButtonLink,
-}: HomepageBannerProps) {
+}: HomepageBannerProps): JSX.Element {
   const t = useTranslations('homepage.banner');
   const router = useRouter();
 
@@ -32,7 +32,7 @@ export function HomepageBanner({
   const buttonText = bannerButtonText || t('button');
   const buttonLink = bannerButtonLink || '/recuperacion';
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (): void => {
     router.push(buttonLink);
   };
 

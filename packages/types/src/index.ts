@@ -216,13 +216,13 @@ export interface IProfessionalService {
 /**
  * Tipos para respuestas de API
  */
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   error?: {
     code: string;
     message: string;
-    details?: any;
+    details?: Record<string, unknown>;
   };
   timestamp: Date;
 }
@@ -269,7 +269,7 @@ export interface CustomError {
   code: string;
   message: string;
   statusCode: number;
-  details?: any;
+  details?: Record<string, unknown>;
 }
 
 /**
@@ -280,3 +280,41 @@ export type Theme = 'light' | 'dark' | 'system';
 export type UserRole = 'user' | 'admin';
 export type ArticleStatus = 'draft' | 'published';
 export type ArticleSource = 'ai-generated' | 'manual';
+
+/**
+ * Tipos específicos para Stripe
+ */
+export interface StripeSession {
+  id: string;
+  customer: string;
+  amount_total: number;
+  currency: string;
+  metadata: Record<string, string>;
+}
+
+export interface StripeSubscription {
+  id: string;
+  customer: string;
+  status: string;
+  created: number;
+  current_period_start: number;
+  current_period_end: number;
+}
+
+export interface StripeInvoice {
+  id: string;
+  customer: string;
+  subscription: string;
+  amount_paid: number;
+  currency: string;
+  created: number;
+  number: string;
+}
+
+export interface StripePaymentIntent {
+  id: string;
+  customer: string;
+  amount: number;
+  currency: string;
+  created: number;
+}

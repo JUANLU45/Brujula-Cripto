@@ -1,3 +1,9 @@
+import type {
+  StripeInvoice,
+  StripePaymentIntent,
+  StripeSession,
+  StripeSubscription,
+} from '@brujula-cripto/types';
 import { getApps, initializeApp } from 'firebase-admin/app';
 import { FieldValue, getFirestore, Timestamp } from 'firebase-admin/firestore';
 import { defineSecret } from 'firebase-functions/params';
@@ -93,7 +99,7 @@ export const stripeWebhooks = onRequest(
  * Maneja el evento checkout.session.completed
  * Añade créditos de horas al usuario según las horas compradas
  */
-async function handleCheckoutSessionCompleted(session: any) {
+async function handleCheckoutSessionCompleted(session: StripeSession): Promise<void> {
   try {
     const { userId, hours, hoursInSeconds } = session.metadata || {};
 
@@ -151,7 +157,7 @@ async function handleCheckoutSessionCompleted(session: any) {
  * Maneja el evento customer.subscription.created
  * Registra nueva suscripción del usuario
  */
-async function handleSubscriptionCreated(subscription: any) {
+async function handleSubscriptionCreated(subscription: StripeSubscription): Promise<void> {
   try {
     const customerId = subscription.customer;
 
@@ -196,7 +202,7 @@ async function handleSubscriptionCreated(subscription: any) {
  * Maneja el evento customer.subscription.deleted
  * Cancela la suscripción del usuario
  */
-async function handleSubscriptionDeleted(subscription: any) {
+async function handleSubscriptionDeleted(subscription: StripeSubscription): Promise<void> {
   try {
     const customerId = subscription.customer;
 
@@ -233,7 +239,7 @@ async function handleSubscriptionDeleted(subscription: any) {
  * Maneja el evento invoice.payment_succeeded
  * Procesa pagos exitosos de facturas de suscripción
  */
-async function handleInvoicePaymentSucceeded(invoice: any) {
+async function handleInvoicePaymentSucceeded(invoice: StripeInvoice): Promise<void> {
   try {
     const customerId = invoice.customer;
     const subscriptionId = invoice.subscription;
@@ -282,7 +288,7 @@ async function handleInvoicePaymentSucceeded(invoice: any) {
  * Maneja el evento payment_intent.succeeded
  * Confirma pagos exitosos de PaymentIntents
  */
-async function handlePaymentIntentSucceeded(paymentIntent: any) {
+async function handlePaymentIntentSucceeded(paymentIntent: StripePaymentIntent): Promise<void> {
   try {
     const customerId = paymentIntent.customer;
 

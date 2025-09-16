@@ -22,7 +22,7 @@ interface CalculatorResult {
   savingsPercentage: number;
 }
 
-export default function CompetitorComparison() {
+export default function CompetitorComparison(): JSX.Element {
   const t = useTranslations('pricing.comparison');
   const [activeTab, setActiveTab] = useState<string>('pricing');
   const [calculatorAmount, setCalculatorAmount] = useState<number>(500);
@@ -82,7 +82,7 @@ export default function CompetitorComparison() {
     };
   };
 
-  const handleCalculate = () => {
+  const handleCalculate = (): void => {
     const result = calculateSavings(calculatorAmount);
     setCalculatorResult(result);
   };
