@@ -1,311 +1,303 @@
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/cuenta                          5.11 kB         245 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/dashboard                       3.43 kB         246 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/feedback                        3.61 kB         243 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/herramientas/servicios          2.07 kB         126 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/herramientas/tracker            3.17 kB         243 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/homepage                        3.35 kB         248 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/aviso-legal                 174 B         105 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/descargo-responsabilidad    174 B         105 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/privacidad                  174 B         105 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/terminos                    174 B         105 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/login                           3.24 kB         243 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/recuperacion                    4.09 kB         133 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/recuperacion/password           6.73 kB         246 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/recuperar-password              2.29 kB         234 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/registro                        3.05 kB         234 kB
-2025-09-16 11:53:33.872
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/seguridad                         996 B         139 kB
-2025-09-16 11:53:33.873
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/suscripcion                     4.19 kB         128 kB
-2025-09-16 11:53:33.873
-Step #2 - "pack": packages/app build: └ ƒ /[locale]/users                           3.89 kB         243 kB
-2025-09-16 11:53:33.873
-Step #2 - "pack": packages/app build: + First Load JS shared by all                  101 kB
-2025-09-16 11:53:33.873
-Step #2 - "pack": packages/app build:   ├ chunks/27877061-9ba3884dbaa7cfe6.js       54.2 kB
-2025-09-16 11:53:33.873
-Step #2 - "pack": packages/app build:   ├ chunks/7759-96501787d7b03936.js           45.3 kB
-2025-09-16 11:53:33.874
-Step #2 - "pack": packages/app build:   └ other shared chunks (total)               1.93 kB
-2025-09-16 11:53:33.876
-Step #2 - "pack": packages/app build: ƒ Middleware                                  44.9 kB
-2025-09-16 11:53:33.877
-Step #2 - "pack": packages/app build: ○  (Static)   prerendered as static content
-2025-09-16 11:53:33.879
-Step #2 - "pack": packages/app build: ƒ  (Dynamic)  server-rendered on demand
-2025-09-16 11:53:33.923
-Step #2 - "pack": packages/app build: Done
-2025-09-16 11:53:33.947
-Step #2 - "pack": node:fs:441
-2025-09-16 11:53:33.947
-Step #2 - "pack":     return binding.readFileUtf8(path, stringToFlags(options.flag));
-2025-09-16 11:53:33.947
-Step #2 - "pack":                    ^
-2025-09-16 11:53:33.947
-Step #2 - "pack": 
-2025-09-16 11:53:33.947
-Step #2 - "pack": Error: ENOENT: no such file or directory, open '/workspace/.next/standalone/.next/routes-manifest.json'
-2025-09-16 11:53:33.947
-Step #2 - "pack":     at readFileSync (node:fs:441:20)
-2025-09-16 11:53:33.947
-Step #2 - "pack":     at loadRouteManifest (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/utils.js:35:18)
-2025-09-16 11:53:33.947
-Step #2 - "pack":     at addRouteOverrides (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/overrides.js:145:27)
-2025-09-16 11:53:33.947
-Step #2 - "pack":     at file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/bin/build.js:37:11
-2025-09-16 11:53:33.947
-Step #2 - "pack":     at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
-2025-09-16 11:53:33.947
-Step #2 - "pack":   errno: -2,
-2025-09-16 11:53:33.947
-Step #2 - "pack":   code: 'ENOENT',
-2025-09-16 11:53:33.947
-Step #2 - "pack":   syscall: 'open',
-2025-09-16 11:53:33.947
-Step #2 - "pack":   path: '/workspace/.next/standalone/.next/routes-manifest.json'
-2025-09-16 11:53:33.947
-Step #2 - "pack": }
-2025-09-16 11:53:33.947
-Step #2 - "pack": 
-2025-09-16 11:53:33.947
-Step #2 - "pack": Node.js v22.19.0
-2025-09-16 11:53:33.963
-Step #2 - "pack": Done "npm exec --prefix /layers/google.nodejs.firebasenextjs/npm_m..." (1m48.442963701s)
-2025-09-16 11:53:33.971
+2025-09-16 12:16:02.647
+Step #2 - "pack": Digest: sha256:013f07ad78f08a5c30f4551c892bff7d1cb17e0477928b61e2cfd59259dc3abd
+2025-09-16 12:16:02.651
+Step #2 - "pack": Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/google-22/run/base:public-image-next
+2025-09-16 12:16:04.475
+Step #2 - "pack": ===> ANALYZING
+2025-09-16 12:16:04.494
+Step #2 - "pack": Image with name "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto:build-2025-09-16-003" not found
+2025-09-16 12:16:04.494
+Step #2 - "pack": ===> DETECTING
+2025-09-16 12:16:04.505
+Step #2 - "pack": target distro name/version labels not found, reading /etc/os-release file
+2025-09-16 12:16:04.600
+Step #2 - "pack": 4 of 6 buildpacks participating
+2025-09-16 12:16:04.600
+Step #2 - "pack": google.nodejs.runtime        1.0.0
+2025-09-16 12:16:04.600
+Step #2 - "pack": google.nodejs.firebasenextjs 0.0.1
+2025-09-16 12:16:04.600
+Step #2 - "pack": google.nodejs.pnpm           0.1.0
+2025-09-16 12:16:04.600
+Step #2 - "pack": google.nodejs.firebasebundle 0.0.1
+2025-09-16 12:16:04.601
+Step #2 - "pack": ===> RESTORING
+2025-09-16 12:16:04.602
+Step #2 - "pack": ===> BUILDING
+2025-09-16 12:16:04.602
+Step #2 - "pack": target distro name/version labels not found, reading /etc/os-release file
+2025-09-16 12:16:04.608
+Step #2 - "pack": === Node.js - Runtime (google.nodejs.runtime@1.0.0) ===
+2025-09-16 12:16:04.608
+Step #2 - "pack": 2025/09/16 10:16:04 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+2025-09-16 12:16:04.703
+Step #2 - "pack": Adding image label google.runtime-version: nodejs20
+2025-09-16 12:16:04.704
+Step #2 - "pack": 2025/09/16 10:16:04 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+2025-09-16 12:16:04.777
+Step #2 - "pack": Installing Node.js v20.19.5.
+2025-09-16 12:16:04.777
+Step #2 - "pack": 2025/09/16 10:16:04 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-20.19.5.tar.gz
+2025-09-16 12:16:07.113
+Step #2 - "pack": === Node.js - Firebasenextjs (google.nodejs.firebasenextjs@0.0.1) ===
+2025-09-16 12:16:07.139
+Step #2 - "pack": WARNING: *** You are using a custom build command (your build command is NOT 'next build'), we will accept it as is but will error if output structure is not as expected ***
+2025-09-16 12:16:07.759
+Step #2 - "pack": ***** CACHE MISS: "npm_modules"
+2025-09-16 12:16:07.759
+Step #2 - "pack": Installing nextjs adaptor 14.0.18
+2025-09-16 12:16:10.292
+Step #2 - "pack": === Node.js - Pnpm (google.nodejs.pnpm@0.1.0) ===
+2025-09-16 12:16:10.293
+Step #2 - "pack": 2025/09/16 10:16:10 [DEBUG] GET https://registry.npmjs.org/pnpm
+2025-09-16 12:16:10.450
+Step #2 - "pack": ***** CACHE MISS: "pnpm_engine"
+2025-09-16 12:16:10.450
+Step #2 - "pack": Installing pnpm v10.16.1
+2025-09-16 12:16:10.451
+Step #2 - "pack": 2025/09/16 10:16:10 [DEBUG] GET https://github.com/pnpm/pnpm/releases/download/v10.16.1/pnpm-linux-x64
+2025-09-16 12:16:10.936
+Step #2 - "pack": Setting environment variable PATH=/layers/google.nodejs.pnpm/pnpm_engine/bin:/layers/google.nodejs.runtime/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2025-09-16 12:16:10.937
 Step #2 - "pack": --------------------------------------------------------------------------------
-2025-09-16 11:53:33.971
-Step #2 - "pack": failed to build: (error ID: 07f7c946):
-2025-09-16 11:53:33.971
-Step #2 - "pack": {"reason":"Failed Framework Build","code":"fah/failed-framework-build","userFacingMessage":"Your application failed to run the framework build command 'npm exec --prefix /layers/google.nodejs.firebasenextjs/npm_modules apphosting-adapter-nextjs-build' successfully. Please check the raw log to address the error and confirm that your application builds locally before redeploying.","rawLog":"(error ID: d0a693a9):
-2025-09-16 11:53:33.971
-Step #2 - "pack": > brujula-cripto@1.0.0 build
-2025-09-16 11:53:33.971
-Step #2 - "pack": > pnpm -r build
-2025-09-16 11:53:33.971
-Step #2 - "pack": 
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app                             |  WARN  Unsupported engine: wanted: {"node":"20"} (current: {"node":"v22.19.0","pnpm":"10.16.1"})
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/functions                       |  WARN  Unsupported engine: wanted: {"node":"20"} (current: {"node":"v22.19.0","pnpm":"10.16.1"})
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/types                           |  WARN  Unsupported engine: wanted: {"node":"20"} (current: {"node":"v22.19.0","pnpm":"10.16.1"})
-2025-09-16 11:53:33.971
-Step #2 - "pack": Scope: 3 of 4 workspace projects
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/types build$ tsc
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/types build: Done
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build$ next build
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/functions build$ tsc
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build:    ▲ Next.js 15.5.3
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build:    Creating an optimized production build ...
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/functions build: Done
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build:  ✓ Compiled successfully in 39.2s
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build:    Linting and checking validity of types ...
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build:  ⨯ ESLint: Failed to load config "next/core-web-vitals" to extend from. Referenced from: /workspace/packages/app/.eslintrc.json
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build:    Collecting page data ...
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build:    Generating static pages (0/3) ...
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build:  ✓ Generating static pages (3/3)
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build:    Finalizing page optimization ...
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build:    Collecting build traces ...
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: Route (app)                                      Size  First Load JS
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ┌ ○ /_not-found                                 996 B         102 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]                                    7 kB         255 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/admin                           2.66 kB         246 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/articles                        4.86 kB         248 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/articles/[id]                    115 kB         355 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/auth                             2.9 kB         242 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/blog                            1.65 kB         140 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/blog/[slug]                     3.11 kB         127 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/chatbot                          9.2 kB         133 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/comments                        3.44 kB         243 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/contacto                          28 kB         152 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/cuenta                          5.11 kB         245 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/dashboard                       3.43 kB         246 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/feedback                        3.61 kB         243 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/herramientas/servicios          2.07 kB         126 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/herramientas/tracker            3.17 kB         243 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/homepage                        3.35 kB         248 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/aviso-legal                 174 B         105 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/descargo-responsabilidad    174 B         105 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/privacidad                  174 B         105 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/terminos                    174 B         105 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/login                           3.24 kB         243 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/recuperacion                    4.09 kB         133 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/recuperacion/password           6.73 kB         246 kB
-2025-09-16 11:53:33.971
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/recuperar-password              2.29 kB         234 kB
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/registro                        3.05 kB         234 kB
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/seguridad                         996 B         139 kB
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build: ├ ƒ /[locale]/suscripcion                     4.19 kB         128 kB
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build: └ ƒ /[locale]/users                           3.89 kB         243 kB
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build: + First Load JS shared by all                  101 kB
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build:   ├ chunks/27877061-9ba3884dbaa7cfe6.js       54.2 kB
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build:   ├ chunks/7759-96501787d7b03936.js           45.3 kB
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build:   └ other shared chunks (total)               1.93 kB
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build: ƒ Middleware                                  44.9 kB
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build: ○  (Static)   prerendered as static content
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build: ƒ  (Dynamic)  server-rendered on demand
-2025-09-16 11:53:33.972
-Step #2 - "pack": packages/app build: Done
-2025-09-16 11:53:33.972
-Step #2 - "pack": node:fs:441
-2025-09-16 11:53:33.972
-Step #2 - "pack":     return binding.readFileUtf8(path, stringToFlags(options.flag));
-2025-09-16 11:53:33.972
-Step #2 - "pack":                    ^
-2025-09-16 11:53:33.972
-Step #2 - "pack": 
-2025-09-16 11:53:33.972
-Step #2 - "pack": Error: ENOENT: no such file or directory, open '/workspace/.next/standalone/.next/routes-manifest.json'
-2025-09-16 11:53:33.972
-Step #2 - "pack":     at readFileSync (node:fs:441:20)
-2025-09-16 11:53:33.972
-Step #2 - "pack":     at loadRouteManifest (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/utils.js:35:18)
-2025-09-16 11:53:33.972
-Step #2 - "pack":     at addRouteOverrides (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/overrides.js:145:27)
-2025-09-16 11:53:33.972
-Step #2 - "pack":     at file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/bin/build.js:37:11
-2025-09-16 11:53:33.972
-Step #2 - "pack":     at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
-2025-09-16 11:53:33.972
-Step #2 - "pack":   errno: -2,
-{
-insertId: "a2fe8854-7be7-4d73-942f-99540c4c40e9-596"
-labels: {2}
-logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-16T09:53:34.041128330Z"
-resource: {2}
-severity: "INFO"
-textPayload: "Step #2 - "pack":   errno: -2,"
-timestamp: "2025-09-16T09:53:33.972036495Z"
-}
-2025-09-16 11:53:33.972
-Step #2 - "pack":   code: 'ENOENT',
-{
-insertId: "a2fe8854-7be7-4d73-942f-99540c4c40e9-597"
-labels: {2}
-logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-16T09:53:34.041128330Z"
-resource: {2}
-severity: "INFO"
-textPayload: "Step #2 - "pack":   code: 'ENOENT',"
-timestamp: "2025-09-16T09:53:33.972037015Z"
-}
-2025-09-16 11:53:33.972
-Step #2 - "pack":   syscall: 'open',
-2025-09-16 11:53:33.972
-Step #2 - "pack":   path: '/workspace/.next/standalone/.next/routes-manifest.json'
-2025-09-16 11:53:33.972
-Step #2 - "pack": }
-2025-09-16 11:53:33.972
-Step #2 - "pack": 
-2025-09-16 11:53:33.972
-Step #2 - "pack": Node.js v22.19.0"}
-2025-09-16 11:53:33.973
-Step #2 - "pack": ERROR: failed to build: exit status 1
-2025-09-16 11:53:35.762
-Step #2 - "pack": ERROR: failed to build: executing lifecycle: failed with status code: 51
-2025-09-16 11:53:36.099
-Finished Step #2 - "pack"
+2025-09-16 12:16:10.937
+Step #2 - "pack": Running "pnpm install (CI=true NODE_ENV=development)"
+2025-09-16 12:16:11.156
+Step #2 - "pack": Scope: all 4 workspace projects
+2025-09-16 12:16:11.329
+Step #2 - "pack":  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/packages/app/package.json
 
 {
-insertId: "a2fe8854-7be7-4d73-942f-99540c4c40e9-605"
-labels: {2}
-logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-16T09:53:36.255838696Z"
-resource: {2}
-severity: "INFO"
-textPayload: "Finished Step #2 - "pack""
-timestamp: "2025-09-16T09:53:36.099375408Z"
+insertId: "9ced4725-e42d-40af-82ac-73bef53ebf96-369"
+labels: {
+build_step: "Step #2 - "pack""
+build_tags: "fah,build-2025-09-16-003,backen-brujula-cripto,09c4feb5d767570be3ba51be81c7fefe9dc55935,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
 }
-2025-09-16 11:53:36.099
+logName: "projects/brujula-cripto/logs/cloudbuild"
+receiveTimestamp: "2025-09-16T10:16:12.146409258Z"
+resource: {
+labels: {
+build_id: "9ced4725-e42d-40af-82ac-73bef53ebf96"
+build_trigger_id: ""
+project_id: "brujula-cripto"
+}
+type: "build"
+}
+severity: "INFO"
+textPayload: "Step #2 - "pack":  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/packages/app/package.json"
+timestamp: "2025-09-16T10:16:11.329956363Z"
+}
+2025-09-16 12:16:11.329
+Step #2 - "pack": 
+2025-09-16 12:16:11.329
+Step #2 - "pack": Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+2025-09-16 12:16:11.329
+Step #2 - "pack": 
+2025-09-16 12:16:11.329
+Step #2 - "pack":   Failure reason:
+
+{
+insertId: "9ced4725-e42d-40af-82ac-73bef53ebf96-373"
+labels: {
+build_step: "Step #2 - "pack""
+build_tags: "fah,build-2025-09-16-003,backen-brujula-cripto,09c4feb5d767570be3ba51be81c7fefe9dc55935,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+}
+logName: "projects/brujula-cripto/logs/cloudbuild"
+receiveTimestamp: "2025-09-16T10:16:12.146409258Z"
+resource: {
+labels: {
+build_id: "9ced4725-e42d-40af-82ac-73bef53ebf96"
+build_trigger_id: ""
+project_id: "brujula-cripto"
+}
+type: "build"
+}
+severity: "INFO"
+textPayload: "Step #2 - "pack":   Failure reason:"
+timestamp: "2025-09-16T10:16:11.329969513Z"
+}
+2025-09-16 12:16:11.329
+Step #2 - "pack":   specifiers in the lockfile don't match specifiers in package.json:
+
+{
+insertId: "9ced4725-e42d-40af-82ac-73bef53ebf96-374"
+labels: {
+build_step: "Step #2 - "pack""
+build_tags: "fah,build-2025-09-16-003,backen-brujula-cripto,09c4feb5d767570be3ba51be81c7fefe9dc55935,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+}
+logName: "projects/brujula-cripto/logs/cloudbuild"
+receiveTimestamp: "2025-09-16T10:16:12.146409258Z"
+resource: {
+labels: {
+build_id: "9ced4725-e42d-40af-82ac-73bef53ebf96"
+build_trigger_id: ""
+project_id: "brujula-cripto"
+}
+type: "build"
+}
+severity: "INFO"
+textPayload: "Step #2 - "pack":   specifiers in the lockfile don't match specifiers in package.json:"
+timestamp: "2025-09-16T10:16:11.329970113Z"
+}
+2025-09-16 12:16:11.329
+Step #2 - "pack": * 2 dependencies were added: eslint@^8.57.0, eslint-config-next@^15.5.3
+2025-09-16 12:16:11.329
+Step #2 - "pack": 
+2025-09-16 12:16:11.376
+Step #2 - "pack": Done "pnpm install (CI=true NODE_ENV=development)" (438.616286ms)
+2025-09-16 12:16:11.388
+Step #2 - "pack": --------------------------------------------------------------------------------
+2025-09-16 12:16:11.388
+Step #2 - "pack": failed to build: (error ID: b7ee11f5):
+
+{
+insertId: "9ced4725-e42d-40af-82ac-73bef53ebf96-379"
+labels: {
+build_step: "Step #2 - "pack""
+build_tags: "fah,build-2025-09-16-003,backen-brujula-cripto,09c4feb5d767570be3ba51be81c7fefe9dc55935,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+}
+logName: "projects/brujula-cripto/logs/cloudbuild"
+receiveTimestamp: "2025-09-16T10:16:12.146409258Z"
+resource: {
+labels: {
+build_id: "9ced4725-e42d-40af-82ac-73bef53ebf96"
+build_trigger_id: ""
+project_id: "brujula-cripto"
+}
+type: "build"
+}
+severity: "INFO"
+textPayload: "Step #2 - "pack": failed to build: (error ID: b7ee11f5):"
+timestamp: "2025-09-16T10:16:11.388694200Z"
+}
+2025-09-16 12:16:11.388
+Step #2 - "pack": installing pnpm dependencies: (error ID: 8622936f):
+2025-09-16 12:16:11.388
+Step #2 - "pack": Scope: all 4 workspace projects
+2025-09-16 12:16:11.388
+Step #2 - "pack":  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/packages/app/package.json
+2025-09-16 12:16:11.388
+Step #2 - "pack": 
+2025-09-16 12:16:11.388
+Step #2 - "pack": Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+2025-09-16 12:16:11.388
+Step #2 - "pack": 
+
+{
+insertId: "9ced4725-e42d-40af-82ac-73bef53ebf96-385"
+labels: {
+build_step: "Step #2 - "pack""
+build_tags: "fah,build-2025-09-16-003,backen-brujula-cripto,09c4feb5d767570be3ba51be81c7fefe9dc55935,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+}
+logName: "projects/brujula-cripto/logs/cloudbuild"
+receiveTimestamp: "2025-09-16T10:16:12.146409258Z"
+resource: {
+labels: {
+build_id: "9ced4725-e42d-40af-82ac-73bef53ebf96"
+build_trigger_id: ""
+project_id: "brujula-cripto"
+}
+type: "build"
+}
+severity: "INFO"
+textPayload: "Step #2 - "pack": "
+timestamp: "2025-09-16T10:16:11.388697900Z"
+}
+2025-09-16 12:16:11.388
+Step #2 - "pack":   Failure reason:
+2025-09-16 12:16:11.388
+Step #2 - "pack":   specifiers in the lockfile don't match specifiers in package.json:
+2025-09-16 12:16:11.388
+Step #2 - "pack": * 2 dependencies were added: eslint@^8.57.0, eslint-config-next@^15.5.3
+2025-09-16 12:16:11.390
+Step #2 - "pack": ERROR: failed to build: exit status 1
+{
+insertId: "9ced4725-e42d-40af-82ac-73bef53ebf96-389"
+labels: {
+build_step: "Step #2 - "pack""
+build_tags: "fah,build-2025-09-16-003,backen-brujula-cripto,09c4feb5d767570be3ba51be81c7fefe9dc55935,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+}
+logName: "projects/brujula-cripto/logs/cloudbuild"
+receiveTimestamp: "2025-09-16T10:16:12.146409258Z"
+resource: {
+labels: {
+build_id: "9ced4725-e42d-40af-82ac-73bef53ebf96"
+build_trigger_id: ""
+project_id: "brujula-cripto"
+}
+type: "build"
+}
+severity: "INFO"
+textPayload: "Step #2 - "pack": ERROR: failed to build: exit status 1"
+timestamp: "2025-09-16T10:16:11.390834460Z"
+}
+2025-09-16 12:16:12.979
+Step #2 - "pack": ERROR: failed to build: executing lifecycle: failed with status code: 51
+{
+insertId: "9ced4725-e42d-40af-82ac-73bef53ebf96-390"
+labels: {
+build_step: "Step #2 - "pack""
+build_tags: "fah,build-2025-09-16-003,backen-brujula-cripto,09c4feb5d767570be3ba51be81c7fefe9dc55935,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+}
+logName: "projects/brujula-cripto/logs/cloudbuild"
+receiveTimestamp: "2025-09-16T10:16:13.127856593Z"
+resource: {
+labels: {
+build_id: "9ced4725-e42d-40af-82ac-73bef53ebf96"
+build_trigger_id: ""
+project_id: "brujula-cripto"
+}
+type: "build"
+}
+severity: "INFO"
+textPayload: "Step #2 - "pack": ERROR: failed to build: executing lifecycle: failed with status code: 51"
+timestamp: "2025-09-16T10:16:12.979210473Z"
+}
+2025-09-16 12:16:13.222
+Finished Step #2 - "pack"
+2025-09-16 12:16:13.222
 ERROR
 {
-insertId: "a2fe8854-7be7-4d73-942f-99540c4c40e9-606"
-labels: {2}
+insertId: "9ced4725-e42d-40af-82ac-73bef53ebf96-392"
+labels: {
+build_step: "MAIN"
+build_tags: "fah,build-2025-09-16-003,backen-brujula-cripto,09c4feb5d767570be3ba51be81c7fefe9dc55935,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+}
 logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-16T09:53:36.255838696Z"
-resource: {2}
+receiveTimestamp: "2025-09-16T10:16:13.319067494Z"
+resource: {
+labels: {
+build_id: "9ced4725-e42d-40af-82ac-73bef53ebf96"
+build_trigger_id: ""
+project_id: "brujula-cripto"
+}
+type: "build"
+}
 severity: "INFO"
 textPayload: "ERROR"
-timestamp: "2025-09-16T09:53:36.099452561Z"
+timestamp: "2025-09-16T10:16:13.222477100Z"
 }
-2025-09-16 11:53:36.099
+2025-09-16 12:16:13.222
 ERROR: build step 2 "gcr.io/k8s-skaffold/pack" failed: step exited with non-zero status: 1
 
 {
-insertId: "a2fe8854-7be7-4d73-942f-99540c4c40e9-607"
-labels: {2}
+insertId: "9ced4725-e42d-40af-82ac-73bef53ebf96-393"
+labels: {
+build_step: "MAIN"
+build_tags: "fah,build-2025-09-16-003,backen-brujula-cripto,09c4feb5d767570be3ba51be81c7fefe9dc55935,p-fah,r-nodejs,b-nodejs_20250907_RC00,bt-PACK"
+}
 logName: "projects/brujula-cripto/logs/cloudbuild"
-receiveTimestamp: "2025-09-16T09:53:36.255838696Z"
-resource: {2}
+receiveTimestamp: "2025-09-16T10:16:13.319067494Z"
+resource: {
+labels: {
+build_id: "9ced4725-e42d-40af-82ac-73bef53ebf96"
+build_trigger_id: ""
+project_id: "brujula-cripto"
+}
+type: "build"
+}
 severity: "INFO"
 textPayload: "ERROR: build step 2 "gcr.io/k8s-skaffold/pack" failed: step exited with non-zero status: 1"
-timestamp: "2025-09-16T09:53:36.099463648Z"
+timestamp: "2025-09-16T10:16:13.222504970Z"
 }
 Se muestran los registros del período especificado en la búsqueda. Para ver más resultados, actualiza tu búsqueda.

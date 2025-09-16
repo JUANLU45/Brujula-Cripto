@@ -96,3 +96,7 @@ COPIAS BAUKUMP/
 
 # Ignorar toda la carpeta de documentación
 DOCUMENTACION/
+
+# Ignorar TODOS los archivos markdown EXCEPTO README.md
+*.md
+!README.md
