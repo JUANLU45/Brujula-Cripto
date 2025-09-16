@@ -73,7 +73,7 @@ export const getPricingConfig = onCall(async (request) => {
 
     return {
       success: true,
-      pricing: pricingDoc.data(),
+      pricing: pricingDoc.data() as PricingConfig,
       message: 'Configuración de precios obtenida exitosamente',
     };
   } catch (error) {
@@ -149,17 +149,19 @@ export const updatePricingConfig = onCall(async (request) => {
         price:
           firstTwoHoursPrice !== undefined
             ? firstTwoHoursPrice
-            : currentConfig.firstTwoHours?.price ?? 4.99,
+            : (currentConfig.firstTwoHours?.price ?? 4.99),
         currency: currentConfig.firstTwoHours?.currency ?? 'EUR',
-        description: currentConfig.firstTwoHours?.description ?? 'Precio por hora para las primeras 2 horas',
+        description:
+          currentConfig.firstTwoHours?.description ?? 'Precio por hora para las primeras 2 horas',
       },
       additionalHours: {
         price:
           additionalHoursPrice !== undefined
             ? additionalHoursPrice
-            : currentConfig.additionalHours?.price ?? 3.99,
+            : (currentConfig.additionalHours?.price ?? 3.99),
         currency: currentConfig.additionalHours?.currency ?? 'EUR',
-        description: currentConfig.additionalHours?.description ?? 'Precio por hora para horas adicionales',
+        description:
+          currentConfig.additionalHours?.description ?? 'Precio por hora para horas adicionales',
       },
       lastUpdated: FieldValue.serverTimestamp(),
       updatedBy: request.auth?.uid ?? 'unknown',
@@ -205,7 +207,7 @@ export const resetPricingToDefault = onCall(async (request) => {
         description: 'Precio por hora para horas adicionales',
       },
       lastUpdated: FieldValue.serverTimestamp(),
-      updatedBy: request.auth!.uid,
+      updatedBy: request.auth?.uid ?? 'unknown',
     };
 
     const db = getFirestore();
@@ -215,7 +217,7 @@ export const resetPricingToDefault = onCall(async (request) => {
       success: true,
       pricing: {
         ...defaultConfig,
-        lastUpdated: new Date(), // Para la respuesta inmediata
+        lastUpdated: new Date() as unknown as FirebaseFirestore.Timestamp, // Para la respuesta inmediata
       },
       message: 'Configuración de precios restablecida a valores por defecto',
     };
