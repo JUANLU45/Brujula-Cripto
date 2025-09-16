@@ -23,8 +23,8 @@ interface Comment {
   moderationReason?: string;
 }
 
-export default function AdminCommentsPage() {
-  const t = useTranslations('admin.comments');
+export default function AdminCommentsPage(): JSX.Element {
+  const _t = useTranslations('admin.comments');
   const [loading, setLoading] = useState(true);
   const [moderating, setModerating] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -38,7 +38,7 @@ export default function AdminCommentsPage() {
   >('all');
 
   useEffect(() => {
-    const loadComments = async () => {
+    const loadComments = async (): Promise<void> => {
       try {
         setLoading(true);
         setError(null);
@@ -53,7 +53,7 @@ export default function AdminCommentsPage() {
           throw new Error('Error al cargar comentarios');
         }
 
-        const data = await response.json();
+        const data = (await response.json()) as { comments: Comment[] };
         setComments(data.comments || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error desconocido');
@@ -62,7 +62,7 @@ export default function AdminCommentsPage() {
       }
     };
 
-    loadComments();
+    void loadComments();
   }, []);
 
   // Filter comments
@@ -89,18 +89,18 @@ export default function AdminCommentsPage() {
     setFilteredComments(filtered);
   }, [comments, searchTerm, statusFilter]);
 
-  const getAuthToken = async () => {
+  const getAuthToken = async (): Promise<string> => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error('No autenticado');
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
   const handleModerateComment = async (
     commentId: string,
     action: 'approve' | 'reject' | 'delete',
-  ) => {
+  ): Promise<void> => {
     try {
       setModerating(commentId);
       setError(null);

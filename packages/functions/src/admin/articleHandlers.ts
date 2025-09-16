@@ -144,11 +144,7 @@ export const listArticles = onCall(async (request) => {
     let query = db.collection('articles').orderBy('updatedAt', 'desc');
 
     if (status) {
-      query = query.where(
-        'status',
-        '==',
-        status,
-      ) as FirebaseFirestore.Query<FirebaseFirestore.DocumentData>;
+      query = query.where('status', '==', status);
     }
 
     const snapshot = await query.limit(limit).get();

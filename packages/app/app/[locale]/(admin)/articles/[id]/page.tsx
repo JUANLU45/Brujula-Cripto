@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, use } from 'react';
+import { use, useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -17,9 +17,9 @@ interface ArticleEditorPageProps {
   }>;
 }
 
-export default function ArticleEditorPage(props: ArticleEditorPageProps) {
+export default function ArticleEditorPage(props: ArticleEditorPageProps): JSX.Element {
   const params = use(props.params);
-  const t = useTranslations('admin.editor');
+  const _t = useTranslations('admin.editor');
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [article, setArticle] = useState<IArticle | null>(null);
@@ -33,7 +33,7 @@ export default function ArticleEditorPage(props: ArticleEditorPageProps) {
       return;
     }
 
-    const loadArticle = async () => {
+    const loadArticle = async (): Promise<void> => {
       try {
         setLoading(true);
         setError(null);
@@ -48,7 +48,7 @@ export default function ArticleEditorPage(props: ArticleEditorPageProps) {
           throw new Error('Error al cargar el artículo');
         }
 
-        const data = await response.json();
+        const data = (await response.json()) as { article: IArticle };
         setArticle(data.article);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error desconocido');
@@ -57,17 +57,17 @@ export default function ArticleEditorPage(props: ArticleEditorPageProps) {
       }
     };
 
-    loadArticle();
+    void loadArticle();
   }, [params.id, isNewArticle]);
 
-  const getAuthToken = async () => {
+  const getAuthToken = async (): Promise<string> => {
     // Get Firebase auth token
     const { auth } = await import('@/lib/firebase');
     const user = auth.currentUser;
     if (!user) {
       throw new Error('No autenticado');
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
   if (loading) {

@@ -112,13 +112,13 @@ export default function UpgradeButton({
       }
 
       if (onSuccess && result.sessionId) {
-        onSuccess(result.sessionId as string);
+        onSuccess(result.sessionId);
       }
     } catch (error: unknown) {
       const errorMsg = error instanceof Error ? error.message : t('errors.paymentFailed');
       setErrorMessage(errorMsg);
       if (onError) {
-        onError(errorMsg as string);
+        onError(errorMsg);
       }
     } finally {
       setIsProcessing(false);

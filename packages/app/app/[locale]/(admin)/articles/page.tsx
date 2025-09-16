@@ -12,7 +12,7 @@ interface AdminArticlesPageProps {
   params: Promise<{ locale: string }>;
 }
 
-export default function AdminArticlesPage(props: AdminArticlesPageProps) {
+export default function AdminArticlesPage(props: AdminArticlesPageProps): JSX.Element {
   const params = use(props.params);
   const t = useTranslations('admin.articles');
 

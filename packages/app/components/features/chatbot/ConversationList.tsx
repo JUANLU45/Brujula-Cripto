@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 
 // SVG Inline Icons (NO @heroicons)
-const TrashIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+const TrashIcon = ({ className = 'w-4 h-4' }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -20,7 +20,7 @@ const TrashIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
   </svg>
 );
 
-const MessageIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+const MessageIcon = ({ className = 'w-4 h-4' }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -31,13 +31,13 @@ const MessageIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
   </svg>
 );
 
-const PlusIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+const PlusIcon = ({ className = 'w-4 h-4' }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
   </svg>
 );
 
-const ClockIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+const ClockIcon = ({ className = 'w-4 h-4' }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -54,7 +54,7 @@ const StarIcon = ({
 }: {
   className?: string;
   filled?: boolean;
-}) => (
+}): JSX.Element => (
   <svg
     className={className}
     fill={filled ? 'currentColor' : 'none'}
@@ -70,7 +70,7 @@ const StarIcon = ({
   </svg>
 );
 
-const EditIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+const EditIcon = ({ className = 'w-4 h-4' }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -104,13 +104,13 @@ export default function ConversationList({
   onToggleFavorite,
   onRenameConversation,
   className = '',
-}: ConversationListProps) {
+}: ConversationListProps): JSX.Element {
   const t = useTranslations('chatbot.conversation');
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editTitle, setEditTitle] = useState('');
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     const now = new Date();
     const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
@@ -134,7 +134,7 @@ export default function ConversationList({
     });
   };
 
-  const getConversationPreview = (conversation: IChatConversation) => {
+  const getConversationPreview = (conversation: IChatConversation): string => {
     const lastMessage = conversation.messages[conversation.messages.length - 1];
     if (!lastMessage) {
       return '';
@@ -145,7 +145,7 @@ export default function ConversationList({
     return content.length > 60 ? `${content.substring(0, 60)}...` : content;
   };
 
-  const handleDelete = (conversationId: string) => {
+  const handleDelete = (conversationId: string): void => {
     if (deleteConfirm === conversationId) {
       onDeleteConversation(conversationId);
       setDeleteConfirm(null);
@@ -156,14 +156,14 @@ export default function ConversationList({
     }
   };
 
-  const handleStartEdit = (conversation: IChatConversation) => {
+  const handleStartEdit = (conversation: IChatConversation): void => {
     setEditingId(conversation.id);
     setEditTitle(
       conversation.title || `${t('conversationDefault')} ${conversation.id.slice(0, 8)}`,
     );
   };
 
-  const handleSaveEdit = () => {
+  const handleSaveEdit = (): void => {
     if (editingId && editTitle.trim() && onRenameConversation) {
       onRenameConversation(editingId, editTitle.trim());
     }
@@ -171,7 +171,7 @@ export default function ConversationList({
     setEditTitle('');
   };
 
-  const handleCancelEdit = () => {
+  const handleCancelEdit = (): void => {
     setEditingId(null);
     setEditTitle('');
   };
@@ -317,7 +317,7 @@ function ConversationCard({
   formatDate,
   getConversationPreview,
   t,
-}: ConversationCardProps) {
+}: ConversationCardProps): JSX.Element {
   return (
     <Card
       className={`cursor-pointer p-3 transition-all duration-200 hover:shadow-md ${

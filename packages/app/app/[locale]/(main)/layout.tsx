@@ -8,7 +8,7 @@ interface MainLayoutProps {
   children: ReactNode;
 }
 
-export default function MainLayout({ children }: MainLayoutProps) {
+export default function MainLayout({ children }: MainLayoutProps): JSX.Element {
   return (
     <AuthProvider>
       <div className="flex min-h-screen flex-col">

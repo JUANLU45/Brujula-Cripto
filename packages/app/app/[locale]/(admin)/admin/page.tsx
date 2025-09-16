@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import type { IArticle } from '@brujula-cripto/types';
 import { useTranslations } from 'next-intl';
@@ -21,15 +20,14 @@ interface DashboardStats {
   recentArticles: IArticle[];
 }
 
-export default function AdminDashboardPage() {
+export default function AdminDashboardPage(): JSX.Element {
   const t = useTranslations('admin.dashboard');
-  const router = useRouter();
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadDashboardData = async () => {
+    const loadDashboardData = async (): Promise<void> => {
       try {
         setLoading(true);
         setError(null);
@@ -45,7 +43,7 @@ export default function AdminDashboardPage() {
           throw new Error(t('errors.loadStats'));
         }
 
-        const data = await response.json();
+        const data = (await response.json()) as DashboardStats;
         setStats(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : t('errors.unknown'));
@@ -54,16 +52,16 @@ export default function AdminDashboardPage() {
       }
     };
 
-    loadDashboardData();
+    void loadDashboardData();
   }, []);
 
-  const getAuthToken = async () => {
+  const getAuthToken = async (): Promise<string> => {
     // Get Firebase auth token
     const user = auth.currentUser;
     if (!user) {
       throw new Error(t('errors.notAuthenticated'));
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
   if (loading) {

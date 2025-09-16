@@ -9,7 +9,7 @@ interface AdminAuthPageProps {
   params: Promise<{ locale: string }>;
 }
 
-export default function AdminAuthPage(props: AdminAuthPageProps) {
+export default function AdminAuthPage(props: AdminAuthPageProps): JSX.Element {
   const params = use(props.params);
   const t = useTranslations('admin.auth');
 

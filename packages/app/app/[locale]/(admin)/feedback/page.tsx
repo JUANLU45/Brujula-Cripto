@@ -19,8 +19,8 @@ interface FeedbackMessage {
   status: 'new' | 'read';
 }
 
-export default function AdminFeedbackPage() {
-  const t = useTranslations('admin.feedback');
+export default function AdminFeedbackPage(): JSX.Element {
+  const _t = useTranslations('admin.feedback');
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -33,7 +33,7 @@ export default function AdminFeedbackPage() {
   const [statusFilter, setStatusFilter] = useState<'all' | 'new' | 'read'>('all');
 
   useEffect(() => {
-    const loadFeedback = async () => {
+    const loadFeedback = async (): Promise<void> => {
       try {
         setLoading(true);
         setError(null);
@@ -48,7 +48,7 @@ export default function AdminFeedbackPage() {
           throw new Error('Error al cargar mensajes de feedback');
         }
 
-        const data = await response.json();
+        const data = (await response.json()) as { feedback: FeedbackMessage[] };
         setFeedback(data.feedback || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error desconocido');
@@ -57,7 +57,7 @@ export default function AdminFeedbackPage() {
       }
     };
 
-    loadFeedback();
+    void loadFeedback();
   }, []);
 
   // Filter feedback
@@ -83,15 +83,15 @@ export default function AdminFeedbackPage() {
     setFilteredFeedback(filtered);
   }, [feedback, searchTerm, statusFilter]);
 
-  const getAuthToken = async () => {
+  const getAuthToken = async (): Promise<string> => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error('No autenticado');
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
-  const handleSelectAll = () => {
+  const handleSelectAll = (): void => {
     if (selectedItems.size === filteredFeedback.length) {
       setSelectedItems(new Set());
     } else {
@@ -99,7 +99,7 @@ export default function AdminFeedbackPage() {
     }
   };
 
-  const handleSelectItem = (id: string) => {
+  const handleSelectItem = (id: string): void => {
     const newSelected = new Set(selectedItems);
     if (newSelected.has(id)) {
       newSelected.delete(id);
@@ -109,7 +109,7 @@ export default function AdminFeedbackPage() {
     setSelectedItems(newSelected);
   };
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id: string): Promise<void> => {
     try {
       setDeleting(id);
       setError(null);
@@ -134,7 +134,7 @@ export default function AdminFeedbackPage() {
     }
   };
 
-  const handleBulkDelete = async () => {
+  const handleBulkDelete = async (): Promise<void> => {
     if (selectedItems.size === 0) {
       return;
     }
@@ -166,7 +166,7 @@ export default function AdminFeedbackPage() {
     }
   };
 
-  const handleMarkAsRead = async (id: string) => {
+  const handleMarkAsRead = async (id: string): Promise<void> => {
     try {
       const response = await fetch(`/api/admin/feedback/${id}/mark-read`, {
         method: 'POST',

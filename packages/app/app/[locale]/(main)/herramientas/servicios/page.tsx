@@ -33,12 +33,12 @@ async function getProfessionalServices(): Promise<ProfessionalService[]> {
       const data = doc.data();
       services.push({
         id: doc.id,
-        name: data.name || '',
-        website: data.website || '',
-        description: data.description || '',
-        logoUrl: data.logoUrl || '',
-        specialties: data.specialties || [],
-        isVerified: data.isVerified || false,
+        name: (data.name as string) || '',
+        website: (data.website as string) || '',
+        description: (data.description as string) || '',
+        logoUrl: (data.logoUrl as string) || '',
+        specialties: (data.specialties as string[]) || [],
+        isVerified: (data.isVerified as boolean) || false,
       });
     });
 
@@ -86,10 +86,10 @@ export async function generateMetadata(props: ServiciosPageProps): Promise<Metad
   };
 }
 
-export default async function ServiciosPage(props: ServiciosPageProps) {
+export default async function ServiciosPage(props: ServiciosPageProps): Promise<JSX.Element> {
   const params = await props.params;
-  const { locale } = params;
-  const t = await getTranslations('tools.serviceDirectory');
+  const { locale: _locale } = params;
+  const _t = await getTranslations('tools.serviceDirectory');
 
   // Obtener datos REALES de Firestore
   const professionalServices = await getProfessionalServices();

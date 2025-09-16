@@ -10,7 +10,7 @@ import { Card } from '@/components/ui/Card';
 import { useSpeechToText } from '@/hooks/useSpeechToText';
 
 // Iconos SVG inline para evitar dependencias externas - CUMPLE DOCUMENTACIÓN NAVBAR.TSX
-const SendIcon = ({ className }: { className?: string }) => (
+const SendIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -21,13 +21,13 @@ const SendIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const BrujulaIcon = ({ className }: { className?: string }) => (
+const BrujulaIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 5-5v10zm2-10l5 5-5 5V7z" />
   </svg>
 );
 
-const StopIcon = ({ className }: { className?: string }) => (
+const StopIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -39,7 +39,7 @@ const StopIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const MicrophoneIcon = ({ className }: { className?: string }) => (
+const MicrophoneIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -50,7 +50,7 @@ const MicrophoneIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const MicrophoneOffIcon = ({ className }: { className?: string }) => (
+const MicrophoneOffIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -78,7 +78,7 @@ export function ChatbotUI({
   onSendMessage,
   onStopGeneration,
   className = '',
-}: ChatbotUIProps) {
+}: ChatbotUIProps): JSX.Element {
   const t = useTranslations('chatbot');
   const tCommon = useTranslations('common');
   const tMic = useTranslations('chatbot.microphone');
@@ -114,7 +114,7 @@ export function ChatbotUI({
     }
   }, [transcript, isListening, resetTranscript]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     if (!input.trim() || isLoading || !onSendMessage) {
       return;
@@ -146,14 +146,14 @@ export function ChatbotUI({
     }
   };
 
-  const handleStopGeneration = () => {
+  const handleStopGeneration = (): void => {
     setIsStreaming(false);
     setIsLoading(false);
     onStopGeneration?.();
   };
 
   // Manejar micrófono
-  const handleMicrophoneToggle = () => {
+  const handleMicrophoneToggle = (): void => {
     if (isListening) {
       stopListening();
     } else {
@@ -165,7 +165,7 @@ export function ChatbotUI({
     }
   };
 
-  const formatTimestamp = (timestamp: Date) => {
+  const formatTimestamp = (timestamp: Date): string => {
     return new Intl.DateTimeFormat(locale, {
       hour: '2-digit',
       minute: '2-digit',
@@ -324,7 +324,7 @@ export function ChatbotUI({
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="flex gap-3">
+          <form onSubmit={(e) => void handleSubmit(e)} className="flex gap-3">
             <div className="flex-1">
               <input
                 ref={inputRef}

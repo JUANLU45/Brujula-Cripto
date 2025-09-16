@@ -25,7 +25,9 @@ export async function generateMetadata(props: ContactPageProps): Promise<Metadat
   });
 }
 
-export default async function ContactPage({ params }: ContactPageProps) {
+export default async function ContactPage({
+  params: _params,
+}: ContactPageProps): Promise<JSX.Element> {
   const t = await getTranslations('contact');
 
   return (
@@ -131,7 +133,12 @@ export default async function ContactPage({ params }: ContactPageProps) {
             {/* TIEMPO DE RESPUESTA */}
             <div className="mt-8 rounded-lg bg-gray-50 p-4 dark:bg-gray-700/50">
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                <span className="font-medium">⏱️ {t('direct.responseTime.label')}:</span>{' '}
+                <span className="font-medium">
+                  <span role="img" aria-label="reloj">
+                    ⏱️
+                  </span>{' '}
+                  {t('direct.responseTime.label')}:
+                </span>{' '}
                 {t('direct.responseTime.value')}
               </p>
             </div>

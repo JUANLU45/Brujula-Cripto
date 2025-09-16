@@ -33,7 +33,7 @@ export async function generateMetadata(props: ArticlePageProps): Promise<Metadat
       };
     }
 
-    const article: IArticle = await response.json();
+    const article = (await response.json()) as IArticle;
 
     return {
       title: `${article[locale].title} | Brújula Cripto`,
@@ -67,10 +67,10 @@ export async function generateMetadata(props: ArticlePageProps): Promise<Metadat
   }
 }
 
-export default async function ArticleSlugPage(props: ArticlePageProps) {
+export default async function ArticleSlugPage(props: ArticlePageProps): Promise<JSX.Element> {
   const params = await props.params;
   const { locale, slug } = params;
-  const t = await getTranslations('blog.article');
+  const _t = await getTranslations('blog.article');
 
   // VALIDACIÓN LOCALE Y SLUG SEGÚN PROYEC_PARTE1.MD
   if (!['es', 'en'].includes(locale) || !slug) {
@@ -87,7 +87,7 @@ export default async function ArticleSlugPage(props: ArticlePageProps) {
       notFound();
     }
 
-    const article: IArticle = await response.json();
+    const article = (await response.json()) as IArticle;
 
     // RENDERIZAR COMPONENTE CLIENTE ARTICLEPAGE CON DATOS
     return <ArticlePage article={article} locale={locale} />;

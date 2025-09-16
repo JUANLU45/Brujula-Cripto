@@ -18,7 +18,7 @@ import { ChatbotUI } from './ChatbotUI';
 import ConversationList from './ConversationList';
 
 // SVG Icons inline para evitar dependencias externas
-const MenuIcon = ({ className = 'w-5 h-5' }: { className?: string }) => (
+const MenuIcon = ({ className = 'w-5 h-5' }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -29,13 +29,13 @@ const MenuIcon = ({ className = 'w-5 h-5' }: { className?: string }) => (
   </svg>
 );
 
-const CloseIcon = ({ className = 'w-5 h-5' }: { className?: string }) => (
+const CloseIcon = ({ className = 'w-5 h-5' }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
 
-const UserIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+const UserIcon = ({ className = 'w-4 h-4' }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -46,13 +46,13 @@ const UserIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
   </svg>
 );
 
-const CrownIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+const CrownIcon = ({ className = 'w-4 h-4' }: { className?: string }): JSX.Element => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
     <path d="M3 17l3-10 4 4 4-4 3 10H3zm2-2h14l-2-6-3 3-4-4-3 3-2 6z" />
   </svg>
 );
 
-const ShieldIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+const ShieldIcon = ({ className = 'w-4 h-4' }: { className?: string }): JSX.Element => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
     <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V18H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z" />
   </svg>
@@ -64,7 +64,7 @@ interface ChatbotLayoutProps {
   className?: string;
 }
 
-export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutProps) {
+export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutProps): JSX.Element {
   const t = useTranslations('chatbot');
   const tCommon = useTranslations('common');
   const tCredits = useTranslations('chatbot.credits');
@@ -101,7 +101,7 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
   const formattedCredits = formatCredits(userCredits);
 
   // Badge de usuario con información avanzada
-  const getUserBadge = () => {
+  const getUserBadge = (): { text: string; icon: JSX.Element; color: string; credits: string } => {
     if (isAdmin) {
       return {
         text: t('userLevel.admin') || 'Admin',
@@ -139,7 +139,7 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
   // Cargar conversaciones al montar el componente
   useEffect(() => {
     if (user) {
-      loadConversations();
+      void loadConversations();
     }
   }, [user]);
 
@@ -210,7 +210,7 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
           if (createResponse.success && createResponse.data) {
             targetConversationId = createResponse.data.id;
             setActiveConversationId(targetConversationId);
-            setConversationsData((prev) => [createResponse.data!, ...prev]);
+            setConversationsData((prev) => [createResponse.data as IChatConversation, ...prev]);
           } else {
             setError('Error creando conversación');
             return;
@@ -238,13 +238,16 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
 
         if (messageResponse.success && messageResponse.data) {
           // La respuesta contiene el mensaje del asistente
-          setCurrentMessages((prev) => [...prev, messageResponse.data!]);
+          setCurrentMessages((prev) => [...prev, messageResponse.data as IChatMessage]);
 
           // Actualizar la conversación en la lista
           setConversationsData((prev) =>
             prev.map((conv) =>
               conv.id === targetConversationId
-                ? { ...conv, messages: [...conv.messages, userMessage, messageResponse.data!] }
+                ? {
+                    ...conv,
+                    messages: [...conv.messages, userMessage, messageResponse.data as IChatMessage],
+                  }
                 : conv,
             ),
           );
@@ -259,7 +262,7 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
     [canSendMessage, user, isRegistered, activeConversationId, conversationsData],
   );
 
-  const handleSelectConversation = (conversationId: string) => {
+  const handleSelectConversation = (conversationId: string): void => {
     setActiveConversationId(conversationId);
     setIsSidebarOpen(false);
   };
@@ -301,7 +304,7 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
 
       const response = await createChatConversation(newConversation);
       if (response.success && response.data) {
-        setConversationsData((prev) => [response.data!, ...prev]);
+        setConversationsData((prev) => [response.data as IChatConversation, ...prev]);
         setActiveConversationId(response.data.id);
         setCurrentMessages([]);
         setIsSidebarOpen(false);
@@ -497,10 +500,10 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
               conversations={conversationsData}
               activeConversationId={activeConversationId || undefined}
               onSelectConversation={handleSelectConversation}
-              onDeleteConversation={handleDeleteConversation}
-              onNewConversation={handleNewConversation}
-              onToggleFavorite={handleToggleFavorite}
-              onRenameConversation={handleRenameConversation}
+              onDeleteConversation={(id) => void handleDeleteConversation(id)}
+              onNewConversation={() => void handleNewConversation()}
+              onToggleFavorite={(id) => void handleToggleFavorite(id)}
+              onRenameConversation={(id, name) => void handleRenameConversation(id, name)}
             />
           )}
         </div>
@@ -523,7 +526,9 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
               activeConversationId
                 ? [
                     {
-                      ...conversationsData.find((conv) => conv.id === activeConversationId)!,
+                      ...(conversationsData.find(
+                        (conv) => conv.id === activeConversationId,
+                      ) as IChatConversation),
                       messages: currentMessages,
                     },
                   ].filter(Boolean)

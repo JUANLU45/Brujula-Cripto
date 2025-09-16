@@ -22,7 +22,7 @@ export async function generateMetadata(props: AvisoLegalPageProps): Promise<Meta
   });
 }
 
-export default async function AvisoLegalPage(props: AvisoLegalPageProps) {
+export default async function AvisoLegalPage(props: AvisoLegalPageProps): Promise<JSX.Element> {
   const params = await props.params;
   const t = await getTranslations('legal_pages.legal_notice');
   const navT = await getTranslations('navigation');

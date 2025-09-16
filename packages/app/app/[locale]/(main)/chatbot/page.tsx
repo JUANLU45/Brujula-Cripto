@@ -23,7 +23,7 @@ export async function generateMetadata(props: ChatbotPageProps): Promise<Metadat
   });
 }
 
-export default async function ChatbotPage(props: ChatbotPageProps) {
+export default async function ChatbotPage(props: ChatbotPageProps): Promise<JSX.Element> {
   const params = await props.params;
 
   const { locale } = params;

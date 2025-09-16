@@ -21,8 +21,8 @@ interface User {
   displayName?: string;
 }
 
-export default function AdminUsersPage() {
-  const t = useTranslations('admin.users');
+export default function AdminUsersPage(): JSX.Element {
+  const _t = useTranslations('admin.users');
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);

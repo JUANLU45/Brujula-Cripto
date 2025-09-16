@@ -18,10 +18,10 @@ export async function generateMetadata(props: TrackerPageProps): Promise<Metadat
   });
 }
 
-export default async function TrackerPage(props: TrackerPageProps) {
+export default async function TrackerPage(props: TrackerPageProps): Promise<JSX.Element> {
   const params = await props.params;
-  const { locale } = params;
-  const t = await getTranslations('tools.transactionTracker');
+  const { locale: _locale } = params;
+  const _t = await getTranslations('tools.transactionTracker');
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">

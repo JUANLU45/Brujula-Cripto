@@ -23,8 +23,8 @@ interface HomepageContent {
   bannerButtonLink: string;
 }
 
-export default function AdminHomepagePage() {
-  const t = useTranslations('admin.homepage');
+export default function AdminHomepagePage(): JSX.Element {
+  const _t = useTranslations('admin.homepage');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -43,7 +43,7 @@ export default function AdminHomepagePage() {
   });
 
   useEffect(() => {
-    const loadHomepageContent = async () => {
+    const loadHomepageContent = async (): Promise<void> => {
       try {
         setLoading(true);
         setError(null);
@@ -58,7 +58,7 @@ export default function AdminHomepagePage() {
           throw new Error('Error al cargar contenido de homepage');
         }
 
-        const data = await response.json();
+        const data = (await response.json()) as { content: HomepageContent };
         setFormData(data.content || formData);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error desconocido');
@@ -67,25 +67,25 @@ export default function AdminHomepagePage() {
       }
     };
 
-    loadHomepageContent();
+    void loadHomepageContent();
   }, []);
 
-  const getAuthToken = async () => {
+  const getAuthToken = async (): Promise<string> => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error('No autenticado');
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
-  const handleInputChange = (field: keyof HomepageContent, value: string) => {
+  const handleInputChange = (field: keyof HomepageContent, value: string): void => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     if (success) {
       setSuccess(null);
     }
   };
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const file = e.target.files?.[0];
     if (!file) {
       return;
@@ -110,7 +110,7 @@ export default function AdminHomepagePage() {
         throw new Error('Error al subir imagen');
       }
 
-      const data = await response.json();
+      const data = (await response.json()) as { url: string };
       handleInputChange('bannerImageUrl', data.url);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al subir imagen');
@@ -119,7 +119,7 @@ export default function AdminHomepagePage() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
 
     try {
@@ -169,7 +169,7 @@ export default function AdminHomepagePage() {
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={(e) => void handleSubmit(e)} className="space-y-6">
         {/* Banner Image */}
         <Card className="p-6">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
@@ -189,7 +189,12 @@ export default function AdminHomepagePage() {
           )}
 
           <div className="flex items-center space-x-4">
-            <Input type="file" accept="image/*" onChange={handleImageUpload} disabled={uploading} />
+            <Input
+              type="file"
+              accept="image/*"
+              onChange={(e) => void handleImageUpload(e)}
+              disabled={uploading}
+            />
             {uploading && <Spinner size="sm" />}
           </div>
         </Card>

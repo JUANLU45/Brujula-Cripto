@@ -20,7 +20,7 @@ export async function generateMetadata(props: BlogPageProps): Promise<Metadata> 
   });
 }
 
-export default async function BlogMainPage(props: BlogPageProps) {
+export default async function BlogMainPage(props: BlogPageProps): Promise<JSX.Element> {
   const params = await props.params;
   const { locale } = params;
   const t = await getTranslations('blog.page');

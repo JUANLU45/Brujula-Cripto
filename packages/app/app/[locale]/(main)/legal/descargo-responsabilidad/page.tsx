@@ -22,7 +22,9 @@ export async function generateMetadata(props: DescargoResponsabilidadPageProps):
   });
 }
 
-export default async function DescargoResponsabilidadPage(props: DescargoResponsabilidadPageProps) {
+export default async function DescargoResponsabilidadPage(
+  props: DescargoResponsabilidadPageProps,
+): Promise<JSX.Element> {
   const params = await props.params;
   const t = await getTranslations('legal_pages.disclaimer');
   const navT = await getTranslations('navigation');
@@ -37,7 +39,10 @@ export default async function DescargoResponsabilidadPage(props: DescargoRespons
           </h1>
           <div className="rounded-lg border border-red-200 bg-red-50 p-6 dark:border-red-800 dark:bg-red-900/20">
             <p className="text-lg font-semibold text-red-800 dark:text-red-200">
-              ⚠️ ADVERTENCIA IMPORTANTE: Las criptomonedas son activos de alto riesgo. Lea todo este
+              <span role="img" aria-label="advertencia">
+                ⚠️
+              </span>{' '}
+              ADVERTENCIA IMPORTANTE: Las criptomonedas son activos de alto riesgo. Lea todo este
               descargo antes de usar nuestros servicios.
             </p>
           </div>

@@ -22,7 +22,7 @@ export async function generateMetadata(props: PrivacidadPageProps): Promise<Meta
   });
 }
 
-export default async function PrivacidadPage(props: PrivacidadPageProps) {
+export default async function PrivacidadPage(props: PrivacidadPageProps): Promise<JSX.Element> {
   const params = await props.params;
   const t = await getTranslations('legal_pages.privacy_policy');
   const navT = await getTranslations('navigation');
