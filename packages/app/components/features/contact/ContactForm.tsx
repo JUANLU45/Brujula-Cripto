@@ -25,7 +25,7 @@ interface ContactFormProps {
   className?: string;
 }
 
-export function ContactForm({ className = '' }: ContactFormProps) {
+export function ContactForm({ className = '' }: ContactFormProps): JSX.Element {
   // INTERNACIONALIZACIÓN CENTRALIZADA - CUMPLE DOCUMENTACIÓN
   const t = useTranslations('contact.form');
 
@@ -42,7 +42,7 @@ export function ContactForm({ className = '' }: ContactFormProps) {
     resolver: zodResolver(contactFormSchema),
   });
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit = async (data: ContactFormData): Promise<void> => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -92,7 +92,7 @@ export function ContactForm({ className = '' }: ContactFormProps) {
         </div>
       )}
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={(e) => void handleSubmit(onSubmit)(e)} className="space-y-6">
         {/* CAMPO NOMBRE */}
         <div>
           <label

@@ -42,57 +42,6 @@ DOCUMENTACION/ERRORES/ERRORES_1VERIFICACION.MD
 
 
 
-C:\BRUJULA CRIPTO\packages\app\app\[locale]\(main)\suscripcion\page.tsx
-  12:8   error  Missing return type on function                                           @typescript-eslint/explicit-function-return-type
-  12:8   error  Missing return type on function                                           @typescript-eslint/explicit-module-boundary-types
-  23:16  error  Missing return type on function                                           @typescript-eslint/explicit-function-return-type
-  23:16  error  Async function 'SuscripcionPage' has no 'await' expression                require-await
-  23:16  error  Async function 'SuscripcionPage' has no 'await' expression                @typescript-eslint/require-await
-  23:16  error  Missing return type on function                                           @typescript-eslint/explicit-module-boundary-types
-  23:49  error  'params' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
-
-C:\BRUJULA CRIPTO\packages\app\components\features\admin\AdminLoginForm.tsx
-  21:8   error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-  21:8   error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
-  31:70  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-  40:51  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-
-C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleDataTable.tsx
-   30:8   warning  Function 'ArticleDataTable' has a complexity of 14. Maximum allowed is 10                                        complexity
-   83:6   warning  React Hook useEffect has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-  121:50  error    Async arrow function has no 'await' expression                                                                   require-await
-  353:1   warning  File has too many lines (503). Maximum allowed is 300                                                            max-lines
-
-C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleEditor.tsx
-   51:8   warning  Function 'ArticleEditor' has a complexity of 16. Maximum allowed is 10                                                                                                                                                                                                                   complexity
-  183:6   warning  React Hook useEffect has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array                                                                                                                                                                          react-hooks/exhaustive-deps
-  185:50  error    Async arrow function has no 'await' expression                                                                                                                                                                                                                                           require-await
-  306:5   warning  React Hook useCallback has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array                                                                                                                                                                        react-hooks/exhaustive-deps
-  309:96  error    Missing return type on function                                                                                                                                                                                                                                                          @typescript-eslint/explicit-function-return-type
-  336:13  error    Unsafe assignment of an `any` value                                                                                                                                                                                                                                                      @typescript-eslint/no-unsafe-assignment
-  340:37  error    Unsafe argument of type `any` assigned to a parameter of type `Content | Fragment | Node`                                                                                                                                                                                                @typescript-eslint/no-unsafe-argument
-  342:41  error    Unsafe argument of type `any` assigned to a parameter of type `string`                                                                                                                                                                                                                   @typescript-eslint/no-unsafe-argument
-  351:22  warning  Async arrow function has a complexity of 13. Maximum allowed is 10                                                                                                                                                                                                                       complexity
-  351:49  error    Missing return type on function                                                                                                                                                                                                                                                          @typescript-eslint/explicit-function-return-type
-  352:1   warning  File has too many lines (698). Maximum allowed is 300                                                                                                                                                                                                                                    max-lines
-  388:13  error    Unsafe assignment of an `any` value                                                                                                                                                                                                                                                      @typescript-eslint/no-unsafe-assignment
-  395:20  error    Unsafe member access .slug on an `any` value                                                                                                                                                                                                                                             @typescript-eslint/no-unsafe-member-access
-  396:52  error    Unsafe member access .slug on an `any` value                                                                                                                                                                                                                                             @typescript-eslint/no-unsafe-member-access
-  432:21  error    Promise-returning function provided to attribute where a void return was expected                                                                                                                                                                                                        @typescript-eslint/no-misused-promises
-  440:21  error    Promise-returning function provided to attribute where a void return was expected                                                                                                                                                                                                        @typescript-eslint/no-misused-promises
-  495:29  error    Promise-returning function provided to attribute where a void return was expected                                                                                                                                                                                                        @typescript-eslint/no-misused-promises
-  512:31  error    Promise-returning function provided to attribute where a void return was expected                                                                                                                                                                                                        @typescript-eslint/no-misused-promises
-  524:27  error    Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator                                                                                                                       @typescript-eslint/no-floating-promises
-  595:29  error    Promise-returning function provided to attribute where a void return was expected                                                                                                                                                                                                        @typescript-eslint/no-misused-promises
-  698:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-  714:23  error    Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator                                                                                                                       @typescript-eslint/no-floating-promises
-
-C:\BRUJULA CRIPTO\packages\app\components\features\auth\PasswordResetForm.tsx
-  27:21  error  Unexpected any. Specify a different type                                                @typescript-eslint/no-explicit-any
-  28:16  error  Unsafe argument of type `any` assigned to a parameter of type `SetStateAction<string>`  @typescript-eslint/no-unsafe-argument
-  28:22  error  Unsafe member access .message on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  73:22  error  Promise-returning function provided to attribute where a void return was expected       @typescript-eslint/no-misused-promises
-
 C:\BRUJULA CRIPTO\packages\app\components\features\auth\SignInForm.tsx
    31:21  error  Unexpected any. Specify a different type                                                @typescript-eslint/no-explicit-any
    32:16  error  Unsafe argument of type `any` assigned to a parameter of type `SetStateAction<string>`  @typescript-eslint/no-unsafe-argument

@@ -336,7 +336,8 @@ export function ArticleEditor({
         throw new Error(t('errors.aiFailed'));
       }
 
-      const { content } = await response.json();
+      const response_json = (await response.json()) as { content: string };
+      const { content } = response_json;
 
       if (field === 'content') {
         const editor = language === 'es' ? editorEs : editorEn;
@@ -388,7 +389,7 @@ export function ArticleEditor({
         throw new Error(t('errors.saveFailed'));
       }
 
-      const result = await response.json();
+      const result = (await response.json()) as { slug: string };
 
       // Redirect to article list or stay in editor
       if (publishNow || mode === 'create') {
@@ -432,7 +433,7 @@ export function ArticleEditor({
 
         <div className="flex items-center space-x-3">
           <Button
-            onClick={() => handleSave(false)}
+            onClick={() => void handleSave(false)}
             disabled={saving}
             className="bg-gray-600 text-white hover:bg-gray-700"
           >
@@ -440,7 +441,7 @@ export function ArticleEditor({
             {t('saveDraft')}
           </Button>
           <Button
-            onClick={() => handleSave(true)}
+            onClick={() => void handleSave(true)}
             disabled={saving}
             className="bg-blue-600 text-white hover:bg-blue-700"
           >

@@ -28,8 +28,8 @@ export function SignInForm(): JSX.Element {
     try {
       await signInWithEmail(email, password);
       router.push('/cuenta');
-    } catch (error: any) {
-      setError(error.message || 'Error al iniciar sesión');
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : 'Error al iniciar sesión');
     } finally {
       setLoading(false);
     }
@@ -42,8 +42,8 @@ export function SignInForm(): JSX.Element {
     try {
       await signInWithGoogle();
       router.push('/cuenta');
-    } catch (error: any) {
-      setError(error.message || 'Error al iniciar sesión con Google');
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : 'Error al iniciar sesión con Google');
     } finally {
       setLoading(false);
     }
@@ -51,7 +51,7 @@ export function SignInForm(): JSX.Element {
 
   return (
     <div className="mx-auto w-full max-w-md">
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={(e) => void handleSubmit(e)} className="space-y-6">
         <div>
           <label
             htmlFor="email"
@@ -106,7 +106,7 @@ export function SignInForm(): JSX.Element {
         <Button
           type="button"
           variant="outline"
-          onClick={handleGoogleSignIn}
+          onClick={() => void handleGoogleSignIn()}
           disabled={loading}
           className="w-full"
         >

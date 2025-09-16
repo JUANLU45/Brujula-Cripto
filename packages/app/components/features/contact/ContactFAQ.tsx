@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { Card } from '@/components/ui/Card';
 
 // Iconos SVG inline para evitar dependencias externas - CUMPLE DOCUMENTACIÓN NAVBAR.TSX
-const ChevronDownIcon = ({ className }: { className?: string }) => (
+const ChevronDownIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -19,7 +19,7 @@ const ChevronDownIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const ChevronUpIcon = ({ className }: { className?: string }) => (
+const ChevronUpIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -42,7 +42,7 @@ interface ContactFAQProps {
   className?: string;
 }
 
-export function ContactFAQ({ className = '' }: ContactFAQProps) {
+export function ContactFAQ({ className = '' }: ContactFAQProps): JSX.Element {
   const t = useTranslations('contact.faq');
   const [activeTab, setActiveTab] = useState('homepage');
   const [openItems, setOpenItems] = useState<string[]>([]);
@@ -145,7 +145,7 @@ export function ContactFAQ({ className = '' }: ContactFAQProps) {
     ],
   };
 
-  const toggleItem = (itemId: string) => {
+  const toggleItem = (itemId: string): void => {
     setOpenItems((prev) =>
       prev.includes(itemId) ? prev.filter((id) => id !== itemId) : [...prev, itemId],
     );

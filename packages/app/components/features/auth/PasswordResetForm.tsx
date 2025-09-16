@@ -24,8 +24,10 @@ export function PasswordResetForm(): JSX.Element {
     try {
       await resetPassword(email);
       setSuccess(true);
-    } catch (error: any) {
-      setError(error.message || 'Error al enviar el correo de recuperación');
+    } catch (error: unknown) {
+      setError(
+        error instanceof Error ? error.message : 'Error al enviar el correo de recuperación',
+      );
     } finally {
       setLoading(false);
     }
@@ -70,7 +72,7 @@ export function PasswordResetForm(): JSX.Element {
 
   return (
     <div className="mx-auto w-full max-w-md">
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={(e) => void handleSubmit(e)} className="space-y-6">
         <div>
           <label
             htmlFor="email"

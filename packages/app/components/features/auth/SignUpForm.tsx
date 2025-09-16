@@ -40,8 +40,8 @@ export function SignUpForm(): JSX.Element {
     try {
       await signUpWithEmail(email, password);
       router.push('/cuenta');
-    } catch (error: any) {
-      setError(error.message || 'Error al crear la cuenta');
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : 'Error al crear la cuenta');
     } finally {
       setLoading(false);
     }
@@ -60,8 +60,8 @@ export function SignUpForm(): JSX.Element {
     try {
       await signInWithGoogle();
       router.push('/cuenta');
-    } catch (error: any) {
-      setError(error.message || 'Error al registrarse con Google');
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : 'Error al registrarse con Google');
     } finally {
       setLoading(false);
     }
