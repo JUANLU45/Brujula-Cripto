@@ -14,14 +14,14 @@ interface PricingConfig {
     currency: string;
     description: string;
   };
-  lastUpdated: any;
+  lastUpdated: FirebaseFirestore.Timestamp | FirebaseFirestore.FieldValue | null;
   updatedBy: string;
 }
 
 /**
  * Verificar si el usuario es administrador
  */
-const verifyAdminUser = async (authUser: any): Promise<void> => {
+const verifyAdminUser = async (authUser: { uid: string } | undefined): Promise<void> => {
   if (!authUser) {
     throw new HttpsError('unauthenticated', 'Usuario no autenticado');
   }
@@ -94,7 +94,10 @@ export const updatePricingConfig = onCall(async (request) => {
   try {
     await verifyAdminUser(request.auth);
 
-    const { firstTwoHoursPrice, additionalHoursPrice } = request.data;
+    const { firstTwoHoursPrice, additionalHoursPrice } = request.data as {
+      firstTwoHoursPrice?: number;
+      additionalHoursPrice?: number;
+    };
 
     // Validación de datos de entrada
     if (firstTwoHoursPrice !== undefined) {
@@ -143,21 +146,23 @@ export const updatePricingConfig = onCall(async (request) => {
     // Actualizar solo los campos proporcionados
     const updatedConfig: PricingConfig = {
       firstTwoHours: {
-        ...currentConfig.firstTwoHours!,
         price:
           firstTwoHoursPrice !== undefined
             ? firstTwoHoursPrice
-            : currentConfig.firstTwoHours!.price,
+            : currentConfig.firstTwoHours?.price ?? 4.99,
+        currency: currentConfig.firstTwoHours?.currency ?? 'EUR',
+        description: currentConfig.firstTwoHours?.description ?? 'Precio por hora para las primeras 2 horas',
       },
       additionalHours: {
-        ...currentConfig.additionalHours!,
         price:
           additionalHoursPrice !== undefined
             ? additionalHoursPrice
-            : currentConfig.additionalHours!.price,
+            : currentConfig.additionalHours?.price ?? 3.99,
+        currency: currentConfig.additionalHours?.currency ?? 'EUR',
+        description: currentConfig.additionalHours?.description ?? 'Precio por hora para horas adicionales',
       },
       lastUpdated: FieldValue.serverTimestamp(),
-      updatedBy: request.auth!.uid,
+      updatedBy: request.auth?.uid ?? 'unknown',
     };
 
     await pricingRef.set(updatedConfig, { merge: true });
@@ -166,7 +171,7 @@ export const updatePricingConfig = onCall(async (request) => {
       success: true,
       pricing: {
         ...updatedConfig,
-        lastUpdated: new Date(), // Para la respuesta inmediata
+        lastUpdated: new Date() as unknown as FirebaseFirestore.Timestamp, // Para la respuesta inmediata
       },
       message: 'Configuración de precios actualizada exitosamente',
     };

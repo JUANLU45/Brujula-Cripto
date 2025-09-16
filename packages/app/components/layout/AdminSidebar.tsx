@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
 // Iconos SVG inline
-const DashboardIcon = ({ className }: { className?: string }) => (
+const DashboardIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -27,7 +27,7 @@ const DashboardIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const DocumentIcon = ({ className }: { className?: string }) => (
+const DocumentIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -43,7 +43,7 @@ const DocumentIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const HomeIcon = ({ className }: { className?: string }) => (
+const HomeIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -59,7 +59,7 @@ const HomeIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const ChatIcon = ({ className }: { className?: string }) => (
+const ChatIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -75,7 +75,7 @@ const ChatIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const UsersIcon = ({ className }: { className?: string }) => (
+const UsersIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -91,7 +91,7 @@ const UsersIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const LogoutIcon = ({ className }: { className?: string }) => (
+const LogoutIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -157,7 +157,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ className }) => {
   ];
 
   // Función para verificar si un enlace está activo
-  const isLinkActive = (href: string, exact: boolean) => {
+  const isLinkActive = (href: string, exact: boolean): boolean => {
     if (exact) {
       return pathname === href;
     }
@@ -165,9 +165,9 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ className }) => {
   };
 
   // Función de logout (placeholder para futuro)
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     // TODO: Implementar logout con Firebase Auth
-    console.log('Logout clicked');
+    // console.log('Logout clicked');
   };
 
   return (

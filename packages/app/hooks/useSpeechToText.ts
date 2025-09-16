@@ -44,17 +44,17 @@ interface SpeechRecognition extends EventTarget {
   lang: string;
   maxAlternatives: number;
 
-  onstart: ((this: SpeechRecognition, ev: Event) => any) | null;
-  onend: ((this: SpeechRecognition, ev: Event) => any) | null;
-  onerror: ((this: SpeechRecognition, ev: SpeechRecognitionErrorEvent) => any) | null;
-  onresult: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any) | null;
+  onstart: ((this: SpeechRecognition, ev: Event) => unknown) | null;
+  onend: ((this: SpeechRecognition, ev: Event) => unknown) | null;
+  onerror: ((this: SpeechRecognition, ev: SpeechRecognitionErrorEvent) => unknown) | null;
+  onresult: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => unknown) | null;
 
   start(): void;
   stop(): void;
   abort(): void;
 }
 
-declare var SpeechRecognition: {
+declare const SpeechRecognition: {
   prototype: SpeechRecognition;
   new (): SpeechRecognition;
 };
@@ -80,7 +80,9 @@ export function useSpeechToText(locale: 'es' | 'en' = 'es'): UseSpeechToTextRetu
   // Verificar soporte del navegador para Speech Recognition
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const SpeechRecognition = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
+      const SpeechRecognition =
+        window.SpeechRecognition ||
+        (window as unknown as { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition;
 
       if (SpeechRecognition) {
         setIsSupported(true);
@@ -106,12 +108,12 @@ export function useSpeechToText(locale: 'es' | 'en' = 'es'): UseSpeechToTextRetu
     recognition.lang = locale === 'es' ? 'es-ES' : 'en-US';
 
     // Eventos del reconocimiento
-    recognition.onstart = () => {
+    recognition.onstart = (): void => {
       setIsListening(true);
       setError(null);
     };
 
-    recognition.onresult = (event: SpeechRecognitionEvent) => {
+    recognition.onresult = (event: SpeechRecognitionEvent): void => {
       let finalTranscript = '';
       let interimTranscript = '';
 
@@ -127,11 +129,11 @@ export function useSpeechToText(locale: 'es' | 'en' = 'es'): UseSpeechToTextRetu
       setTranscript(finalTranscript || interimTranscript);
     };
 
-    recognition.onend = () => {
+    recognition.onend = (): void => {
       setIsListening(false);
     };
 
-    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+    recognition.onerror = (event: SpeechRecognitionErrorEvent): void => {
       setIsListening(false);
 
       let errorMessage = 'Error en el reconocimiento de voz';
@@ -156,7 +158,7 @@ export function useSpeechToText(locale: 'es' | 'en' = 'es'): UseSpeechToTextRetu
       setError(errorMessage);
     };
 
-    return () => {
+    return (): void => {
       if (recognition) {
         recognition.abort();
       }

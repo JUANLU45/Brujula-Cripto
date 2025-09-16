@@ -21,7 +21,7 @@ interface ServiceDirectoryProps {
   services: Service[];
 }
 
-export function ServiceDirectory({ services }: ServiceDirectoryProps) {
+export function ServiceDirectory({ services }: ServiceDirectoryProps): JSX.Element {
   const t = useTranslations('tools.serviceDirectory');
 
   const [searchTerm, setSearchTerm] = useState('');

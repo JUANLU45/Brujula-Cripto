@@ -12,7 +12,7 @@ interface DiagnosisBannerProps {
 export function DiagnosisBanner({
   showBackgroundImage = true,
   compactMode = false,
-}: DiagnosisBannerProps) {
+}: DiagnosisBannerProps): JSX.Element {
   const t = useTranslations('recovery.banner');
 
   return (

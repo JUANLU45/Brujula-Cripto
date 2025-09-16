@@ -1,4 +1,5 @@
 import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 import createMiddleware from 'next-intl/middleware';
 
@@ -38,8 +39,8 @@ const intlMiddleware = createMiddleware({
   },
 });
 
-export default function middleware(request: NextRequest) {
-  const { pathname, search } = request.nextUrl;
+export default function middleware(request: NextRequest): NextResponse | undefined {
+  const { pathname } = request.nextUrl;
 
   // Rutas que no necesitan procesamiento de i18n
   const publicPaths = [

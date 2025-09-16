@@ -29,7 +29,7 @@ function WasmPasswordEngine({
   freeCreditsSeconds = 900,
 }: WasmPasswordEngineProps): JSX.Element {
   const t = useTranslations('recovery.passwordEngine');
-  const { user, userData } = useAuth();
+  const { user: _user, userData } = useAuth();
   const workerRef = useRef<Worker | null>(null);
   const trackingRef = useRef<string | null>(null);
 
@@ -77,15 +77,15 @@ function WasmPasswordEngine({
       workerRef.current = new Worker('/workers/wasmPasswordWorker.js');
 
       workerRef.current.onmessage = (event): void => {
-        const { type, data } = event.data as { type: string; data: any };
+        const { type, data } = event.data as { type: string; data: unknown };
 
         switch (type) {
           case 'progress': {
-            const progress = data.progress as number;
-            const operation = data.operation as string;
-            const timeElapsed = data.timeElapsed as number;
-            const estimatedRemaining = data.estimatedRemaining as number;
-            const creditsUsed = data.creditsUsed as number;
+            const progress = (data as { progress: number }).progress;
+            const operation = (data as { operation: string }).operation;
+            const timeElapsed = (data as { timeElapsed: number }).timeElapsed;
+            const estimatedRemaining = (data as { estimatedRemaining: number }).estimatedRemaining;
+            const creditsUsed = (data as { creditsUsed: number }).creditsUsed;
             setRecoveryState((prev) => ({
               ...prev,
               progress,
@@ -98,7 +98,7 @@ function WasmPasswordEngine({
           }
 
           case 'result': {
-            const password = data.password as string;
+            const password = (data as { password: string }).password;
             setRecoveryState((prev) => ({
               ...prev,
               results: [...prev.results, password],
@@ -124,7 +124,7 @@ function WasmPasswordEngine({
             break;
 
           case 'error': {
-            const errorMessage = data.error as string;
+            const errorMessage = (data as { error: string }).error;
             setRecoveryState((prev) => ({
               ...prev,
               stage: 'error',
@@ -136,14 +136,14 @@ function WasmPasswordEngine({
       };
     }
 
-    return () => {
+    return (): void => {
       if (workerRef.current) {
         workerRef.current.terminate();
       }
     };
   }, []);
 
-  const generatePasswordCombinations = async () => {
+  const generatePasswordCombinations = async (): Promise<void> => {
     if (!hasCredits) {
       return;
     }
@@ -195,7 +195,7 @@ function WasmPasswordEngine({
           dictionaryBuffer,
         });
       }
-    } catch (error) {
+    } catch (_error) {
       setRecoveryState((prev) => ({
         ...prev,
         stage: 'error',
@@ -204,7 +204,7 @@ function WasmPasswordEngine({
     }
   };
 
-  const resetEngine = async () => {
+  const resetEngine = async (): Promise<void> => {
     if (workerRef.current) {
       workerRef.current.postMessage({ type: 'stop' });
     }
@@ -361,7 +361,7 @@ function WasmPasswordEngine({
             </div>
 
             <Button
-              onClick={generatePasswordCombinations}
+              onClick={() => void generatePasswordCombinations()}
               disabled={!formData.partialPassword.trim()}
               className="w-full bg-blue-600 py-3 text-lg font-semibold text-white hover:bg-blue-700"
             >
@@ -413,7 +413,7 @@ function WasmPasswordEngine({
               </div>
             </div>
 
-            <Button onClick={resetEngine} variant="outline" className="w-full">
+            <Button onClick={() => void resetEngine()} variant="outline" className="w-full">
               {t('processing.cancel')}
             </Button>
           </div>
@@ -451,7 +451,7 @@ function WasmPasswordEngine({
                         </code>
                         <Button
                           size="sm"
-                          onClick={() => navigator.clipboard.writeText(password)}
+                          onClick={() => void navigator.clipboard.writeText(password)}
                           className="text-xs"
                         >
                           {t('results.copy')}
@@ -479,7 +479,7 @@ function WasmPasswordEngine({
             )}
 
             <div className="flex space-x-4">
-              <Button onClick={resetEngine} className="flex-1">
+              <Button onClick={() => void resetEngine()} className="flex-1">
                 {t('results.newAttempt')}
               </Button>
               {recoveryState.results.length > 0 && (
@@ -511,7 +511,7 @@ function WasmPasswordEngine({
               <p>{recoveryState.currentOperation}</p>
             </div>
 
-            <Button onClick={resetEngine} className="w-full">
+            <Button onClick={() => void resetEngine()} className="w-full">
               {t('error.tryAgain')}
             </Button>
           </div>

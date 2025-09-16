@@ -24,7 +24,10 @@ interface RecoveryWizardProps {
   compactMode?: boolean;
 }
 
-export function RecoveryWizard({ showProgress = true, compactMode = false }: RecoveryWizardProps) {
+export function RecoveryWizard({
+  showProgress = true,
+  compactMode = false,
+}: RecoveryWizardProps): JSX.Element {
   const t = useTranslations('recovery.wizard');
   const router = useRouter();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -92,7 +95,7 @@ export function RecoveryWizard({ showProgress = true, compactMode = false }: Rec
     },
   ];
 
-  const getDifficultyColor = (difficulty: string) => {
+  const getDifficultyColor = (difficulty: string): string => {
     switch (difficulty) {
       case 'easy':
         return 'success-badge';
@@ -105,7 +108,7 @@ export function RecoveryWizard({ showProgress = true, compactMode = false }: Rec
     }
   };
 
-  const handleOptionSelect = (option: RecoveryOption) => {
+  const handleOptionSelect = (option: RecoveryOption): void => {
     setSelectedOption(option.id);
     // Pequeño delay para mostrar la selección antes de navegar
     setTimeout(() => {
@@ -163,6 +166,14 @@ export function RecoveryWizard({ showProgress = true, compactMode = false }: Rec
                 selectedOption === option.id ? 'ring-2 ring-blue-500 ring-opacity-50' : ''
               }`}
               onClick={() => handleOptionSelect(option)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleOptionSelect(option);
+                }
+              }}
+              tabIndex={0}
+              role="button"
             >
               <div className="h-full rounded-lg bg-gray-50 p-6 transition-shadow hover:shadow-lg dark:bg-gray-700">
                 {/* Premium badge */}
@@ -175,7 +186,11 @@ export function RecoveryWizard({ showProgress = true, compactMode = false }: Rec
                 )}
 
                 {/* Icon */}
-                <div className="mb-4 text-center text-4xl">{option.icon}</div>
+                <div className="mb-4 text-center text-4xl">
+                  <span role="img" aria-label={option.title}>
+                    {option.icon}
+                  </span>
+                </div>
 
                 {/* Content */}
                 <div className="text-center">

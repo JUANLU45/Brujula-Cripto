@@ -34,18 +34,18 @@ class ApiClient {
         ...options,
       });
 
-      const data = await response.json();
+      const data = (await response.json()) as unknown;
 
       if (!response.ok) {
         return {
           success: false,
-          error: data.error || 'Error desconocido',
+          error: (data as { error?: string }).error || 'Error desconocido',
         };
       }
 
       return {
         success: true,
-        data,
+        data: data as T,
       };
     } catch (error) {
       return {
@@ -57,35 +57,35 @@ class ApiClient {
 
   // Artículos
   async getArticles(): Promise<ApiResponse<IArticle[]>> {
-    return this.makeRequest<IArticle[]>('/getArticles');
+    return await this.makeRequest<IArticle[]>('/getArticles');
   }
 
   async getArticleById(id: string): Promise<ApiResponse<IArticle>> {
-    return this.makeRequest<IArticle>(`/getArticle?id=${id}`);
+    return await this.makeRequest<IArticle>(`/getArticle?id=${id}`);
   }
 
   async getArticleBySlug(slug: string): Promise<ApiResponse<IArticle>> {
-    return this.makeRequest<IArticle>(`/getArticleBySlug?slug=${slug}`);
+    return await this.makeRequest<IArticle>(`/getArticleBySlug?slug=${slug}`);
   }
 
   async createArticle(
     article: Omit<IArticle, 'createdAt' | 'updatedAt'>,
   ): Promise<ApiResponse<IArticle>> {
-    return this.makeRequest<IArticle>('/createArticle', {
+    return await this.makeRequest<IArticle>('/createArticle', {
       method: 'POST',
       body: JSON.stringify(article),
     });
   }
 
   async updateArticle(id: string, article: Partial<IArticle>): Promise<ApiResponse<IArticle>> {
-    return this.makeRequest<IArticle>('/updateArticle', {
+    return await this.makeRequest<IArticle>('/updateArticle', {
       method: 'PUT',
       body: JSON.stringify({ id, ...article }),
     });
   }
 
-  async deleteArticle(id: string): Promise<ApiResponse<void>> {
-    return this.makeRequest<void>('/deleteArticle', {
+  async deleteArticle(id: string): Promise<ApiResponse<null>> {
+    return await this.makeRequest<null>('/deleteArticle', {
       method: 'DELETE',
       body: JSON.stringify({ id }),
     });
@@ -93,11 +93,11 @@ class ApiClient {
 
   // Usuarios
   async getUserProfile(): Promise<ApiResponse<IUser>> {
-    return this.makeRequest<IUser>('/getUserProfile');
+    return await this.makeRequest<IUser>('/getUserProfile');
   }
 
   async updateUserProfile(updates: Partial<IUser>): Promise<ApiResponse<IUser>> {
-    return this.makeRequest<IUser>('/updateUserProfile', {
+    return await this.makeRequest<IUser>('/updateUserProfile', {
       method: 'PUT',
       body: JSON.stringify(updates),
     });
@@ -105,7 +105,7 @@ class ApiClient {
 
   // Pagos (Stripe)
   async createCheckoutSession(priceId: string): Promise<ApiResponse<{ sessionUrl: string }>> {
-    return this.makeRequest<{ sessionUrl: string }>('/createCheckout', {
+    return await this.makeRequest<{ sessionUrl: string }>('/createCheckout', {
       method: 'POST',
       body: JSON.stringify({ priceId }),
     });
@@ -113,35 +113,35 @@ class ApiClient {
 
   // Portal de Stripe para gestión de suscripciones
   async createStripePortalSession(): Promise<ApiResponse<{ url: string }>> {
-    return this.makeRequest<{ url: string }>('/createStripePortalSession', {
+    return await this.makeRequest<{ url: string }>('/createStripePortalSession', {
       method: 'POST',
     });
   }
 
   // Autenticación y gestión de usuario
-  async signOut(): Promise<ApiResponse<void>> {
-    return this.makeRequest<void>('/auth/signout', {
+  async signOut(): Promise<ApiResponse<null>> {
+    return await this.makeRequest<null>('/auth/signout', {
       method: 'POST',
     });
   }
 
-  async deleteUserAccount(): Promise<ApiResponse<void>> {
-    return this.makeRequest<void>('/auth/delete-account', {
+  async deleteUserAccount(): Promise<ApiResponse<null>> {
+    return await this.makeRequest<null>('/auth/delete-account', {
       method: 'DELETE',
     });
   }
 
   // Formulario de contacto
-  async submitContactForm(formData: ContactFormData): Promise<ApiResponse<void>> {
-    return this.makeRequest<void>('/handleContactForm', {
+  async submitContactForm(formData: ContactFormData): Promise<ApiResponse<null>> {
+    return await this.makeRequest<null>('/handleContactForm', {
       method: 'POST',
       body: JSON.stringify(formData),
     });
   }
 
   // Roles de Admin
-  async setAdminRole(email: string): Promise<ApiResponse<void>> {
-    return this.makeRequest<void>('/setAdminRole', {
+  async setAdminRole(email: string): Promise<ApiResponse<null>> {
+    return await this.makeRequest<null>('/setAdminRole', {
       method: 'POST',
       body: JSON.stringify({ email }),
     });
@@ -151,14 +151,14 @@ class ApiClient {
 
   // GET /conversations - Obtener todas las conversaciones del usuario
   async getChatConversations(): Promise<ApiResponse<IChatConversation[]>> {
-    return this.makeRequest<IChatConversation[]>('/chatbot/conversations');
+    return await this.makeRequest<IChatConversation[]>('/chatbot/conversations');
   }
 
   // POST /conversations - Crear nueva conversación
   async createChatConversation(
     conversation: Omit<IChatConversation, 'id' | 'createdAt' | 'updatedAt'>,
   ): Promise<ApiResponse<IChatConversation>> {
-    return this.makeRequest<IChatConversation>('/chatbot/conversations', {
+    return await this.makeRequest<IChatConversation>('/chatbot/conversations', {
       method: 'POST',
       body: JSON.stringify(conversation),
     });
@@ -169,15 +169,15 @@ class ApiClient {
     id: string,
     updates: Partial<IChatConversation>,
   ): Promise<ApiResponse<IChatConversation>> {
-    return this.makeRequest<IChatConversation>(`/chatbot/conversations/${id}`, {
+    return await this.makeRequest<IChatConversation>(`/chatbot/conversations/${id}`, {
       method: 'PUT',
       body: JSON.stringify(updates),
     });
   }
 
   // DELETE /conversations/{id} - Eliminar conversación
-  async deleteChatConversation(id: string): Promise<ApiResponse<void>> {
-    return this.makeRequest<void>(`/chatbot/conversations/${id}`, {
+  async deleteChatConversation(id: string): Promise<ApiResponse<null>> {
+    return await this.makeRequest<null>(`/chatbot/conversations/${id}`, {
       method: 'DELETE',
     });
   }
@@ -187,17 +187,20 @@ class ApiClient {
     conversationId: string,
     message: Omit<IChatMessage, 'id' | 'timestamp'>,
   ): Promise<ApiResponse<IChatMessage>> {
-    return this.makeRequest<IChatMessage>(`/chatbot/conversations/${conversationId}/messages`, {
-      method: 'POST',
-      body: JSON.stringify(message),
-    });
+    return await this.makeRequest<IChatMessage>(
+      `/chatbot/conversations/${conversationId}/messages`,
+      {
+        method: 'POST',
+        body: JSON.stringify(message),
+      },
+    );
   }
 
   // Stream messages para respuestas en tiempo real
   async streamChatMessage(
     conversationId: string,
     message: Omit<IChatMessage, 'id' | 'timestamp'>,
-    onChunk?: (chunk: string) => void,
+    _onChunk?: (chunk: string) => void,
   ): Promise<ReadableStream<Uint8Array> | null> {
     try {
       const response = await fetch(
@@ -227,38 +230,52 @@ class ApiClient {
 export const api = new ApiClient();
 
 // Exportaciones individuales para compatibilidad
-export const getArticleBySlug = (slug: string) => api.getArticleBySlug(slug);
-export const getArticles = () => api.getArticles();
-export const getArticleById = (id: string) => api.getArticleById(id);
-export const createArticle = (article: Omit<IArticle, 'createdAt' | 'updatedAt'>) =>
-  api.createArticle(article);
-export const updateArticle = (id: string, article: Partial<IArticle>) =>
-  api.updateArticle(id, article);
-export const deleteArticle = (id: string) => api.deleteArticle(id);
+export const getArticleBySlug = (slug: string): Promise<ApiResponse<IArticle>> =>
+  api.getArticleBySlug(slug);
+export const getArticles = (): Promise<ApiResponse<IArticle[]>> => api.getArticles();
+export const getArticleById = (id: string): Promise<ApiResponse<IArticle>> =>
+  api.getArticleById(id);
+export const createArticle = (
+  article: Omit<IArticle, 'createdAt' | 'updatedAt'>,
+): Promise<ApiResponse<IArticle>> => api.createArticle(article);
+export const updateArticle = (
+  id: string,
+  article: Partial<IArticle>,
+): Promise<ApiResponse<IArticle>> => api.updateArticle(id, article);
+export const deleteArticle = (id: string): Promise<ApiResponse<null>> => api.deleteArticle(id);
 
 // Exportaciones para autenticación y gestión de usuario
-export const signOut = () => api.signOut();
-export const deleteUserAccount = () => api.deleteUserAccount();
-export const createStripePortalSession = () => api.createStripePortalSession();
-export const createCheckoutSession = (priceId: string) => api.createCheckoutSession(priceId);
+export const signOut = (): Promise<ApiResponse<null>> => api.signOut();
+export const deleteUserAccount = (): Promise<ApiResponse<null>> => api.deleteUserAccount();
+export const createStripePortalSession = (): Promise<ApiResponse<{ url: string }>> =>
+  api.createStripePortalSession();
+export const createCheckoutSession = (
+  priceId: string,
+): Promise<ApiResponse<{ sessionUrl: string }>> => api.createCheckoutSession(priceId);
 
 // Exportaciones para formulario de contacto
-export const submitContactForm = (formData: ContactFormData) => api.submitContactForm(formData);
+export const submitContactForm = (formData: ContactFormData): Promise<ApiResponse<null>> =>
+  api.submitContactForm(formData);
 
 // Exportaciones para chatbot (PROYEC_PARTE7.MD)
-export const getChatConversations = () => api.getChatConversations();
+export const getChatConversations = (): Promise<ApiResponse<IChatConversation[]>> =>
+  api.getChatConversations();
 export const createChatConversation = (
   conversation: Omit<IChatConversation, 'id' | 'createdAt' | 'updatedAt'>,
-) => api.createChatConversation(conversation);
-export const updateChatConversation = (id: string, updates: Partial<IChatConversation>) =>
-  api.updateChatConversation(id, updates);
-export const deleteChatConversation = (id: string) => api.deleteChatConversation(id);
+): Promise<ApiResponse<IChatConversation>> => api.createChatConversation(conversation);
+export const updateChatConversation = (
+  id: string,
+  updates: Partial<IChatConversation>,
+): Promise<ApiResponse<IChatConversation>> => api.updateChatConversation(id, updates);
+export const deleteChatConversation = (id: string): Promise<ApiResponse<null>> =>
+  api.deleteChatConversation(id);
 export const sendChatMessage = (
   conversationId: string,
   message: Omit<IChatMessage, 'id' | 'timestamp'>,
-) => api.sendChatMessage(conversationId, message);
+): Promise<ApiResponse<IChatMessage>> => api.sendChatMessage(conversationId, message);
 export const streamChatMessage = (
   conversationId: string,
   message: Omit<IChatMessage, 'id' | 'timestamp'>,
   onChunk?: (chunk: string) => void,
-) => api.streamChatMessage(conversationId, message, onChunk);
+): Promise<ReadableStream<Uint8Array> | null> =>
+  api.streamChatMessage(conversationId, message, onChunk);

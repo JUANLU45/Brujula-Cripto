@@ -80,10 +80,14 @@ export function CompetitorComparison({
     },
   ];
 
-  const brujulaCripto = competitors.find((c) => c.id === 'brujula-cripto')!;
-  const otherCompetitors = competitors.filter((c) => c.id !== 'brujula-cripto');
+  const _brujulaCripto = competitors.find((c) => c.id === 'brujula-cripto');
+  const _otherCompetitors = competitors.filter((c) => c.id !== 'brujula-cripto');
 
-  const calculateSavings = () => {
+  const calculateSavings = (): {
+    monthly: number;
+    annual: number;
+    percentage: number;
+  } => {
     // Comparación real basada en documentación: 20% competidores vs pago por uso Brújula Cripto
     const competitorPercentage = 20; // 20% de lo recuperado según documentación
     const brujulaCostHourly = calculatorValues.hoursPerMonth <= 2 ? 4.99 : 3.99; // Tarifas reales documentadas
@@ -100,7 +104,7 @@ export function CompetitorComparison({
     };
   };
 
-  const renderFeatureCell = (hasFeature: boolean, isHighlight?: boolean) => (
+  const renderFeatureCell = (hasFeature: boolean, isHighlight?: boolean): JSX.Element => (
     <div className={`flex justify-center ${isHighlight ? 'bg-green-50 dark:bg-green-900/20' : ''}`}>
       {hasFeature ? (
         <svg className="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -122,7 +126,7 @@ export function CompetitorComparison({
     </div>
   );
 
-  const renderStars = (rating: number) => {
+  const renderStars = (rating: number): JSX.Element[] => {
     const stars = [];
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;

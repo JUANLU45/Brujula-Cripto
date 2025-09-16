@@ -12,7 +12,7 @@ import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 
 // Iconos SVG inline para evitar dependencias externas
-const ChevronDownIcon = ({ className }: { className?: string }) => (
+const ChevronDownIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -24,7 +24,7 @@ const ChevronDownIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const GlobeAltIcon = ({ className }: { className?: string }) => (
+const GlobeAltIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -40,7 +40,7 @@ const GlobeAltIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const SunIcon = ({ className }: { className?: string }) => (
+const SunIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -56,7 +56,7 @@ const SunIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const MoonIcon = ({ className }: { className?: string }) => (
+const MoonIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -72,7 +72,7 @@ const MoonIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const Bars3Icon = ({ className }: { className?: string }) => (
+const Bars3Icon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -88,7 +88,7 @@ const Bars3Icon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const XMarkIcon = ({ className }: { className?: string }) => (
+const XMarkIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -100,7 +100,7 @@ const XMarkIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const Navbar = () => {
+const Navbar = (): JSX.Element => {
   const t = useTranslations('navigation');
   const locale = useLocale();
   const { theme, setTheme } = useTheme();
@@ -143,13 +143,13 @@ const Navbar = () => {
   ];
 
   // Función para cambiar idioma
-  const switchLanguage = (newLocale: string) => {
+  const switchLanguage = (newLocale: string): void => {
     const currentPath = pathname.replace(`/${locale}`, '');
     window.location.href = `/${newLocale}${currentPath}`;
   };
 
   // Función para alternar tema
-  const toggleTheme = () => {
+  const toggleTheme = (): void => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 

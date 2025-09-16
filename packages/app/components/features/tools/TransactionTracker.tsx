@@ -25,7 +25,10 @@ interface TransactionTrackerProps {
   retryDelay?: number;
 }
 
-export function TransactionTracker({ maxRetries = 3, retryDelay = 1000 }: TransactionTrackerProps) {
+export function TransactionTracker({
+  maxRetries = 3,
+  retryDelay = 1000,
+}: TransactionTrackerProps): JSX.Element {
   const t = useTranslations('tools.transactionTracker');
   const { user, userData } = useAuth();
 
@@ -44,9 +47,9 @@ export function TransactionTracker({ maxRetries = 3, retryDelay = 1000 }: Transa
   };
 
   const handleRetryWithBackoff = async (
-    operation: () => Promise<any>,
+    operation: () => Promise<unknown>,
     retries: number = maxRetries,
-  ): Promise<any> => {
+  ): Promise<unknown> => {
     try {
       return await operation();
     } catch (error) {
@@ -60,7 +63,7 @@ export function TransactionTracker({ maxRetries = 3, retryDelay = 1000 }: Transa
     }
   };
 
-  const searchTransaction = async () => {
+  const searchTransaction = async (): Promise<void> => {
     if (!searchInput.trim()) {
       setError(t('errors.emptyInput'));
       return;
@@ -83,7 +86,7 @@ export function TransactionTracker({ maxRetries = 3, retryDelay = 1000 }: Transa
     setSearchResults([]);
 
     try {
-      const results = await handleRetryWithBackoff(async () => {
+      const results = (await handleRetryWithBackoff(async () => {
         // Implementar llamadas reales a APIs externas
         if (detectedType === 'hash') {
           const response = await fetch(`/api/blockchain/transaction/${searchInput}`);
@@ -101,7 +104,7 @@ export function TransactionTracker({ maxRetries = 3, retryDelay = 1000 }: Transa
           const addressData = await response.json();
           return addressData.transactions || [];
         }
-      });
+      })) as TransactionResult[];
 
       setSearchResults(results);
       setSearchType(detectedType);
@@ -162,7 +165,7 @@ export function TransactionTracker({ maxRetries = 3, retryDelay = 1000 }: Transa
                 className="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-transparent focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
               />
               <Button
-                onClick={searchTransaction}
+                onClick={() => void searchTransaction()}
                 disabled={isSearching}
                 className="rounded-lg bg-blue-600 px-6 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
               >

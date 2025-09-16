@@ -1,7 +1,12 @@
 import { Stripe } from 'stripe';
 
 // Configuración de Stripe para el cliente (FRONTEND - SOLO CLAVE PÚBLICA)
-export const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!, {
+const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+if (!stripePublishableKey) {
+  throw new Error('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is required');
+}
+
+export const stripe = new Stripe(stripePublishableKey, {
   apiVersion: '2025-08-27.basil',
 });
 
@@ -16,10 +21,18 @@ export interface StripePortalResponse {
 }
 
 // Precios de los productos (deben coincidir con Stripe Dashboard)
+const premium1h = process.env.NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_1H;
+const premium5h = process.env.NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_5H;
+const premium10h = process.env.NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_10H;
+
+if (!premium1h || !premium5h || !premium10h) {
+  throw new Error('Stripe price environment variables are required');
+}
+
 export const STRIPE_PRICES = {
-  PREMIUM_1H: process.env.NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_1H!,
-  PREMIUM_5H: process.env.NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_5H!,
-  PREMIUM_10H: process.env.NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_10H!,
+  PREMIUM_1H: premium1h,
+  PREMIUM_5H: premium5h,
+  PREMIUM_10H: premium10h,
 } as const;
 
 // Funciones helper para Stripe

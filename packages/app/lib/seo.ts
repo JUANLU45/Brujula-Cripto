@@ -104,7 +104,7 @@ export function generateArticleStructuredData({
   imageUrl: string;
   url: string;
   locale: 'es' | 'en';
-}) {
+}): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',

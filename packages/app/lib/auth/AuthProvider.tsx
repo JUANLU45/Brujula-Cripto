@@ -3,8 +3,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import type { IUser } from '@brujula-cripto/types';
-import type { User } from 'firebase/auth';
 import {
+  type User,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -42,7 +42,7 @@ const AuthContext = createContext<AuthContextType>({
   isAdmin: false,
 });
 
-export const useAuth = () => {
+export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (!context) {
     throw new Error('useAuth must be used within AuthProvider');
@@ -60,7 +60,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const googleProvider = new GoogleAuthProvider();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+    const handleAuthStateChange = async (firebaseUser: User | null): Promise<void> => {
       if (firebaseUser) {
         setUser(firebaseUser);
 
@@ -86,9 +86,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsAdmin(false);
       }
       setLoading(false);
-    });
+    };
 
-    return () => unsubscribe();
+    const unsubscribe = onAuthStateChanged(auth, handleAuthStateChange);
+
+    return (): void => {
+      unsubscribe();
+    };
   }, []);
 
   const signInWithEmail = async (email: string, password: string): Promise<void> => {

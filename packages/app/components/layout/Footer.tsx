@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
 // Usando iconos SVG simples sin dependencias externas
-const ChevronUpIcon = ({ className }: { className?: string }) => (
+const ChevronUpIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -23,7 +23,7 @@ const ChevronUpIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const ChevronDownIcon = ({ className }: { className?: string }) => (
+const ChevronDownIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -35,7 +35,7 @@ const ChevronDownIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const ArrowUpIcon = ({ className }: { className?: string }) => (
+const ArrowUpIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -47,7 +47,7 @@ const ArrowUpIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const EnvelopeIcon = ({ className }: { className?: string }) => (
+const EnvelopeIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -63,14 +63,14 @@ const EnvelopeIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   const t = useTranslations();
   const locale = useLocale();
   const [isLegalAccordionOpen, setIsLegalAccordionOpen] = React.useState(false);
   const [isNavigationAccordionOpen, setIsNavigationAccordionOpen] = React.useState(false);
 
   // Función para subir al inicio
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',

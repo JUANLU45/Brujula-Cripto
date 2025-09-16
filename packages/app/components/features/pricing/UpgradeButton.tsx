@@ -93,9 +93,16 @@ export default function UpgradeButton({
         window.location.href = result.checkoutUrl;
       } else if (result.sessionId) {
         // Usar Stripe.js para redirigir
-        const stripe = (window as any).Stripe;
+        const stripe = (window as unknown as { Stripe?: unknown }).Stripe;
         if (stripe) {
-          const { error } = await stripe.redirectToCheckout({ sessionId: result.sessionId });
+          const stripeInstance = stripe as {
+            redirectToCheckout: (options: {
+              sessionId: string;
+            }) => Promise<{ error?: { message: string } }>;
+          };
+          const { error } = await stripeInstance.redirectToCheckout({
+            sessionId: result.sessionId,
+          });
           if (error) {
             throw new Error(error.message);
           }
@@ -105,13 +112,13 @@ export default function UpgradeButton({
       }
 
       if (onSuccess && result.sessionId) {
-        onSuccess(result.sessionId);
+        onSuccess(result.sessionId as string);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       const errorMsg = error instanceof Error ? error.message : t('errors.paymentFailed');
       setErrorMessage(errorMsg);
       if (onError) {
-        onError(errorMsg);
+        onError(errorMsg as string);
       }
     } finally {
       setIsProcessing(false);
@@ -121,7 +128,7 @@ export default function UpgradeButton({
   const formatPrice = (amount: number): string => {
     return new Intl.NumberFormat('es-ES', {
       style: 'currency',
-      currency: currency === '€' ? 'EUR' : 'USD',
+      currency: (currency === '€' ? 'EUR' : 'USD') as string,
     }).format(amount);
   };
 
