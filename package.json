@@ -9,14 +9,16 @@
   "scripts": {
     "dev": "pnpm --filter app dev",
     "build": "pnpm -r build",
-    "lint": "eslint ."
+    "lint": "eslint . --ext ts,tsx",
+    "lint:fix": "eslint . --ext ts,tsx --fix"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@types/node": "^24.3.3",
-    "@types/stripe": "^8.0.417",
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
-    "eslint": "^8.0.0",
+    "eslint": "^9.6.0",
+    "eslint-config-next": "^15.5.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
