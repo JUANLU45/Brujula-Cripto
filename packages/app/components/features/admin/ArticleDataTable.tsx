@@ -124,7 +124,7 @@ export function ArticleDataTable({
     if (!user) {
       throw new Error(t('errors.notAuthenticated'));
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
   const handleFilterChange = (key: keyof ArticleFilters, value: string): void => {

@@ -24,6 +24,34 @@ interface UsageResponse {
   message: string;
 }
 
+// Tipos para los documentos de Firestore
+interface UserData {
+  usageCreditsInSeconds?: number;
+  lastActivity?: Timestamp;
+  updatedAt?: Timestamp;
+  // Otros campos del usuario pueden agregarse aquí
+}
+
+interface SessionData {
+  serviceType?: 'herramientas' | 'chatbot';
+  sessionId?: string;
+  startTime?: Timestamp;
+  endTime?: Timestamp;
+  lastActivity?: Timestamp;
+  creditsUsedInSession?: FieldValue | number;
+  status?: 'active' | 'completed' | 'completed_with_insufficient_credits';
+}
+
+interface UsageHistoryEntry {
+  serviceType: 'herramientas' | 'chatbot';
+  actionType: 'start' | 'increment' | 'end';
+  secondsUsed: number;
+  sessionId: string | null;
+  timestamp: Timestamp;
+  creditsBeforeAction: number;
+  creditsAfterAction: number;
+}
+
 /**
  * Cloud Function que descuenta usageCreditsInSeconds en tiempo real
  * durante uso de herramientas/chatbot, trigger por eventos usuario
@@ -75,7 +103,7 @@ export const trackUsage = onCall(
         throw new HttpsError('not-found', 'Usuario no encontrado');
       }
 
-      const userData = userDoc.data();
+      const userData = userDoc.data() as UserData | undefined;
       const currentCredits = userData?.usageCreditsInSeconds || 0;
 
       // Validar que el usuario tenga suficientes créditos
@@ -84,18 +112,16 @@ export const trackUsage = onCall(
       }
 
       let creditsToDeduct = 0;
-      let sessionData: any = {};
+      const sessionData: SessionData = {};
 
       switch (actionType) {
         case 'start':
           // Iniciar sesión de uso
-          sessionData = {
-            serviceType,
-            sessionId: sessionId || `session_${Date.now()}`,
-            startTime: Timestamp.now(),
-            creditsUsedInSession: 0,
-            status: 'active',
-          };
+          sessionData.serviceType = serviceType;
+          sessionData.sessionId = sessionId || `session_${Date.now()}`;
+          sessionData.startTime = Timestamp.now();
+          sessionData.creditsUsedInSession = 0;
+          sessionData.status = 'active';
 
           // No se descuentan créditos al iniciar
           break;
@@ -111,10 +137,8 @@ export const trackUsage = onCall(
             );
           }
 
-          sessionData = {
-            lastActivity: Timestamp.now(),
-            creditsUsedInSession: FieldValue.increment(creditsToDeduct),
-          };
+          sessionData.lastActivity = Timestamp.now();
+          sessionData.creditsUsedInSession = FieldValue.increment(creditsToDeduct);
           break;
 
         case 'end':
@@ -122,19 +146,15 @@ export const trackUsage = onCall(
           creditsToDeduct = secondsUsed;
 
           if (currentCredits >= creditsToDeduct) {
-            sessionData = {
-              endTime: Timestamp.now(),
-              status: 'completed',
-              creditsUsedInSession: FieldValue.increment(creditsToDeduct),
-            };
+            sessionData.endTime = Timestamp.now();
+            sessionData.status = 'completed';
+            sessionData.creditsUsedInSession = FieldValue.increment(creditsToDeduct);
           } else {
             // Si no hay suficientes créditos, usar los restantes
             creditsToDeduct = currentCredits;
-            sessionData = {
-              endTime: Timestamp.now(),
-              status: 'completed_with_insufficient_credits',
-              creditsUsedInSession: FieldValue.increment(creditsToDeduct),
-            };
+            sessionData.endTime = Timestamp.now();
+            sessionData.status = 'completed_with_insufficient_credits';
+            sessionData.creditsUsedInSession = FieldValue.increment(creditsToDeduct);
           }
           break;
       }
@@ -159,19 +179,17 @@ export const trackUsage = onCall(
       }
 
       // Registrar en historial de uso
-      await db
-        .collection('users')
-        .doc(uid)
-        .collection('usageHistory')
-        .add({
-          serviceType,
-          actionType,
-          secondsUsed: creditsToDeduct,
-          sessionId: sessionId || null,
-          timestamp: Timestamp.now(),
-          creditsBeforeAction: currentCredits,
-          creditsAfterAction: currentCredits - creditsToDeduct,
-        });
+      const historyEntry: UsageHistoryEntry = {
+        serviceType,
+        actionType,
+        secondsUsed: creditsToDeduct,
+        sessionId: sessionId || null,
+        timestamp: Timestamp.now(),
+        creditsBeforeAction: currentCredits,
+        creditsAfterAction: currentCredits - creditsToDeduct,
+      };
+
+      await db.collection('users').doc(uid).collection('usageHistory').add(historyEntry);
 
       const remainingCredits = Math.max(0, currentCredits - creditsToDeduct);
 
@@ -220,7 +238,7 @@ export const getUserCredits = onCall(
         throw new HttpsError('not-found', 'Usuario no encontrado');
       }
 
-      const userData = userDoc.data();
+      const userData = userDoc.data() as UserData | undefined;
       const usageCreditsInSeconds = userData?.usageCreditsInSeconds || 0;
 
       // Convertir segundos a formato H:M:S para la UI

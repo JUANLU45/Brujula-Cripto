@@ -35,29 +35,60 @@ if (!redisUrl) {
 ----✅QUIERO SOLUCIONES ROBUSTAS Y COMPATIBLES EN TODOS LOS ERRORES O TENDRAS QUE VOLVER A HACER TODOS DE NUEVO--------
 --------ES OBLIGATORIO CORREGIR DE UNO EN UNO✅----
 ---------------ERRORES-------------------------------
+Debes revisar los archivos mencionados en el log y aplicar las siguientes correcciones. Estas mejoras son importantes para la estabilidad y el rendimiento de tu aplicación.
 
+Dependencias de Hooks de React (react-hooks/exhaustive-deps)
+
+En el 
+
+useEffect advertido, añade 
+
+loadConversations a su array de dependencias.
+
+En el 
+
+useCallback advertido, elimina 
+
+
+conversationsData de su array de dependencias, ya que es innecesario.
+
+Complejidad del Código (complexity)
+
+Funciones como 
+
+ChatbotUI (complejidad 33), ConversationCard (13) o la función flecha con complejidad 12 deben ser refactorizadas. Divide su lógica en funciones más pequeñas y simples para reducir la complejidad.
+
+
+Accesibilidad (jsx-a11y/no-autofocus)
+
+En el archivo 
+
+ConversationList.tsx, elimina la propiedad autoFocus del elemento que la contiene para solucionar la advertencia de accesibilidad.
+
+
+Optimización de Imágenes (@next/next/no-img-element)
+
+En el archivo 
+
+FeedbackButton.tsx, sustituye la etiqueta <img> por el componente <Image> de Next.js. Recuerda importarlo con 
+
+import Image from 'next/image'.
 --------------------ESLint Report--------------------
 
 DOCUMENTACION/ERRORES/ERRORES_1VERIFICACION.MD
 
 C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\admin\page.tsx
-  29:9   warning  The 'getAuthToken' function makes the dependencies of useEffect Hook (at line 65) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'getAuthToken' in its own useCallback() Hook  react-hooks/exhaustive-deps
-  29:50  error    Async arrow function has no 'await' expression                                                                                                                                                                                       require-await
-
-C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\comments\page.tsx
-  92:50  error  Async arrow function has no 'await' expression  require-await
+  29:9  warning  The 'getAuthToken' function makes the dependencies of useEffect Hook (at line 65) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'getAuthToken' in its own useCallback() Hook  react-hooks/exhaustive-deps
 
 C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\feedback\page.tsx
-   91:12  error    Redundant use of `await` on a return value             no-return-await
+   86:50  error    Async arrow function has no 'await' expression         require-await
   339:1   warning  File has too many lines (346). Maximum allowed is 300  max-lines
 
 C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\homepage\page.tsx
-   73:50  error    Async arrow function has no 'await' expression         require-await
-  337:1   warning  File has too many lines (302). Maximum allowed is 300  max-lines
+  337:1  warning  File has too many lines (302). Maximum allowed is 300  max-lines
 
 C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\users\page.tsx
-   91:50  error    Async arrow function has no 'await' expression         require-await
-  341:1   warning  File has too many lines (368). Maximum allowed is 300  max-lines
+  341:1  warning  File has too many lines (368). Maximum allowed is 300  max-lines
 
 C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleDataTable.tsx
    30:8   warning  Function 'ArticleDataTable' has a complexity of 14. Maximum allowed is 10                                        complexity
@@ -68,7 +99,7 @@ C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleDataTable.tsx
 C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleEditor.tsx
    51:8   warning  Function 'ArticleEditor' has a complexity of 16. Maximum allowed is 10                                                                                                                                                                                                                   complexity
   183:6   warning  React Hook useEffect has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array                                                                                                                                                                          react-hooks/exhaustive-deps
-  190:12  error    Redundant use of `await` on a return value                                                                                                                                                                                                                                               no-return-await
+  185:50  error    Async arrow function has no 'await' expression                                                                                                                                                                                                                                           require-await
   306:5   warning  React Hook useCallback has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array                                                                                                                                                                        react-hooks/exhaustive-deps
   351:1   warning  File has too many lines (702). Maximum allowed is 300                                                                                                                                                                                                                                    max-lines
   355:22  warning  Async arrow function has a complexity of 13. Maximum allowed is 10                                                                                                                                                                                                                       complexity
@@ -88,41 +119,21 @@ C:\BRUJULA CRIPTO\packages\app\components\features\blog\PaginationControls.tsx
   21:8  warning  Function 'PaginationControls' has a complexity of 29. Maximum allowed is 10  complexity
 
 C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotLayout.tsx
-   67:8   warning  Function 'ChatbotLayout' has a complexity of 23. Maximum allowed is 10                                                                                                                             complexity
-  144:6   warning  React Hook useEffect has a missing dependency: 'loadConversations'. Either include it or remove the dependency array                                                                               react-hooks/exhaustive-deps
-  182:5   warning  Async arrow function has a complexity of 12. Maximum allowed is 10                                                                                                                                 complexity
-  262:5   warning  React Hook useCallback has an unnecessary dependency: 'conversationsData'. Either exclude it or remove the dependency array                                                                        react-hooks/exhaustive-deps
-  360:1   warning  File has too many lines (479). Maximum allowed is 300                                                                                                                                              max-lines
-  381:23  warning  Arrow function has a complexity of 12. Maximum allowed is 10                                                                                                                                       complexity
-  381:26  error    Missing return type on function                                                                                                                                                                    @typescript-eslint/explicit-function-return-type
-  430:9   error    Visible, non-interactive elements with click handlers must have at least one keyboard listener                                                                                                     jsx-a11y/click-events-have-key-events
-  430:9   error    Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element  jsx-a11y/no-static-element-interactions
+   67:8   warning  Function 'ChatbotLayout' has a complexity of 23. Maximum allowed is 10                                                       complexity
+  144:6   warning  React Hook useEffect has a missing dependency: 'loadConversations'. Either include it or remove the dependency array         react-hooks/exhaustive-deps
+  182:5   warning  Async arrow function has a complexity of 12. Maximum allowed is 10                                                           complexity
+  262:5   warning  React Hook useCallback has an unnecessary dependency: 'conversationsData'. Either exclude it or remove the dependency array  react-hooks/exhaustive-deps
+  360:1   warning  File has too many lines (487). Maximum allowed is 300                                                                        max-lines
+  381:23  warning  Arrow function has a complexity of 12. Maximum allowed is 10                                                                 complexity
 
 C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotUI.tsx
-   74:8  warning  Function 'ChatbotUI' has a complexity of 33. Maximum allowed is 10                        complexity
-   76:3  error    'conversations' is assigned a value but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
-  339:1  warning  File has too many lines (367). Maximum allowed is 300                                     max-lines
+   74:8  warning  Function 'ChatbotUI' has a complexity of 33. Maximum allowed is 10  complexity
+  339:1  warning  File has too many lines (367). Maximum allowed is 300               max-lines
 
 C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ConversationList.tsx
-  209:17  error    Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby  jsx-a11y/accessible-emoji
-  241:19  error    Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby  jsx-a11y/accessible-emoji
-  301:6   error    Unexpected any. Specify a different type                                                                                    @typescript-eslint/no-explicit-any
-  304:1   warning  Function 'ConversationCard' has a complexity of 13. Maximum allowed is 10                                                   complexity
-  337:1   warning  File has too many lines (417). Maximum allowed is 300                                                                       max-lines
-  347:28  error    Unsafe assignment of an `any` value                                                                                         @typescript-eslint/no-unsafe-assignment
-  347:28  error    Unsafe call of a(n) `any` typed value                                                                                       @typescript-eslint/no-unsafe-call
-  348:22  error    Unsafe assignment of an `any` value                                                                                         @typescript-eslint/no-unsafe-assignment
-  348:22  error    Unsafe call of a(n) `any` typed value                                                                                       @typescript-eslint/no-unsafe-call
-  349:15  warning  The autoFocus prop should not be used, as it can reduce usability and accessibility for users                               jsx-a11y/no-autofocus
-  372:41  error    Unsafe call of a(n) `any` typed value                                                                                       @typescript-eslint/no-unsafe-call
-  416:24  error    Unsafe assignment of an `any` value                                                                                         @typescript-eslint/no-unsafe-assignment
-  416:50  error    Unsafe call of a(n) `any` typed value                                                                                       @typescript-eslint/no-unsafe-call
-  416:75  error    Unsafe call of a(n) `any` typed value                                                                                       @typescript-eslint/no-unsafe-call
-  431:22  error    Unsafe assignment of an `any` value                                                                                         @typescript-eslint/no-unsafe-assignment
-  431:22  error    Unsafe call of a(n) `any` typed value                                                                                       @typescript-eslint/no-unsafe-call
-  449:22  error    Unsafe assignment of an `any` value                                                                                         @typescript-eslint/no-unsafe-assignment
-  449:58  error    Unsafe call of a(n) `any` typed value                                                                                       @typescript-eslint/no-unsafe-call
-  449:79  error    Unsafe call of a(n) `any` typed value                                                                                       @typescript-eslint/no-unsafe-call
+  310:1   warning  Function 'ConversationCard' has a complexity of 13. Maximum allowed is 10                      complexity
+  337:1   warning  File has too many lines (425). Maximum allowed is 300                                          max-lines
+  357:15  warning  The autoFocus prop should not be used, as it can reduce usability and accessibility for users  jsx-a11y/no-autofocus
 
 C:\BRUJULA CRIPTO\packages\app\components\features\contact\ContactForm.tsx
   28:8  warning  Function 'ContactForm' has a complexity of 11. Maximum allowed is 10  complexity
@@ -131,12 +142,8 @@ C:\BRUJULA CRIPTO\packages\app\components\features\dashboard\UserDashboard.tsx
    77:8  warning  Function 'UserDashboard' has a complexity of 13. Maximum allowed is 10  complexity
   349:1  warning  File has too many lines (328). Maximum allowed is 300                   max-lines
 
-C:\BRUJULA CRIPTO\packages\app\components\features\homepage\FeaturedPostsCarousel.tsx
-  44:15  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-
 C:\BRUJULA CRIPTO\packages\app\components\features\homepage\FeedbackButton.tsx
   17:8   warning  Function 'FeedbackButton' has a complexity of 12. Maximum allowed is 10                                                                                                                                                                                                                  complexity
-  64:14  error    '_error' is defined but never used                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
   96:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
 
 C:\BRUJULA CRIPTO\packages\app\components\features\payments\CompetitorComparison.tsx
@@ -145,18 +152,12 @@ C:\BRUJULA CRIPTO\packages\app\components\features\payments\CompetitorComparison
 C:\BRUJULA CRIPTO\packages\app\components\features\payments\UpgradeButton.tsx
   22:8  warning  Function 'UpgradeButton' has a complexity of 11. Maximum allowed is 10  complexity
 
-C:\BRUJULA CRIPTO\packages\app\components\features\pricing\PricingPage.tsx
-  132:14  error  '_error' is defined but never used  @typescript-eslint/no-unused-vars
-
 C:\BRUJULA CRIPTO\packages\app\components\features\pricing\UpgradeButton.tsx
-   55:34  warning  Async arrow function has a complexity of 14. Maximum allowed is 10                                                                                                                                 complexity
-  149:9   error    Visible, non-interactive elements with click handlers must have at least one keyboard listener                                                                                                     jsx-a11y/click-events-have-key-events
-  149:9   error    Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element  jsx-a11y/no-static-element-interactions
+  55:34  warning  Async arrow function has a complexity of 14. Maximum allowed is 10  complexity
 
 C:\BRUJULA CRIPTO\packages\app\components\features\recovery\WasmPasswordEngine.tsx
-   27:1   warning  Function 'WasmPasswordEngine' has a complexity of 12. Maximum allowed is 10  complexity
-  198:14  error    '_error' is defined but never used                                           @typescript-eslint/no-unused-vars
-  341:1   warning  File has too many lines (484). Maximum allowed is 300                        max-lines
+   27:1  warning  Function 'WasmPasswordEngine' has a complexity of 12. Maximum allowed is 10  complexity
+  341:1  warning  File has too many lines (484). Maximum allowed is 300                        max-lines
 
 C:\BRUJULA CRIPTO\packages\app\components\layout\Footer.tsx
   329:1  warning  File has too many lines (325). Maximum allowed is 300  max-lines
@@ -234,3 +235,43 @@ C:\BRUJULA CRIPTO\packages\functions\src\public\handleContactForm.ts
    92:26  error  Unsafe member access .message on an `any` value  @typescript-eslint/no-unsafe-member-access
   106:9   error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
   106:36  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+
+
+  Debes revisar los archivos mencionados en el log y aplicar las siguientes correcciones. Estas mejoras son importantes para la estabilidad y el rendimiento de tu aplicación.
+
+Dependencias de Hooks de React (react-hooks/exhaustive-deps)
+
+En el 
+
+useEffect advertido, añade 
+
+loadConversations a su array de dependencias.
+
+En el 
+
+useCallback advertido, elimina 
+
+
+conversationsData de su array de dependencias, ya que es innecesario.
+
+Complejidad del Código (complexity)
+
+Funciones como 
+
+ChatbotUI (complejidad 33), ConversationCard (13) o la función flecha con complejidad 12 deben ser refactorizadas. Divide su lógica en funciones más pequeñas y simples para reducir la complejidad.
+
+
+Accesibilidad (jsx-a11y/no-autofocus)
+
+En el archivo 
+
+ConversationList.tsx, elimina la propiedad autoFocus del elemento que la contiene para solucionar la advertencia de accesibilidad.
+
+
+Optimización de Imágenes (@next/next/no-img-element)
+
+En el archivo 
+
+FeedbackButton.tsx, sustituye la etiqueta <img> por el componente <Image> de Next.js. Recuerda importarlo con 
+
+import Image from 'next/image'.

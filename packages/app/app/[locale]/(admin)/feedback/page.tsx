@@ -88,7 +88,7 @@ export default function AdminFeedbackPage(): JSX.Element {
     if (!user) {
       throw new Error('No autenticado');
     }
-    return user.getIdToken();
+    return await user.getIdToken();
   };
 
   const handleSelectAll = (): void => {

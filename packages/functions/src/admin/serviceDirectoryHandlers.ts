@@ -4,6 +4,34 @@ import { getAuth } from 'firebase-admin/auth';
 import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
 
+// Tipos para las solicitudes
+interface CreateServiceRequest {
+  name: string;
+  description: string;
+  website: string;
+  logoUrl?: string;
+  specialties?: string[];
+  isVerified?: boolean;
+}
+
+interface UpdateServiceRequest {
+  serviceId: string;
+  name?: string;
+  description?: string;
+  website?: string;
+  logoUrl?: string;
+  specialties?: string[];
+  isVerified?: boolean;
+}
+
+interface DeleteServiceRequest {
+  serviceId: string;
+}
+
+interface GetServiceRequest {
+  serviceId: string;
+}
+
 // Interfaz según la estructura real usada en ServiceDirectory.tsx (PROYEC_PARTE3.MD)
 interface ServiceData {
   name: string;
@@ -40,14 +68,8 @@ export const createService = onCall(async (request) => {
   try {
     await verifyAdminUser(request.auth);
 
-    const { name, description, website, logoUrl, specialties, isVerified } = request.data as {
-      name: string;
-      description: string;
-      website: string;
-      logoUrl?: string;
-      specialties?: string[];
-      isVerified?: boolean;
-    };
+    const requestData = request.data as CreateServiceRequest;
+    const { name, description, website, logoUrl, specialties, isVerified } = requestData;
 
     // Validación de campos requeridos
     if (!name || !description || !website) {
@@ -96,16 +118,8 @@ export const updateService = onCall(async (request) => {
   try {
     await verifyAdminUser(request.auth);
 
-    const { serviceId, name, description, website, logoUrl, specialties, isVerified } =
-      request.data as {
-        serviceId: string;
-        name?: string;
-        description?: string;
-        website?: string;
-        logoUrl?: string;
-        specialties?: string[];
-        isVerified?: boolean;
-      };
+    const requestData = request.data as UpdateServiceRequest;
+    const { serviceId, name, description, website, logoUrl, specialties, isVerified } = requestData;
 
     if (!serviceId) {
       throw new HttpsError('invalid-argument', 'ID del servicio es requerido');
@@ -168,7 +182,8 @@ export const deleteService = onCall(async (request) => {
   try {
     await verifyAdminUser(request.auth);
 
-    const { serviceId } = request.data;
+    const requestData = request.data as DeleteServiceRequest;
+    const { serviceId } = requestData;
 
     if (!serviceId) {
       throw new HttpsError('invalid-argument', 'ID del servicio es requerido');
@@ -241,7 +256,8 @@ export const getService = onCall(async (request) => {
   try {
     await verifyAdminUser(request.auth);
 
-    const { serviceId } = request.data;
+    const requestData = request.data as GetServiceRequest;
+    const { serviceId } = requestData;
 
     if (!serviceId) {
       throw new HttpsError('invalid-argument', 'ID del servicio es requerido');

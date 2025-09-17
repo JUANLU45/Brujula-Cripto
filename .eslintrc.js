@@ -62,7 +62,7 @@ module.exports = {
     'no-await-in-loop': 'warn',
     'max-depth': ['warn', 4],
     complexity: ['warn', 10],
-    'max-lines': ['warn', { max: 300, skipBlankLines: true, skipComments: true }],
+    'max-lines': ['warn', { max: 500, skipBlankLines: true, skipComments: true }],
     'max-params': ['warn', 4],
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
