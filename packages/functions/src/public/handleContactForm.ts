@@ -15,6 +15,12 @@ setGlobalOptions({ region: 'europe-west1' });
 const app = initializeApp();
 const db = getFirestore(app);
 
+// Tipos para errores de validación de Zod
+interface ValidationErrorDetails {
+  field: string;
+  message: string;
+}
+
 // Schema de validación para datos de contacto
 const ContactFormSchema = z.object({
   name: z
@@ -30,15 +36,6 @@ const ContactFormSchema = z.object({
 
 // Tipo para el estado de la submission
 type SubmissionStatus = 'new' | 'read';
-
-// Interfaz para el documento de contactSubmissions
-interface IContactSubmission {
-  name: string;
-  email: string;
-  message: string;
-  submittedAt: FirebaseFirestore.Timestamp;
-  status: SubmissionStatus;
-}
 
 /**
  * Cloud Function para procesar envíos del formulario de contacto
@@ -87,10 +84,12 @@ export const handleContactForm = onRequest(
         response.status(400).json({
           success: false,
           error: 'Datos del formulario inválidos',
-          details: validationResult.error.issues.map((err: any) => ({
-            field: err.path.join('.'),
-            message: err.message,
-          })),
+          details: validationResult.error.issues.map(
+            (err: z.ZodIssue): ValidationErrorDetails => ({
+              field: err.path.join('.'),
+              message: err.message,
+            }),
+          ),
           code: 'VALIDATION_ERROR',
         });
         return;
@@ -99,11 +98,12 @@ export const handleContactForm = onRequest(
       const { name, email, message } = validationResult.data;
 
       // Preparar documento para Firestore
-      const contactSubmission: IContactSubmission = {
+      // Crear objeto para guardar en Firestore
+      const contactSubmission = {
         name: name.trim(),
         email: email.toLowerCase().trim(),
         message: message.trim(),
-        submittedAt: new Date() as any, // Firestore convertirá automáticamente
+        submittedAt: new Date(),
         status: 'new' as SubmissionStatus,
       };
 

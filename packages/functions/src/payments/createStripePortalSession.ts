@@ -2,6 +2,7 @@ import { getApps, initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { defineSecret } from 'firebase-functions/params';
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
+import Stripe from 'stripe';
 
 // Inicializar Firebase Admin si no está ya inicializado
 if (getApps().length === 0) {
@@ -15,6 +16,22 @@ const stripeSecretKey = defineSecret('STRIPE_SECRET_KEY');
 
 interface PortalRequest {
   returnUrl?: string;
+}
+
+interface UserData {
+  stripeCustomerId?: string;
+  email?: string;
+  lastPortalAccess?: Date;
+  updatedAt?: Date;
+}
+
+interface PortalAccessData {
+  stripeCustomerId: string;
+  portalSessionId: string;
+  returnUrl: string;
+  accessedAt: Date;
+  userAgent: string;
+  ipAddress: string;
 }
 
 /**
@@ -51,7 +68,7 @@ export const createStripePortalSession = onCall(
         throw new HttpsError('not-found', 'Usuario no encontrado');
       }
 
-      const userData = userDoc.data();
+      const userData = userDoc.data() as UserData | undefined;
       const stripeCustomerId = userData?.stripeCustomerId;
 
       if (!stripeCustomerId) {
@@ -59,54 +76,48 @@ export const createStripePortalSession = onCall(
       }
 
       // Obtener returnUrl del request o usar URL por defecto
-      const { returnUrl }: PortalRequest = request.data || {};
+      const requestData = (request.data || {}) as PortalRequest;
+      const { returnUrl } = requestData;
       const defaultReturnUrl = `${process.env.FRONTEND_URL}/dashboard/billing`;
       const finalReturnUrl = returnUrl || defaultReturnUrl;
 
-      // En un entorno real, crear sesión del portal de Stripe:
-      // const stripe = require('stripe')(stripeSecretKey.value());
-      // const portalSession = await stripe.billingPortal.sessions.create({
-      //   customer: stripeCustomerId,
-      //   return_url: finalReturnUrl,
-      // });
+      // Inicializar Stripe con la clave secreta
+      const stripe = new Stripe(stripeSecretKey.value(), {
+        apiVersion: '2023-10-16',
+      });
 
-      // Para desarrollo/demostración, simular respuesta de Stripe:
-      const mockPortalSession = {
-        id: `bps_demo_${Date.now()}`,
-        object: 'billing_portal.session',
-        created: Math.floor(Date.now() / 1000),
+      // Crear sesión del portal de Stripe
+      const portalSession = await stripe.billingPortal.sessions.create({
         customer: stripeCustomerId,
-        livemode: false,
         return_url: finalReturnUrl,
-        url: `https://billing.stripe.com/session/demo_${Date.now()}`,
-      };
+      });
 
       // Registrar el acceso al portal en el historial del usuario
-      await db
-        .collection('users')
-        .doc(uid)
-        .collection('portalAccess')
-        .add({
-          stripeCustomerId,
-          portalSessionId: mockPortalSession.id,
-          returnUrl: finalReturnUrl,
-          accessedAt: new Date(),
-          userAgent: request.rawRequest.get('User-Agent') || 'unknown',
-          ipAddress: request.rawRequest.ip || 'unknown',
-        });
+      const portalAccessData: PortalAccessData = {
+        stripeCustomerId,
+        portalSessionId: portalSession.id,
+        returnUrl: finalReturnUrl,
+        accessedAt: new Date(),
+        userAgent: request.rawRequest.get('User-Agent') || 'unknown',
+        ipAddress: request.rawRequest.ip || 'unknown',
+      };
+
+      await db.collection('users').doc(uid).collection('portalAccess').add(portalAccessData);
 
       // Actualizar último acceso al portal en el documento del usuario
-      await db.collection('users').doc(uid).update({
+      const userUpdateData: Partial<UserData> = {
         lastPortalAccess: new Date(),
         updatedAt: new Date(),
-      });
+      };
+
+      await db.collection('users').doc(uid).update(userUpdateData);
 
       console.log(`Portal session created for user ${uid} with customer ${stripeCustomerId}`);
 
       return {
         success: true,
-        portalUrl: mockPortalSession.url,
-        sessionId: mockPortalSession.id,
+        portalUrl: portalSession.url,
+        sessionId: portalSession.id,
         customerId: stripeCustomerId,
       };
     } catch (error) {
@@ -120,5 +131,3 @@ export const createStripePortalSession = onCall(
     }
   },
 );
-// Fuente: PROYEC_PARTE1.MD línea 209
-// Propósito: Crea sesión portal Stripe para gestión (facturación, cancelación), verifica autenticación y stripeCustomerId

@@ -59,6 +59,30 @@ interface UsageHistoryEntry {
  * Fuente: PROYEC_PARTE1.MD línea 218, PROYEC_PARTE3.MD línea 94-95
  * Créditos iniciales: 900s herramientas + 1800s chatbot
  */
+// Función auxiliar para validar los datos de entrada
+function validateTrackUsageData(data: unknown): TrackUsageRequest {
+  const parsedData = data as TrackUsageRequest;
+
+  if (!parsedData.serviceType || !parsedData.actionType) {
+    throw new HttpsError('invalid-argument', 'serviceType y actionType son requeridos');
+  }
+
+  if (!['herramientas', 'chatbot'].includes(parsedData.serviceType)) {
+    throw new HttpsError('invalid-argument', 'serviceType debe ser "herramientas" o "chatbot"');
+  }
+
+  if (!['start', 'increment', 'end'].includes(parsedData.actionType)) {
+    throw new HttpsError('invalid-argument', 'actionType debe ser "start", "increment" o "end"');
+  }
+
+  return {
+    serviceType: parsedData.serviceType,
+    actionType: parsedData.actionType,
+    secondsUsed: parsedData.secondsUsed || 1,
+    sessionId: parsedData.sessionId,
+  };
+}
+
 export const trackUsage = onCall(
   {
     enforceAppCheck: false,
@@ -72,28 +96,8 @@ export const trackUsage = onCall(
       }
 
       const uid = request.auth.uid;
-      const {
-        serviceType,
-        actionType,
-        secondsUsed = 1,
-        sessionId,
-      }: TrackUsageRequest = request.data;
-
-      // Validar parámetros
-      if (!serviceType || !actionType) {
-        throw new HttpsError('invalid-argument', 'serviceType y actionType son requeridos');
-      }
-
-      if (!['herramientas', 'chatbot'].includes(serviceType)) {
-        throw new HttpsError('invalid-argument', 'serviceType debe ser "herramientas" o "chatbot"');
-      }
-
-      if (!['start', 'increment', 'end'].includes(actionType)) {
-        throw new HttpsError(
-          'invalid-argument',
-          'actionType debe ser "start", "increment" o "end"',
-        );
-      }
+      const validatedData = validateTrackUsageData(request.data);
+      const { serviceType, actionType, secondsUsed, sessionId } = validatedData;
 
       // Obtener documento del usuario
       const userRef = db.collection('users').doc(uid);
@@ -128,7 +132,7 @@ export const trackUsage = onCall(
 
         case 'increment':
           // Incrementar uso durante la sesión
-          creditsToDeduct = secondsUsed;
+          creditsToDeduct = secondsUsed || 1;
 
           if (currentCredits < creditsToDeduct) {
             throw new HttpsError(
@@ -143,7 +147,7 @@ export const trackUsage = onCall(
 
         case 'end':
           // Finalizar sesión de uso
-          creditsToDeduct = secondsUsed;
+          creditsToDeduct = secondsUsed || 1;
 
           if (currentCredits >= creditsToDeduct) {
             sessionData.endTime = Timestamp.now();

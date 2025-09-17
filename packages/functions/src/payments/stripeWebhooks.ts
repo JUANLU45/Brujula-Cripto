@@ -1,13 +1,8 @@
-import type {
-  StripeInvoice,
-  StripePaymentIntent,
-  StripeSession,
-  StripeSubscription,
-} from '@brujula-cripto/types';
 import { getApps, initializeApp } from 'firebase-admin/app';
 import { FieldValue, getFirestore, Timestamp } from 'firebase-admin/firestore';
 import { defineSecret } from 'firebase-functions/params';
 import { onRequest } from 'firebase-functions/v2/https';
+import Stripe from 'stripe';
 
 // Inicializar Firebase Admin si no está ya inicializado
 if (getApps().length === 0) {
@@ -16,8 +11,9 @@ if (getApps().length === 0) {
 
 const db = getFirestore();
 
-// Secreto para el webhook endpoint de Stripe
+// Secretos para Stripe
 const stripeWebhookSecret = defineSecret('STRIPE_WEBHOOK_SECRET');
+const stripeSecretKey = defineSecret('STRIPE_SECRET_KEY');
 
 /**
  * Cloud Function que maneja webhooks de Stripe
@@ -31,7 +27,7 @@ const stripeWebhookSecret = defineSecret('STRIPE_WEBHOOK_SECRET');
  */
 export const stripeWebhooks = onRequest(
   {
-    secrets: [stripeWebhookSecret],
+    secrets: [stripeWebhookSecret, stripeSecretKey],
     cors: false,
     invoker: 'public',
   },
@@ -46,19 +42,21 @@ export const stripeWebhooks = onRequest(
         return;
       }
 
-      // En un entorno real, verificar la firma de Stripe:
-      // const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-      // let event;
-      // try {
-      //   event = stripe.webhooks.constructEvent(request.body, sig, webhookSecret);
-      // } catch (err) {
-      //   console.error('Webhook signature verification failed:', err.message);
-      //   response.status(400).send(`Webhook Error: ${err.message}`);
-      //   return;
-      // }
+      // Inicializar Stripe para validación de webhook
+      const stripe = new Stripe(stripeSecretKey.value(), {
+        apiVersion: '2023-10-16',
+      });
 
-      // Para desarrollo/demostración, parsear el cuerpo directamente
-      const event = JSON.parse(request.body.toString());
+      // Verificar la firma de Stripe para seguridad
+      let event: Stripe.Event;
+      try {
+        event = stripe.webhooks.constructEvent(request.rawBody, sig, webhookSecret);
+      } catch (err: unknown) {
+        const error = err as Error;
+        console.error('Webhook signature verification failed:', error.message);
+        response.status(400).send(`Webhook Error: ${error.message}`);
+        return;
+      }
 
       console.log('Stripe webhook event received:', event.type);
 
@@ -99,7 +97,7 @@ export const stripeWebhooks = onRequest(
  * Maneja el evento checkout.session.completed
  * Añade créditos de horas al usuario según las horas compradas
  */
-async function handleCheckoutSessionCompleted(session: StripeSession): Promise<void> {
+async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session): Promise<void> {
   try {
     const { userId, hours, hoursInSeconds } = session.metadata || {};
 
@@ -135,7 +133,7 @@ async function handleCheckoutSessionCompleted(session: StripeSession): Promise<v
       .collection('paymentHistory')
       .add({
         stripeSessionId: session.id,
-        stripeCustomerId: session.customer,
+        stripeCustomerId: typeof session.customer === 'string' ? session.customer : null,
         amountPaid: session.amount_total,
         currency: session.currency,
         hoursPurchase: parseInt(hours, 10),
@@ -157,9 +155,10 @@ async function handleCheckoutSessionCompleted(session: StripeSession): Promise<v
  * Maneja el evento customer.subscription.created
  * Registra nueva suscripción del usuario
  */
-async function handleSubscriptionCreated(subscription: StripeSubscription): Promise<void> {
+async function handleSubscriptionCreated(subscription: Stripe.Subscription): Promise<void> {
   try {
-    const customerId = subscription.customer;
+    const customerId =
+      typeof subscription.customer === 'string' ? subscription.customer : subscription.customer.id;
 
     // Buscar usuario por Stripe Customer ID
     const usersQuery = await db
@@ -202,9 +201,10 @@ async function handleSubscriptionCreated(subscription: StripeSubscription): Prom
  * Maneja el evento customer.subscription.deleted
  * Cancela la suscripción del usuario
  */
-async function handleSubscriptionDeleted(subscription: StripeSubscription): Promise<void> {
+async function handleSubscriptionDeleted(subscription: Stripe.Subscription): Promise<void> {
   try {
-    const customerId = subscription.customer;
+    const customerId =
+      typeof subscription.customer === 'string' ? subscription.customer : subscription.customer.id;
 
     // Buscar usuario por Stripe Customer ID
     const usersQuery = await db
@@ -239,10 +239,25 @@ async function handleSubscriptionDeleted(subscription: StripeSubscription): Prom
  * Maneja el evento invoice.payment_succeeded
  * Procesa pagos exitosos de facturas de suscripción
  */
-async function handleInvoicePaymentSucceeded(invoice: StripeInvoice): Promise<void> {
+async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<void> {
   try {
-    const customerId = invoice.customer;
-    const subscriptionId = invoice.subscription;
+    const customerId =
+      typeof invoice.customer === 'string'
+        ? invoice.customer
+        : invoice.customer
+          ? invoice.customer.id
+          : null;
+    const subscriptionId =
+      typeof invoice.subscription === 'string'
+        ? invoice.subscription
+        : invoice.subscription
+          ? invoice.subscription.id
+          : null;
+
+    if (!customerId) {
+      console.error('Invoice without customer:', invoice.id);
+      return;
+    }
 
     // Buscar usuario por Stripe Customer ID
     const usersQuery = await db
@@ -288,9 +303,14 @@ async function handleInvoicePaymentSucceeded(invoice: StripeInvoice): Promise<vo
  * Maneja el evento payment_intent.succeeded
  * Confirma pagos exitosos de PaymentIntents
  */
-async function handlePaymentIntentSucceeded(paymentIntent: StripePaymentIntent): Promise<void> {
+async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent): Promise<void> {
   try {
-    const customerId = paymentIntent.customer;
+    const customerId =
+      typeof paymentIntent.customer === 'string'
+        ? paymentIntent.customer
+        : paymentIntent.customer
+          ? paymentIntent.customer.id
+          : null;
 
     if (!customerId) {
       console.log('Payment intent without customer:', paymentIntent.id);
@@ -334,5 +354,3 @@ async function handlePaymentIntentSucceeded(paymentIntent: StripePaymentIntent):
     throw error;
   }
 }
-// Fuente: PROYEC_PARTE1.MD línea 206
-// Propósito: Maneja eventos Stripe (checkout.session.completed suma usageCreditsInSeconds; subscription.created/updated/deleted actualiza campos user)

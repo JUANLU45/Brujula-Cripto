@@ -74,157 +74,32 @@ FeedbackButton.tsx, sustituye la etiqueta <img> por el componente <Image> de Nex
 
 import Image from 'next/image'.
 --------------------ESLint Report--------------------
-
-DOCUMENTACION/ERRORES/ERRORES_1VERIFICACION.MD
-
-C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\admin\page.tsx
-  29:9  warning  The 'getAuthToken' function makes the dependencies of useEffect Hook (at line 65) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'getAuthToken' in its own useCallback() Hook  react-hooks/exhaustive-deps
-
-C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\feedback\page.tsx
-   86:50  error    Async arrow function has no 'await' expression         require-await
-  339:1   warning  File has too many lines (346). Maximum allowed is 300  max-lines
-
-C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\homepage\page.tsx
-  337:1  warning  File has too many lines (302). Maximum allowed is 300  max-lines
-
-C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\users\page.tsx
-  341:1  warning  File has too many lines (368). Maximum allowed is 300  max-lines
-
-C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleDataTable.tsx
-   30:8   warning  Function 'ArticleDataTable' has a complexity of 14. Maximum allowed is 10                                        complexity
-   83:6   warning  React Hook useEffect has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-  127:12  error    Redundant use of `await` on a return value                                                                       no-return-await
-  353:1   warning  File has too many lines (503). Maximum allowed is 300                                                            max-lines
-
-C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleEditor.tsx
-   51:8   warning  Function 'ArticleEditor' has a complexity of 16. Maximum allowed is 10                                                                                                                                                                                                                   complexity
-  183:6   warning  React Hook useEffect has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array                                                                                                                                                                          react-hooks/exhaustive-deps
-  185:50  error    Async arrow function has no 'await' expression                                                                                                                                                                                                                                           require-await
-  306:5   warning  React Hook useCallback has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array                                                                                                                                                                        react-hooks/exhaustive-deps
-  351:1   warning  File has too many lines (702). Maximum allowed is 300                                                                                                                                                                                                                                    max-lines
-  355:22  warning  Async arrow function has a complexity of 13. Maximum allowed is 10                                                                                                                                                                                                                       complexity
-  702:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-C:\BRUJULA CRIPTO\packages\app\components\features\blog\ArticleCard.tsx
-  27:8  warning  Function 'ArticleCard' has a complexity of 27. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\blog\ArticleList.tsx
-  36:8  warning  Function 'ArticleList' has a complexity of 24. Maximum allowed is 10                                                                                                             complexity
-  59:9  warning  The 'filters' object makes the dependencies of useEffect Hook (at line 153) change on every render. To fix this, wrap the initialization of 'filters' in its own useMemo() Hook  react-hooks/exhaustive-deps
-
-C:\BRUJULA CRIPTO\packages\app\components\features\blog\ArticlePage.tsx
-  63:8  warning  Function 'ArticlePage' has a complexity of 14. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\blog\PaginationControls.tsx
-  21:8  warning  Function 'PaginationControls' has a complexity of 29. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotLayout.tsx
-   67:8   warning  Function 'ChatbotLayout' has a complexity of 23. Maximum allowed is 10                                                       complexity
-  144:6   warning  React Hook useEffect has a missing dependency: 'loadConversations'. Either include it or remove the dependency array         react-hooks/exhaustive-deps
-  182:5   warning  Async arrow function has a complexity of 12. Maximum allowed is 10                                                           complexity
-  262:5   warning  React Hook useCallback has an unnecessary dependency: 'conversationsData'. Either exclude it or remove the dependency array  react-hooks/exhaustive-deps
-  360:1   warning  File has too many lines (487). Maximum allowed is 300                                                                        max-lines
-  381:23  warning  Arrow function has a complexity of 12. Maximum allowed is 10                                                                 complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotUI.tsx
-   74:8  warning  Function 'ChatbotUI' has a complexity of 33. Maximum allowed is 10  complexity
-  339:1  warning  File has too many lines (367). Maximum allowed is 300               max-lines
-
-C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ConversationList.tsx
-  310:1   warning  Function 'ConversationCard' has a complexity of 13. Maximum allowed is 10                      complexity
-  337:1   warning  File has too many lines (425). Maximum allowed is 300                                          max-lines
-  357:15  warning  The autoFocus prop should not be used, as it can reduce usability and accessibility for users  jsx-a11y/no-autofocus
-
-C:\BRUJULA CRIPTO\packages\app\components\features\contact\ContactForm.tsx
-  28:8  warning  Function 'ContactForm' has a complexity of 11. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\dashboard\UserDashboard.tsx
-   77:8  warning  Function 'UserDashboard' has a complexity of 13. Maximum allowed is 10  complexity
-  349:1  warning  File has too many lines (328). Maximum allowed is 300                   max-lines
-
-C:\BRUJULA CRIPTO\packages\app\components\features\homepage\FeedbackButton.tsx
-  17:8   warning  Function 'FeedbackButton' has a complexity of 12. Maximum allowed is 10                                                                                                                                                                                                                  complexity
-  96:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-C:\BRUJULA CRIPTO\packages\app\components\features\payments\CompetitorComparison.tsx
-  322:1  warning  File has too many lines (452). Maximum allowed is 300  max-lines
-
-C:\BRUJULA CRIPTO\packages\app\components\features\payments\UpgradeButton.tsx
-  22:8  warning  Function 'UpgradeButton' has a complexity of 11. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\pricing\UpgradeButton.tsx
-  55:34  warning  Async arrow function has a complexity of 14. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\recovery\WasmPasswordEngine.tsx
-   27:1  warning  Function 'WasmPasswordEngine' has a complexity of 12. Maximum allowed is 10  complexity
-  341:1  warning  File has too many lines (484). Maximum allowed is 300                        max-lines
-
-C:\BRUJULA CRIPTO\packages\app\components\layout\Footer.tsx
-  329:1  warning  File has too many lines (325). Maximum allowed is 300  max-lines
-
-C:\BRUJULA CRIPTO\packages\app\components\layout\Navbar.tsx
-  332:1  warning  File has too many lines (330). Maximum allowed is 300  max-lines
-
-C:\BRUJULA CRIPTO\packages\functions\src\admin\adminPriceHandlers.ts
-  103:43  warning  Async arrow function has a complexity of 19. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\functions\src\admin\serviceDirectoryHandlers.ts
-   95:37  warning  Async arrow function has a complexity of 12. Maximum allowed is 10      complexity
-  171:11  error    Unsafe assignment of an `any` value                                     @typescript-eslint/no-unsafe-assignment
-  178:66  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
-  244:11  error    Unsafe assignment of an `any` value                                     @typescript-eslint/no-unsafe-assignment
-  251:72  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
-
+------------ERRORS & WARNINGS A REPARAR PERFECTOS 
+-----------------
 C:\BRUJULA CRIPTO\packages\functions\src\lib\trackUsage.ts
-   39:3   warning  Async arrow function has a complexity of 23. Maximum allowed is 10                                   complexity
-   47:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-   79:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-   87:24  error    Unexpected any. Specify a different type                                                             @typescript-eslint/no-explicit-any
-  132:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-  152:36  error    Unsafe argument of type `any` assigned to a parameter of type `{}`                                   @typescript-eslint/no-unsafe-argument
-  158:16  error    Unsafe argument of type `any` assigned to a parameter of type `PartialWithFieldValue<DocumentData>`  @typescript-eslint/no-unsafe-argument
-  172:11  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-  181:9   error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-  224:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-  233:9   error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
+  67:3   warning  Async arrow function has a complexity of 23. Maximum allowed is 10  complexity
+  75:13  error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
 
 C:\BRUJULA CRIPTO\packages\functions\src\payments\createCheckout.ts
-   24:38  warning  Async arrow function has a complexity of 13. Maximum allowed is 10  complexity
-   31:11  error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-   48:9   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-   75:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-   75:56  error    Unsafe member access .price on an `any` value                       @typescript-eslint/no-unsafe-member-access
-   76:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-   76:60  error    Unsafe member access .price on an `any` value                       @typescript-eslint/no-unsafe-member-access
-   81:25  error    Unexpected any. Specify a different type                            @typescript-eslint/no-explicit-any
-  137:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-  154:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
+   12:27  error    Forbidden non-null assertion                                        @typescript-eslint/no-non-null-assertion
+   53:38  warning  Async arrow function has a complexity of 15. Maximum allowed is 10  complexity
+   60:11  error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
+  151:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
+  152:22  error    Unsafe member access .successUrl on an `any` value                  @typescript-eslint/no-unsafe-member-access
+  153:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
+  154:22  error    Unsafe member access .cancelUrl on an `any` value                   @typescript-eslint/no-unsafe-member-access
 
 C:\BRUJULA CRIPTO\packages\functions\src\payments\createStripePortalSession.ts
-   55:13  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-   62:13  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-   78:9   error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-   90:11  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-  110:9   error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
+   56:13  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
+   63:13  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
+   74:9   error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
+   84:11  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
+  104:9   error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
 
 C:\BRUJULA CRIPTO\packages\functions\src\payments\stripeWebhooks.ts
-  61:13  error  Unsafe assignment of an `any` value                                                  @typescript-eslint/no-unsafe-assignment
-  61:32  error  Unsafe argument of type `any` assigned to a parameter of type `string`               @typescript-eslint/no-unsafe-argument
-  61:32  error  Unsafe call of a(n) `any` typed value                                                @typescript-eslint/no-unsafe-call
-  61:45  error  Unsafe member access .toString on an `any` value                                     @typescript-eslint/no-unsafe-member-access
-  63:59  error  Unsafe member access .type on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  65:21  error  Unsafe member access .type on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  67:48  error  Unsafe argument of type `any` assigned to a parameter of type `StripeSession`        @typescript-eslint/no-unsafe-argument
-  67:54  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  71:43  error  Unsafe argument of type `any` assigned to a parameter of type `StripeSubscription`   @typescript-eslint/no-unsafe-argument
-  71:49  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  75:43  error  Unsafe argument of type `any` assigned to a parameter of type `StripeSubscription`   @typescript-eslint/no-unsafe-argument
-  75:49  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  79:47  error  Unsafe argument of type `any` assigned to a parameter of type `StripeInvoice`        @typescript-eslint/no-unsafe-argument
-  79:53  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  83:46  error  Unsafe argument of type `any` assigned to a parameter of type `StripePaymentIntent`  @typescript-eslint/no-unsafe-argument
-  83:52  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  87:54  error  Unsafe member access .type on an `any` value                                         @typescript-eslint/no-unsafe-member-access
+  54:21  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  55:69  error  Unsafe member access .message on an `any` value  @typescript-eslint/no-unsafe-member-access
+  56:57  error  Unsafe member access .message on an `any` value  @typescript-eslint/no-unsafe-member-access
 
 C:\BRUJULA CRIPTO\packages\functions\src\public\handleContactForm.ts
    90:60  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
@@ -236,6 +111,8 @@ C:\BRUJULA CRIPTO\packages\functions\src\public\handleContactForm.ts
   106:9   error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
   106:36  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
 
+
+-----------------EJEMPLOS-----------------------
 
   Debes revisar los archivos mencionados en el log y aplicar las siguientes correcciones. Estas mejoras son importantes para la estabilidad y el rendimiento de tu aplicación.
 
