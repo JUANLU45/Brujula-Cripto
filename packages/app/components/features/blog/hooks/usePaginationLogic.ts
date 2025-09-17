@@ -13,6 +13,13 @@ interface UsePaginationLogicProps {
   maxVisiblePages: number;
 }
 
+interface UsePaginationLogicReturn {
+  startItem: number;
+  endItem: number;
+  visiblePages: number[];
+  navigateToPage: (page: number) => void;
+}
+
 export function usePaginationLogic({
   currentPage,
   totalPages,
@@ -20,7 +27,7 @@ export function usePaginationLogic({
   itemsPerPage,
   baseUrl,
   maxVisiblePages,
-}: UsePaginationLogicProps) {
+}: UsePaginationLogicProps): UsePaginationLogicReturn {
   const router = useRouter();
   const searchParams = useSearchParams();
 

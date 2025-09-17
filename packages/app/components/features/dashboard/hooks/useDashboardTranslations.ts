@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 
 interface UseDashboardTranslationsReturn {
-  t: (key: string, values?: Record<string, any>) => string;
+  t: (key: string, values?: Record<string, string | number>) => string;
   formatTime: (seconds: number) => string;
 }
 

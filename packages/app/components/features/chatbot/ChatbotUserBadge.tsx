@@ -21,7 +21,7 @@ interface ChatbotUserBadgeProps {
 }
 
 export function ChatbotUserBadge({
-  user,
+  user: _user,
   isAdmin,
   isPremium,
   isRegistered,

@@ -4,7 +4,17 @@ interface UpgradeButtonStylesProps {
   fullWidth: boolean;
 }
 
-export function useUpgradeButtonStyles({ size, variant, fullWidth }: UpgradeButtonStylesProps) {
+interface UseUpgradeButtonStylesReturn {
+  getSizeClasses: () => string;
+  getVariantClasses: () => string;
+  getButtonClasses: () => string;
+}
+
+export function useUpgradeButtonStyles({
+  size,
+  variant,
+  fullWidth,
+}: UpgradeButtonStylesProps): UseUpgradeButtonStylesReturn {
   const getSizeClasses = (): string => {
     switch (size) {
       case 'sm':

@@ -16,7 +16,11 @@ interface UsePaymentProcessingProps {
   fallbackErrorMessage: string;
 }
 
-export function usePaymentProcessing(props: UsePaymentProcessingProps) {
+interface UsePaymentProcessingReturn {
+  handlePaymentProcess: () => Promise<void>;
+}
+
+export function usePaymentProcessing(props: UsePaymentProcessingProps): UsePaymentProcessingReturn {
   const handlePaymentProcess = async (): Promise<void> => {
     const validation = PaymentValidator.validateTermsAcceptance(
       props.acceptedTerms,

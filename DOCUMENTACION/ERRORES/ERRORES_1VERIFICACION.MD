@@ -77,58 +77,10 @@ import Image from 'next/image'.
 ------------ERRORS & WARNINGS A REPARAR PERFECTOS 
 -----------------
 
-PS C:\BRUJULA CRIPTO> pnpm -r lint --fix
-Scope: 3 of 4 workspace projects
-packages/app lint$ eslint . "--fix"
-│ C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\feedback\page.tsx
-│   91:12  error  Redundant use of `await` on a return value  no-return-await
-│ C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleContentEditor.tsx
-│    4:1  error  '@tiptap/react' import is duplicated                                        no-duplicate-imports
-│   23:3  error  'language' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
-│ C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleEditor.tsx
-│    96:62  error  Async arrow function has no 'await' expression                                                    require-await
-│   216:9   error  'generateSlugFromTitle' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-e…
-│   232:9   error  'handleAddTag' is assigned a value but never used. Allowed unused vars must match /^_/u           @typescript-e…
-│   240:9   error  'handleRemoveTag' is assigned a value but never used. Allowed unused vars must match /^_/u        @typescript-e…
-│   247:9   error  'handleImageUpload' is assigned a value but never used. Allowed unused vars must match /^_/u      @typescript-e…
-│ C:\BRUJULA CRIPTO\packages\app\components\features\auth\PasswordResetForm.tsx
-│    62:11  error  Do not use an `<a>` element to navigate to `/login/`. Use `<Link />` from `next/link` instead. See: https://nex…
-│    62:11  error  Do not use an `<a>` element to navigate to `/login/`. Use `<Link />` from `next/link` instead. See: https://nex…
-│    62:11  error  Do not use an `<a>` element to navigate to `/login/`. Use `<Link />` from `next/link` instead. See: https://nex…
-│   105:11  error  Do not use an `<a>` element to navigate to `/login/`. Use `<Link />` from `next/link` instead. See: https://nex…
-│   105:11  error  Do not use an `<a>` element to navigate to `/login/`. Use `<Link />` from `next/link` instead. See: https://nex…
-│   105:11  error  Do not use an `<a>` element to navigate to `/login/`. Use `<Link />` from `next/link` instead. See: https://nex…
-│ C:\BRUJULA CRIPTO\packages\app\components\features\auth\SignUpForm.tsx
-│   140:15  error  Do not use an `<a>` element to navigate to `/terminos/`. Use `<Link />` from `next/link` instead. See: https://…
-│   140:15  error  Do not use an `<a>` element to navigate to `/terminos/`. Use `<Link />` from `next/link` instead. See: https://…
-│   140:15  error  Do not use an `<a>` element to navigate to `/terminos/`. Use `<Link />` from `next/link` instead. See: https://…
-│   147:15  error  Do not use an `<a>` element to navigate to `/privacidad/`. Use `<Link />` from `next/link` instead. See: https:…
-│   147:15  error  Do not use an `<a>` element to navigate to `/privacidad/`. Use `<Link />` from `next/link` instead. See: https:…
-│   147:15  error  Do not use an `<a>` element to navigate to `/privacidad/`. Use `<Link />` from `next/link` instead. See: https:…
-│   207:11  error  Do not use an `<a>` element to navigate to `/login/`. Use `<Link />` from `next/link` instead. See: https://nex…
-│   207:11  error  Do not use an `<a>` element to navigate to `/login/`. Use `<Link />` from `next/link` instead. See: https://nex…
-│   207:11  error  Do not use an `<a>` element to navigate to `/login/`. Use `<Link />` from `next/link` instead. See: https://nex…
-│ C:\BRUJULA CRIPTO\packages\app\components\features\blog\ArticleList.tsx
-│   29:8  warning  Function 'ArticleList' has a complexity of 13. Maximum allowed is 10  complexity
-│ C:\BRUJULA CRIPTO\packages\app\components\features\blog\PaginationNavigationButtons.tsx
-│   18:3  error  'totalPages' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
-│ C:\BRUJULA CRIPTO\packages\app\components\features\blog\hooks\useArticleData.ts
-│   27:3  error    'loadingMessage' is defined but never used. Allowed unused args must match /^_/u                               …
-│   76:6  warning  React Hook useEffect has a missing dependency: 'loadArticles'. Either include it or remove the dependency array…
-│ C:\BRUJULA CRIPTO\packages\app\components\features\blog\hooks\usePaginationLogic.ts
-│   16:8  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-│   16:8  error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
-│ C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotInputForm.tsx
+C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotInputForm.tsx
 │   31:8  warning  Function 'ChatbotInputForm' has a complexity of 15. Maximum allowed is 10  complexity
-│ C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotUI.tsx
-│   21:8  warning  Function 'ChatbotUI' has a complexity of 14. Maximum allowed is 10  complexity
 │ C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotUpsellModal.tsx
 │   14:8  warning  Function 'ChatbotUpsellModal' has a complexity of 12. Maximum allowed is 10  complexity
-│ C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotUserBadge.tsx
-│   24:3  error  'user' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
-│ C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\hooks\useChatConversations.ts
-│   14:8  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-│   14:8  error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
 │ C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\hooks\useChatMessaging.ts
 │   24:8  error    Missing return type on function                                     @typescript-eslint/explicit-function-return…
 │   24:8  error    Missing return type on function                                     @typescript-eslint/explicit-module-boundary…
@@ -144,29 +96,12 @@ packages/app lint$ eslint . "--fix"
 │   42:13  error  Unsafe call of a(n) `any` typed value     @typescript-eslint/no-unsafe-call
 │ C:\BRUJULA CRIPTO\packages\app\components\features\dashboard\hooks\useDashboardTranslations.ts
 │   6:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
-│ C:\BRUJULA CRIPTO\packages\app\components\features\error\NotFoundPage.tsx
-│   66:12  error  Unknown property 'jsx' found  react/no-unknown-property
-│ C:\BRUJULA CRIPTO\packages\app\components\features\payments\UpgradeButton.tsx
-│   40:5   error  Unsafe object destructuring of a property with an `any` value  @typescript-eslint/no-unsafe-assignment
-│   41:5   error  Unsafe object destructuring of a property with an `any` value  @typescript-eslint/no-unsafe-assignment
-│   65:26  error  Unsafe assignment of an `any` value                            @typescript-eslint/no-unsafe-assignment
-│   65:42  error  Unsafe assignment of an `any` value                            @typescript-eslint/no-unsafe-assignment
-│ C:\BRUJULA CRIPTO\packages\app\components\features\payments\UpgradeInfo.tsx
-│    2:9   error  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
-│    3:13  error  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
-│   11:26  error  Unsafe member access .usageCreditsInSeconds on an `any` value  @typescript-eslint/no-unsafe-member-access
-│   11:60  error  Unsafe member access .usageCreditsInSeconds on an `any` value  @typescript-eslint/no-unsafe-member-access
 │ C:\BRUJULA CRIPTO\packages\app\components\features\payments\useUpgradeButtonStyles.ts
 │   7:8  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
 │   7:8  error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
-│ C:\BRUJULA CRIPTO\packages\app\components\features\payments\useUpgradeLogic.ts
-│   29:9   error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
-│   30:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
 │ C:\BRUJULA CRIPTO\packages\app\components\features\pricing\usePaymentProcessing.ts
 │   19:8  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
 │   19:8  error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
-│ C:\BRUJULA CRIPTO\packages\app\components\features\recovery\WasmPasswordEngine.tsx
-│   27:1  warning  Function 'WasmPasswordEngine' has a complexity of 12. Maximum allowed is 10  complexity
 │ C:\BRUJULA CRIPTO\packages\app\components\ui\Input.tsx
 │   8:6   error  'className' is missing in props validation  react/prop-types
 │   8:17  error  'type' is missing in props validation       react/prop-types

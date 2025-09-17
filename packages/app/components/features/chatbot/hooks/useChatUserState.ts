@@ -4,7 +4,18 @@ import { useMemo } from 'react';
 
 import type { IUser } from '@brujula-cripto/types';
 
-export function useChatUserState(user?: IUser | null) {
+interface UseChatUserStateReturn {
+  isGuest: boolean;
+  isAdmin: boolean;
+  isPremium: boolean;
+  isRegistered: boolean;
+  MESSAGE_LIMIT: number;
+  canSendMessage: boolean;
+  userCredits: number;
+  formatCredits: (seconds: number) => string;
+}
+
+export function useChatUserState(user?: IUser | null): UseChatUserStateReturn {
   const userState = useMemo(() => {
     const isGuest = !user;
     const isAdmin = Boolean(user?.isAdmin);

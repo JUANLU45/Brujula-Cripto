@@ -21,6 +21,12 @@ interface UseChatMessagingProps {
   setError: (error: string | null) => void;
 }
 
+interface UseChatMessagingReturn {
+  currentMessages: IChatMessage[];
+  setCurrentMessages: React.Dispatch<React.SetStateAction<IChatMessage[]>>;
+  handleSendMessage: (message: string) => Promise<void>;
+}
+
 export function useChatMessaging({
   user,
   isRegistered,
@@ -32,11 +38,65 @@ export function useChatMessaging({
   createConversation,
   setConversationsData,
   setError,
-}: UseChatMessagingProps) {
+}: UseChatMessagingProps): UseChatMessagingReturn {
   const [currentMessages, setCurrentMessages] = useState<IChatMessage[]>([]);
 
+  const createNewConversation = useCallback(
+    async (message: string): Promise<string | null> => {
+      if (!user) {
+        return null;
+      }
+
+      const newConversation: Omit<IChatConversation, 'id' | 'createdAt' | 'updatedAt'> = {
+        userId: user.uid,
+        title: message.substring(0, 50) + (message.length > 50 ? '...' : ''),
+        messages: [],
+        status: 'active',
+        isFavorite: false,
+      };
+
+      const createdConversation = await createConversation(newConversation);
+      if (createdConversation) {
+        setActiveConversationId(createdConversation.id);
+        return createdConversation.id;
+      }
+
+      setError('Error creando conversación');
+      return null;
+    },
+    [user, createConversation, setActiveConversationId, setError],
+  );
+
+  const processMessageResponse = useCallback(
+    (
+      targetConversationId: string,
+      userMessage: IChatMessage,
+      messageResponse: { success: boolean; data?: IChatMessage; error?: string },
+    ): void => {
+      if (messageResponse.success && messageResponse.data) {
+        // Añadir respuesta del asistente
+        setCurrentMessages((prev) => [...prev, messageResponse.data as IChatMessage]);
+
+        // Actualizar conversación en la lista
+        setConversationsData((prev) =>
+          prev.map((conv) =>
+            conv.id === targetConversationId
+              ? {
+                  ...conv,
+                  messages: [...conv.messages, userMessage, messageResponse.data as IChatMessage],
+                }
+              : conv,
+          ),
+        );
+      } else {
+        setError(messageResponse.error || 'Error enviando mensaje');
+      }
+    },
+    [setCurrentMessages, setConversationsData, setError],
+  );
+
   const handleSendMessage = useCallback(
-    async (message: string) => {
+    async (message: string): Promise<void> => {
       if (!canSendMessage) {
         setShowUpsellModal(true);
         return;
@@ -55,20 +115,8 @@ export function useChatMessaging({
 
         // Crear nueva conversación si no existe
         if (!targetConversationId) {
-          const newConversation: Omit<IChatConversation, 'id' | 'createdAt' | 'updatedAt'> = {
-            userId: user.uid,
-            title: message.substring(0, 50) + (message.length > 50 ? '...' : ''),
-            messages: [],
-            status: 'active',
-            isFavorite: false,
-          };
-
-          const createdConversation = await createConversation(newConversation);
-          if (createdConversation) {
-            targetConversationId = createdConversation.id;
-            setActiveConversationId(targetConversationId);
-          } else {
-            setError('Error creando conversación');
+          targetConversationId = await createNewConversation(message);
+          if (!targetConversationId) {
             return;
           }
         }
@@ -91,25 +139,7 @@ export function useChatMessaging({
         };
 
         const messageResponse = await sendChatMessage(targetConversationId, messageToSend);
-
-        if (messageResponse.success && messageResponse.data) {
-          // Añadir respuesta del asistente
-          setCurrentMessages((prev) => [...prev, messageResponse.data as IChatMessage]);
-
-          // Actualizar conversación en la lista
-          setConversationsData((prev) =>
-            prev.map((conv) =>
-              conv.id === targetConversationId
-                ? {
-                    ...conv,
-                    messages: [...conv.messages, userMessage, messageResponse.data as IChatMessage],
-                  }
-                : conv,
-            ),
-          );
-        } else {
-          setError(messageResponse.error || 'Error enviando mensaje');
-        }
+        processMessageResponse(targetConversationId, userMessage, messageResponse);
       } catch (error) {
         setError('Error de conexión');
         console.error('Error sending message:', error);
@@ -120,11 +150,11 @@ export function useChatMessaging({
       user,
       isRegistered,
       activeConversationId,
-      setActiveConversationId,
       setMessageCount,
       setShowUpsellModal,
-      createConversation,
-      setConversationsData,
+      createNewConversation,
+      setCurrentMessages,
+      processMessageResponse,
       setError,
     ],
   );

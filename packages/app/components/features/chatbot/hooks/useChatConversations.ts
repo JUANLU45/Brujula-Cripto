@@ -11,7 +11,24 @@ import {
   updateChatConversation,
 } from '@/lib/api';
 
-export function useChatConversations(userId?: string) {
+interface UseChatConversationsReturn {
+  conversationsData: IChatConversation[];
+  setConversationsData: React.Dispatch<React.SetStateAction<IChatConversation[]>>;
+  isLoading: boolean;
+  error: string | null;
+  setError: React.Dispatch<React.SetStateAction<string | null>>;
+  loadConversations: () => Promise<void>;
+  createConversation: (
+    newConversation: Omit<IChatConversation, 'id' | 'createdAt' | 'updatedAt'>,
+  ) => Promise<IChatConversation | null>;
+  deleteConversation: (conversationId: string) => Promise<boolean>;
+  updateConversation: (
+    conversationId: string,
+    updates: Partial<IChatConversation>,
+  ) => Promise<boolean>;
+}
+
+export function useChatConversations(userId?: string): UseChatConversationsReturn {
   const [conversationsData, setConversationsData] = useState<IChatConversation[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

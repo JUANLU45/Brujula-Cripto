@@ -1,8 +1,11 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import type { UseFormRegister } from 'react-hook-form';
 
 import { Input } from '@/components/ui/Input';
+
+import type { ContactFormData } from './hooks/useContactForm';
 
 interface ContactFormFieldProps {
   id: string;
@@ -10,7 +13,7 @@ interface ContactFormFieldProps {
   fieldKey: 'name' | 'email';
   autoComplete: string;
   disabled: boolean;
-  register: any;
+  register: UseFormRegister<ContactFormData>;
   error?: string;
 }
 

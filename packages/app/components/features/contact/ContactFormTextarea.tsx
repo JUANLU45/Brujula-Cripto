@@ -1,10 +1,13 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import type { UseFormRegister } from 'react-hook-form';
+
+import type { ContactFormData } from './hooks/useContactForm';
 
 interface ContactFormTextareaProps {
   disabled: boolean;
-  register: any;
+  register: UseFormRegister<ContactFormData>;
   error?: string;
 }
 

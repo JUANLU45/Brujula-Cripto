@@ -15,6 +15,9 @@ const contactFormSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
+// Export type for use in other components
+export type { ContactFormData };
+
 interface UseContactFormReturn {
   // Form state
   isSubmitting: boolean;

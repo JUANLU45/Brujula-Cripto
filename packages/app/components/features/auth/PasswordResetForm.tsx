@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 
+import Link from 'next/link';
+
 import { useTranslations } from 'next-intl';
 
 import { useAuth } from '@/lib/auth/AuthProvider';
@@ -59,12 +61,12 @@ export function PasswordResetForm(): JSX.Element {
         </div>
 
         <div className="mt-6 text-center">
-          <a
+          <Link
             href="/login"
             className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
           >
             {t('backToLogin')}
-          </a>
+          </Link>
         </div>
       </div>
     );
@@ -102,12 +104,12 @@ export function PasswordResetForm(): JSX.Element {
         </button>
 
         <div className="text-center">
-          <a
+          <Link
             href="/login"
             className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
           >
             {t('backToLogin')}
-          </a>
+          </Link>
         </div>
       </form>
     </div>

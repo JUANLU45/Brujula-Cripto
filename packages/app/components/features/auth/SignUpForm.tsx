@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { useTranslations } from 'next-intl';
@@ -137,19 +138,19 @@ export function SignUpForm(): JSX.Element {
           <div className="ml-3 text-sm">
             <label htmlFor="acceptTerms" className="text-gray-600 dark:text-gray-400">
               {t('acceptTerms')}{' '}
-              <a
+              <Link
                 href="/terminos"
                 className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
               >
                 {t('termsAndConditions')}
-              </a>{' '}
+              </Link>{' '}
               {t('and')}{' '}
-              <a
+              <Link
                 href="/privacidad"
                 className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
               >
                 {t('privacyPolicy')}
-              </a>
+              </Link>
             </label>
           </div>
         </div>
@@ -204,12 +205,12 @@ export function SignUpForm(): JSX.Element {
 
         <div className="text-center">
           <span className="text-sm text-gray-600 dark:text-gray-400">{t('hasAccount')} </span>
-          <a
+          <Link
             href="/login"
             className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
           >
             {t('signIn')}
-          </a>
+          </Link>
         </div>
       </form>
     </div>
