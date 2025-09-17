@@ -1,7 +1,8 @@
 'use client';
 
-import type { IUser } from '@brujula-cripto/types';
 import { useMemo } from 'react';
+
+import type { IUser } from '@brujula-cripto/types';
 
 export function useChatUserState(user?: IUser | null) {
   const userState = useMemo(() => {

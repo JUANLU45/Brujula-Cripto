@@ -1,8 +1,10 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
 import type { IUser } from '@brujula-cripto/types';
 import { useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
+
 import { CloseIcon } from './ChatbotIcons';
 
 interface ChatbotSidebarHeaderProps {

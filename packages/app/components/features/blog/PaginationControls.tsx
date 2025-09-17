@@ -1,10 +1,10 @@
 'use client';
 
+import { usePaginationLogic } from './hooks/usePaginationLogic';
 import { PaginationInfo } from './PaginationInfo';
 import { PaginationJumpToPage } from './PaginationJumpToPage';
 import { PaginationEndButtons, PaginationNavigationButtons } from './PaginationNavigationButtons';
 import { PaginationNumbers } from './PaginationNumbers';
-import { usePaginationLogic } from './hooks/usePaginationLogic';
 
 interface PaginationControlsProps {
   currentPage: number;

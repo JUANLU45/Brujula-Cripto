@@ -1,13 +1,15 @@
 'use client';
 
+import { useCallback, useState } from 'react';
+
+import type { IChatConversation } from '@brujula-cripto/types';
+
 import {
   createChatConversation,
   deleteChatConversation,
   getChatConversations,
   updateChatConversation,
 } from '@/lib/api';
-import type { IChatConversation } from '@brujula-cripto/types';
-import { useCallback, useState } from 'react';
 
 export function useChatConversations(userId?: string) {
   const [conversationsData, setConversationsData] = useState<IChatConversation[]>([]);

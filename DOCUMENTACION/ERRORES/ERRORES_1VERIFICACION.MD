@@ -78,26 +78,6 @@ import Image from 'next/image'.
 -----------------
 
 
-C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotLayout.tsx
-   67:8   warning  Function 'ChatbotLayout' has a complexity of 23. Maximum allowed is 10                                                       complexity
-  144:6   warning  React Hook useEffect has a missing dependency: 'loadConversations'. Either include it or remove the dependency array         react-hooks/exhaustive-deps
-  182:5   warning  Async arrow function has a complexity of 12. Maximum allowed is 10                                                           complexity
-  262:5   warning  React Hook useCallback has an unnecessary dependency: 'conversationsData'. Either exclude it or remove the dependency array  react-hooks/exhaustive-deps
-  381:23  warning  Arrow function has a complexity of 12. Maximum allowed is 10                                                                 complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotUI.tsx
-  74:8  warning  Function 'ChatbotUI' has a complexity of 33. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ConversationList.tsx
-  310:1   warning  Function 'ConversationCard' has a complexity of 13. Maximum allowed is 10                      complexity
-  357:15  warning  The autoFocus prop should not be used, as it can reduce usability and accessibility for users  jsx-a11y/no-autofocus
-
-C:\BRUJULA CRIPTO\packages\app\components\features\contact\ContactForm.tsx
-  28:8  warning  Function 'ContactForm' has a complexity of 11. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\dashboard\UserDashboard.tsx
-  77:8  warning  Function 'UserDashboard' has a complexity of 13. Maximum allowed is 10  complexity
-
 C:\BRUJULA CRIPTO\packages\app\components\features\homepage\FeedbackButton.tsx
   17:8   warning  Function 'FeedbackButton' has a complexity of 12. Maximum allowed is 10                                                                                                                                                                                                                  complexity
   96:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
@@ -120,43 +100,3 @@ C:\BRUJULA CRIPTO\packages\functions\src\admin\serviceDirectoryHandlers.ts
 C:\BRUJULA CRIPTO\packages\functions\src\lib\trackUsage.ts
   91:3  warning  Async arrow function has a complexity of 21. Maximum allowed is 10  complexity
 
------------------EJEMPLOS-----------------------
-
-  Debes revisar los archivos mencionados en el log y aplicar las siguientes correcciones. Estas mejoras son importantes para la estabilidad y el rendimiento de tu aplicación.
-
-Dependencias de Hooks de React (react-hooks/exhaustive-deps)
-
-En el 
-
-useEffect advertido, añade 
-
-loadConversations a su array de dependencias.
-
-En el 
-
-useCallback advertido, elimina 
-
-
-conversationsData de su array de dependencias, ya que es innecesario.
-
-Complejidad del Código (complexity)
-
-Funciones como 
-
-ChatbotUI (complejidad 33), ConversationCard (13) o la función flecha con complejidad 12 deben ser refactorizadas. Divide su lógica en funciones más pequeñas y simples para reducir la complejidad.
-
-
-Accesibilidad (jsx-a11y/no-autofocus)
-
-En el archivo 
-
-ConversationList.tsx, elimina la propiedad autoFocus del elemento que la contiene para solucionar la advertencia de accesibilidad.
-
-
-Optimización de Imágenes (@next/next/no-img-element)
-
-En el archivo 
-
-FeedbackButton.tsx, sustituye la etiqueta <img> por el componente <Image> de Next.js. Recuerda importarlo con 
-
-import Image from 'next/image'.

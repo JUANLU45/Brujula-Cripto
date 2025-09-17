@@ -1,7 +1,9 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
 import { useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
+
 import { ChevronLeftIcon, ChevronRightIcon } from './PaginationIcons';
 
 interface PaginationNavigationButtonsProps {

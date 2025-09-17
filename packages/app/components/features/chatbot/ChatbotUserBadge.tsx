@@ -2,6 +2,7 @@
 
 import type { IUser } from '@brujula-cripto/types';
 import { useTranslations } from 'next-intl';
+
 import { CrownIcon, ShieldIcon, UserIcon } from './ChatbotIcons';
 
 interface UserBadgeInfo {

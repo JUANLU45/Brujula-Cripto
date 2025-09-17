@@ -1,8 +1,11 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import type { IChatConversation, IUser } from '@brujula-cripto/types';
 import { useCallback, useEffect, useState } from 'react';
+
+import type { IChatConversation, IUser } from '@brujula-cripto/types';
+
+import { Button } from '@/components/ui/Button';
+
 import { MenuIcon } from './ChatbotIcons';
 import { ChatbotSidebarContent } from './ChatbotSidebarContent';
 import { ChatbotSidebarHeader } from './ChatbotSidebarHeader';

@@ -1,7 +1,8 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
 import { useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
 
 interface PaginationJumpToPageProps {
   currentPage: number;

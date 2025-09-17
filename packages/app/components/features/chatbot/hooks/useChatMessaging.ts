@@ -1,8 +1,10 @@
 'use client';
 
-import { sendChatMessage } from '@/lib/api';
-import type { IChatConversation, IChatMessage, IUser } from '@brujula-cripto/types';
 import { useCallback, useState } from 'react';
+
+import type { IChatConversation, IChatMessage, IUser } from '@brujula-cripto/types';
+
+import { sendChatMessage } from '@/lib/api';
 
 interface UseChatMessagingProps {
   user?: IUser | null;

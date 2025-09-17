@@ -31,7 +31,9 @@ export function ArticleCardActions({
   const [isSharing, setIsSharing] = useState(false);
 
   const handleShare = async (): Promise<void> => {
-    if (!showSharing) return;
+    if (!showSharing) {
+      return;
+    }
 
     setIsSharing(true);
     try {
@@ -56,7 +58,9 @@ export function ArticleCardActions({
   };
 
   const handleLike = async (): Promise<void> => {
-    if (!showInteractions) return;
+    if (!showInteractions) {
+      return;
+    }
 
     try {
       const response = await fetch('/api/articles/like', {

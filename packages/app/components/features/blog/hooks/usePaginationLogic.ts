@@ -1,7 +1,8 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
+
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface UsePaginationLogicProps {
   currentPage: number;

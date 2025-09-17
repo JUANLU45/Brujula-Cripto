@@ -1,6 +1,7 @@
 'use client';
 
 import type { IChatConversation } from '@brujula-cripto/types';
+
 import ConversationList from './ConversationList';
 
 interface ChatbotSidebarContentProps {

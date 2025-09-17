@@ -53,7 +53,9 @@ export function ArticlePageSidebar({
   };
 
   const handleLike = async (): Promise<void> => {
-    if (!isSubscribed) return;
+    if (!isSubscribed) {
+      return;
+    }
 
     try {
       setIsLiked(!isLiked);
