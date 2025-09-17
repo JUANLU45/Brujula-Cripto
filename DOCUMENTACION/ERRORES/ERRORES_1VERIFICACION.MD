@@ -78,9 +78,6 @@ import Image from 'next/image'.
 -----------------
 
 
-C:\BRUJULA CRIPTO\packages\app\components\features\blog\PaginationControls.tsx
-  21:8  warning  Function 'PaginationControls' has a complexity of 29. Maximum allowed is 10  complexity
-
 C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotLayout.tsx
    67:8   warning  Function 'ChatbotLayout' has a complexity of 23. Maximum allowed is 10                                                       complexity
   144:6   warning  React Hook useEffect has a missing dependency: 'loadConversations'. Either include it or remove the dependency array         react-hooks/exhaustive-deps
