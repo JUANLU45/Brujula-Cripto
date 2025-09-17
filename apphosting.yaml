@@ -17,7 +17,7 @@ buildCommand: pnpm --filter app build
 # 4. Le decimos a Firebase dónde está la aplicación Next.js compilada
 #    y cómo ejecutarla en producción.
 runCommand: pnpm --filter app start
-outputDirectory: packages/app/.next
+outputDirectory: packages/app/.next/standalone
 
 # Configuración de Cloud Run
 runConfig:
