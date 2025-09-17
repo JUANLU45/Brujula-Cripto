@@ -16,7 +16,13 @@ buildCommand: pnpm build
 # 4. Le decimos a Firebase dónde está la aplicación Next.js compilada
 #    y cómo ejecutarla en producción.
 runCommand: pnpm start
-outputDirectory: .next/standalone
+
+# 5. SOLUCIÓN PARA BUG MONOREPO - Issue #349
+#    Especifica manualmente los archivos de salida para evitar el bug del adaptador
+outputFiles:
+  serverApp:
+    include:
+      - .next/standalone
 
 # Configuración de Cloud Run
 runConfig:
