@@ -1,6 +1,9 @@
+import type { IUser } from '@brujula-cripto/types';
+import type { User } from 'firebase/auth';
+
 interface UpgradeInfoProps {
-  user: any;
-  userData: any;
+  user: User | null;
+  userData: IUser | null;
 }
 
 export function UpgradeInfo({ user, userData }: UpgradeInfoProps): JSX.Element {

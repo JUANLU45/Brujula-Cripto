@@ -400,3 +400,31 @@ a {
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+/* Animaciones para la brújula del 404 */
+.compass-spin {
+  animation: spin 8s linear infinite;
+}
+
+.compass-needle {
+  animation: needle-swing 3s ease-in-out infinite alternate;
+  transform-origin: 12px 12px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes needle-swing {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}

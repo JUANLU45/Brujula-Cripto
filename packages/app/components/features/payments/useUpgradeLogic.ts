@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import type { IUser } from '@brujula-cripto/types';
+import type { User } from 'firebase/auth';
 import { useTranslations } from 'next-intl';
 
 import { createCheckoutSession } from '@/lib/api';
@@ -26,8 +28,8 @@ interface UseUpgradeLogicReturn {
   isButtonDisabled: (disabled: boolean) => boolean;
 
   // Datos
-  user: any;
-  userData: any;
+  user: User | null;
+  userData: IUser | null;
   t: ReturnType<typeof useTranslations>;
 }
 

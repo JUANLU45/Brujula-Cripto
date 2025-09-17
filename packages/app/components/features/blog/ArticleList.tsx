@@ -26,10 +26,20 @@ interface ArticleListProps {
   className?: string;
 }
 
+interface TranslationFunction {
+  (key: string): string;
+}
+
 /**
  * Componente para mostrar el estado de carga
  */
-function LoadingState({ t, className }: { t: any; className: string }): JSX.Element {
+function LoadingState({
+  t,
+  className,
+}: {
+  t: TranslationFunction;
+  className: string;
+}): JSX.Element {
   return (
     <div className={`flex items-center justify-center py-12 ${className}`}>
       <div className="text-center">
@@ -49,7 +59,7 @@ function ErrorState({
   error,
   retry,
 }: {
-  t: any;
+  t: TranslationFunction;
   className: string;
   error: string;
   retry: () => void;
@@ -69,7 +79,13 @@ function ErrorState({
 /**
  * Componente para mostrar cuando no hay resultados
  */
-function NoResultsState({ t, hasFilters }: { t: any; hasFilters: boolean }): JSX.Element {
+function NoResultsState({
+  t,
+  hasFilters,
+}: {
+  t: TranslationFunction;
+  hasFilters: boolean;
+}): JSX.Element {
   return (
     <div className="py-12 text-center">
       <div className="mx-auto max-w-md">
@@ -80,64 +96,62 @@ function NoResultsState({ t, hasFilters }: { t: any; hasFilters: boolean }): JSX
   );
 }
 
-export function ArticleList({
+interface ArticleFilters {
+  search?: string;
+  category?: string;
+  tag?: string;
+}
+
+/**
+ * Maneja el cambio de categoría actualizando la URL
+ */
+const updateCategoryInUrl = (category: string): void => {
+  const url = new URL(window.location.href);
+  if (category === 'all') {
+    url.searchParams.delete('category');
+  } else {
+    url.searchParams.set('category', category);
+  }
+  url.searchParams.delete('page');
+  window.history.replaceState({}, '', url.toString());
+};
+
+/**
+ * Componente para renderizar el contenido principal de la lista
+ */
+function ArticleListContent({
+  showSearch,
+  filters,
+  t,
+  categories,
+  noResults,
+  hasFilters,
+  filteredArticles,
   locale,
-  initialArticles = [],
-  showSearch = true,
-  showPagination = true,
-  itemsPerPage = 12,
-  categories = [],
-  featuredOnly = false,
-  compact = false,
-  className = '',
-}: ArticleListProps): JSX.Element {
-  const t = useTranslations('blog.list');
-
-  const { filters, page } = useArticleFilters({ featuredOnly });
-
-  const { articles, loading, error, retry } = useArticleData({
-    locale,
-    featuredOnly,
-    initialArticles,
-    loadingMessage: t('loading'),
-    errorMessages: {
-      loadFailed: t('errors.loadFailed'),
-      unknown: t('errors.unknown'),
-    },
-  });
-
-  const { filteredArticles, totalPages, currentPage, totalItems } = useFilteredArticles({
-    articles,
-    filters,
-    locale,
-    page,
-    itemsPerPage,
-  });
-
-  const handleCategoryChange = (category: string): void => {
-    const url = new URL(window.location.href);
-    if (category === 'all') {
-      url.searchParams.delete('category');
-    } else {
-      url.searchParams.set('category', category);
-    }
-    url.searchParams.delete('page');
-    window.history.replaceState({}, '', url.toString());
-  };
-
-  if (loading) {
-    return <LoadingState t={t} className={className} />;
-  }
-
-  if (error) {
-    return <ErrorState t={t} className={className} error={error} retry={retry} />;
-  }
-
-  const hasFilters = filters.search || filters.category || filters.tag;
-  const noResults = filteredArticles.length === 0;
-
+  compact,
+  showPagination,
+  totalPages,
+  currentPage,
+  totalItems,
+  itemsPerPage,
+}: {
+  showSearch: boolean;
+  filters: ArticleFilters;
+  t: TranslationFunction;
+  categories: string[];
+  noResults: boolean;
+  hasFilters: boolean;
+  filteredArticles: IArticle[];
+  locale: 'es' | 'en';
+  compact: boolean;
+  showPagination: boolean;
+  totalPages: number;
+  currentPage: number;
+  totalItems: number;
+  itemsPerPage: number;
+}): JSX.Element {
   return (
-    <div className={className}>
+    <>
       {/* Search Bar */}
       {showSearch && (
         <div className="mb-8">
@@ -146,20 +160,13 @@ export function ArticleList({
       )}
 
       {/* Category Filters */}
-      <ArticleListFilters categories={categories} onCategoryChange={handleCategoryChange} />
+      <ArticleListFilters categories={categories} onCategoryChange={updateCategoryInUrl} />
 
       {/* Active Filters */}
       <ArticleListActiveFilters filters={filters} />
 
       {/* No Results */}
-      {noResults && (
-        <div className="py-12 text-center">
-          <div className="mx-auto max-w-md">
-            <p className="text-muted-foreground mb-2">{t('noResults')}</p>
-            {hasFilters && <p className="text-muted-foreground text-sm">{t('noResultsHint')}</p>}
-          </div>
-        </div>
-      )}
+      {noResults && <NoResultsState t={t} hasFilters={hasFilters} />}
 
       {/* Articles Grid */}
       {!noResults && (
@@ -198,6 +205,73 @@ export function ArticleList({
           )}
         </>
       )}
+    </>
+  );
+}
+
+export function ArticleList({
+  locale,
+  initialArticles = [],
+  showSearch = true,
+  showPagination = true,
+  itemsPerPage = 12,
+  categories = [],
+  featuredOnly = false,
+  compact = false,
+  className = '',
+}: ArticleListProps): JSX.Element {
+  const t = useTranslations('blog.list');
+
+  const { filters, page } = useArticleFilters({ featuredOnly });
+
+  const { articles, loading, error, retry } = useArticleData({
+    locale,
+    featuredOnly,
+    initialArticles,
+    loadingMessage: t('loading'),
+    errorMessages: {
+      loadFailed: t('errors.loadFailed'),
+      unknown: t('errors.unknown'),
+    },
+  });
+
+  const { filteredArticles, totalPages, currentPage, totalItems } = useFilteredArticles({
+    articles,
+    filters,
+    locale,
+    page,
+    itemsPerPage,
+  });
+
+  if (loading) {
+    return <LoadingState t={t} className={className} />;
+  }
+
+  if (error) {
+    return <ErrorState t={t} className={className} error={error} retry={retry} />;
+  }
+
+  const hasFilters = Boolean(filters.search || filters.category || filters.tag);
+  const noResults = filteredArticles.length === 0;
+
+  return (
+    <div className={className}>
+      <ArticleListContent
+        showSearch={showSearch}
+        filters={filters}
+        t={t}
+        categories={categories}
+        noResults={noResults}
+        hasFilters={hasFilters}
+        filteredArticles={filteredArticles}
+        locale={locale}
+        compact={compact}
+        showPagination={showPagination}
+        totalPages={totalPages}
+        currentPage={currentPage}
+        totalItems={totalItems}
+        itemsPerPage={itemsPerPage}
+      />
     </div>
   );
 }

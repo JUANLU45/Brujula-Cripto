@@ -15,7 +15,7 @@ interface PaginationNavigationButtonsProps {
 
 export function PaginationNavigationButtons({
   currentPage,
-  totalPages,
+  totalPages: _totalPages,
   compact,
   navigateToPage,
 }: PaginationNavigationButtonsProps): JSX.Element {

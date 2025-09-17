@@ -1,6 +1,6 @@
 'use client';
 
-import type { IChatConversation } from '@brujula-cripto/types';
+import type { IChatConversation, IChatMessage } from '@brujula-cripto/types';
 
 import { ChatbotHeader } from './ChatbotHeader';
 import { ChatbotInputForm } from './ChatbotInputForm';
@@ -16,6 +16,53 @@ interface ChatbotUIProps {
   onSendMessage?: (message: string) => Promise<void>;
   onStopGeneration?: () => void;
   className?: string;
+}
+
+/**
+ * Renderiza el área de contenido principal del chatbot
+ */
+function ChatbotContentArea({
+  currentMessages,
+  isLoading,
+  t,
+  locale,
+  suggestedQuestions,
+  setInput,
+  formatTimestamp,
+  messagesEndRef,
+}: {
+  currentMessages: IChatMessage[];
+  isLoading: boolean;
+  t: (key: string) => string;
+  locale: 'es' | 'en';
+  suggestedQuestions: string[];
+  setInput: (value: string) => void;
+  formatTimestamp: (timestamp: Date, locale: 'es' | 'en') => string;
+  messagesEndRef: React.RefObject<HTMLDivElement>;
+}): JSX.Element {
+  if (currentMessages.length === 0) {
+    return (
+      <ChatbotWelcomeScreen
+        title={t('welcome.title') || '¡Hola! Soy Brújula'}
+        description={
+          t('welcome.description') ||
+          'Tu asistente especializado en criptomonedas. Pregúntame lo que necesites saber.'
+        }
+        suggestedQuestions={suggestedQuestions}
+        onQuestionClick={setInput}
+      />
+    );
+  }
+
+  return (
+    <ChatbotMessageList
+      messages={currentMessages}
+      isLoading={isLoading}
+      formatTimestamp={(timestamp) => formatTimestamp(timestamp, locale)}
+      typingMessage={t('messages.typing') || 'Brújula está escribiendo...'}
+      messagesEndRef={messagesEndRef}
+    />
+  );
 }
 
 export function ChatbotUI({
@@ -63,25 +110,16 @@ export function ChatbotUI({
 
         {/* Messages Area */}
         <div className="flex-1 overflow-y-auto p-4">
-          {currentMessages.length === 0 ? (
-            <ChatbotWelcomeScreen
-              title={t('welcome.title') || '¡Hola! Soy Brújula'}
-              description={
-                t('welcome.description') ||
-                'Tu asistente especializado en criptomonedas. Pregúntame lo que necesites saber.'
-              }
-              suggestedQuestions={suggestedQuestions}
-              onQuestionClick={setInput}
-            />
-          ) : (
-            <ChatbotMessageList
-              messages={currentMessages}
-              isLoading={isLoading}
-              formatTimestamp={(timestamp) => formatTimestamp(timestamp, locale)}
-              typingMessage={t('messages.typing') || 'Brújula está escribiendo...'}
-              messagesEndRef={messagesEndRef}
-            />
-          )}
+          <ChatbotContentArea
+            currentMessages={currentMessages}
+            isLoading={isLoading}
+            t={t}
+            locale={locale}
+            suggestedQuestions={suggestedQuestions}
+            setInput={setInput}
+            formatTimestamp={formatTimestamp}
+            messagesEndRef={messagesEndRef}
+          />
         </div>
 
         {/* Input Area */}

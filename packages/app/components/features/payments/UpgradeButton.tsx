@@ -29,6 +29,7 @@ export function UpgradeButton({
   customText,
   onUpgrade,
 }: UpgradeButtonProps): JSX.Element {
+  const upgradeLogic = useUpgradeLogic({ planId, showConsentCheckbox, onUpgrade });
   const {
     consentChecked,
     isProcessing,
@@ -39,7 +40,7 @@ export function UpgradeButton({
     isButtonDisabled,
     user,
     userData,
-  } = useUpgradeLogic({ planId, showConsentCheckbox, onUpgrade });
+  } = upgradeLogic;
 
   const { getButtonClasses } = useUpgradeButtonStyles({ size, variant, fullWidth });
 

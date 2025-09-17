@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import type { IArticle } from '@brujula-cripto/types';
 
@@ -24,14 +24,14 @@ export function useArticleData({
   locale,
   featuredOnly,
   initialArticles,
-  loadingMessage,
+  loadingMessage: _loadingMessage,
   errorMessages,
 }: UseArticleDataProps): ArticleDataResult {
   const [articles, setArticles] = useState<IArticle[]>(initialArticles);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const loadArticles = async (): Promise<void> => {
+  const loadArticles = useCallback(async (): Promise<void> => {
     if (initialArticles.length > 0) {
       setArticles(initialArticles);
       return;
@@ -64,7 +64,7 @@ export function useArticleData({
     } finally {
       setLoading(false);
     }
-  };
+  }, [locale, featuredOnly, initialArticles, errorMessages.loadFailed, errorMessages.unknown]);
 
   const retry = (): void => {
     setError(null);
@@ -73,13 +73,7 @@ export function useArticleData({
 
   useEffect(() => {
     void loadArticles();
-  }, [
-    locale,
-    featuredOnly,
-    initialArticles.length,
-    errorMessages.loadFailed,
-    errorMessages.unknown,
-  ]);
+  }, [loadArticles]);
 
   return { articles, loading, error, retry };
 }

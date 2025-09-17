@@ -1,7 +1,7 @@
 import { getApps, initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { defineSecret } from 'firebase-functions/params';
-import { HttpsError, onCall } from 'firebase-functions/v2/https';
+import { HttpsError, onCall, type CallableRequest } from 'firebase-functions/v2/https';
 import Stripe from 'stripe';
 
 // Inicializar Firebase Admin si no está ya inicializado
@@ -35,6 +35,62 @@ interface PortalAccessData {
 }
 
 /**
+ * Valida la autenticación y obtiene los datos del usuario con Stripe Customer ID
+ */
+async function validateUserAndGetStripeId(uid: string): Promise<string> {
+  const userDoc = await db.collection('users').doc(uid).get();
+
+  if (!userDoc.exists) {
+    throw new HttpsError('not-found', 'Usuario no encontrado');
+  }
+
+  const userData = userDoc.data() as UserData | undefined;
+  const stripeCustomerId = userData?.stripeCustomerId;
+
+  if (!stripeCustomerId) {
+    throw new HttpsError('failed-precondition', 'Usuario no tiene Customer ID de Stripe');
+  }
+
+  return stripeCustomerId;
+}
+
+/**
+ * Registra el acceso al portal en el historial del usuario
+ */
+async function logPortalAccess({
+  uid,
+  stripeCustomerId,
+  portalSessionId,
+  returnUrl,
+  request,
+}: {
+  uid: string;
+  stripeCustomerId: string;
+  portalSessionId: string;
+  returnUrl: string;
+  request: CallableRequest<unknown>;
+}): Promise<void> {
+  const portalAccessData: PortalAccessData = {
+    stripeCustomerId,
+    portalSessionId,
+    returnUrl,
+    accessedAt: new Date(),
+    userAgent: request.rawRequest.get('User-Agent') || 'unknown',
+    ipAddress: request.rawRequest.ip || 'unknown',
+  };
+
+  await db.collection('users').doc(uid).collection('portalAccess').add(portalAccessData);
+
+  // Actualizar último acceso al portal en el documento del usuario
+  const userUpdateData: Partial<UserData> = {
+    lastPortalAccess: new Date(),
+    updatedAt: new Date(),
+  };
+
+  await db.collection('users').doc(uid).update(userUpdateData);
+}
+
+/**
  * Cloud Function que crea una sesión del Portal de Cliente de Stripe
  *
  * Permite a los usuarios:
@@ -61,19 +117,8 @@ export const createStripePortalSession = onCall(
 
       const uid = request.auth.uid;
 
-      // Obtener datos del usuario
-      const userDoc = await db.collection('users').doc(uid).get();
-
-      if (!userDoc.exists) {
-        throw new HttpsError('not-found', 'Usuario no encontrado');
-      }
-
-      const userData = userDoc.data() as UserData | undefined;
-      const stripeCustomerId = userData?.stripeCustomerId;
-
-      if (!stripeCustomerId) {
-        throw new HttpsError('failed-precondition', 'Usuario no tiene Customer ID de Stripe');
-      }
+      // Validar usuario y obtener Stripe Customer ID
+      const stripeCustomerId = await validateUserAndGetStripeId(uid);
 
       // Obtener returnUrl del request o usar URL por defecto
       const requestData = (request.data || {}) as PortalRequest;
@@ -92,25 +137,14 @@ export const createStripePortalSession = onCall(
         return_url: finalReturnUrl,
       });
 
-      // Registrar el acceso al portal en el historial del usuario
-      const portalAccessData: PortalAccessData = {
+      // Registrar el acceso al portal
+      await logPortalAccess({
+        uid,
         stripeCustomerId,
         portalSessionId: portalSession.id,
         returnUrl: finalReturnUrl,
-        accessedAt: new Date(),
-        userAgent: request.rawRequest.get('User-Agent') || 'unknown',
-        ipAddress: request.rawRequest.ip || 'unknown',
-      };
-
-      await db.collection('users').doc(uid).collection('portalAccess').add(portalAccessData);
-
-      // Actualizar último acceso al portal en el documento del usuario
-      const userUpdateData: Partial<UserData> = {
-        lastPortalAccess: new Date(),
-        updatedAt: new Date(),
-      };
-
-      await db.collection('users').doc(uid).update(userUpdateData);
+        request,
+      });
 
       console.log(`Portal session created for user ${uid} with customer ${stripeCustomerId}`);
 

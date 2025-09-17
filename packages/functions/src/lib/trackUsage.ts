@@ -1,6 +1,6 @@
 import { getApps, initializeApp } from 'firebase-admin/app';
 import { FieldValue, getFirestore, Timestamp } from 'firebase-admin/firestore';
-import { HttpsError, onCall } from 'firebase-functions/v2/https';
+import { HttpsError, onCall, type CallableRequest } from 'firebase-functions/v2/https';
 
 // Inicializar Firebase Admin si no está ya inicializado
 if (getApps().length === 0) {
@@ -83,6 +83,194 @@ function validateTrackUsageData(data: unknown): TrackUsageRequest {
   };
 }
 
+/**
+ * Procesa la acción 'start' para iniciar una sesión
+ */
+function processStartAction(
+  serviceType: 'herramientas' | 'chatbot',
+  sessionId?: string,
+): { sessionData: SessionData; creditsToDeduct: number } {
+  const sessionData: SessionData = {
+    serviceType,
+    sessionId: sessionId || `session_${Date.now()}`,
+    startTime: Timestamp.now(),
+    creditsUsedInSession: 0,
+    status: 'active',
+  };
+
+  return { sessionData, creditsToDeduct: 0 };
+}
+
+/**
+ * Procesa la acción 'increment' para uso durante la sesión
+ */
+function processIncrementAction(
+  secondsUsed: number,
+  currentCredits: number,
+): { sessionData: SessionData; creditsToDeduct: number } {
+  const creditsToDeduct = secondsUsed || 1;
+
+  if (currentCredits < creditsToDeduct) {
+    throw new HttpsError(
+      'failed-precondition',
+      `Créditos insuficientes. Disponibles: ${currentCredits}s, Requeridos: ${creditsToDeduct}s`,
+    );
+  }
+
+  const sessionData: SessionData = {
+    lastActivity: Timestamp.now(),
+    creditsUsedInSession: FieldValue.increment(creditsToDeduct),
+  };
+
+  return { sessionData, creditsToDeduct };
+}
+
+/**
+ * Procesa la acción 'end' para finalizar una sesión
+ */
+function processEndAction(
+  secondsUsed: number,
+  currentCredits: number,
+): { sessionData: SessionData; creditsToDeduct: number } {
+  let creditsToDeduct = secondsUsed || 1;
+  const sessionData: SessionData = {
+    endTime: Timestamp.now(),
+    creditsUsedInSession: FieldValue.increment(creditsToDeduct),
+  };
+
+  if (currentCredits >= creditsToDeduct) {
+    sessionData.status = 'completed';
+  } else {
+    // Si no hay suficientes créditos, usar los restantes
+    creditsToDeduct = currentCredits;
+    sessionData.status = 'completed_with_insufficient_credits';
+  }
+
+  return { sessionData, creditsToDeduct };
+}
+
+/**
+ * Actualiza los créditos del usuario y la sesión
+ */
+async function updateUserCreditsAndSession(
+  uid: string,
+  creditsToDeduct: number,
+  sessionId: string | undefined,
+  sessionData: SessionData,
+): Promise<void> {
+  // Actualizar créditos del usuario si es necesario
+  if (creditsToDeduct > 0) {
+    await db
+      .collection('users')
+      .doc(uid)
+      .update({
+        usageCreditsInSeconds: FieldValue.increment(-creditsToDeduct),
+        lastActivity: Timestamp.now(),
+        updatedAt: Timestamp.now(),
+      });
+  }
+
+  // Registrar la actividad de uso
+  if (sessionId && Object.keys(sessionData).length > 0) {
+    await db
+      .collection('users')
+      .doc(uid)
+      .collection('usageSessions')
+      .doc(sessionId)
+      .set(sessionData, { merge: true });
+  }
+}
+
+/**
+ * Registra la entrada en el historial de uso
+ */
+async function logUsageHistory({
+  uid,
+  serviceType,
+  actionType,
+  creditsToDeduct,
+  sessionId,
+  currentCredits,
+}: {
+  uid: string;
+  serviceType: 'herramientas' | 'chatbot';
+  actionType: 'start' | 'increment' | 'end';
+  creditsToDeduct: number;
+  sessionId: string | undefined;
+  currentCredits: number;
+}): Promise<void> {
+  const historyEntry: UsageHistoryEntry = {
+    serviceType,
+    actionType,
+    secondsUsed: creditsToDeduct,
+    sessionId: sessionId || null,
+    timestamp: Timestamp.now(),
+    creditsBeforeAction: currentCredits,
+    creditsAfterAction: currentCredits - creditsToDeduct,
+  };
+
+  await db.collection('users').doc(uid).collection('usageHistory').add(historyEntry);
+}
+
+/**
+ * Procesa la acción y determina los créditos a deducir
+ */
+function processActionByType({
+  actionType,
+  serviceType,
+  sessionId,
+  secondsUsed,
+  currentCredits,
+}: {
+  actionType: 'start' | 'increment' | 'end';
+  serviceType: 'herramientas' | 'chatbot';
+  sessionId: string | undefined;
+  secondsUsed: number;
+  currentCredits: number;
+}): { sessionData: SessionData; creditsToDeduct: number } {
+  switch (actionType) {
+    case 'start':
+      return processStartAction(serviceType, sessionId);
+    case 'increment':
+      return processIncrementAction(secondsUsed || 1, currentCredits);
+    case 'end':
+      return processEndAction(secondsUsed || 1, currentCredits);
+  }
+}
+
+/**
+ * Valida la autenticación y obtiene los datos del usuario
+ */
+async function validateAndGetUserData(
+  request: CallableRequest<unknown>,
+): Promise<{ uid: string; currentCredits: number; validatedData: TrackUsageRequest }> {
+  // Verificar autenticación
+  if (!request.auth) {
+    throw new HttpsError('unauthenticated', 'Usuario no autenticado');
+  }
+
+  const uid = request.auth.uid;
+  const validatedData = validateTrackUsageData(request.data);
+
+  // Obtener documento del usuario
+  const userRef = db.collection('users').doc(uid);
+  const userDoc = await userRef.get();
+
+  if (!userDoc.exists) {
+    throw new HttpsError('not-found', 'Usuario no encontrado');
+  }
+
+  const userData = userDoc.data() as UserData | undefined;
+  const currentCredits = userData?.usageCreditsInSeconds || 0;
+
+  // Validar que el usuario tenga suficientes créditos
+  if (currentCredits <= 0 && validatedData.actionType !== 'start') {
+    throw new HttpsError('failed-precondition', 'Sin créditos suficientes');
+  }
+
+  return { uid, currentCredits, validatedData };
+}
+
 export const trackUsage = onCall(
   {
     enforceAppCheck: false,
@@ -90,110 +278,30 @@ export const trackUsage = onCall(
   },
   async (request) => {
     try {
-      // Verificar autenticación
-      if (!request.auth) {
-        throw new HttpsError('unauthenticated', 'Usuario no autenticado');
-      }
-
-      const uid = request.auth.uid;
-      const validatedData = validateTrackUsageData(request.data);
+      const { uid, currentCredits, validatedData } = await validateAndGetUserData(request);
       const { serviceType, actionType, secondsUsed, sessionId } = validatedData;
 
-      // Obtener documento del usuario
-      const userRef = db.collection('users').doc(uid);
-      const userDoc = await userRef.get();
+      // Procesar la acción según el tipo
+      const { sessionData, creditsToDeduct } = processActionByType({
+        actionType,
+        serviceType,
+        sessionId,
+        secondsUsed: secondsUsed || 1,
+        currentCredits,
+      });
 
-      if (!userDoc.exists) {
-        throw new HttpsError('not-found', 'Usuario no encontrado');
-      }
-
-      const userData = userDoc.data() as UserData | undefined;
-      const currentCredits = userData?.usageCreditsInSeconds || 0;
-
-      // Validar que el usuario tenga suficientes créditos
-      if (currentCredits <= 0 && actionType !== 'start') {
-        throw new HttpsError('failed-precondition', 'Sin créditos suficientes');
-      }
-
-      let creditsToDeduct = 0;
-      const sessionData: SessionData = {};
-
-      switch (actionType) {
-        case 'start':
-          // Iniciar sesión de uso
-          sessionData.serviceType = serviceType;
-          sessionData.sessionId = sessionId || `session_${Date.now()}`;
-          sessionData.startTime = Timestamp.now();
-          sessionData.creditsUsedInSession = 0;
-          sessionData.status = 'active';
-
-          // No se descuentan créditos al iniciar
-          break;
-
-        case 'increment':
-          // Incrementar uso durante la sesión
-          creditsToDeduct = secondsUsed || 1;
-
-          if (currentCredits < creditsToDeduct) {
-            throw new HttpsError(
-              'failed-precondition',
-              `Créditos insuficientes. Disponibles: ${currentCredits}s, Requeridos: ${creditsToDeduct}s`,
-            );
-          }
-
-          sessionData.lastActivity = Timestamp.now();
-          sessionData.creditsUsedInSession = FieldValue.increment(creditsToDeduct);
-          break;
-
-        case 'end':
-          // Finalizar sesión de uso
-          creditsToDeduct = secondsUsed || 1;
-
-          if (currentCredits >= creditsToDeduct) {
-            sessionData.endTime = Timestamp.now();
-            sessionData.status = 'completed';
-            sessionData.creditsUsedInSession = FieldValue.increment(creditsToDeduct);
-          } else {
-            // Si no hay suficientes créditos, usar los restantes
-            creditsToDeduct = currentCredits;
-            sessionData.endTime = Timestamp.now();
-            sessionData.status = 'completed_with_insufficient_credits';
-            sessionData.creditsUsedInSession = FieldValue.increment(creditsToDeduct);
-          }
-          break;
-      }
-
-      // Actualizar créditos del usuario si es necesario
-      if (creditsToDeduct > 0) {
-        await userRef.update({
-          usageCreditsInSeconds: FieldValue.increment(-creditsToDeduct),
-          lastActivity: Timestamp.now(),
-          updatedAt: Timestamp.now(),
-        });
-      }
-
-      // Registrar la actividad de uso
-      if (sessionId && Object.keys(sessionData).length > 0) {
-        await db
-          .collection('users')
-          .doc(uid)
-          .collection('usageSessions')
-          .doc(sessionId)
-          .set(sessionData, { merge: true });
-      }
+      // Actualizar créditos y sesión
+      await updateUserCreditsAndSession(uid, creditsToDeduct, sessionId, sessionData);
 
       // Registrar en historial de uso
-      const historyEntry: UsageHistoryEntry = {
+      await logUsageHistory({
+        uid,
         serviceType,
         actionType,
-        secondsUsed: creditsToDeduct,
-        sessionId: sessionId || null,
-        timestamp: Timestamp.now(),
-        creditsBeforeAction: currentCredits,
-        creditsAfterAction: currentCredits - creditsToDeduct,
-      };
-
-      await db.collection('users').doc(uid).collection('usageHistory').add(historyEntry);
+        creditsToDeduct,
+        sessionId,
+        currentCredits,
+      });
 
       const remainingCredits = Math.max(0, currentCredits - creditsToDeduct);
 

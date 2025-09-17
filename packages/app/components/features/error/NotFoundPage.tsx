@@ -30,7 +30,7 @@ const SearchIcon = ({ className }: { className?: string }): JSX.Element => (
   </svg>
 );
 
-// Ícono de Brújula con animación CSS personalizada
+// Ícono de Brújula con animación CSS centralizada
 const BrujulaAnimatedIcon = ({ className }: { className?: string }): JSX.Element => (
   <div className={`relative ${className}`}>
     <svg className="compass-spin h-32 w-32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,31 +63,6 @@ const BrujulaAnimatedIcon = ({ className }: { className?: string }): JSX.Element
         className="text-gray-700 dark:text-gray-300"
       />
     </svg>
-    <style jsx>{`
-      .compass-spin {
-        animation: spin 8s linear infinite;
-      }
-      .compass-needle {
-        animation: needle-swing 3s ease-in-out infinite alternate;
-        transform-origin: 12px 12px;
-      }
-      @keyframes spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes needle-swing {
-        0% {
-          transform: rotate(-5deg);
-        }
-        100% {
-          transform: rotate(5deg);
-        }
-      }
-    `}</style>
   </div>
 );
 
