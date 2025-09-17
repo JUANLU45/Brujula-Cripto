@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "cp -r ../types/dist ./.next/standalone/packages/types/dist",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"

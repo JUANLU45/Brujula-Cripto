@@ -1,18 +1,10 @@
-# Firebase App Hosting Configuration - SOLUCIÓN DEFINITIVA
-
-# 1. El directorio raíz ahora apunta DIRECTAMENTE a tu aplicación Next.js.
-#    Esto le dice a Firebase que trabaje desde /workspace/packages/app/
-rootDirectory: packages/app
-
-# 2. Comandos simplificados que se ejecutan dentro de 'packages/app'.
+# Configuración final para Monorepo PNPM + Next.js Standalone
+rootDirectory: .
 installCommand: pnpm install
-buildCommand: pnpm build
-runCommand: pnpm start
+buildCommand: pnpm --filter app build
+outputDirectory: packages/app/.next/standalone
+runCommand: pnpm --filter app start
 
-# 3. La ruta de salida ahora es relativa al nuevo directorio raíz.
-outputDirectory: .next/standalone
-
-# Configuración de Cloud Run
 runConfig:
   minInstances: 0
   maxInstances: 10
