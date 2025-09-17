@@ -129,7 +129,7 @@ export default function PricingPage(): JSX.Element {
 
       const result = (await response.json()) as { checkoutUrl: string };
       window.location.href = result.checkoutUrl;
-    } catch (error: unknown) {
+    } catch (_error: unknown) {
       // Mostrar error al usuario
       alert('Error al procesar el pago. Por favor, inténtalo de nuevo.');
     }

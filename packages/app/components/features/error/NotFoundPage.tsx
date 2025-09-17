@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 
 // Iconos SVG inline para evitar dependencias externas - CUMPLE DOCUMENTACIÓN NAVBAR.TSX
-const HomeIcon = ({ className }: { className?: string }) => (
+const HomeIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -19,7 +19,7 @@ const HomeIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const SearchIcon = ({ className }: { className?: string }) => (
+const SearchIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
@@ -31,7 +31,7 @@ const SearchIcon = ({ className }: { className?: string }) => (
 );
 
 // Ícono de Brújula con animación CSS personalizada
-const BrujulaAnimatedIcon = ({ className }: { className?: string }) => (
+const BrujulaAnimatedIcon = ({ className }: { className?: string }): JSX.Element => (
   <div className={`relative ${className}`}>
     <svg className="compass-spin h-32 w-32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       {/* Círculo exterior */}
@@ -96,20 +96,20 @@ interface NotFoundPageProps {
   className?: string;
 }
 
-export function NotFoundPage({ locale, className = '' }: NotFoundPageProps) {
+export function NotFoundPage({ locale, className = '' }: NotFoundPageProps): JSX.Element {
   const t = useTranslations('notFound');
-  const tCommon = useTranslations('common');
+  const _tCommon = useTranslations('common');
   const router = useRouter();
 
-  const handleGoHome = () => {
+  const handleGoHome = (): void => {
     router.push(`/${locale}`);
   };
 
-  const handleGoToBlog = () => {
+  const handleGoToBlog = (): void => {
     router.push(`/${locale}/blog`);
   };
 
-  const handleGoToTools = () => {
+  const handleGoToTools = (): void => {
     router.push(`/${locale}/recuperacion`);
   };
 

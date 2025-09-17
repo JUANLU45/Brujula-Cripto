@@ -19,7 +19,7 @@ export function FeedbackButton({
   customUrl,
   customIcon,
   isEnabled = true,
-}: FeedbackButtonProps) {
+}: FeedbackButtonProps): JSX.Element | null {
   const t = useTranslations('homepage.feedback');
   const { user, userData } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,7 +30,7 @@ export function FeedbackButton({
   // Solo mostrar para usuarios premium
   const shouldShow = user && userData?.isPremium && isEnabled;
 
-  const handleFeedbackSubmit = async () => {
+  const handleFeedbackSubmit = async (): Promise<void> => {
     if (!feedbackText.trim() || !user) {
       return;
     }
@@ -61,14 +61,14 @@ export function FeedbackButton({
         setIsModalOpen(false);
         setSubmitStatus('idle');
       }, 2000);
-    } catch (error) {
+    } catch (_error) {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (): void => {
     if (customUrl) {
       window.open(customUrl, '_blank');
     } else {
@@ -190,7 +190,7 @@ export function FeedbackButton({
                 {t('cancelButton', { defaultValue: 'Cancelar' })}
               </Button>
               <Button
-                onClick={handleFeedbackSubmit}
+                onClick={() => void handleFeedbackSubmit()}
                 className="flex-1"
                 disabled={!feedbackText.trim() || isSubmitting}
               >

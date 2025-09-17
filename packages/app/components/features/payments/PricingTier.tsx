@@ -27,9 +27,9 @@ export function PricingTier({
   onSelectPlan,
   showComparison = true,
   compact = false,
-}: PricingTierProps) {
+}: PricingTierProps): JSX.Element {
   const t = useTranslations('pricing');
-  const { user, userData } = useAuth();
+  const { user, userData: _userData } = useAuth();
 
   const pricingOptions: PricingOption[] = [
     {
@@ -111,7 +111,7 @@ export function PricingTier({
     return Math.round(((basePrice - pricePerHour) / basePrice) * 100);
   };
 
-  const handleSelectPlan = async (planId: string) => {
+  const handleSelectPlan = async (planId: string): Promise<void> => {
     if (planId === 'free') {
       // Plan gratuito - solo llamar callback si existe
       if (onSelectPlan) {
@@ -219,7 +219,7 @@ export function PricingTier({
               </ul>
 
               <Button
-                onClick={() => handleSelectPlan(option.id)}
+                onClick={() => void handleSelectPlan(option.id)}
                 disabled={option.id === 'free' && !user}
                 className={`w-full py-3 ${
                   option.popular

@@ -252,7 +252,7 @@ export default function UpgradeButton({
               <Button
                 variant="default"
                 className="flex-1"
-                onClick={handleProceedToPayment}
+                onClick={() => void handleProceedToPayment()}
                 disabled={!acceptedTerms || !acceptedDisclaimer || isProcessing}
               >
                 {isProcessing ? (

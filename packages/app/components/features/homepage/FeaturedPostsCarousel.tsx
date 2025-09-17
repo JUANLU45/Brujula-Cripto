@@ -13,7 +13,7 @@ interface FeaturedPostsCarouselProps {
   articles?: IArticle[];
 }
 
-export function FeaturedPostsCarousel({ articles = [] }: FeaturedPostsCarouselProps) {
+export function FeaturedPostsCarousel({ articles = [] }: FeaturedPostsCarouselProps): JSX.Element {
   const t = useTranslations('homepage.featuredPosts');
   const pathname = usePathname();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -29,7 +29,7 @@ export function FeaturedPostsCarousel({ articles = [] }: FeaturedPostsCarouselPr
 
   // Responsive: ajustar número de artículos visibles
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       if (window.innerWidth < 640) {
         setVisibleArticles(1);
       } else if (window.innerWidth < 1024) {
@@ -44,7 +44,7 @@ export function FeaturedPostsCarousel({ articles = [] }: FeaturedPostsCarouselPr
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const nextSlide = () => {
+  const nextSlide = (): void => {
     if (featuredArticles.length > 0) {
       setCurrentIndex(
         (prev) => (prev + 1) % Math.max(1, featuredArticles.length - visibleArticles + 1),
@@ -52,7 +52,7 @@ export function FeaturedPostsCarousel({ articles = [] }: FeaturedPostsCarouselPr
     }
   };
 
-  const prevSlide = () => {
+  const prevSlide = (): void => {
     if (featuredArticles.length > 0) {
       setCurrentIndex((prev) =>
         prev === 0 ? Math.max(0, featuredArticles.length - visibleArticles) : prev - 1,

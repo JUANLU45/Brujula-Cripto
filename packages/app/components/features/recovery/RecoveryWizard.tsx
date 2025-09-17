@@ -211,7 +211,7 @@ export function RecoveryWizard({
                     </span>
 
                     <span className="text-xs text-gray-500 dark:text-gray-400">
-                      ⏱️ {option.estimatedTime}
+                      <span role="img" aria-label="reloj">⏱️</span> {option.estimatedTime}
                     </span>
                   </div>
 

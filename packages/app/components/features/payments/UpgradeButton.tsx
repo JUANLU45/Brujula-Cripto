@@ -28,7 +28,7 @@ export function UpgradeButton({
   showConsentCheckbox = false,
   customText,
   onUpgrade,
-}: UpgradeButtonProps) {
+}: UpgradeButtonProps): JSX.Element {
   const t = useTranslations('payments');
   const { user, userData } = useAuth();
 
@@ -36,7 +36,7 @@ export function UpgradeButton({
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState('');
 
-  const handleUpgrade = async () => {
+  const handleUpgrade = async (): Promise<void> => {
     if (!user) {
       // Redirigir al registro/login
       window.location.href = '/login';
@@ -72,7 +72,7 @@ export function UpgradeButton({
     }
   };
 
-  const getSizeClasses = () => {
+  const getSizeClasses = (): string => {
     switch (size) {
       case 'sm':
         return 'px-3 py-2 text-sm';
@@ -83,7 +83,7 @@ export function UpgradeButton({
     }
   };
 
-  const getVariantClasses = () => {
+  const getVariantClasses = (): string => {
     switch (variant) {
       case 'secondary':
         return 'bg-gray-600 hover:bg-gray-700 text-white';
@@ -94,7 +94,7 @@ export function UpgradeButton({
     }
   };
 
-  const getButtonText = () => {
+  const getButtonText = (): string => {
     if (customText) {
       return customText;
     }
@@ -154,7 +154,7 @@ export function UpgradeButton({
       )}
 
       <Button
-        onClick={handleUpgrade}
+        onClick={() => void handleUpgrade()}
         disabled={isButtonDisabled}
         className={` ${getSizeClasses()} ${getVariantClasses()} ${fullWidth ? 'w-full' : ''} transform rounded-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50`}
       >

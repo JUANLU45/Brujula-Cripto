@@ -11,7 +11,7 @@ import { createStripePortalSession } from '@/lib/api';
 import { useAuth } from '@/lib/auth/AuthProvider';
 
 // Iconos SVG inline para evitar dependencias externas - CUMPLE DOCUMENTACIÓN NAVBAR.TSX
-const ClockIcon = ({ className }: { className?: string }) => (
+const ClockIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -27,7 +27,7 @@ const ClockIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const CreditCardIcon = ({ className }: { className?: string }) => (
+const CreditCardIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -43,7 +43,7 @@ const CreditCardIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const UserIcon = ({ className }: { className?: string }) => (
+const UserIcon = ({ className }: { className?: string }): JSX.Element => (
   <svg
     className={className}
     fill="none"
@@ -74,7 +74,7 @@ interface TabType {
  * Panel de Control del Usuario - CUMPLE DOCUMENTACIÓN PROYEC_PARTE1.MD línea 119
  * Componente para área protegida con pestañas para suscripción, tiempo restante H:M:S, historial compras
  */
-export function UserDashboard({ className = '' }: UserDashboardProps) {
+export function UserDashboard({ className = '' }: UserDashboardProps): JSX.Element {
   // INTERNACIONALIZACIÓN CENTRALIZADA - CUMPLE DOCUMENTACIÓN
   const t = useTranslations('dashboard.account');
 
@@ -238,7 +238,7 @@ export function UserDashboard({ className = '' }: UserDashboardProps) {
                   <div className="border-t border-gray-200 pt-6 dark:border-gray-700">
                     <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                       <Button
-                        onClick={handleSignOut}
+                        onClick={() => void handleSignOut()}
                         variant="outline"
                         disabled={isLoading}
                         className="w-full sm:w-auto"
@@ -247,7 +247,7 @@ export function UserDashboard({ className = '' }: UserDashboardProps) {
                       </Button>
 
                       <Button
-                        onClick={handleDeleteAccount}
+                        onClick={() => void handleDeleteAccount()}
                         variant="outline"
                         disabled={isLoading}
                         className="w-full border-red-300 text-red-700 hover:bg-red-50 dark:border-red-600 dark:text-red-400 dark:hover:bg-red-900/20 sm:w-auto"
@@ -349,7 +349,7 @@ export function UserDashboard({ className = '' }: UserDashboardProps) {
                   {/* Actions */}
                   {userData.usageCreditsInSeconds > 0 ? (
                     <Button
-                      onClick={handleManageSubscription}
+                      onClick={() => void handleManageSubscription()}
                       disabled={isLoading}
                       className="w-full sm:w-auto"
                     >
