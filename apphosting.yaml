@@ -1,28 +1,16 @@
-# Firebase App Hosting Configuration - Formato Oficial
-# Basado en https://firebase.google.com/docs/app-hosting/configure
+# Firebase App Hosting Configuration - SOLUCIÓN DEFINITIVA
 
-# 1. El directorio raíz es el directorio de la aplicación específica.
-#    Esto hace que Firebase trabaje desde packages/app/
+# 1. El directorio raíz ahora apunta DIRECTAMENTE a tu aplicación Next.js.
+#    Esto le dice a Firebase que trabaje desde /workspace/packages/app/
 rootDirectory: packages/app
 
-# 2. Le decimos a Firebase que use pnpm para instalar dependencias.
-#    Desde packages/app, pnpm install instalará todas las dependencias necesarias.
+# 2. Comandos simplificados que se ejecutan dentro de 'packages/app'.
 installCommand: pnpm install
-
-# 3. Le decimos a Firebase cómo construir la aplicación.
-#    Desde packages/app, pnpm build ejecutará el script build del package.json local.
 buildCommand: pnpm build
-
-# 4. Le decimos a Firebase dónde está la aplicación Next.js compilada
-#    y cómo ejecutarla en producción.
 runCommand: pnpm start
 
-# 5. SOLUCIÓN PARA BUG MONOREPO - Issue #349
-#    Especifica manualmente los archivos de salida para evitar el bug del adaptador
-outputFiles:
-  serverApp:
-    include:
-      - .next/standalone
+# 3. La ruta de salida ahora es relativa al nuevo directorio raíz.
+outputDirectory: .next/standalone
 
 # Configuración de Cloud Run
 runConfig:
