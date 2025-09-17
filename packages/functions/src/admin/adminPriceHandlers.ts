@@ -98,6 +98,110 @@ export const getPricingConfig = onCall(async (request) => {
 });
 
 /**
+ * Valida los precios de entrada
+ */
+const validatePriceInputs = (firstTwoHoursPrice?: number, additionalHoursPrice?: number): void => {
+  if (firstTwoHoursPrice !== undefined) {
+    if (typeof firstTwoHoursPrice !== 'number' || firstTwoHoursPrice <= 0) {
+      throw new HttpsError(
+        'invalid-argument',
+        'El precio de las primeras 2 horas debe ser un número positivo',
+      );
+    }
+  }
+
+  if (additionalHoursPrice !== undefined) {
+    if (typeof additionalHoursPrice !== 'number' || additionalHoursPrice <= 0) {
+      throw new HttpsError(
+        'invalid-argument',
+        'El precio de horas adicionales debe ser un número positivo',
+      );
+    }
+  }
+};
+
+/**
+ * Obtiene la configuración actual o por defecto
+ */
+const getCurrentOrDefaultConfig = async (
+  db: FirebaseFirestore.Firestore,
+): Promise<Partial<PricingConfig>> => {
+  const pricingRef = db.collection('siteConfig').doc('pricing');
+  const currentDoc = await pricingRef.get();
+
+  if (currentDoc.exists) {
+    return currentDoc.data() as PricingConfig;
+  }
+
+  // Configuración inicial por defecto
+  return {
+    firstTwoHours: {
+      price: 4.99,
+      currency: 'EUR',
+      description: 'Precio por hora para las primeras 2 horas',
+    },
+    additionalHours: {
+      price: 3.99,
+      currency: 'EUR',
+      description: 'Precio por hora para horas adicionales',
+    },
+  };
+};
+
+/**
+ * Construye la configuración de las primeras dos horas
+ */
+const buildFirstTwoHoursConfig = (
+  currentConfig: Partial<PricingConfig>,
+  firstTwoHoursPrice?: number,
+): { price: number; currency: string; description: string } => {
+  return {
+    price:
+      firstTwoHoursPrice !== undefined
+        ? firstTwoHoursPrice
+        : (currentConfig.firstTwoHours?.price ?? 4.99),
+    currency: currentConfig.firstTwoHours?.currency ?? 'EUR',
+    description:
+      currentConfig.firstTwoHours?.description ?? 'Precio por hora para las primeras 2 horas',
+  };
+};
+
+/**
+ * Construye la configuración de horas adicionales
+ */
+const buildAdditionalHoursConfig = (
+  currentConfig: Partial<PricingConfig>,
+  additionalHoursPrice?: number,
+): { price: number; currency: string; description: string } => {
+  return {
+    price:
+      additionalHoursPrice !== undefined
+        ? additionalHoursPrice
+        : (currentConfig.additionalHours?.price ?? 3.99),
+    currency: currentConfig.additionalHours?.currency ?? 'EUR',
+    description:
+      currentConfig.additionalHours?.description ?? 'Precio por hora para horas adicionales',
+  };
+};
+
+/**
+ * Construye la configuración actualizada
+ */
+const buildUpdatedConfig = (
+  currentConfig: Partial<PricingConfig>,
+  firstTwoHoursPrice?: number,
+  additionalHoursPrice?: number,
+  authUid?: string,
+): PricingConfig => {
+  return {
+    firstTwoHours: buildFirstTwoHoursConfig(currentConfig, firstTwoHoursPrice),
+    additionalHours: buildAdditionalHoursConfig(currentConfig, additionalHoursPrice),
+    lastUpdated: FieldValue.serverTimestamp(),
+    updatedBy: authUid ?? 'unknown',
+  };
+};
+
+/**
  * Actualizar la configuración de precios
  */
 export const updatePricingConfig = onCall(async (request) => {
@@ -110,72 +214,21 @@ export const updatePricingConfig = onCall(async (request) => {
     };
 
     // Validación de datos de entrada
-    if (firstTwoHoursPrice !== undefined) {
-      if (typeof firstTwoHoursPrice !== 'number' || firstTwoHoursPrice <= 0) {
-        throw new HttpsError(
-          'invalid-argument',
-          'El precio de las primeras 2 horas debe ser un número positivo',
-        );
-      }
-    }
-
-    if (additionalHoursPrice !== undefined) {
-      if (typeof additionalHoursPrice !== 'number' || additionalHoursPrice <= 0) {
-        throw new HttpsError(
-          'invalid-argument',
-          'El precio de horas adicionales debe ser un número positivo',
-        );
-      }
-    }
+    validatePriceInputs(firstTwoHoursPrice, additionalHoursPrice);
 
     const db = getFirestore();
     const pricingRef = db.collection('siteConfig').doc('pricing');
 
     // Obtener configuración actual
-    const currentDoc = await pricingRef.get();
-    let currentConfig: Partial<PricingConfig> = {};
+    const currentConfig = await getCurrentOrDefaultConfig(db);
 
-    if (currentDoc.exists) {
-      currentConfig = currentDoc.data() as PricingConfig;
-    } else {
-      // Configuración inicial por defecto
-      currentConfig = {
-        firstTwoHours: {
-          price: 4.99,
-          currency: 'EUR',
-          description: 'Precio por hora para las primeras 2 horas',
-        },
-        additionalHours: {
-          price: 3.99,
-          currency: 'EUR',
-          description: 'Precio por hora para horas adicionales',
-        },
-      };
-    }
-
-    // Actualizar solo los campos proporcionados
-    const updatedConfig: PricingConfig = {
-      firstTwoHours: {
-        price:
-          firstTwoHoursPrice !== undefined
-            ? firstTwoHoursPrice
-            : (currentConfig.firstTwoHours?.price ?? 4.99),
-        currency: currentConfig.firstTwoHours?.currency ?? 'EUR',
-        description:
-          currentConfig.firstTwoHours?.description ?? 'Precio por hora para las primeras 2 horas',
-      },
-      additionalHours: {
-        price:
-          additionalHoursPrice !== undefined
-            ? additionalHoursPrice
-            : (currentConfig.additionalHours?.price ?? 3.99),
-        currency: currentConfig.additionalHours?.currency ?? 'EUR',
-        description:
-          currentConfig.additionalHours?.description ?? 'Precio por hora para horas adicionales',
-      },
-      lastUpdated: FieldValue.serverTimestamp(),
-      updatedBy: request.auth?.uid ?? 'unknown',
-    };
+    // Construir configuración actualizada
+    const updatedConfig = buildUpdatedConfig(
+      currentConfig,
+      firstTwoHoursPrice,
+      additionalHoursPrice,
+      request.auth?.uid,
+    );
 
     await pricingRef.set(updatedConfig, { merge: true });
 

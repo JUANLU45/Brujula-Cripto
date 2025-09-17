@@ -83,12 +83,12 @@ export default function AdminFeedbackPage(): JSX.Element {
     setFilteredFeedback(filtered);
   }, [feedback, searchTerm, statusFilter]);
 
-  const getAuthToken = async (): Promise<string> => {
+  const getAuthToken = (): Promise<string> => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error('No autenticado');
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
   const handleSelectAll = (): void => {

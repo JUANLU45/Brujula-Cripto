@@ -11,7 +11,8 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['node_modules/', 'dist/', '.next/', '*.js', '*.d.ts'],
+    // Esta sección corregida y robusta es la clave
+    ignores: ['**/node_modules/**', '**/dist/**', '**/.next/**', '**/*.js', '**/*.d.ts'],
   },
   {
     files: ['**/*.ts', '**/*.tsx'],

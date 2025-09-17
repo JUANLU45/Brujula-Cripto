@@ -1,7 +1,6 @@
 'use client';
 
-import type { Editor } from '@tiptap/react';
-import { EditorContent } from '@tiptap/react';
+import { type Editor, EditorContent } from '@tiptap/react';
 import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/Button';
@@ -20,7 +19,7 @@ interface ArticleContentEditorProps {
 }
 
 export function ArticleContentEditor({
-  language,
+  language: _language,
   title,
   excerpt,
   editor,

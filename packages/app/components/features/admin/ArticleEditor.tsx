@@ -89,11 +89,10 @@ export function ArticleEditor({
     ...initialData,
   });
 
-  const [tagInput, setTagInput] = useState('');
   const [imageUploading, setImageUploading] = useState(false);
 
   // Auth token function - must be declared before useEffect
-  const getAuthToken = useCallback(async (): Promise<string> => {
+  const getAuthToken = useCallback((): Promise<string> => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error(t('errors.notAuthenticated'));
@@ -211,68 +210,6 @@ export function ArticleEditor({
 
   const handleBooleanChange = (field: keyof ArticleFormData, value: boolean): void => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const generateSlugFromTitle = (): void => {
-    const title = formData.es.title || formData.en.title;
-    if (!title) {
-      return;
-    }
-
-    const slug = title
-      .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, '')
-      .trim()
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-');
-
-    handleInputChange('slug', slug);
-  };
-
-  const handleAddTag = (): void => {
-    const tag = tagInput.trim();
-    if (tag && !formData.tags.includes(tag)) {
-      handleInputChange('tags', [...formData.tags, tag]);
-      setTagInput('');
-    }
-  };
-
-  const handleRemoveTag = (tagToRemove: string): void => {
-    handleInputChange(
-      'tags',
-      formData.tags.filter((tag) => tag !== tagToRemove),
-    );
-  };
-
-  const handleImageUpload = async (file: File): Promise<void> => {
-    setImageUploading(true);
-    setError(null);
-
-    try {
-      const token = await getAuthToken();
-      const formDataUpload = new FormData();
-      formDataUpload.append('image', file);
-
-      const response = await fetch('/api/admin/upload-image', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formDataUpload,
-      });
-
-      if (!response.ok) {
-        throw new Error(t('errors.uploadFailed'));
-      }
-
-      const result = (await response.json()) as unknown;
-      const { imageUrl } = result as { imageUrl: string };
-      handleInputChange('imageUrl', imageUrl);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : t('errors.uploadFailed'));
-    } finally {
-      setImageUploading(false);
-    }
   };
 
   const insertImageToEditor = useCallback(

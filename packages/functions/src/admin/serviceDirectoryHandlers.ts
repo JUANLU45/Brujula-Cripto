@@ -112,6 +112,41 @@ export const createService = onCall(async (request) => {
 });
 
 /**
+ * Construye el objeto de datos para actualización
+ */
+const buildUpdateData = (
+  requestData: UpdateServiceRequest,
+): Partial<ServiceData> & { updatedAt: FieldValue } => {
+  const { name, description, website, logoUrl, specialties, isVerified } = requestData;
+
+  const updateData: Partial<ServiceData> & { updatedAt: FieldValue } = {
+    updatedAt: FieldValue.serverTimestamp(),
+  };
+
+  // Solo actualizar campos proporcionados
+  if (name !== undefined) {
+    updateData.name = name.trim();
+  }
+  if (description !== undefined) {
+    updateData.description = description.trim();
+  }
+  if (website !== undefined) {
+    updateData.website = website.trim();
+  }
+  if (logoUrl !== undefined) {
+    updateData.logoUrl = logoUrl.trim();
+  }
+  if (specialties !== undefined) {
+    updateData.specialties = Array.isArray(specialties) ? specialties : [];
+  }
+  if (isVerified !== undefined) {
+    updateData.isVerified = Boolean(isVerified);
+  }
+
+  return updateData;
+};
+
+/**
  * Actualizar un servicio profesional existente
  */
 export const updateService = onCall(async (request) => {
@@ -119,35 +154,13 @@ export const updateService = onCall(async (request) => {
     await verifyAdminUser(request.auth);
 
     const requestData = request.data as UpdateServiceRequest;
-    const { serviceId, name, description, website, logoUrl, specialties, isVerified } = requestData;
+    const { serviceId } = requestData;
 
     if (!serviceId) {
       throw new HttpsError('invalid-argument', 'ID del servicio es requerido');
     }
 
-    const updateData: Partial<ServiceData> & { updatedAt: FieldValue } = {
-      updatedAt: FieldValue.serverTimestamp(),
-    };
-
-    // Solo actualizar campos proporcionados
-    if (name !== undefined) {
-      updateData.name = name.trim();
-    }
-    if (description !== undefined) {
-      updateData.description = description.trim();
-    }
-    if (website !== undefined) {
-      updateData.website = website.trim();
-    }
-    if (logoUrl !== undefined) {
-      updateData.logoUrl = logoUrl.trim();
-    }
-    if (specialties !== undefined) {
-      updateData.specialties = Array.isArray(specialties) ? specialties : [];
-    }
-    if (isVerified !== undefined) {
-      updateData.isVerified = Boolean(isVerified);
-    }
+    const updateData = buildUpdateData(requestData);
 
     const db = getFirestore();
     const serviceRef = db.collection('professionalServices').doc(serviceId);

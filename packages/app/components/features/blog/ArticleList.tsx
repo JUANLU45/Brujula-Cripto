@@ -26,6 +26,60 @@ interface ArticleListProps {
   className?: string;
 }
 
+/**
+ * Componente para mostrar el estado de carga
+ */
+function LoadingState({ t, className }: { t: any; className: string }): JSX.Element {
+  return (
+    <div className={`flex items-center justify-center py-12 ${className}`}>
+      <div className="text-center">
+        <Spinner className="mx-auto mb-4" />
+        <p className="text-muted-foreground">{t('loading')}</p>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Componente para mostrar el estado de error
+ */
+function ErrorState({
+  t,
+  className,
+  error,
+  retry,
+}: {
+  t: any;
+  className: string;
+  error: string;
+  retry: () => void;
+}): JSX.Element {
+  return (
+    <div className={`py-12 text-center ${className}`}>
+      <div className="mx-auto max-w-md">
+        <p className="text-destructive mb-4">{error}</p>
+        <Button onClick={retry} variant="outline">
+          {t('retry')}
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Componente para mostrar cuando no hay resultados
+ */
+function NoResultsState({ t, hasFilters }: { t: any; hasFilters: boolean }): JSX.Element {
+  return (
+    <div className="py-12 text-center">
+      <div className="mx-auto max-w-md">
+        <p className="text-muted-foreground mb-2">{t('noResults')}</p>
+        {hasFilters && <p className="text-muted-foreground text-sm">{t('noResultsHint')}</p>}
+      </div>
+    </div>
+  );
+}
+
 export function ArticleList({
   locale,
   initialArticles = [],
@@ -72,27 +126,11 @@ export function ArticleList({
   };
 
   if (loading) {
-    return (
-      <div className={`flex items-center justify-center py-12 ${className}`}>
-        <div className="text-center">
-          <Spinner className="mx-auto mb-4" />
-          <p className="text-muted-foreground">{t('loading')}</p>
-        </div>
-      </div>
-    );
+    return <LoadingState t={t} className={className} />;
   }
 
   if (error) {
-    return (
-      <div className={`py-12 text-center ${className}`}>
-        <div className="mx-auto max-w-md">
-          <p className="text-destructive mb-4">{error}</p>
-          <Button onClick={retry} variant="outline">
-            {t('retry')}
-          </Button>
-        </div>
-      </div>
-    );
+    return <ErrorState t={t} className={className} error={error} retry={retry} />;
   }
 
   const hasFilters = filters.search || filters.category || filters.tag;

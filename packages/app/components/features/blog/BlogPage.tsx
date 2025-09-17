@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import Image from 'next/image';
+
 import type { IArticle } from '@brujula-cripto/types';
 import { useTranslations } from 'next-intl';
 
@@ -56,12 +58,19 @@ export function BlogPage({
   return (
     <div className={`min-h-screen bg-gray-50 dark:bg-gray-900 ${className}`}>
       {/* Banner Hero Section */}
-      <div
-        className="relative h-96 bg-slate-700 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('${defaultBanner.imageUrl}')`,
-        }}
-      >
+      <div className="relative h-96 overflow-hidden bg-slate-700">
+        {/* Background Image usando Next.js Image - PATRÓN CENTRALIZADO */}
+        <Image
+          src={defaultBanner.imageUrl}
+          alt="Blog banner background"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        {/* Overlay oscuro usando clases Tailwind - CENTRALIZADO */}
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-black/40"></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="container mx-auto px-4 text-center text-white">
             <h1 className="mb-4 text-4xl font-bold md:text-6xl">{defaultBanner.title}</h1>

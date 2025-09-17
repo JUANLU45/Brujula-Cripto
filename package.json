@@ -2,6 +2,7 @@
   "name": "brujula-cripto",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "engines": {
     "node": "20",
     "pnpm": ">=8.0.0"
@@ -14,6 +15,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
+    "@next/eslint-plugin-next": "^15.5.3",
     "@types/node": "^24.3.3",
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
@@ -25,9 +27,11 @@
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.4.0",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.44.0"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
