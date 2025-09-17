@@ -78,15 +78,6 @@ import Image from 'next/image'.
 -----------------
 
 
-C:\BRUJULA CRIPTO\packages\app\components\features\homepage\FeedbackButton.tsx
-  17:8   warning  Function 'FeedbackButton' has a complexity of 12. Maximum allowed is 10                                                                                                                                                                                                                  complexity
-  96:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-C:\BRUJULA CRIPTO\packages\app\components\features\payments\UpgradeButton.tsx
-  22:8  warning  Function 'UpgradeButton' has a complexity of 11. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\app\components\features\pricing\UpgradeButton.tsx
-  55:34  warning  Async arrow function has a complexity of 14. Maximum allowed is 10  complexity
 
 C:\BRUJULA CRIPTO\packages\app\components\features\recovery\WasmPasswordEngine.tsx
   27:1  warning  Function 'WasmPasswordEngine' has a complexity of 12. Maximum allowed is 10  complexity

@@ -41,3 +41,11 @@ Qué hace: Ejecuta un comando (como build o lint) en un solo proyecto específic
 Cuándo usarlo: Cuando solo has trabajado en una parte del monorepo y quieres construir o revisar únicamente ese paquete para ahorrar tiempo.
 
 Ejemplo: pnpm --filter @brujula-cripto/app build
+
+Para ahorrarte trabajo, puedes usar un comando que no solo te muestre los errores, sino que también arregle automáticamente todos los que sean de formato y estilo.
+
+Ejecuta este comando en tu terminal:
+
+Bash
+
+pnpm -r lint --fix

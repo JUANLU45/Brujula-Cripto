@@ -1,8 +1,10 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
 import type { IChatConversation } from '@brujula-cripto/types';
 import type { useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/Button';
+
 import { EditIcon, StarIcon, TrashIcon } from './ConversationListIcons';
 
 interface ConversationCardActionsProps {

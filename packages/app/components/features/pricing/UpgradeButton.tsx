@@ -6,6 +6,8 @@ import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/Button';
 
+import { usePaymentProcessing } from './usePaymentProcessing';
+
 interface UpgradeButtonProps {
   planId: string;
   planName: string;
@@ -40,6 +42,21 @@ export default function UpgradeButton({
   const [isProcessing, setIsProcessing] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const { handlePaymentProcess } = usePaymentProcessing({
+    planId,
+    planName,
+    price,
+    currency,
+    period,
+    onSuccess,
+    onError,
+    acceptedTerms,
+    acceptedDisclaimer,
+    setIsProcessing,
+    setErrorMessage,
+    fallbackErrorMessage: t('errors.paymentFailed'),
+  });
+
   const handleButtonClick = (): void => {
     setIsModalOpen(true);
     setErrorMessage(null);
@@ -50,79 +67,6 @@ export default function UpgradeButton({
     setAcceptedTerms(false);
     setAcceptedDisclaimer(false);
     setErrorMessage(null);
-  };
-
-  const handleProceedToPayment = async (): Promise<void> => {
-    if (!acceptedTerms || !acceptedDisclaimer) {
-      setErrorMessage(
-        'Debes aceptar los términos y el descargo de responsabilidad para continuar.',
-      );
-      return;
-    }
-
-    setIsProcessing(true);
-    setErrorMessage(null);
-
-    try {
-      // Llamada a la API para crear sesión de Stripe
-      const response = await fetch('/api/payments/create-checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          planId,
-          planName,
-          price,
-          currency,
-          period,
-          acceptedTerms: true,
-          acceptedDisclaimer: true,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = (await response.json()) as { message?: string };
-        throw new Error(errorData.message || 'Error al crear la sesión de pago');
-      }
-
-      const result = (await response.json()) as { sessionId?: string; checkoutUrl?: string };
-
-      // Redirigir a Stripe Checkout
-      if (result.checkoutUrl) {
-        window.location.href = result.checkoutUrl;
-      } else if (result.sessionId) {
-        // Usar Stripe.js para redirigir
-        const stripe = (window as unknown as { Stripe?: unknown }).Stripe;
-        if (stripe) {
-          const stripeInstance = stripe as {
-            redirectToCheckout: (options: {
-              sessionId: string;
-            }) => Promise<{ error?: { message: string } }>;
-          };
-          const { error } = await stripeInstance.redirectToCheckout({
-            sessionId: result.sessionId,
-          });
-          if (error) {
-            throw new Error(error.message);
-          }
-        } else {
-          throw new Error('Stripe no está disponible');
-        }
-      }
-
-      if (onSuccess && result.sessionId) {
-        onSuccess(result.sessionId);
-      }
-    } catch (error: unknown) {
-      const errorMsg = error instanceof Error ? error.message : t('errors.paymentFailed');
-      setErrorMessage(errorMsg);
-      if (onError) {
-        onError(errorMsg);
-      }
-    } finally {
-      setIsProcessing(false);
-    }
   };
 
   const formatPrice = (amount: number): string => {
@@ -263,7 +207,7 @@ export default function UpgradeButton({
               <Button
                 variant="default"
                 className="flex-1"
-                onClick={() => void handleProceedToPayment()}
+                onClick={() => void handlePaymentProcess()}
                 disabled={!acceptedTerms || !acceptedDisclaimer || isProcessing}
               >
                 {isProcessing ? (
