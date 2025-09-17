@@ -4,6 +4,8 @@ import { cn } from '@/lib/utils';
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
+// TypeScript provides type safety, disabling PropTypes for TS components
+/* eslint-disable react/prop-types */
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (
@@ -28,6 +30,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
+/* eslint-enable react/prop-types */
 
 Input.displayName = 'Input';
 
