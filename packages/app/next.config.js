@@ -1,5 +1,10 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // ORDEN: "Genera la carpeta .next dos niveles más arriba, en la raíz"
+  distDir: '../../.next',
+
   // 🚨 CRÍTICO: Firebase App Hosting requiere standalone output
   output: 'standalone',
 

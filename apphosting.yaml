@@ -1,8 +1,8 @@
-# Configuración final para Monorepo PNPM + Next.js Standalone
+# Esta configuración asume que next.config.js ha sido corregido.
 rootDirectory: .
 installCommand: pnpm install
 buildCommand: pnpm --filter app build
-outputDirectory: packages/app/.next/standalone
+outputDirectory: .next/standalone
 runCommand: pnpm --filter app start
 
 runConfig:
