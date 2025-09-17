@@ -37,5 +37,5 @@ export async function trackUsage(params: TrackUsageRequest): Promise<TrackUsageR
     throw new Error(`Error tracking usage: ${response.statusText}`);
   }
 
-  return response.json();
+  return response.json() as Promise<TrackUsageResponse>;
 }

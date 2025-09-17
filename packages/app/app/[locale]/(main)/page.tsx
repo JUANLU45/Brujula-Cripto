@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 
-import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 
 import { FeaturedPostsCarousel } from '@/components/features/homepage/FeaturedPostsCarousel';

@@ -88,12 +88,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setLoading(false);
     };
 
-    const unsubscribe = onAuthStateChanged(auth, handleAuthStateChange);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser: User | null) => {
+      void handleAuthStateChange(firebaseUser);
+    });
 
     return (): void => {
       unsubscribe();
     };
-  }, []);
+  }, [t]);
 
   const signInWithEmail = async (email: string, password: string): Promise<void> => {
     try {

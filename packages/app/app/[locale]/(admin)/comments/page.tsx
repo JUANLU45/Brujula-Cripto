@@ -94,7 +94,7 @@ export default function AdminCommentsPage(): JSX.Element {
     if (!user) {
       throw new Error('No autenticado');
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
   const handleModerateComment = async (

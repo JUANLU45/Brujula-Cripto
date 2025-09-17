@@ -32,7 +32,7 @@ export default function AdminDashboardPage(): JSX.Element {
     if (!user) {
       throw new Error(t('errors.notAuthenticated'));
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
   useEffect(() => {

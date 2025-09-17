@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import Image from 'next/image';
+
 import type { IArticle } from '@brujula-cripto/types';
 import { useTranslations } from 'next-intl';
 
@@ -181,10 +183,12 @@ export function ArticlePage({
                 {/* Featured Image */}
                 {article.imageUrl && (
                   <div className="mb-8 overflow-hidden rounded-lg">
-                    <img
+                    <Image
                       src={article.imageUrl}
                       alt={article[locale].title}
                       className="h-64 w-full object-cover md:h-80"
+                      width={800}
+                      height={320}
                     />
                   </div>
                 )}

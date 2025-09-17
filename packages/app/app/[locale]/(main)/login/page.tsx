@@ -7,7 +7,7 @@ interface Props {
   params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params: _params }: Props): Promise<Metadata> {
   const t = await getTranslations('auth.signin');
 
   return {

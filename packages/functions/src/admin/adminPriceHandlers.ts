@@ -18,6 +18,16 @@ interface PricingConfig {
   updatedBy: string;
 }
 
+interface CostBreakdown {
+  hours: number;
+  currency: string;
+  firstTwoHoursUsed: number;
+  firstTwoHoursCost: number;
+  additionalHoursUsed: number;
+  additionalHoursCost: number;
+  totalCost: number;
+}
+
 /**
  * Verificar si el usuario es administrador
  */
@@ -242,7 +252,7 @@ export const calculateCost = onCall(async (request) => {
       throw new HttpsError('unauthenticated', 'Usuario no autenticado');
     }
 
-    const { hours } = request.data;
+    const { hours } = request.data as { hours: number };
 
     if (typeof hours !== 'number' || hours <= 0) {
       throw new HttpsError('invalid-argument', 'Las horas deben ser un número positivo');
@@ -275,9 +285,14 @@ export const calculateCost = onCall(async (request) => {
 
     // Calcular costo según la lógica documentada
     let totalCost = 0;
-    const breakdown: any = {
+    const breakdown: CostBreakdown = {
       hours,
       currency: pricingConfig.firstTwoHours.currency,
+      firstTwoHoursUsed: 0,
+      firstTwoHoursCost: 0,
+      additionalHoursUsed: 0,
+      additionalHoursCost: 0,
+      totalCost: 0,
     };
 
     if (hours <= 2) {

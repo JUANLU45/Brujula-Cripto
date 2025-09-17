@@ -97,7 +97,15 @@ export const updateService = onCall(async (request) => {
     await verifyAdminUser(request.auth);
 
     const { serviceId, name, description, website, logoUrl, specialties, isVerified } =
-      request.data;
+      request.data as {
+        serviceId: string;
+        name?: string;
+        description?: string;
+        website?: string;
+        logoUrl?: string;
+        specialties?: string[];
+        isVerified?: boolean;
+      };
 
     if (!serviceId) {
       throw new HttpsError('invalid-argument', 'ID del servicio es requerido');

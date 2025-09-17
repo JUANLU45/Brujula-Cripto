@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from 'react';
 
+import Image from 'next/image';
+
 import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/Button';
@@ -146,10 +148,12 @@ export function ServiceDirectory({ services }: ServiceDirectoryProps): JSX.Eleme
                     <div className="flex-1">
                       <div className="mb-2 flex items-center gap-2">
                         {service.logoUrl && (
-                          <img
+                          <Image
                             src={service.logoUrl}
                             alt={`${service.name} logo`}
                             className="h-8 w-8 rounded-full object-cover"
+                            width={32}
+                            height={32}
                             onError={(e) => {
                               (e.target as HTMLImageElement).style.display = 'none';
                             }}

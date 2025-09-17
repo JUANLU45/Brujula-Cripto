@@ -34,7 +34,7 @@ export function BlogSearchBar({ initialValue = '', placeholder }: BlogSearchBarP
     router.push(`?${params.toString()}`);
   };
 
-  const handleClear = () => {
+  const handleClear = (): void => {
     setSearchTerm('');
     const params = new URLSearchParams(searchParams);
     params.delete('search');

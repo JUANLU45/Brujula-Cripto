@@ -40,27 +40,54 @@ if (!redisUrl) {
 
 DOCUMENTACION/ERRORES/ERRORES_1VERIFICACION.MD
 
+C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\admin\page.tsx
+  29:9   warning  The 'getAuthToken' function makes the dependencies of useEffect Hook (at line 65) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'getAuthToken' in its own useCallback() Hook  react-hooks/exhaustive-deps
+  35:12  error    Redundant use of `await` on a return value                                                                                                                                                                                           no-return-await
 
+C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\comments\page.tsx
+  97:12  error  Redundant use of `await` on a return value  no-return-await
 
-C:\BRUJULA CRIPTO\packages\app\components\features\auth\SignInForm.tsx
-   31:21  error  Unexpected any. Specify a different type                                                @typescript-eslint/no-explicit-any
-   32:16  error  Unsafe argument of type `any` assigned to a parameter of type `SetStateAction<string>`  @typescript-eslint/no-unsafe-argument
-   32:22  error  Unsafe member access .message on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-   45:21  error  Unexpected any. Specify a different type                                                @typescript-eslint/no-explicit-any
-   46:16  error  Unsafe argument of type `any` assigned to a parameter of type `SetStateAction<string>`  @typescript-eslint/no-unsafe-argument
-   46:22  error  Unsafe member access .message on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-   54:22  error  Promise-returning function provided to attribute where a void return was expected       @typescript-eslint/no-misused-promises
-  109:19  error  Promise-returning function provided to attribute where a void return was expected       @typescript-eslint/no-misused-promises
+C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\feedback\page.tsx
+   86:50  error    Async arrow function has no 'await' expression                                     require-await
+  247:23  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises
+  339:1   warning  File has too many lines (346). Maximum allowed is 300                              max-lines
+  346:35  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises
+  354:33  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises
+
+C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\homepage\page.tsx
+   78:12  error    Redundant use of `await` on a return value             no-return-await
+  337:1   warning  File has too many lines (302). Maximum allowed is 300  max-lines
+
+C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\users\page.tsx
+   96:12  error    Redundant use of `await` on a return value             no-return-await
+  341:1   warning  File has too many lines (368). Maximum allowed is 300  max-lines
+
+C:\BRUJULA CRIPTO\packages\app\app\[locale]\(main)\login\page.tsx
+  10:42  error  'params' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleDataTable.tsx
+   30:8   warning  Function 'ArticleDataTable' has a complexity of 14. Maximum allowed is 10                                        complexity
+   83:6   warning  React Hook useEffect has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  121:50  error    Async arrow function has no 'await' expression                                                                   require-await
+  353:1   warning  File has too many lines (503). Maximum allowed is 300                                                            max-lines
+
+C:\BRUJULA CRIPTO\packages\app\components\features\admin\ArticleEditor.tsx
+   51:8   warning  Function 'ArticleEditor' has a complexity of 16. Maximum allowed is 10                                                                                                                                                                                                                   complexity
+  183:6   warning  React Hook useEffect has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array                                                                                                                                                                          react-hooks/exhaustive-deps
+  185:50  error    Async arrow function has no 'await' expression                                                                                                                                                                                                                                           require-await
+  306:5   warning  React Hook useCallback has a missing dependency: 'getAuthToken'. Either include it or remove the dependency array                                                                                                                                                                        react-hooks/exhaustive-deps
+  351:1   warning  File has too many lines (702). Maximum allowed is 300                                                                                                                                                                                                                                    max-lines
+  355:22  warning  Async arrow function has a complexity of 13. Maximum allowed is 10                                                                                                                                                                                                                       complexity
+  499:29  error    Promise-returning function provided to attribute where a void return was expected                                                                                                                                                                                                        @typescript-eslint/no-misused-promises
+  516:31  error    Promise-returning function provided to attribute where a void return was expected                                                                                                                                                                                                        @typescript-eslint/no-misused-promises
+  528:27  error    Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator                                                                                                                       @typescript-eslint/no-floating-promises
+  599:29  error    Promise-returning function provided to attribute where a void return was expected                                                                                                                                                                                                        @typescript-eslint/no-misused-promises
+  702:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  718:23  error    Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator                                                                                                                       @typescript-eslint/no-floating-promises
 
 C:\BRUJULA CRIPTO\packages\app\components\features\auth\SignUpForm.tsx
-   43:21  error  Unexpected any. Specify a different type                                                @typescript-eslint/no-explicit-any
-   44:16  error  Unsafe argument of type `any` assigned to a parameter of type `SetStateAction<string>`  @typescript-eslint/no-unsafe-argument
-   44:22  error  Unsafe member access .message on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-   63:21  error  Unexpected any. Specify a different type                                                @typescript-eslint/no-explicit-any
-   64:16  error  Unsafe argument of type `any` assigned to a parameter of type `SetStateAction<string>`  @typescript-eslint/no-unsafe-argument
-   64:22  error  Unsafe member access .message on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-   72:22  error  Promise-returning function provided to attribute where a void return was expected       @typescript-eslint/no-misused-promises
-  180:19  error  Promise-returning function provided to attribute where a void return was expected       @typescript-eslint/no-misused-promises
+   72:22  error  Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises
+  180:19  error  Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises
 
 C:\BRUJULA CRIPTO\packages\app\components\features\blog\ArticleCard.tsx
    27:8   warning  Function 'ArticleCard' has a complexity of 27. Maximum allowed is 10                  complexity
@@ -124,107 +151,39 @@ C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ConversationList.tsx
   449:58  error    Unsafe call of a(n) `any` typed value                                                                                       @typescript-eslint/no-unsafe-call
   449:79  error    Unsafe call of a(n) `any` typed value                                                                                       @typescript-eslint/no-unsafe-call
 
-C:\BRUJULA CRIPTO\packages\app\components\features\contact\ContactFAQ.tsx
-   10:65  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-   22:63  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-   45:8   error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-   45:8   error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
-  148:39  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-
 C:\BRUJULA CRIPTO\packages\app\components\features\contact\ContactForm.tsx
-  28:8   error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-  28:8   warning  Function 'ContactForm' has a complexity of 11. Maximum allowed is 10               complexity
-  28:8   error    Missing return type on function                                                    @typescript-eslint/explicit-module-boundary-types
-  45:50  error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-  95:22  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises
+  28:8  warning  Function 'ContactForm' has a complexity of 11. Maximum allowed is 10  complexity
 
 C:\BRUJULA CRIPTO\packages\app\components\features\dashboard\UserDashboard.tsx
-   14:59  error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-   30:64  error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-   46:58  error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-   77:8   error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-   77:8   warning  Function 'UserDashboard' has a complexity of 13. Maximum allowed is 10             complexity
-   77:8   error    Missing return type on function                                                    @typescript-eslint/explicit-module-boundary-types
-  241:33  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises
-  250:33  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises
-  349:1   warning  File has too many lines (328). Maximum allowed is 300                              max-lines
-  352:31  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises
-
-C:\BRUJULA CRIPTO\packages\app\components\features\error\NotFoundPage.tsx
-   11:58  error  Missing return type on function                                                     @typescript-eslint/explicit-function-return-type
-   22:60  error  Missing return type on function                                                     @typescript-eslint/explicit-function-return-type
-   34:69  error  Missing return type on function                                                     @typescript-eslint/explicit-function-return-type
-   99:8   error  Missing return type on function                                                     @typescript-eslint/explicit-function-return-type
-   99:8   error  Missing return type on function                                                     @typescript-eslint/explicit-module-boundary-types
-  101:9   error  'tCommon' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
-  104:27  error  Missing return type on function                                                     @typescript-eslint/explicit-function-return-type
-  108:29  error  Missing return type on function                                                     @typescript-eslint/explicit-function-return-type
-  112:30  error  Missing return type on function                                                     @typescript-eslint/explicit-function-return-type
+   77:8  warning  Function 'UserDashboard' has a complexity of 13. Maximum allowed is 10  complexity
+  349:1  warning  File has too many lines (328). Maximum allowed is 300                   max-lines
 
 C:\BRUJULA CRIPTO\packages\app\components\features\homepage\FeaturedPostsCarousel.tsx
-  16:8   error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-  16:8   error  Missing return type on function  @typescript-eslint/explicit-module-boundary-types
-  32:29  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
   44:15  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-  47:24  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
-  55:24  error  Missing return type on function  @typescript-eslint/explicit-function-return-type
 
 C:\BRUJULA CRIPTO\packages\app\components\features\homepage\FeedbackButton.tsx
-   17:8   error    Missing return type on function                                                                                                                                                                                                                                                          @typescript-eslint/explicit-function-return-type
-   17:8   warning  Function 'FeedbackButton' has a complexity of 12. Maximum allowed is 10                                                                                                                                                                                                                  complexity
-   17:8   error    Missing return type on function                                                                                                                                                                                                                                                          @typescript-eslint/explicit-module-boundary-types
-   33:41  error    Missing return type on function                                                                                                                                                                                                                                                          @typescript-eslint/explicit-function-return-type
-   64:14  error    'error' is defined but never used                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
-   71:32  error    Missing return type on function                                                                                                                                                                                                                                                          @typescript-eslint/explicit-function-return-type
-   96:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-  193:25  error    Promise-returning function provided to attribute where a void return was expected                                                                                                                                                                                                        @typescript-eslint/no-misused-promises
+  17:8   warning  Function 'FeedbackButton' has a complexity of 12. Maximum allowed is 10                                                                                                                                                                                                                  complexity
+  64:14  error    '_error' is defined but never used                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  96:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
 
 C:\BRUJULA CRIPTO\packages\app\components\features\payments\CompetitorComparison.tsx
   322:1  warning  File has too many lines (452). Maximum allowed is 300  max-lines
 
-C:\BRUJULA CRIPTO\packages\app\components\features\payments\PricingTier.tsx
-   26:8   error  Missing return type on function                                                      @typescript-eslint/explicit-function-return-type
-   26:8   error  Missing return type on function                                                      @typescript-eslint/explicit-module-boundary-types
-   32:17  error  'userData' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
-  114:51  error  Missing return type on function                                                      @typescript-eslint/explicit-function-return-type
-  222:25  error  Promise-returning function provided to attribute where a void return was expected    @typescript-eslint/no-misused-promises
-
 C:\BRUJULA CRIPTO\packages\app\components\features\payments\UpgradeButton.tsx
-   22:8   error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-   22:8   warning  Function 'UpgradeButton' has a complexity of 11. Maximum allowed is 10             complexity
-   22:8   error    Missing return type on function                                                    @typescript-eslint/explicit-module-boundary-types
-   39:34  error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-   75:29  error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-   86:32  error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-   97:28  error    Missing return type on function                                                    @typescript-eslint/explicit-function-return-type
-  157:17  error    Promise-returning function provided to attribute where a void return was expected  @typescript-eslint/no-misused-promises
+  22:8  warning  Function 'UpgradeButton' has a complexity of 11. Maximum allowed is 10  complexity
 
 C:\BRUJULA CRIPTO\packages\app\components\features\pricing\PricingPage.tsx
-  132:14  error  'error' is defined but never used  @typescript-eslint/no-unused-vars
+  132:14  error  '_error' is defined but never used  @typescript-eslint/no-unused-vars
 
 C:\BRUJULA CRIPTO\packages\app\components\features\pricing\UpgradeButton.tsx
    55:34  warning  Async arrow function has a complexity of 14. Maximum allowed is 10                                                                                                                                 complexity
   149:9   error    Visible, non-interactive elements with click handlers must have at least one keyboard listener                                                                                                     jsx-a11y/click-events-have-key-events
   149:9   error    Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element  jsx-a11y/no-static-element-interactions
-  255:25  error    Promise-returning function provided to attribute where a void return was expected                                                                                                                  @typescript-eslint/no-misused-promises
-
-C:\BRUJULA CRIPTO\packages\app\components\features\recovery\RecoveryWizard.tsx
-  213:21  error  Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby  jsx-a11y/accessible-emoji
 
 C:\BRUJULA CRIPTO\packages\app\components\features\recovery\WasmPasswordEngine.tsx
    27:1   warning  Function 'WasmPasswordEngine' has a complexity of 12. Maximum allowed is 10  complexity
   198:14  error    '_error' is defined but never used                                           @typescript-eslint/no-unused-vars
   341:1   warning  File has too many lines (484). Maximum allowed is 300                        max-lines
-
-C:\BRUJULA CRIPTO\packages\app\components\features\tools\ServiceDirectory.tsx
-  149:27  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-C:\BRUJULA CRIPTO\packages\app\components\features\tools\TransactionTracker.tsx
-   96:17  error  Unsafe assignment of an `any` value                   @typescript-eslint/no-unsafe-assignment
-   97:11  error  Unsafe return of a value of type `any[]`              @typescript-eslint/no-unsafe-return
-  104:17  error  Unsafe assignment of an `any` value                   @typescript-eslint/no-unsafe-assignment
-  105:11  error  Unsafe return of a value of type `any`                @typescript-eslint/no-unsafe-return
-  105:30  error  Unsafe member access .transactions on an `any` value  @typescript-eslint/no-unsafe-member-access
 
 C:\BRUJULA CRIPTO\packages\app\components\layout\Footer.tsx
   329:1  warning  File has too many lines (325). Maximum allowed is 300  max-lines
@@ -233,25 +192,25 @@ C:\BRUJULA CRIPTO\packages\app\components\layout\Navbar.tsx
   332:1  warning  File has too many lines (330). Maximum allowed is 300  max-lines
 
 C:\BRUJULA CRIPTO\packages\app\lib\api.ts
-   60:12  error  Redundant use of `await` on a return value  no-return-await
-   64:12  error  Redundant use of `await` on a return value  no-return-await
-   68:12  error  Redundant use of `await` on a return value  no-return-await
-   74:12  error  Redundant use of `await` on a return value  no-return-await
-   81:12  error  Redundant use of `await` on a return value  no-return-await
-   88:12  error  Redundant use of `await` on a return value  no-return-await
-   96:12  error  Redundant use of `await` on a return value  no-return-await
-  100:12  error  Redundant use of `await` on a return value  no-return-await
-  108:12  error  Redundant use of `await` on a return value  no-return-await
-  116:12  error  Redundant use of `await` on a return value  no-return-await
-  123:12  error  Redundant use of `await` on a return value  no-return-await
-  129:12  error  Redundant use of `await` on a return value  no-return-await
-  136:12  error  Redundant use of `await` on a return value  no-return-await
-  144:12  error  Redundant use of `await` on a return value  no-return-await
-  154:12  error  Redundant use of `await` on a return value  no-return-await
-  161:12  error  Redundant use of `await` on a return value  no-return-await
-  172:12  error  Redundant use of `await` on a return value  no-return-await
-  180:12  error  Redundant use of `await` on a return value  no-return-await
-  190:12  error  Redundant use of `await` on a return value  no-return-await
+   59:3  error  Async method 'getArticles' has no 'await' expression                require-await
+   63:3  error  Async method 'getArticleById' has no 'await' expression             require-await
+   67:3  error  Async method 'getArticleBySlug' has no 'await' expression           require-await
+   71:3  error  Async method 'createArticle' has no 'await' expression              require-await
+   80:3  error  Async method 'updateArticle' has no 'await' expression              require-await
+   87:3  error  Async method 'deleteArticle' has no 'await' expression              require-await
+   95:3  error  Async method 'getUserProfile' has no 'await' expression             require-await
+   99:3  error  Async method 'updateUserProfile' has no 'await' expression          require-await
+  107:3  error  Async method 'createCheckoutSession' has no 'await' expression      require-await
+  115:3  error  Async method 'createStripePortalSession' has no 'await' expression  require-await
+  122:3  error  Async method 'signOut' has no 'await' expression                    require-await
+  128:3  error  Async method 'deleteUserAccount' has no 'await' expression          require-await
+  135:3  error  Async method 'submitContactForm' has no 'await' expression          require-await
+  143:3  error  Async method 'setAdminRole' has no 'await' expression               require-await
+  153:3  error  Async method 'getChatConversations' has no 'await' expression       require-await
+  158:3  error  Async method 'createChatConversation' has no 'await' expression     require-await
+  168:3  error  Async method 'updateChatConversation' has no 'await' expression     require-await
+  179:3  error  Async method 'deleteChatConversation' has no 'await' expression     require-await
+  186:3  error  Async method 'sendChatMessage' has no 'await' expression            require-await
 
 C:\BRUJULA CRIPTO\packages\app\lib\api\trackUsage.ts
   40:3  error  Unsafe return of a value of type `Promise<any>`  @typescript-eslint/no-unsafe-return

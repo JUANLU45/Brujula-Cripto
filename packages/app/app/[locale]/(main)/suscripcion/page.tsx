@@ -1,8 +1,9 @@
 // Página de Suscripción - packages/app/app/[locale]/(main)/suscripcion/page.tsx
+import type { Metadata } from 'next';
+
 import CompetitorComparison from '@/components/features/pricing/CompetitorComparison';
 import PricingPage from '@/components/features/pricing/PricingPage';
 import { generateSEOMetadata } from '@/lib/seo';
-import { Metadata } from 'next';
 
 interface SuscripcionPageProps {
   params: Promise<{

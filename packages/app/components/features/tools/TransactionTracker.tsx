@@ -93,7 +93,7 @@ export function TransactionTracker({
           if (!response.ok) {
             throw new Error('Error fetching transaction data');
           }
-          const txData = await response.json();
+          const txData = (await response.json()) as TransactionResult;
           return [txData];
         } else {
           // Búsqueda por dirección - obtener transacciones de la API
@@ -101,7 +101,7 @@ export function TransactionTracker({
           if (!response.ok) {
             throw new Error('Error fetching address transactions');
           }
-          const addressData = await response.json();
+          const addressData = (await response.json()) as { transactions?: TransactionResult[] };
           return addressData.transactions || [];
         }
       })) as TransactionResult[];

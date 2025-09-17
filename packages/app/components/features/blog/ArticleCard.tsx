@@ -40,7 +40,7 @@ export function ArticleCard({
   const pathname = usePathname();
   const [isLiked, setIsLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
-  const [isSharing, setIsSharing] = useState(false);
+  const [_isSharing, setIsSharing] = useState(false);
 
   const content = article[locale];
   const articleUrl = `${pathname.includes('/en') ? '/en' : ''}/blog/${article.slug}`;
@@ -191,7 +191,7 @@ export function ArticleCard({
               {/* Like Button */}
               {showInteractions && (
                 <button
-                  onClick={handleLike}
+                  onClick={() => void handleLike()}
                   className={`flex items-center gap-1 text-sm transition-colors ${
                     isLiked ? 'text-red-500' : 'text-muted-foreground hover:text-red-500'
                   }`}
@@ -226,7 +226,7 @@ export function ArticleCard({
             {showSharing && (
               <Button
                 className="rounded-full p-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
-                onClick={handleShare}
+                onClick={() => void handleShare()}
               >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -243,7 +243,7 @@ export function ArticleCard({
             {showInteractions && (
               <Button
                 className="rounded-full p-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
-                onClick={handleLike}
+                onClick={() => void handleLike()}
                 disabled={!showInteractions}
               >
                 <svg

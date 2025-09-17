@@ -1,7 +1,8 @@
 // Página de Guías de Seguridad - packages/app/app/[locale]/(main)/seguridad/page.tsx
+import type { Metadata } from 'next';
+
 import { SecurityGuides } from '@/components/features/blog/SecurityGuides';
 import { generateSEOMetadata } from '@/lib/seo';
-import { Metadata } from 'next';
 
 interface SeguridadPageProps {
   params: Promise<{

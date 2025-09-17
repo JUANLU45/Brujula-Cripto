@@ -88,7 +88,7 @@ export default function AdminFeedbackPage(): JSX.Element {
     if (!user) {
       throw new Error('No autenticado');
     }
-    return user.getIdToken();
+    return await user.getIdToken();
   };
 
   const handleSelectAll = (): void => {
@@ -244,7 +244,7 @@ export default function AdminFeedbackPage(): JSX.Element {
             <Button
               variant="destructive"
               size="sm"
-              onClick={handleBulkDelete}
+              onClick={() => void handleBulkDelete()}
               disabled={deleting === 'bulk'}
             >
               {deleting === 'bulk' ? 'Eliminando...' : 'Eliminar Seleccionados'}
@@ -343,7 +343,7 @@ export default function AdminFeedbackPage(): JSX.Element {
                         <Button
                           variant="outline"
                           size="sm"
-                          onClick={() => handleMarkAsRead(item.id)}
+                          onClick={() => void handleMarkAsRead(item.id)}
                         >
                           Marcar Leído
                         </Button>
@@ -351,7 +351,7 @@ export default function AdminFeedbackPage(): JSX.Element {
                       <Button
                         variant="destructive"
                         size="sm"
-                        onClick={() => handleDelete(item.id)}
+                        onClick={() => void handleDelete(item.id)}
                         disabled={deleting === item.id}
                       >
                         {deleting === item.id ? 'Eliminando...' : 'Eliminar'}

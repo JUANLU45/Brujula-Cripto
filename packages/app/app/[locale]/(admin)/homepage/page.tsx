@@ -75,7 +75,7 @@ export default function AdminHomepagePage(): JSX.Element {
     if (!user) {
       throw new Error('No autenticado');
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
   const handleInputChange = (field: keyof HomepageContent, value: string): void => {

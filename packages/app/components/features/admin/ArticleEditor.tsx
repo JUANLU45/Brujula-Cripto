@@ -187,7 +187,7 @@ export function ArticleEditor({
     if (!user) {
       throw new Error(t('errors.notAuthenticated'));
     }
-    return user.getIdToken();
+    return await user.getIdToken();
   };
 
   const updateFormData = useCallback((language: 'es' | 'en', field: string, value: string) => {
@@ -496,7 +496,7 @@ export function ArticleEditor({
                     className="flex-1"
                   />
                   <Button
-                    onClick={() => generateWithAI(activeTab.language, 'title')}
+                    onClick={() => void generateWithAI(activeTab.language, 'title')}
                     disabled={loading}
                     className="bg-purple-600 text-white hover:bg-purple-700"
                   >
@@ -513,7 +513,7 @@ export function ArticleEditor({
                   </label>
                   <div className="flex space-x-2">
                     <Button
-                      onClick={() => generateWithAI(activeTab.language, 'content')}
+                      onClick={() => void generateWithAI(activeTab.language, 'content')}
                       disabled={loading}
                       className="bg-purple-600 text-xs text-white hover:bg-purple-700"
                     >
@@ -525,7 +525,7 @@ export function ArticleEditor({
                       onChange={(e) => {
                         const file = e.target.files?.[0];
                         if (file) {
-                          insertImageToEditor(file);
+                          void insertImageToEditor(file);
                         }
                       }}
                       className="hidden"
@@ -596,7 +596,7 @@ export function ArticleEditor({
                     className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                   />
                   <Button
-                    onClick={() => generateWithAI(activeTab.language, 'excerpt')}
+                    onClick={() => void generateWithAI(activeTab.language, 'excerpt')}
                     disabled={loading}
                     className="bg-purple-600 text-white hover:bg-purple-700"
                   >
@@ -715,7 +715,7 @@ export function ArticleEditor({
                   onChange={(e) => {
                     const file = e.target.files?.[0];
                     if (file) {
-                      handleImageUpload(file);
+                      void handleImageUpload(file);
                     }
                   }}
                   className="hidden"

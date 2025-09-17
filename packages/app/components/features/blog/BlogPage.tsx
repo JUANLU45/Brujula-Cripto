@@ -46,7 +46,7 @@ export function BlogPage({
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = (e): void => {
         setBannerImage(e.target?.result as string);
       };
       reader.readAsDataURL(file);
@@ -92,7 +92,10 @@ export function BlogPage({
                   onClick={() => document.getElementById('banner-image-upload')?.click()}
                   className="bg-white/20 text-white hover:bg-white/30"
                 >
-                  📷 Cambiar Imagen Banner
+                  <span role="img" aria-label="cámara">
+                    📷
+                  </span>{' '}
+                  Cambiar Imagen Banner
                 </Button>
               </div>
             )}
