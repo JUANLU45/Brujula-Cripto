@@ -81,8 +81,8 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
 
   // Determinar estado de usuario
   const isGuest = !user;
-  const isAdmin = user?.isAdmin || false;
-  const isPremium = user?.isPremium || false;
+  const isAdmin = Boolean(user?.isAdmin);
+  const isPremium = Boolean(user?.isPremium);
   const isRegistered = !!user && !isPremium && !isAdmin;
 
   // Límites de mensajes y créditos
@@ -97,7 +97,7 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
     return `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const userCredits = user?.usageCreditsInSeconds || 0;
+  const userCredits = Number(user?.usageCreditsInSeconds) || 0;
   const formattedCredits = formatCredits(userCredits);
 
   // Badge de usuario con información avanzada

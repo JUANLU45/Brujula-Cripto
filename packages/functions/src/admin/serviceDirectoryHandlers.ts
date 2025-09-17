@@ -111,7 +111,7 @@ export const updateService = onCall(async (request) => {
       throw new HttpsError('invalid-argument', 'ID del servicio es requerido');
     }
 
-    const updateData: Partial<ServiceData> & { updatedAt: any } = {
+    const updateData: Partial<ServiceData> & { updatedAt: FieldValue } = {
       updatedAt: FieldValue.serverTimestamp(),
     };
 
@@ -215,7 +215,7 @@ export const listServices = onCall(async (request) => {
 
     const services = servicesSnapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data(),
+      ...(doc.data() as ServiceData),
     }));
 
     return {
@@ -258,7 +258,7 @@ export const getService = onCall(async (request) => {
       success: true,
       service: {
         id: serviceDoc.id,
-        ...serviceDoc.data(),
+        ...(serviceDoc.data() as ServiceData),
       },
     };
   } catch (error) {

@@ -61,7 +61,7 @@ export const updateHomepageContent = onCall(async (request) => {
     throw new Error('Sin permisos de administrador');
   }
 
-  const contentData: Partial<HomepageContent> = request.data;
+  const contentData: Partial<HomepageContent> = request.data as Partial<HomepageContent>;
 
   try {
     // Validar campos requeridos

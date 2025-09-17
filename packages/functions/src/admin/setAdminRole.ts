@@ -17,7 +17,7 @@ export const setAdminRole = onCall(async (request) => {
     throw new Error('Sin permisos de administrador');
   }
 
-  const { email, uid } = request.data;
+  const { email, uid } = request.data as { email?: string; uid?: string };
 
   if (!email && !uid) {
     throw new Error('Debe proporcionar email o uid');
@@ -27,9 +27,9 @@ export const setAdminRole = onCall(async (request) => {
     let userRecord;
 
     if (uid) {
-      userRecord = await getAuth().getUser(uid);
+      userRecord = await getAuth().getUser(uid as string);
     } else {
-      userRecord = await getAuth().getUserByEmail(email);
+      userRecord = await getAuth().getUserByEmail(email as string);
     }
 
     // Asignar custom claim de admin
