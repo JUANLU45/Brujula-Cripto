@@ -207,7 +207,10 @@ export default function ConversationList({
             {favoriteConversations.length > 0 && (
               <div>
                 <h4 className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                  ⭐ {t('favorites')}
+                  <span role="img" aria-label="favorito">
+                    ⭐
+                  </span>{' '}
+                  {t('favorites')}
                 </h4>
                 <div className="space-y-2">
                   {favoriteConversations.map((conversation) => (
@@ -239,7 +242,10 @@ export default function ConversationList({
               <div>
                 {favoriteConversations.length > 0 && (
                   <h4 className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                    💬 {t('recent')}
+                    <span role="img" aria-label="conversación">
+                      💬
+                    </span>{' '}
+                    {t('recent')}
                   </h4>
                 )}
                 <div className="space-y-2">
@@ -298,7 +304,7 @@ interface ConversationCardProps {
   onEditTitleChange: (title: string) => void;
   formatDate: (date: string) => string;
   getConversationPreview: (conversation: IChatConversation) => string;
-  t: any;
+  t: ReturnType<typeof useTranslations>;
 }
 
 function ConversationCard({
@@ -334,9 +340,11 @@ function ConversationCard({
             <input
               type="text"
               value={editTitle}
-              onChange={(e) => onEditTitleChange(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onEditTitleChange(e.target.value)
+              }
               className="flex-1 rounded border border-gray-300 bg-white px-2 py-1 text-sm dark:border-gray-600 dark:bg-gray-800"
-              onKeyDown={(e) => {
+              onKeyDown={(e: React.KeyboardEvent) => {
                 if (e.key === 'Enter') {
                   onSaveEdit();
                 }
@@ -409,7 +417,7 @@ function ConversationCard({
                 variant="ghost"
                 size="sm"
                 className="h-6 w-6 p-1 text-gray-400 hover:text-yellow-500"
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent) => {
                   e.stopPropagation();
                   onToggleFavorite(conversation.id);
                 }}
@@ -424,7 +432,7 @@ function ConversationCard({
               variant="ghost"
               size="sm"
               className="h-6 w-6 p-1 text-gray-400 hover:text-blue-500"
-              onClick={(e) => {
+              onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 onStartEdit(conversation);
               }}
@@ -442,7 +450,7 @@ function ConversationCard({
                   ? 'bg-red-100 text-red-600 hover:bg-red-200 dark:bg-red-900 dark:text-red-400'
                   : 'text-gray-400 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-900/20'
               }`}
-              onClick={(e) => {
+              onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 onDelete(conversation.id);
               }}

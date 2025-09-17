@@ -26,7 +26,7 @@ export default function AdminDashboardPage(): JSX.Element {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const getAuthToken = async (): Promise<string> => {
+  const getAuthToken = (): Promise<string> => {
     // Get Firebase auth token
     const user = auth.currentUser;
     if (!user) {

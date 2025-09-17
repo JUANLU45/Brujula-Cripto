@@ -27,7 +27,7 @@ export const setAdminRole = onCall(async (request) => {
     let userRecord;
 
     if (uid) {
-      userRecord = await getAuth().getUser(uid as string);
+      userRecord = await getAuth().getUser(uid);
     } else {
       userRecord = await getAuth().getUserByEmail(email as string);
     }

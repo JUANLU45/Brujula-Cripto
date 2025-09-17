@@ -61,7 +61,7 @@ export function FeedbackButton({
         setIsModalOpen(false);
         setSubmitStatus('idle');
       }, 2000);
-    } catch (_error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

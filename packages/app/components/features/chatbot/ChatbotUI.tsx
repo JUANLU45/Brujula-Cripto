@@ -73,7 +73,7 @@ interface ChatbotUIProps {
 
 export function ChatbotUI({
   locale,
-  conversations = [],
+  conversations: _conversations = [],
   isSubscribed = false,
   onSendMessage,
   onStopGeneration,

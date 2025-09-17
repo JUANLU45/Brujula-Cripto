@@ -88,7 +88,7 @@ export default function AdminUsersPage(): JSX.Element {
     setCurrentPage(1); // Reset to first page when filtering
   }, [users, searchTerm, roleFilter]);
 
-  const getAuthToken = async (): Promise<string> => {
+  const getAuthToken = (): Promise<string> => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error('No autenticado');

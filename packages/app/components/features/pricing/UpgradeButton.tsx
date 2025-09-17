@@ -133,7 +133,7 @@ export default function UpgradeButton({
   };
 
   return (
-    <>
+    <div>
       <Button
         variant={variant}
         size={size}
@@ -146,11 +146,22 @@ export default function UpgradeButton({
 
       {/* Modal de Confirmación */}
       {isModalOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-          onClick={(e) => e.target === e.currentTarget && handleCloseModal()}
-        >
-          <div className="mx-4 max-h-[90vh] w-full max-w-md overflow-y-auto rounded-lg bg-white p-6 dark:bg-gray-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Overlay */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50"
+            onClick={handleCloseModal}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                handleCloseModal();
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label="Cerrar modal"
+          />
+          {/* Modal Content */}
+          <div className="relative mx-4 max-h-[90vh] w-full max-w-md overflow-y-auto rounded-lg bg-white p-6 dark:bg-gray-800">
             <div className="mb-6 flex items-center justify-between">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Confirmar Suscripción
@@ -289,6 +300,6 @@ export default function UpgradeButton({
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

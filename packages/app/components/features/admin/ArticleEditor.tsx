@@ -187,7 +187,7 @@ export function ArticleEditor({
     if (!user) {
       throw new Error(t('errors.notAuthenticated'));
     }
-    return await user.getIdToken();
+    return user.getIdToken();
   };
 
   const updateFormData = useCallback((language: 'es' | 'en', field: string, value: string) => {

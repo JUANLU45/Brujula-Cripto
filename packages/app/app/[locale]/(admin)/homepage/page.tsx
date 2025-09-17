@@ -70,7 +70,7 @@ export default function AdminHomepagePage(): JSX.Element {
     void loadHomepageContent();
   }, []);
 
-  const getAuthToken = async (): Promise<string> => {
+  const getAuthToken = (): Promise<string> => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error('No autenticado');

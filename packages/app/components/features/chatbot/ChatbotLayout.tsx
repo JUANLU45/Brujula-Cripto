@@ -378,7 +378,7 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
   );
 
   // Modal de Upselling
-  const UpsellModal = () => {
+  const UpsellModal = (): JSX.Element | null => {
     if (!showUpsellModal) {
       return null;
     }
@@ -430,6 +430,14 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
         <div
           className="fixed inset-0 z-40 bg-black/50 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              setIsSidebarOpen(false);
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label="Cerrar sidebar"
         />
       )}
 

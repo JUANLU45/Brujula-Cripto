@@ -89,7 +89,7 @@ export default function AdminCommentsPage(): JSX.Element {
     setFilteredComments(filtered);
   }, [comments, searchTerm, statusFilter]);
 
-  const getAuthToken = async (): Promise<string> => {
+  const getAuthToken = (): Promise<string> => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error('No autenticado');

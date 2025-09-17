@@ -40,110 +40,6 @@ if (!redisUrl) {
 
 DOCUMENTACION/ERRORES/ERRORES_1VERIFICACION.MD
 
-C:\BRUJULA CRIPTO\packages\app\lib\api.ts
-   59:3  error  Async method 'getArticles' has no 'await' expression                require-await
-   63:3  error  Async method 'getArticleById' has no 'await' expression             require-await
-   67:3  error  Async method 'getArticleBySlug' has no 'await' expression           require-await
-   71:3  error  Async method 'createArticle' has no 'await' expression              require-await
-   80:3  error  Async method 'updateArticle' has no 'await' expression              require-await
-   87:3  error  Async method 'deleteArticle' has no 'await' expression              require-await
-   95:3  error  Async method 'getUserProfile' has no 'await' expression             require-await
-   99:3  error  Async method 'updateUserProfile' has no 'await' expression          require-await
-  107:3  error  Async method 'createCheckoutSession' has no 'await' expression      require-await
-  115:3  error  Async method 'createStripePortalSession' has no 'await' expression  require-await
-  122:3  error  Async method 'signOut' has no 'await' expression                    require-await
-  128:3  error  Async method 'deleteUserAccount' has no 'await' expression          require-await
-  135:3  error  Async method 'submitContactForm' has no 'await' expression          require-await
-  143:3  error  Async method 'setAdminRole' has no 'await' expression               require-await
-  153:3  error  Async method 'getChatConversations' has no 'await' expression       require-await
-  158:3  error  Async method 'createChatConversation' has no 'await' expression     require-await
-  168:3  error  Async method 'updateChatConversation' has no 'await' expression     require-await
-  179:3  error  Async method 'deleteChatConversation' has no 'await' expression     require-await
-  186:3  error  Async method 'sendChatMessage' has no 'await' expression            require-await
-
-C:\BRUJULA CRIPTO\packages\functions\src\admin\adminPriceHandlers.ts
-  103:43  warning  Async arrow function has a complexity of 19. Maximum allowed is 10  complexity
-
-C:\BRUJULA CRIPTO\packages\functions\src\admin\serviceDirectoryHandlers.ts
-   95:37  warning  Async arrow function has a complexity of 12. Maximum allowed is 10      complexity
-  114:59  error    Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
-  171:11  error    Unsafe assignment of an `any` value                                     @typescript-eslint/no-unsafe-assignment
-  178:66  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
-  244:11  error    Unsafe assignment of an `any` value                                     @typescript-eslint/no-unsafe-assignment
-  251:72  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
-
-C:\BRUJULA CRIPTO\packages\functions\src\admin\setAdminRole.ts
-  20:9   error  Unsafe assignment of an `any` value                                     @typescript-eslint/no-unsafe-assignment
-  30:44  error  Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
-  32:51  error  Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
-
-C:\BRUJULA CRIPTO\packages\functions\src\admin\siteContentHandlers.ts
-  64:9  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-
-C:\BRUJULA CRIPTO\packages\functions\src\lib\cache.ts
-  11:8   error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
-  12:10  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
-
-C:\BRUJULA CRIPTO\packages\functions\src\lib\trackUsage.ts
-   39:3   warning  Async arrow function has a complexity of 23. Maximum allowed is 10                                   complexity
-   47:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-   79:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-   87:24  error    Unexpected any. Specify a different type                                                             @typescript-eslint/no-explicit-any
-  132:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-  152:36  error    Unsafe argument of type `any` assigned to a parameter of type `{}`                                   @typescript-eslint/no-unsafe-argument
-  158:16  error    Unsafe argument of type `any` assigned to a parameter of type `PartialWithFieldValue<DocumentData>`  @typescript-eslint/no-unsafe-argument
-  172:11  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-  181:9   error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-  224:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-  233:9   error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
-
-C:\BRUJULA CRIPTO\packages\functions\src\payments\createCheckout.ts
-   24:38  warning  Async arrow function has a complexity of 13. Maximum allowed is 10  complexity
-   31:11  error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-   48:9   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-   75:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-   75:56  error    Unsafe member access .price on an `any` value                       @typescript-eslint/no-unsafe-member-access
-   76:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-   76:60  error    Unsafe member access .price on an `any` value                       @typescript-eslint/no-unsafe-member-access
-   81:25  error    Unexpected any. Specify a different type                            @typescript-eslint/no-explicit-any
-  137:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-  154:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-
-C:\BRUJULA CRIPTO\packages\functions\src\payments\createStripePortalSession.ts
-   55:13  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-   62:13  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-   78:9   error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-   90:11  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-  110:9   error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-
-C:\BRUJULA CRIPTO\packages\functions\src\payments\stripeWebhooks.ts
-  61:13  error  Unsafe assignment of an `any` value                                                  @typescript-eslint/no-unsafe-assignment
-  61:32  error  Unsafe argument of type `any` assigned to a parameter of type `string`               @typescript-eslint/no-unsafe-argument
-  61:32  error  Unsafe call of a(n) `any` typed value                                                @typescript-eslint/no-unsafe-call
-  61:45  error  Unsafe member access .toString on an `any` value                                     @typescript-eslint/no-unsafe-member-access
-  63:59  error  Unsafe member access .type on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  65:21  error  Unsafe member access .type on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  67:48  error  Unsafe argument of type `any` assigned to a parameter of type `StripeSession`        @typescript-eslint/no-unsafe-argument
-  67:54  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  71:43  error  Unsafe argument of type `any` assigned to a parameter of type `StripeSubscription`   @typescript-eslint/no-unsafe-argument
-  71:49  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  75:43  error  Unsafe argument of type `any` assigned to a parameter of type `StripeSubscription`   @typescript-eslint/no-unsafe-argument
-  75:49  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  79:47  error  Unsafe argument of type `any` assigned to a parameter of type `StripeInvoice`        @typescript-eslint/no-unsafe-argument
-  79:53  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  83:46  error  Unsafe argument of type `any` assigned to a parameter of type `StripePaymentIntent`  @typescript-eslint/no-unsafe-argument
-  83:52  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-  87:54  error  Unsafe member access .type on an `any` value                                         @typescript-eslint/no-unsafe-member-access
-
-C:\BRUJULA CRIPTO\packages\functions\src\public\handleContactForm.ts
-   90:60  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
-   91:13  error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
-   91:20  error  Unsafe call of a(n) `any` typed value            @typescript-eslint/no-unsafe-call
-   91:24  error  Unsafe member access .path on an `any` value     @typescript-eslint/no-unsafe-member-access
-   92:13  error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
-   92:26  error  Unsafe member access .message on an `any` value  @typescript-eslint/no-unsafe-member-access
-  106:9   error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
-  106:36  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
 C:\BRUJULA CRIPTO\packages\app\app\[locale]\(admin)\admin\page.tsx
   29:9   warning  The 'getAuthToken' function makes the dependencies of useEffect Hook (at line 65) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'getAuthToken' in its own useCallback() Hook  react-hooks/exhaustive-deps
   29:50  error    Async arrow function has no 'await' expression                                                                                                                                                                                       require-await
@@ -192,7 +88,7 @@ C:\BRUJULA CRIPTO\packages\app\components\features\blog\PaginationControls.tsx
   21:8  warning  Function 'PaginationControls' has a complexity of 29. Maximum allowed is 10  complexity
 
 C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotLayout.tsx
-   67:8   warning  Function 'ChatbotLayout' has a complexity of 25. Maximum allowed is 10                                                                                                                             complexity
+   67:8   warning  Function 'ChatbotLayout' has a complexity of 23. Maximum allowed is 10                                                                                                                             complexity
   144:6   warning  React Hook useEffect has a missing dependency: 'loadConversations'. Either include it or remove the dependency array                                                                               react-hooks/exhaustive-deps
   182:5   warning  Async arrow function has a complexity of 12. Maximum allowed is 10                                                                                                                                 complexity
   262:5   warning  React Hook useCallback has an unnecessary dependency: 'conversationsData'. Either exclude it or remove the dependency array                                                                        react-hooks/exhaustive-deps
@@ -267,3 +163,74 @@ C:\BRUJULA CRIPTO\packages\app\components\layout\Footer.tsx
 
 C:\BRUJULA CRIPTO\packages\app\components\layout\Navbar.tsx
   332:1  warning  File has too many lines (330). Maximum allowed is 300  max-lines
+
+C:\BRUJULA CRIPTO\packages\functions\src\admin\adminPriceHandlers.ts
+  103:43  warning  Async arrow function has a complexity of 19. Maximum allowed is 10  complexity
+
+C:\BRUJULA CRIPTO\packages\functions\src\admin\serviceDirectoryHandlers.ts
+   95:37  warning  Async arrow function has a complexity of 12. Maximum allowed is 10      complexity
+  171:11  error    Unsafe assignment of an `any` value                                     @typescript-eslint/no-unsafe-assignment
+  178:66  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
+  244:11  error    Unsafe assignment of an `any` value                                     @typescript-eslint/no-unsafe-assignment
+  251:72  error    Unsafe argument of type `any` assigned to a parameter of type `string`  @typescript-eslint/no-unsafe-argument
+
+C:\BRUJULA CRIPTO\packages\functions\src\lib\trackUsage.ts
+   39:3   warning  Async arrow function has a complexity of 23. Maximum allowed is 10                                   complexity
+   47:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
+   79:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
+   87:24  error    Unexpected any. Specify a different type                                                             @typescript-eslint/no-explicit-any
+  132:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
+  152:36  error    Unsafe argument of type `any` assigned to a parameter of type `{}`                                   @typescript-eslint/no-unsafe-argument
+  158:16  error    Unsafe argument of type `any` assigned to a parameter of type `PartialWithFieldValue<DocumentData>`  @typescript-eslint/no-unsafe-argument
+  172:11  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
+  181:9   error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
+  224:13  error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
+  233:9   error    Unsafe assignment of an `any` value                                                                  @typescript-eslint/no-unsafe-assignment
+
+C:\BRUJULA CRIPTO\packages\functions\src\payments\createCheckout.ts
+   24:38  warning  Async arrow function has a complexity of 13. Maximum allowed is 10  complexity
+   31:11  error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
+   48:9   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
+   75:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
+   75:56  error    Unsafe member access .price on an `any` value                       @typescript-eslint/no-unsafe-member-access
+   76:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
+   76:60  error    Unsafe member access .price on an `any` value                       @typescript-eslint/no-unsafe-member-access
+   81:25  error    Unexpected any. Specify a different type                            @typescript-eslint/no-explicit-any
+  137:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
+  154:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
+
+C:\BRUJULA CRIPTO\packages\functions\src\payments\createStripePortalSession.ts
+   55:13  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
+   62:13  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
+   78:9   error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
+   90:11  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
+  110:9   error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
+
+C:\BRUJULA CRIPTO\packages\functions\src\payments\stripeWebhooks.ts
+  61:13  error  Unsafe assignment of an `any` value                                                  @typescript-eslint/no-unsafe-assignment
+  61:32  error  Unsafe argument of type `any` assigned to a parameter of type `string`               @typescript-eslint/no-unsafe-argument
+  61:32  error  Unsafe call of a(n) `any` typed value                                                @typescript-eslint/no-unsafe-call
+  61:45  error  Unsafe member access .toString on an `any` value                                     @typescript-eslint/no-unsafe-member-access
+  63:59  error  Unsafe member access .type on an `any` value                                         @typescript-eslint/no-unsafe-member-access
+  65:21  error  Unsafe member access .type on an `any` value                                         @typescript-eslint/no-unsafe-member-access
+  67:48  error  Unsafe argument of type `any` assigned to a parameter of type `StripeSession`        @typescript-eslint/no-unsafe-argument
+  67:54  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
+  71:43  error  Unsafe argument of type `any` assigned to a parameter of type `StripeSubscription`   @typescript-eslint/no-unsafe-argument
+  71:49  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
+  75:43  error  Unsafe argument of type `any` assigned to a parameter of type `StripeSubscription`   @typescript-eslint/no-unsafe-argument
+  75:49  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
+  79:47  error  Unsafe argument of type `any` assigned to a parameter of type `StripeInvoice`        @typescript-eslint/no-unsafe-argument
+  79:53  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
+  83:46  error  Unsafe argument of type `any` assigned to a parameter of type `StripePaymentIntent`  @typescript-eslint/no-unsafe-argument
+  83:52  error  Unsafe member access .data on an `any` value                                         @typescript-eslint/no-unsafe-member-access
+  87:54  error  Unsafe member access .type on an `any` value                                         @typescript-eslint/no-unsafe-member-access
+
+C:\BRUJULA CRIPTO\packages\functions\src\public\handleContactForm.ts
+   90:60  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+   91:13  error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
+   91:20  error  Unsafe call of a(n) `any` typed value            @typescript-eslint/no-unsafe-call
+   91:24  error  Unsafe member access .path on an `any` value     @typescript-eslint/no-unsafe-member-access
+   92:13  error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
+   92:26  error  Unsafe member access .message on an `any` value  @typescript-eslint/no-unsafe-member-access
+  106:9   error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
+  106:36  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "lib": ["es2017"],
-    "module": "commonjs",
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "module": "ESNext",
     "declaration": true,
     "outDir": "./dist",
     "rootDir": "./src",

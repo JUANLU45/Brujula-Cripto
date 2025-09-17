@@ -195,7 +195,7 @@ function WasmPasswordEngine({
           dictionaryBuffer,
         });
       }
-    } catch (_error) {
+    } catch {
       setRecoveryState((prev) => ({
         ...prev,
         stage: 'error',
