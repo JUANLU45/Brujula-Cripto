@@ -76,41 +76,52 @@ import Image from 'next/image'.
 --------------------ESLint Report--------------------
 ------------ERRORS & WARNINGS A REPARAR PERFECTOS 
 -----------------
+
+
+C:\BRUJULA CRIPTO\packages\app\components\features\blog\PaginationControls.tsx
+  21:8  warning  Function 'PaginationControls' has a complexity of 29. Maximum allowed is 10  complexity
+
+C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotLayout.tsx
+   67:8   warning  Function 'ChatbotLayout' has a complexity of 23. Maximum allowed is 10                                                       complexity
+  144:6   warning  React Hook useEffect has a missing dependency: 'loadConversations'. Either include it or remove the dependency array         react-hooks/exhaustive-deps
+  182:5   warning  Async arrow function has a complexity of 12. Maximum allowed is 10                                                           complexity
+  262:5   warning  React Hook useCallback has an unnecessary dependency: 'conversationsData'. Either exclude it or remove the dependency array  react-hooks/exhaustive-deps
+  381:23  warning  Arrow function has a complexity of 12. Maximum allowed is 10                                                                 complexity
+
+C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ChatbotUI.tsx
+  74:8  warning  Function 'ChatbotUI' has a complexity of 33. Maximum allowed is 10  complexity
+
+C:\BRUJULA CRIPTO\packages\app\components\features\chatbot\ConversationList.tsx
+  310:1   warning  Function 'ConversationCard' has a complexity of 13. Maximum allowed is 10                      complexity
+  357:15  warning  The autoFocus prop should not be used, as it can reduce usability and accessibility for users  jsx-a11y/no-autofocus
+
+C:\BRUJULA CRIPTO\packages\app\components\features\contact\ContactForm.tsx
+  28:8  warning  Function 'ContactForm' has a complexity of 11. Maximum allowed is 10  complexity
+
+C:\BRUJULA CRIPTO\packages\app\components\features\dashboard\UserDashboard.tsx
+  77:8  warning  Function 'UserDashboard' has a complexity of 13. Maximum allowed is 10  complexity
+
+C:\BRUJULA CRIPTO\packages\app\components\features\homepage\FeedbackButton.tsx
+  17:8   warning  Function 'FeedbackButton' has a complexity of 12. Maximum allowed is 10                                                                                                                                                                                                                  complexity
+  96:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\BRUJULA CRIPTO\packages\app\components\features\payments\UpgradeButton.tsx
+  22:8  warning  Function 'UpgradeButton' has a complexity of 11. Maximum allowed is 10  complexity
+
+C:\BRUJULA CRIPTO\packages\app\components\features\pricing\UpgradeButton.tsx
+  55:34  warning  Async arrow function has a complexity of 14. Maximum allowed is 10  complexity
+
+C:\BRUJULA CRIPTO\packages\app\components\features\recovery\WasmPasswordEngine.tsx
+  27:1  warning  Function 'WasmPasswordEngine' has a complexity of 12. Maximum allowed is 10  complexity
+
+C:\BRUJULA CRIPTO\packages\functions\src\admin\adminPriceHandlers.ts
+  103:43  warning  Async arrow function has a complexity of 19. Maximum allowed is 10  complexity
+
+C:\BRUJULA CRIPTO\packages\functions\src\admin\serviceDirectoryHandlers.ts
+  117:37  warning  Async arrow function has a complexity of 12. Maximum allowed is 10  complexity
+
 C:\BRUJULA CRIPTO\packages\functions\src\lib\trackUsage.ts
-  67:3   warning  Async arrow function has a complexity of 23. Maximum allowed is 10  complexity
-  75:13  error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-
-C:\BRUJULA CRIPTO\packages\functions\src\payments\createCheckout.ts
-   12:27  error    Forbidden non-null assertion                                        @typescript-eslint/no-non-null-assertion
-   53:38  warning  Async arrow function has a complexity of 15. Maximum allowed is 10  complexity
-   60:11  error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-  151:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-  152:22  error    Unsafe member access .successUrl on an `any` value                  @typescript-eslint/no-unsafe-member-access
-  153:7   error    Unsafe assignment of an `any` value                                 @typescript-eslint/no-unsafe-assignment
-  154:22  error    Unsafe member access .cancelUrl on an `any` value                   @typescript-eslint/no-unsafe-member-access
-
-C:\BRUJULA CRIPTO\packages\functions\src\payments\createStripePortalSession.ts
-   56:13  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-   63:13  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-   74:9   error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-   84:11  error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-  104:9   error  Unsafe assignment of an `any` value  @typescript-eslint/no-unsafe-assignment
-
-C:\BRUJULA CRIPTO\packages\functions\src\payments\stripeWebhooks.ts
-  54:21  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
-  55:69  error  Unsafe member access .message on an `any` value  @typescript-eslint/no-unsafe-member-access
-  56:57  error  Unsafe member access .message on an `any` value  @typescript-eslint/no-unsafe-member-access
-
-C:\BRUJULA CRIPTO\packages\functions\src\public\handleContactForm.ts
-   90:60  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
-   91:13  error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
-   91:20  error  Unsafe call of a(n) `any` typed value            @typescript-eslint/no-unsafe-call
-   91:24  error  Unsafe member access .path on an `any` value     @typescript-eslint/no-unsafe-member-access
-   92:13  error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
-   92:26  error  Unsafe member access .message on an `any` value  @typescript-eslint/no-unsafe-member-access
-  106:9   error  Unsafe assignment of an `any` value              @typescript-eslint/no-unsafe-assignment
-  106:36  error  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
-
+  91:3  warning  Async arrow function has a complexity of 21. Maximum allowed is 10  complexity
 
 -----------------EJEMPLOS-----------------------
 

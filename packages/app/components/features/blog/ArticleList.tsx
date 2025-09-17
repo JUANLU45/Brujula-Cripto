@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
-import { useSearchParams } from 'next/navigation';
-
 import type { IArticle } from '@brujula-cripto/types';
 import { useTranslations } from 'next-intl';
 
 import { ArticleCard } from '@/components/features/blog/ArticleCard';
+import { ArticleListActiveFilters } from '@/components/features/blog/ArticleListActiveFilters';
+import { ArticleListFilters } from '@/components/features/blog/ArticleListFilters';
 import { BlogSearchBar } from '@/components/features/blog/BlogSearchBar';
+import { useArticleData } from '@/components/features/blog/hooks/useArticleData';
+import { useArticleFilters } from '@/components/features/blog/hooks/useArticleFilters';
+import { useFilteredArticles } from '@/components/features/blog/hooks/useFilteredArticles';
 import { PaginationControls } from '@/components/features/blog/PaginationControls';
 import { Button } from '@/components/ui/Button';
 import { Spinner } from '@/components/ui/Spinner';
@@ -25,14 +26,6 @@ interface ArticleListProps {
   className?: string;
 }
 
-interface ArticleFilters {
-  search?: string;
-  category?: string;
-  tag?: string;
-  status?: 'published' | 'draft';
-  featured?: boolean;
-}
-
 export function ArticleList({
   locale,
   initialArticles = [],
@@ -45,131 +38,37 @@ export function ArticleList({
   className = '',
 }: ArticleListProps): JSX.Element {
   const t = useTranslations('blog.list');
-  const searchParams = useSearchParams();
 
-  const [articles, setArticles] = useState<IArticle[]>(initialArticles);
-  const [filteredArticles, setFilteredArticles] = useState<IArticle[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const { filters, page } = useArticleFilters({ featuredOnly });
 
-  // Get filters from URL parameters
-  const filters: ArticleFilters = {
-    search: searchParams.get('search') || undefined,
-    category: searchParams.get('category') || undefined,
-    tag: searchParams.get('tag') || undefined,
-    status: 'published', // Only show published articles in public view
-    featured: featuredOnly || undefined,
-  };
+  const { articles, loading, error, retry } = useArticleData({
+    locale,
+    featuredOnly,
+    initialArticles,
+    loadingMessage: t('loading'),
+    errorMessages: {
+      loadFailed: t('errors.loadFailed'),
+      unknown: t('errors.unknown'),
+    },
+  });
 
-  const page = parseInt(searchParams.get('page') || '1', 10);
-
-  // Load articles
-  useEffect(() => {
-    const loadArticles = async (): Promise<void> => {
-      if (initialArticles.length > 0) {
-        setArticles(initialArticles);
-        return;
-      }
-
-      setLoading(true);
-      setError(null);
-
-      try {
-        // Fetch articles from the API
-        const response = await fetch(
-          `/api/articles?${new URLSearchParams({
-            locale,
-            status: 'published',
-            ...(featuredOnly && { featured: 'true' }),
-            limit: '100', // Load all for client-side filtering
-          })}`,
-        );
-
-        if (!response.ok) {
-          throw new Error(t('errors.loadFailed'));
-        }
-
-        const data = (await response.json()) as { articles: IArticle[] };
-        setArticles(data.articles || []);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : t('errors.unknown'));
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    void loadArticles();
-  }, [locale, featuredOnly, initialArticles, t]);
-
-  // Filter and paginate articles
-  useEffect(() => {
-    let filtered = [...articles];
-
-    // Apply filters
-    if (filters.search) {
-      const searchTerm = filters.search.toLowerCase();
-      filtered = filtered.filter((article) => {
-        const content = article[locale];
-        return (
-          content.title.toLowerCase().includes(searchTerm) ||
-          content.excerpt.toLowerCase().includes(searchTerm) ||
-          article.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm))
-        );
-      });
-    }
-
-    if (filters.category && filters.category !== 'all') {
-      filtered = filtered.filter((article) => article.category === filters.category);
-    }
-
-    if (filters.tag) {
-      filtered = filtered.filter((article) =>
-        article.tags.some((tag: string) => tag.toLowerCase() === filters.tag?.toLowerCase()),
-      );
-    }
-
-    if (filters.featured) {
-      filtered = filtered.filter((article) => article.isFeatured);
-    }
-
-    // Sort by date (newest first)
-    filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-
-    // Calculate pagination
-    const totalItems = filtered.length;
-    const totalPagesCount = Math.max(1, Math.ceil(totalItems / itemsPerPage));
-    const currentPageNum = Math.min(page, totalPagesCount);
-
-    const startIndex = (currentPageNum - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const paginatedArticles = filtered.slice(startIndex, endIndex);
-
-    setFilteredArticles(paginatedArticles);
-    setTotalPages(totalPagesCount);
-    setCurrentPage(currentPageNum);
-  }, [articles, filters, page, itemsPerPage, locale]);
+  const { filteredArticles, totalPages, currentPage, totalItems } = useFilteredArticles({
+    articles,
+    filters,
+    locale,
+    page,
+    itemsPerPage,
+  });
 
   const handleCategoryChange = (category: string): void => {
-    setSelectedCategory(category);
-    // Update URL with new category filter
     const url = new URL(window.location.href);
     if (category === 'all') {
       url.searchParams.delete('category');
     } else {
       url.searchParams.set('category', category);
     }
-    url.searchParams.delete('page'); // Reset to first page
+    url.searchParams.delete('page');
     window.history.replaceState({}, '', url.toString());
-  };
-
-  const handleRetry = (): void => {
-    setError(null);
-    // Trigger reload by updating a dependency
-    setLoading(true);
-    setTimeout(() => setLoading(false), 100);
   };
 
   if (loading) {
@@ -188,7 +87,7 @@ export function ArticleList({
       <div className={`py-12 text-center ${className}`}>
         <div className="mx-auto max-w-md">
           <p className="text-destructive mb-4">{error}</p>
-          <Button onClick={handleRetry} variant="outline">
+          <Button onClick={retry} variant="outline">
             {t('retry')}
           </Button>
         </div>
@@ -209,53 +108,10 @@ export function ArticleList({
       )}
 
       {/* Category Filters */}
-      {categories.length > 0 && (
-        <div className="mb-8">
-          <div className="flex flex-wrap gap-2">
-            <Button
-              variant={selectedCategory === 'all' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => handleCategoryChange('all')}
-            >
-              {t('categories.all')}
-            </Button>
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={selectedCategory === category ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => handleCategoryChange(category)}
-              >
-                {t(`categories.${category}`, { fallback: category })}
-              </Button>
-            ))}
-          </div>
-        </div>
-      )}
+      <ArticleListFilters categories={categories} onCategoryChange={handleCategoryChange} />
 
       {/* Active Filters */}
-      {hasFilters && (
-        <div className="mb-6">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-muted-foreground text-sm">{t('activeFilters')}:</span>
-            {filters.search && (
-              <span className="bg-muted text-muted-foreground rounded-full px-2 py-1 text-xs">
-                {t('search')}: &quot;{filters.search}&quot;
-              </span>
-            )}
-            {filters.category && (
-              <span className="bg-muted text-muted-foreground rounded-full px-2 py-1 text-xs">
-                {t('category')}: {filters.category}
-              </span>
-            )}
-            {filters.tag && (
-              <span className="bg-muted text-muted-foreground rounded-full px-2 py-1 text-xs">
-                {t('tag')}: #{filters.tag}
-              </span>
-            )}
-          </div>
-        </div>
-      )}
+      <ArticleListActiveFilters filters={filters} />
 
       {/* No Results */}
       {noResults && (
@@ -295,7 +151,7 @@ export function ArticleList({
               <PaginationControls
                 currentPage={currentPage}
                 totalPages={totalPages}
-                totalItems={articles.length}
+                totalItems={totalItems}
                 itemsPerPage={itemsPerPage}
                 showItemCount={true}
                 showPageNumbers={true}

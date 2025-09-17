@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import Link from 'next/link';
 
@@ -26,14 +26,14 @@ export default function AdminDashboardPage(): JSX.Element {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const getAuthToken = (): Promise<string> => {
+  const getAuthToken = useCallback((): Promise<string> => {
     // Get Firebase auth token
     const user = auth.currentUser;
     if (!user) {
       throw new Error(t('errors.notAuthenticated'));
     }
     return user.getIdToken();
-  };
+  }, [t]);
 
   useEffect(() => {
     const loadDashboardData = async (): Promise<void> => {
