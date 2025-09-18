@@ -1,8 +1,6 @@
-rootDirectory: packages/app
-installCommand: pnpm install
-buildCommand: pnpm build
-outputDirectory: .next/standalone
-runCommand: pnpm start
+rootDirectory: .
+# Dockerfile en packages/app/ maneja el build completo
+# installCommand, buildCommand, outputDirectory, runCommand omitidos - controlados por Dockerfile
 
 # Configuración para monorepo PNPM
 build:
