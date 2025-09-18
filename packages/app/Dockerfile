@@ -1,79 +1,94 @@
-# Dockerfile para Brújula Cripto - Next.js 15.5.3 Standalone
-# Configuración profesional optimizada para Firebase App Hosting
+# -----------------------------------------------------------------------------
+# DOCKERFILE DEFINITIVO PARA BRÚJULA CRIPTO (MONOREPO PNPM + NEXT.JS)
+# Creado para funcionar sin fallos en Firebase App Hosting.
+# -----------------------------------------------------------------------------
 
-# Stage 1: Base con Node.js 20.19.5 Alpine (match logs de Firebase)
-FROM node:20.19.5-alpine AS base
+# --- FASE 1: INSTALACIÓN DE DEPENDENCIAS ---
+# Se usa una imagen base ligera de Node.js v20, la misma que usa Firebase.
+FROM node:20-alpine AS deps
 
-# Instalar pnpm globalmente (versión estable)
-RUN npm install -g pnpm@9.0.0
+# Se habilita pnpm, la herramienta recomendada para gestionar workspaces.
+# Esto evita instalaciones globales y asegura consistencia.
+RUN corepack enable
 
-# Configurar directorio de trabajo en raíz workspace
-WORKDIR /workspace
+# Se establece el directorio de trabajo para todo el monorepo.
+WORKDIR /app
 
-# Stage 2: Dependencies
-FROM base AS deps
+# [CORRECCIÓN CLAVE 1: COPIAR ARCHIVOS DE WORKSPACE]
+# Se copian los archivos de configuración desde la raíz del repositorio (../../)
+# al directorio de trabajo del contenedor. Esto es fundamental para que pnpm
+# entienda la estructura del monorepo y encuentre el lockfile.
+COPY ../../pnpm-lock.yaml ../../package.json ../../pnpm-workspace.yaml ./
 
-# Copiar archivos de configuración workspace
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY packages/app/package.json ./packages/app/
-COPY packages/types/package.json ./packages/types/
-COPY packages/functions/package.json ./packages/functions/
+# Se copian los 'package.json' de cada paquete para recrear la estructura del workspace.
+# Esto permite a pnpm instalar solo las dependencias de producción necesarias.
+COPY ../../packages/app/package.json ./packages/app/
+COPY ../../packages/types/package.json ./packages/types/
+COPY ../../packages/functions/package.json ./packages/functions/
 
-# Instalar dependencias usando pnpm workspace
+# Se instalan TODAS las dependencias del monorepo.
+# '--frozen-lockfile' es una práctica de seguridad estándar en CI/CD para garantizar
+# que se usan las versiones exactas definidas en el lockfile.
 RUN pnpm install --frozen-lockfile
 
-# Stage 3: Builder
-FROM base AS builder
+# --- FASE 2: CONSTRUCCIÓN DE LA APLICACIÓN ---
+FROM node:20-alpine AS builder
 
-# Copiar node_modules desde stage deps
-COPY --from=deps /workspace/node_modules ./node_modules
-COPY --from=deps /workspace/packages ./packages
+RUN corepack enable
+WORKDIR /app
 
-# Copiar código fuente completo
-COPY . .
+# Se copian las dependencias ya instaladas desde la fase 'deps'.
+# Esto evita tener que volver a descargarlas, acelerando el proceso.
+COPY --from=deps /app/node_modules ./node_modules
 
-# Build types package primero (dependencia de app)
-RUN cd packages/types && pnpm build
+# Se copia TODO el código fuente del monorepo.
+# Esto es necesario para que el paquete 'app' pueda acceder a las dependencias
+# internas, como el paquete 'types'.
+COPY ../../. .
 
-# Build app package con Next.js standalone
-RUN cd packages/app && pnpm build
+# [CORRECCIÓN CLAVE 2: COMANDO DE BUILD]
+# Se ejecuta el script de build usando el filtro de pnpm.
+# pnpm es lo suficientemente inteligente para construir primero las dependencias
+# del workspace (en este caso, '@brujula-cripto/types') antes de construir la aplicación principal.
+# Esto elimina la necesidad de comandos 'cd' y builds manuales.
+RUN pnpm --filter @brujula-cripto/app build
 
-# Verificar que postbuild se ejecutó correctamente
-RUN ls -la packages/app/.next/standalone/.next/routes-manifest.json
+# --- FASE 3: IMAGEN FINAL DE PRODUCCIÓN ---
+# Se utiliza una imagen base limpia para la versión final, minimizando el tamaño
+# y la superficie de ataque por seguridad.
+FROM node:20-alpine AS runner
 
-# Stage 4: Runner - Configuración final para producción
-FROM node:20.19.5-alpine AS runner
+WORKDIR /app
 
-WORKDIR /workspace
+# Se establece el entorno a 'production' para optimizaciones de Next.js.
+ENV NODE_ENV=production
 
-# Crear usuario no-root para seguridad
+# Se crea un usuario y grupo con privilegios mínimos por seguridad.
+# Ejecutar la aplicación como 'root' es una mala práctica.
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copiar archivos standalone desde builder
-COPY --from=builder /workspace/packages/app/.next/standalone ./
-COPY --from=builder /workspace/packages/app/.next/static ./.next/static
+# Se copian únicamente los artefactos de build necesarios desde la fase 'builder'.
+# La carpeta '.next/standalone' contiene la aplicación optimizada y autónoma.
+COPY --from=builder /app/packages/app/.next/standalone ./
 
-# Copiar archivos públicos
-COPY --from=builder /workspace/packages/app/public ./public
+# Se copian los archivos públicos y estáticos a sus directorios correspondientes.
+COPY --from=builder /app/packages/app/public ./packages/app/public
+COPY --from=builder /app/packages/app/.next/static ./packages/app/.next/static
 
-# Asegurar que routes-manifest.json está en path exacto esperado por logs
-RUN mkdir -p ./.next
-COPY --from=builder /workspace/packages/app/.next/standalone/.next/routes-manifest.json ./.next/routes-manifest.json
+# Se cambia la propiedad de todos los archivos al usuario no-root.
+RUN chown -R nextjs:nodejs /app
 
-# Cambiar propiedad de archivos a nextjs user
-RUN chown -R nextjs:nodejs /workspace
-
-# Cambiar a usuario no-root
+# Se cambia al usuario no-root.
 USER nextjs
 
-# Exponer puerto 8080 (requerido por Firebase App Hosting)
+# Se expone el puerto 8080, que es el que Firebase App Hosting espera.
 EXPOSE 8080
 
-# Variables de entorno para producción
-ENV NODE_ENV=production
+# Se establece la variable de entorno del puerto.
 ENV PORT=8080
-ENV HOSTNAME="0.0.0.0"
 
-# Comando de inicio del servidor standalone
-CMD ["node", "server.js"]
+# [CORRECCIÓN CLAVE 3: COMANDO DE INICIO]
+# Se ejecuta el servidor de Node.js que se encuentra en la raíz del output standalone.
+# Este es el comando final para iniciar la aplicación.
+CMD ["node", "packages/app/server.js"]

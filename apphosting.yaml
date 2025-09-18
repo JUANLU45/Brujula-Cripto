@@ -1,24 +1,8 @@
-# -----------------------------------------------------------------------------
-# CONFIGURACIÓN DE DESPLIEGUE PARA FIREBASE APP HOSTING (MONOREPO)
-# -----------------------------------------------------------------------------
-
-# [CORRECCIÓN 1: RUTA DE LA APLICACIÓN]
-# Apunta directamente al directorio de la aplicación Next.js.
-# El sistema de build se ejecutará dentro de esta carpeta.
+# Directorio raíz del frontend de Next.js.
+# Firebase buscará y usará el Dockerfile que se encuentra en esta carpeta.
 rootDirectory: packages/app
 
-# [CORRECCIÓN 2: RUTA DEL LOCKFILE]
-# Esta sección es CRÍTICA y la causa final del error.
-build:
-  env:
-    # Le dice al sistema de build de Firebase que el lockfile (pnpm-lock.yaml)
-    # NO está en 'packages/app', sino que debe buscarlo en la raíz del repositorio.
-    # Esto soluciona el error "Missing dependency lock file".
-    PNPM_SHARED_WORKSPACE_LOCKFILE: true
-
-# -----------------------------------------------------------------------------
-# CONFIGURACIÓN DEL ENTORNO DE EJECUCIÓN (CLOUD RUN)
-# -----------------------------------------------------------------------------
+# Configuración del entorno de ejecución de Cloud Run.
 runConfig:
   runtime: nodejs20
   minInstances: 0
@@ -27,9 +11,7 @@ runConfig:
   cpu: 1
   memoryMiB: 512
 
-# -----------------------------------------------------------------------------
-# GESTIÓN DE SECRETOS Y VARIABLES DE ENTORNO
-# -----------------------------------------------------------------------------
+# Variables de entorno que se pasan desde Cloud Secret Manager.
 env:
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
     secret: NEXT_PUBLIC_FIREBASE_API_KEY
