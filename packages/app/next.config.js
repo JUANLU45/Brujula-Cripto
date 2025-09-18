@@ -8,6 +8,7 @@ const nextConfig = {
 
   // Configuración de imágenes
   images: {
+    unoptimized: true, // Mejor para Firebase App Hosting (evita Cloud Functions)
     remotePatterns: [
       {
         protocol: 'https',
@@ -47,6 +48,11 @@ const nextConfig = {
   // Variables de entorno públicas
   env: {
     CUSTOM_BUILD_ID: process.env.BUILD_ID || 'local',
+  },
+
+  // Optimizaciones para Firebase App Hosting
+  experimental: {
+    serverComponentsExternalPackages: ['firebase'], // Reduce bundle client-side
   },
 
   // Configuración de webpack si es necesario

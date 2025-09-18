@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "postbuild": "cp -r ../types/dist ./.next/standalone/packages/types/dist",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
