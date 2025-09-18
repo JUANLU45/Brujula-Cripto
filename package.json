@@ -8,8 +8,8 @@
     "pnpm": ">=8.0.0"
   },
   "scripts": {
+    "build": "pnpm -r build && cp pnpm-lock.yaml packages/app/",
     "dev": "pnpm --filter app dev",
-    "build": "pnpm -r build",
     "build:verify": "pnpm -r build && ls -la packages/app/.next/standalone",
     "lint": "eslint . --ext ts,tsx",
     "lint:fix": "eslint . --ext ts,tsx --fix"
