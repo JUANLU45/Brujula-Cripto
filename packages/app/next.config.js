@@ -51,9 +51,7 @@ const nextConfig = {
   },
 
   // Optimizaciones para Firebase App Hosting
-  experimental: {
-    serverComponentsExternalPackages: ['firebase'], // Reduce bundle client-side
-  },
+  serverExternalPackages: ['firebase'], // Corrige warning Next.js 15.5.3
 
   // Configuración de webpack si es necesario
   webpack: (config, { isServer }) => {

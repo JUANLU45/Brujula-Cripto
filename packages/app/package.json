@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "mkdir -p ./.next/standalone/packages/types && cp -r ../types/dist ./.next/standalone/packages/types/dist",
+    "postbuild": "mkdir -p ./.next/standalone/packages/types && cp -r ../types/dist ./.next/standalone/packages/types/dist && mkdir -p ./.next/standalone/.next && cp ./.next/routes-manifest.json ./.next/standalone/.next/routes-manifest.json",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
