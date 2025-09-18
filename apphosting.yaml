@@ -1,73 +1,60 @@
 # -----------------------------------------------------------------------------
-# CONFIGURACIÓN DE DESPLIEGUE PARA FIREBASE APP HOSTING
+# CONFIGURACIÓN DE DESPLIEGUE PARA FIREBASE APP HOSTING (MONOREPO)
 # -----------------------------------------------------------------------------
 
-# [CORRECCIÓN CLAVE]
-# Indica a Firebase que la aplicación a desplegar se encuentra en el subdirectorio 'packages/app'.
-# Esto es fundamental en una estructura de monorepo para que el build se ejecute
-# en el contexto correcto, donde se encuentra el Dockerfile y el código de Next.js.
+# [CORRECCIÓN 1: RUTA DE LA APLICACIÓN]
+# Apunta directamente al directorio de la aplicación Next.js.
+# El sistema de build se ejecutará dentro de esta carpeta.
 rootDirectory: packages/app
 
-# Se omite la configuración de 'installCommand', 'buildCommand' y 'runCommand'
-# porque un archivo 'Dockerfile' está presente dentro de 'packages/app'.
-# Firebase App Hosting le dará prioridad al Dockerfile para construir y ejecutar
-# la aplicación, lo que nos da un control total sobre el proceso.
+# [CORRECCIÓN 2: RUTA DEL LOCKFILE]
+# Esta sección es CRÍTICA y la causa final del error.
+build:
+  env:
+    # Le dice al sistema de build de Firebase que el lockfile (pnpm-lock.yaml)
+    # NO está en 'packages/app', sino que debe buscarlo en la raíz del repositorio.
+    # Esto soluciona el error "Missing dependency lock file".
+    PNPM_SHARED_WORKSPACE_LOCKFILE: true
 
 # -----------------------------------------------------------------------------
 # CONFIGURACIÓN DEL ENTORNO DE EJECUCIÓN (CLOUD RUN)
 # -----------------------------------------------------------------------------
 runConfig:
-  # Se utiliza el runtime de Node.js versión 20.
   runtime: nodejs20
-  # Permite escalar a cero instancias cuando no hay tráfico para ahorrar costes.
   minInstances: 0
-  # Límite máximo de 10 instancias para controlar picos de tráfico.
   maxInstances: 10
-  # Número de peticiones simultáneas que puede manejar una instancia antes de escalar.
   concurrency: 80
-  # Asignación de 1 CPU virtual por instancia.
   cpu: 1
-  # Asignación de 512 MiB de memoria por instancia.
   memoryMiB: 512
 
 # -----------------------------------------------------------------------------
 # GESTIÓN DE SECRETOS Y VARIABLES DE ENTORNO
 # -----------------------------------------------------------------------------
-# Conecta las variables de entorno de la aplicación a los secretos almacenados
-# de forma segura en Google Cloud Secret Manager.
-
 env:
-  # Clave pública de la API de Firebase para el cliente.
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
     secret: NEXT_PUBLIC_FIREBASE_API_KEY
-    availability: [BUILD, RUNTIME] # Disponible durante la construcción y ejecución.
+    availability: [BUILD, RUNTIME]
 
-  # Dominio de autenticación de Firebase.
   - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
     secret: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
     availability: [BUILD, RUNTIME]
 
-  # ID del proyecto de Firebase.
   - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
     secret: NEXT_PUBLIC_FIREBASE_PROJECT_ID
     availability: [BUILD, RUNTIME]
 
-  # Bucket de Firebase Storage.
   - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
     secret: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
     availability: [BUILD, RUNTIME]
 
-  # ID del remitente de Firebase Messaging.
   - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
     secret: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
     availability: [BUILD, RUNTIME]
 
-  # ID de la aplicación de Firebase.
   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
     secret: NEXT_PUBLIC_FIREBASE_APP_ID
     availability: [BUILD, RUNTIME]
 
-  # ID de medición de Google Analytics.
   - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
     secret: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
     availability: [BUILD, RUNTIME]
