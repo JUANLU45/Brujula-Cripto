@@ -12,5 +12,10 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "apphosting": {
+    "backendId": "backen-brujula-cripto",
+    "rootDir": "packages/app",
+    "ignore": ["node_modules", ".git"]
   }
 }
