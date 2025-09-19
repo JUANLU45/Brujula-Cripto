@@ -10,7 +10,7 @@
     "dev": "next dev",
     "prebuild": "cd ../types && npm run build",
     "build": "next build",
-    "postbuild": "mkdir -p .next/standalone/packages/types && cp -r ../types/dist .next/standalone/packages/types/dist && mkdir -p .next/standalone/.next && cp .next/routes-manifest.json .next/standalone/.next/routes-manifest.json",
+    "postbuild": "node -e \"const fs=require('fs');const path=require('path');fs.mkdirSync('.next/standalone/packages/types',{recursive:true});fs.cpSync('../types/dist','.next/standalone/packages/types/dist',{recursive:true});fs.mkdirSync('.next/standalone/.next',{recursive:true});fs.copyFileSync('.next/routes-manifest.json','.next/standalone/.next/routes-manifest.json')\"",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
