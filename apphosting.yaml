@@ -10,6 +10,7 @@ runConfig:
   memoryMiB: 512
 
 env:
+  # Variables de Firebase (requeridas por lib/firebase.ts)
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
     secret: NEXT_PUBLIC_FIREBASE_API_KEY
     availability: [BUILD, RUNTIME]
@@ -34,6 +35,32 @@ env:
     secret: NEXT_PUBLIC_FIREBASE_APP_ID
     availability: [BUILD, RUNTIME]
 
-  - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-    secret: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+  # Variables de API y URLs (requeridas por lib/api.ts, lib/seo.ts, pages)
+  - variable: NEXT_PUBLIC_API_BASE_URL
+    secret: NEXT_PUBLIC_API_BASE_URL
+    availability: [BUILD, RUNTIME]
+
+  - variable: NEXT_PUBLIC_BASE_URL
+    secret: NEXT_PUBLIC_BASE_URL
+    availability: [BUILD, RUNTIME]
+
+  - variable: NEXT_PUBLIC_APP_URL
+    secret: NEXT_PUBLIC_APP_URL
+    availability: [BUILD, RUNTIME]
+
+  # Variables de Stripe (requeridas por lib/stripe.ts)
+  - variable: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+    secret: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+    availability: [BUILD, RUNTIME]
+
+  - variable: NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_1H
+    secret: NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_1H
+    availability: [BUILD, RUNTIME]
+
+  - variable: NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_5H
+    secret: NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_5H
+    availability: [BUILD, RUNTIME]
+
+  - variable: NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_10H
+    secret: NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_10H
     availability: [BUILD, RUNTIME]
