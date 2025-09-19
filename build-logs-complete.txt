@@ -1,0 +1,614 @@
+---------------------------- REMOTE BUILD OUTPUT -----------------------------
+starting build "8c83d15c-225c-4886-976a-817584275cf9"
+FETCHSOURCE
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: 	git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: 	git branch -m <name>
+Initialized empty Git repository in /workspace/.git/
+From https://github.com/JUANLU45/Brujula-Cripto
+ * branch            ed0f494ab12acf4ca827755e703f024096283bf5 -> FETCH_HEAD
+HEAD is now at ed0f494 fix(package.json): actualizar script postbuild para usar fs y mejorar la gesti?n de archivos
+GitCommit:
+ed0f494ab12acf4ca827755e703f024096283bf5
+BUILD
+Starting Step #0 - "ubuntu"
+Step #0 - "ubuntu": Pulling image: ubuntu
+Step #0 - "ubuntu": Using default tag: latest
+Step #0 - "ubuntu": latest: Pulling from library/ubuntu
+Step #0 - "ubuntu": 953cdd413371: Pulling fs layer
+Step #0 - "ubuntu": 953cdd413371: Verifying Checksum
+Step #0 - "ubuntu": 953cdd413371: Download complete
+Step #0 - "ubuntu": 953cdd413371: Pull complete
+Step #0 - "ubuntu": Digest: sha256:353675e2a41babd526e2b837d7ec780c2a05bca0164f7ea5dbbd433d21d166fc
+Step #0 - "ubuntu": Status: Downloaded newer image for ubuntu:latest
+Step #0 - "ubuntu": docker.io/library/ubuntu:latest
+Finished Step #0 - "ubuntu"
+Starting Step #1 - "preparer"
+Step #1 - "preparer": Pulling image: us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250817_18_04_RC00
+Step #1 - "preparer": base_20250817_18_04_RC00: Pulling from serverless-runtimes/utilities/preparer
+Step #1 - "preparer": 5fd97b0155af: Pulling fs layer
+Step #1 - "preparer": 5fd97b0155af: Verifying Checksum
+Step #1 - "preparer": 5fd97b0155af: Download complete
+Step #1 - "preparer": 5fd97b0155af: Pull complete
+Step #1 - "preparer": Digest: sha256:3b09b2f1585b2f4b5d41e674e5dd7ccb20941a0d6c5ea02c23a007c4b5213ada
+Step #1 - "preparer": Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250817_18_04_RC00
+Step #1 - "preparer": us-central1-docker.pkg.dev/serverless-runtimes/utilities/preparer:base_20250817_18_04_RC00
+Step #1 - "preparer": 2025/09/19 11:02:08 FIREBASE_CONFIG has no availability specified, applying the default of 'BUILD' and 'RUNTIME'
+Step #1 - "preparer": 2025/09/19 11:02:08 Pinned secret projects/brujula-cripto/secrets/NEXT_PUBLIC_FIREBASE_API_KEY/versions/latest to projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_API_KEY/versions/1 for the rest of the current build and run
+Step #1 - "preparer": 2025/09/19 11:02:08 Pinned secret projects/brujula-cripto/secrets/NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN/versions/latest to projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN/versions/1 for the rest of the current build and run
+Step #1 - "preparer": 2025/09/19 11:02:08 Pinned secret projects/brujula-cripto/secrets/NEXT_PUBLIC_FIREBASE_PROJECT_ID/versions/latest to projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_PROJECT_ID/versions/1 for the rest of the current build and run
+Step #1 - "preparer": 2025/09/19 11:02:08 Pinned secret projects/brujula-cripto/secrets/NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET/versions/latest to projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET/versions/1 for the rest of the current build and run
+Step #1 - "preparer": 2025/09/19 11:02:08 Pinned secret projects/brujula-cripto/secrets/NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID/versions/latest to projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID/versions/1 for the rest of the current build and run
+Step #1 - "preparer": 2025/09/19 11:02:08 Pinned secret projects/brujula-cripto/secrets/NEXT_PUBLIC_FIREBASE_APP_ID/versions/latest to projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_APP_ID/versions/1 for the rest of the current build and run
+Step #1 - "preparer": 2025/09/19 11:02:08 Pinned secret projects/brujula-cripto/secrets/NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID/versions/latest to projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID/versions/1 for the rest of the current build and run
+Step #1 - "preparer": 2025/09/19 11:02:08 Accessed secret projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_API_KEY/versions/1 for the rest of the current build
+Step #1 - "preparer": 2025/09/19 11:02:09 Accessed secret projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN/versions/1 for the rest of the current build
+Step #1 - "preparer": 2025/09/19 11:02:09 Accessed secret projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_PROJECT_ID/versions/1 for the rest of the current build
+Step #1 - "preparer": 2025/09/19 11:02:09 Accessed secret projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET/versions/1 for the rest of the current build
+Step #1 - "preparer": 2025/09/19 11:02:09 Accessed secret projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID/versions/1 for the rest of the current build
+Step #1 - "preparer": 2025/09/19 11:02:09 Accessed secret projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_APP_ID/versions/1 for the rest of the current build
+Step #1 - "preparer": 2025/09/19 11:02:09 Accessed secret projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID/versions/1 for the rest of the current build
+Step #1 - "preparer": 2025/09/19 11:02:09 Final app hosting schema:
+Step #1 - "preparer": runConfig:
+Step #1 - "preparer":   cpu: 1
+Step #1 - "preparer":   memoryMiB: 512
+Step #1 - "preparer":   concurrency: 80
+Step #1 - "preparer":   maxInstances: 10
+Step #1 - "preparer":   minInstances: 0
+Step #1 - "preparer":   vpcAccess: null
+Step #1 - "preparer":   cpuAlwaysAllocated: null
+Step #1 - "preparer": env:
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_API_KEY/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_PROJECT_ID/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_APP_ID/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: FIREBASE_CONFIG
+Step #1 - "preparer":   value: '{"databaseURL":"","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}'
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: FIREBASE_WEBAPP_CONFIG
+Step #1 - "preparer":   value: '{"apiKey":"AIzaSyDzJaHoJ4AuNn28nH4v0gZGb4wRD3ZlEMw","appId":"1:442091888028:web:3d32e54527f7b784797c59","authDomain":"brujula-cripto.firebaseapp.com","databaseURL":"","messagingSenderId":"442091888028","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}'
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":
+Step #1 - "preparer": 2025/09/19 11:02:09 Final app hosting schema:
+Step #1 - "preparer": runConfig:
+Step #1 - "preparer":   cpu: 1
+Step #1 - "preparer":   memoryMiB: 512
+Step #1 - "preparer":   concurrency: 80
+Step #1 - "preparer":   maxInstances: 10
+Step #1 - "preparer":   minInstances: 0
+Step #1 - "preparer":   vpcAccess: null
+Step #1 - "preparer":   cpuAlwaysAllocated: null
+Step #1 - "preparer": env:
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_API_KEY/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_PROJECT_ID/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_APP_ID/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+Step #1 - "preparer":   secret: projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID/versions/1
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: FIREBASE_CONFIG
+Step #1 - "preparer":   value: '{"databaseURL":"","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}'
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":   - RUNTIME
+Step #1 - "preparer": - variable: FIREBASE_WEBAPP_CONFIG
+Step #1 - "preparer":   value: '{"apiKey":"AIzaSyDzJaHoJ4AuNn28nH4v0gZGb4wRD3ZlEMw","appId":"1:442091888028:web:3d32e54527f7b784797c59","authDomain":"brujula-cripto.firebaseapp.com","databaseURL":"","messagingSenderId":"442091888028","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}'
+Step #1 - "preparer":   availability:
+Step #1 - "preparer":   - BUILD
+Step #1 - "preparer":
+Finished Step #1 - "preparer"
+Starting Step #2 - "pack"
+Step #2 - "pack": Pulling image: gcr.io/k8s-skaffold/pack
+Step #2 - "pack": Using default tag: latest
+Step #2 - "pack": latest: Pulling from k8s-skaffold/pack
+Step #2 - "pack": 396c31837116: Pulling fs layer
+Step #2 - "pack": 9776b10d5c8c: Pulling fs layer
+Step #2 - "pack": 52cb9ac3197f: Pulling fs layer
+Step #2 - "pack": 9776b10d5c8c: Verifying Checksum
+Step #2 - "pack": 9776b10d5c8c: Download complete
+Step #2 - "pack": 396c31837116: Verifying Checksum
+Step #2 - "pack": 396c31837116: Download complete
+Step #2 - "pack": 52cb9ac3197f: Verifying Checksum
+Step #2 - "pack": 52cb9ac3197f: Download complete
+Step #2 - "pack": 396c31837116: Pull complete
+Step #2 - "pack": 9776b10d5c8c: Pull complete
+Step #2 - "pack": 52cb9ac3197f: Pull complete
+Step #2 - "pack": Digest: sha256:221c0c0d9a90f46f108bb888a1da9e99c82ff631e8b1c63b0223ea951752bd53
+Step #2 - "pack": Status: Downloaded newer image for gcr.io/k8s-skaffold/pack:latest
+Step #2 - "pack": gcr.io/k8s-skaffold/pack:latest
+Step #2 - "pack": nodejs_20250914_RC00: Pulling from serverless-runtimes/google-22-full/builder/nodejs
+Step #2 - "pack": e27d8d14a9d0: Already exists
+Step #2 - "pack": ecd1c5ef2d49: Already exists
+Step #2 - "pack": 027b47bb399e: Already exists
+Step #2 - "pack": ec3845ead9b0: Pulling fs layer
+Step #2 - "pack": c118891b1842: Pulling fs layer
+Step #2 - "pack": 01923788f15c: Pulling fs layer
+Step #2 - "pack": 8951fea762de: Pulling fs layer
+Step #2 - "pack": cfedeab3339e: Pulling fs layer
+Step #2 - "pack": d0ccd810fe26: Pulling fs layer
+Step #2 - "pack": fe0a88c014e5: Pulling fs layer
+Step #2 - "pack": 1a82443b3661: Pulling fs layer
+Step #2 - "pack": 62a9d58c3a62: Pulling fs layer
+Step #2 - "pack": 8efa1d708974: Pulling fs layer
+Step #2 - "pack": ca39ce790286: Pulling fs layer
+Step #2 - "pack": 14533e66e2c5: Pulling fs layer
+Step #2 - "pack": a0da6a7b4e26: Pulling fs layer
+Step #2 - "pack": 511b5d2cff8f: Pulling fs layer
+Step #2 - "pack": 524e8701bd2a: Pulling fs layer
+Step #2 - "pack": b769fa8808ba: Pulling fs layer
+Step #2 - "pack": b1ea04d5e73c: Pulling fs layer
+Step #2 - "pack": 4e934a3cd478: Pulling fs layer
+Step #2 - "pack": 75db5f73aef0: Pulling fs layer
+Step #2 - "pack": a91c65509603: Pulling fs layer
+Step #2 - "pack": ab4f0169dd65: Pulling fs layer
+Step #2 - "pack": 18b6794ac44b: Pulling fs layer
+Step #2 - "pack": b269a3a8b71c: Pulling fs layer
+Step #2 - "pack": bca795c45a55: Pulling fs layer
+Step #2 - "pack": 26be9f471823: Pulling fs layer
+Step #2 - "pack": 34ce8ba30961: Pulling fs layer
+Step #2 - "pack": e6178d2c0976: Pulling fs layer
+Step #2 - "pack": 4f4fb700ef54: Pulling fs layer
+Step #2 - "pack": 8951fea762de: Waiting
+Step #2 - "pack": cfedeab3339e: Waiting
+Step #2 - "pack": d0ccd810fe26: Waiting
+Step #2 - "pack": fe0a88c014e5: Waiting
+Step #2 - "pack": 1a82443b3661: Waiting
+Step #2 - "pack": 62a9d58c3a62: Waiting
+Step #2 - "pack": 8efa1d708974: Waiting
+Step #2 - "pack": ca39ce790286: Waiting
+Step #2 - "pack": 14533e66e2c5: Waiting
+Step #2 - "pack": a0da6a7b4e26: Waiting
+Step #2 - "pack": 511b5d2cff8f: Waiting
+Step #2 - "pack": 524e8701bd2a: Waiting
+Step #2 - "pack": b769fa8808ba: Waiting
+Step #2 - "pack": b1ea04d5e73c: Waiting
+Step #2 - "pack": 4e934a3cd478: Waiting
+Step #2 - "pack": 75db5f73aef0: Waiting
+Step #2 - "pack": a91c65509603: Waiting
+Step #2 - "pack": ab4f0169dd65: Waiting
+Step #2 - "pack": 18b6794ac44b: Waiting
+Step #2 - "pack": b269a3a8b71c: Waiting
+Step #2 - "pack": bca795c45a55: Waiting
+Step #2 - "pack": 26be9f471823: Waiting
+Step #2 - "pack": 34ce8ba30961: Waiting
+Step #2 - "pack": e6178d2c0976: Waiting
+Step #2 - "pack": 4f4fb700ef54: Waiting
+Step #2 - "pack": ec3845ead9b0: Download complete
+Step #2 - "pack": c118891b1842: Verifying Checksum
+Step #2 - "pack": c118891b1842: Download complete
+Step #2 - "pack": 01923788f15c: Verifying Checksum
+Step #2 - "pack": 01923788f15c: Download complete
+Step #2 - "pack": 8951fea762de: Download complete
+Step #2 - "pack": ec3845ead9b0: Pull complete
+Step #2 - "pack": fe0a88c014e5: Verifying Checksum
+Step #2 - "pack": fe0a88c014e5: Download complete
+Step #2 - "pack": cfedeab3339e: Verifying Checksum
+Step #2 - "pack": cfedeab3339e: Download complete
+Step #2 - "pack": c118891b1842: Pull complete
+Step #2 - "pack": d0ccd810fe26: Verifying Checksum
+Step #2 - "pack": d0ccd810fe26: Download complete
+Step #2 - "pack": 8efa1d708974: Download complete
+Step #2 - "pack": 62a9d58c3a62: Verifying Checksum
+Step #2 - "pack": 62a9d58c3a62: Download complete
+Step #2 - "pack": 1a82443b3661: Verifying Checksum
+Step #2 - "pack": 1a82443b3661: Download complete
+Step #2 - "pack": 01923788f15c: Pull complete
+Step #2 - "pack": 14533e66e2c5: Verifying Checksum
+Step #2 - "pack": 14533e66e2c5: Download complete
+Step #2 - "pack": 8951fea762de: Pull complete
+Step #2 - "pack": a0da6a7b4e26: Verifying Checksum
+Step #2 - "pack": a0da6a7b4e26: Download complete
+Step #2 - "pack": ca39ce790286: Verifying Checksum
+Step #2 - "pack": ca39ce790286: Download complete
+Step #2 - "pack": 511b5d2cff8f: Verifying Checksum
+Step #2 - "pack": 511b5d2cff8f: Download complete
+Step #2 - "pack": 524e8701bd2a: Verifying Checksum
+Step #2 - "pack": 524e8701bd2a: Download complete
+Step #2 - "pack": b769fa8808ba: Download complete
+Step #2 - "pack": b1ea04d5e73c: Verifying Checksum
+Step #2 - "pack": b1ea04d5e73c: Download complete
+Step #2 - "pack": 4e934a3cd478: Verifying Checksum
+Step #2 - "pack": 4e934a3cd478: Download complete
+Step #2 - "pack": cfedeab3339e: Pull complete
+Step #2 - "pack": 75db5f73aef0: Verifying Checksum
+Step #2 - "pack": 75db5f73aef0: Download complete
+Step #2 - "pack": ab4f0169dd65: Verifying Checksum
+Step #2 - "pack": ab4f0169dd65: Download complete
+Step #2 - "pack": a91c65509603: Verifying Checksum
+Step #2 - "pack": a91c65509603: Download complete
+Step #2 - "pack": 18b6794ac44b: Verifying Checksum
+Step #2 - "pack": 18b6794ac44b: Download complete
+Step #2 - "pack": b269a3a8b71c: Verifying Checksum
+Step #2 - "pack": b269a3a8b71c: Download complete
+Step #2 - "pack": bca795c45a55: Verifying Checksum
+Step #2 - "pack": bca795c45a55: Download complete
+Step #2 - "pack": 34ce8ba30961: Download complete
+Step #2 - "pack": 26be9f471823: Download complete
+Step #2 - "pack": e6178d2c0976: Verifying Checksum
+Step #2 - "pack": e6178d2c0976: Download complete
+Step #2 - "pack": 4f4fb700ef54: Verifying Checksum
+Step #2 - "pack": 4f4fb700ef54: Download complete
+Step #2 - "pack": d0ccd810fe26: Pull complete
+Step #2 - "pack": fe0a88c014e5: Pull complete
+Step #2 - "pack": 1a82443b3661: Pull complete
+Step #2 - "pack": 62a9d58c3a62: Pull complete
+Step #2 - "pack": 8efa1d708974: Pull complete
+Step #2 - "pack": ca39ce790286: Pull complete
+Step #2 - "pack": 14533e66e2c5: Pull complete
+Step #2 - "pack": a0da6a7b4e26: Pull complete
+Step #2 - "pack": 511b5d2cff8f: Pull complete
+Step #2 - "pack": 524e8701bd2a: Pull complete
+Step #2 - "pack": b769fa8808ba: Pull complete
+Step #2 - "pack": b1ea04d5e73c: Pull complete
+Step #2 - "pack": 4e934a3cd478: Pull complete
+Step #2 - "pack": 75db5f73aef0: Pull complete
+Step #2 - "pack": a91c65509603: Pull complete
+Step #2 - "pack": ab4f0169dd65: Pull complete
+Step #2 - "pack": 18b6794ac44b: Pull complete
+Step #2 - "pack": b269a3a8b71c: Pull complete
+Step #2 - "pack": bca795c45a55: Pull complete
+Step #2 - "pack": 26be9f471823: Pull complete
+Step #2 - "pack": 34ce8ba30961: Pull complete
+Step #2 - "pack": e6178d2c0976: Pull complete
+Step #2 - "pack": 4f4fb700ef54: Pull complete
+Step #2 - "pack": Digest: sha256:94ea86628cfd64bbf5a80ba4699474e480e83372b0270192f7227806303271f4
+Step #2 - "pack": Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/builder/nodejs:nodejs_20250914_RC00
+Step #2 - "pack": public-image-next: Pulling from serverless-runtimes/google-22/run/base
+Step #2 - "pack": e6fdc8487bfe: Already exists
+Step #2 - "pack": d3053ac7c171: Pulling fs layer
+Step #2 - "pack": 61cee00d3550: Pulling fs layer
+Step #2 - "pack": d3053ac7c171: Verifying Checksum
+Step #2 - "pack": d3053ac7c171: Download complete
+Step #2 - "pack": 61cee00d3550: Verifying Checksum
+Step #2 - "pack": 61cee00d3550: Download complete
+Step #2 - "pack": d3053ac7c171: Pull complete
+Step #2 - "pack": 61cee00d3550: Pull complete
+Step #2 - "pack": Digest: sha256:013f07ad78f08a5c30f4551c892bff7d1cb17e0477928b61e2cfd59259dc3abd
+Step #2 - "pack": Status: Downloaded newer image for us-central1-docker.pkg.dev/serverless-runtimes/google-22/run/base:public-image-next
+Step #2 - "pack": ===> ANALYZING
+Step #2 - "pack": Image with name "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto:build-2025-09-19-004" not found
+Step #2 - "pack": ===> DETECTING
+Step #2 - "pack": target distro name/version labels not found, reading /etc/os-release file
+Step #2 - "pack": 4 of 6 buildpacks participating
+Step #2 - "pack": google.nodejs.runtime        1.0.0
+Step #2 - "pack": google.nodejs.firebasenextjs 0.0.1
+Step #2 - "pack": google.nodejs.pnpm           0.1.0
+Step #2 - "pack": google.nodejs.firebasebundle 0.0.1
+Step #2 - "pack": ===> RESTORING
+Step #2 - "pack": ===> BUILDING
+Step #2 - "pack": target distro name/version labels not found, reading /etc/os-release file
+Step #2 - "pack": === Node.js - Runtime (google.nodejs.runtime@1.0.0) ===
+Step #2 - "pack": 2025/09/19 11:02:21 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+Step #2 - "pack": Adding image label google.runtime-version: nodejs20
+Step #2 - "pack": 2025/09/19 11:02:22 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+Step #2 - "pack": Installing Node.js v20.19.5.
+Step #2 - "pack": 2025/09/19 11:02:23 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-20.19.5.tar.gz
+Step #2 - "pack": === Node.js - Firebasenextjs (google.nodejs.firebasenextjs@0.0.1) ===
+Step #2 - "pack": WARNING: *** You are using a custom build command (your build command is NOT 'next build'), we will accept it as is but will error if output structure is not as expected ***
+Step #2 - "pack": ***** CACHE MISS: "npm_modules"
+Step #2 - "pack": Installing nextjs adaptor 14.0.18
+Step #2 - "pack": === Node.js - Pnpm (google.nodejs.pnpm@0.1.0) ===
+Step #2 - "pack": 2025/09/19 11:02:32 [DEBUG] GET https://registry.npmjs.org/pnpm
+Step #2 - "pack": ***** CACHE MISS: "pnpm_engine"
+Step #2 - "pack": Installing pnpm v10.17.0
+Step #2 - "pack": 2025/09/19 11:02:32 [DEBUG] GET https://github.com/pnpm/pnpm/releases/download/v10.17.0/pnpm-linux-x64
+Step #2 - "pack": Setting environment variable PATH=/layers/google.nodejs.pnpm/pnpm_engine/bin:/layers/google.nodejs.runtime/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Step #2 - "pack": --------------------------------------------------------------------------------
+Step #2 - "pack": Running "pnpm install (CI=true NODE_ENV=development)"
+Step #2 - "pack": Scope: all 4 workspace projects
+Step #2 - "pack": Lockfile is up to date, resolution step is skipped
+Step #2 - "pack": Progress: resolved 1, reused 0, downloaded 0, added 0
+Step #2 - "pack": Packages: +755
+Step #2 - "pack": ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 14, added 0
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 91, added 31
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 114, added 38
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 168, added 59
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 174, added 61
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 175, added 61
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 182, added 63
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 183, added 63
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 196, added 67
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 268, added 95
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 352, added 123
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 455, added 174
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 521, added 198
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 645, added 258
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 741, added 435
+Step #2 - "pack": Progress: resolved 755, reused 0, downloaded 741, added 755, done
+Step #2 - "pack":
+Step #2 - "pack": dependencies:
+Step #2 - "pack": + @hookform/resolvers 5.2.2
+Step #2 - "pack": + @tiptap/extension-image 3.4.4
+Step #2 - "pack": + @tiptap/extension-link 3.4.4
+Step #2 - "pack": + @tiptap/react 3.4.4
+Step #2 - "pack": + @tiptap/starter-kit 3.4.4
+Step #2 - "pack": + @types/react 18.3.24
+Step #2 - "pack": + @types/react-dom 18.3.7
+Step #2 - "pack": + @upstash/redis 1.35.3
+Step #2 - "pack": + class-variance-authority 0.7.1
+Step #2 - "pack": + clsx 2.1.1
+Step #2 - "pack": + firebase 12.2.1
+Step #2 - "pack": + lucide-react 0.544.0
+Step #2 - "pack": + next 15.5.3
+Step #2 - "pack": + next-intl 4.3.9
+Step #2 - "pack": + next-themes 0.4.6
+Step #2 - "pack": + react 18.3.1
+Step #2 - "pack": + react-dom 18.3.1
+Step #2 - "pack": + react-hook-form 7.62.0
+Step #2 - "pack": + stripe 18.5.0
+Step #2 - "pack": + tailwind-merge 3.3.1
+Step #2 - "pack": + zod 4.1.9
+Step #2 - "pack":
+Step #2 - "pack": devDependencies:
+Step #2 - "pack": + @eslint/eslintrc 3.3.1
+Step #2 - "pack": + @next/eslint-plugin-next 15.5.3
+Step #2 - "pack": + @types/node 24.5.2
+Step #2 - "pack": + @typescript-eslint/eslint-plugin 8.44.0
+Step #2 - "pack": + @typescript-eslint/parser 8.44.0
+Step #2 - "pack": + eslint 9.35.0
+Step #2 - "pack": + eslint-config-next 15.5.3
+Step #2 - "pack": + eslint-config-prettier 10.1.8
+Step #2 - "pack": + eslint-plugin-import 2.32.0
+Step #2 - "pack": + eslint-plugin-jsx-a11y 6.10.2
+Step #2 - "pack": + eslint-plugin-prettier 5.5.4
+Step #2 - "pack": + eslint-plugin-react 7.37.5
+Step #2 - "pack": + eslint-plugin-react-hooks 5.2.0
+Step #2 - "pack": + globals 16.4.0
+Step #2 - "pack": + prettier 3.6.2
+Step #2 - "pack": + prettier-plugin-tailwindcss 0.6.14
+Step #2 - "pack": + typescript 5.9.2
+Step #2 - "pack": + typescript-eslint 8.44.0
+Step #2 - "pack":
+Step #2 - "pack": ? Warning ??????????????????????????????????????????????????????????????????????
+Step #2 - "pack": ?                                                                              ?
+Step #2 - "pack": ?   Ignored build scripts: @firebase/util, protobufjs, sharp, unrs-resolver.   ?
+Step #2 - "pack": ?   Run "pnpm approve-builds" to pick which dependencies should be allowed     ?
+Step #2 - "pack": ?   to run scripts.                                                            ?
+Step #2 - "pack": ?                                                                              ?
+Step #2 - "pack": ????????????????????????????????????????????????????????????????????????????????
+Step #2 - "pack":
+Step #2 - "pack": Done in 17.7s using pnpm v10.17.0
+Step #2 - "pack": Done "pnpm install (CI=true NODE_ENV=development)" (17.920922465s)
+Step #2 - "pack": --------------------------------------------------------------------------------
+Step #2 - "pack": Running "npm exec --prefix /layers/google.nodejs.firebasenextjs/npm_modules apphosting-adapter-nextjs-build"
+Step #2 - "pack":
+Step #2 - "pack": > brujula-cripto@1.0.0 build
+Step #2 - "pack": > pnpm -r build
+Step #2 - "pack":
+Step #2 - "pack": Scope: 3 of 4 workspace projects
+Step #2 - "pack": packages/types build$ tsc
+Step #2 - "pack": packages/types build: Done
+Step #2 - "pack": packages/functions build$ tsc
+Step #2 - "pack": packages/app prebuild$ cd ../types && npm run build
+Step #2 - "pack": packages/app prebuild: > @brujula-cripto/types@1.0.0 build
+Step #2 - "pack": packages/app prebuild: > tsc
+Step #2 - "pack": packages/app prebuild: Done
+Step #2 - "pack": packages/app build$ next build
+Step #2 - "pack": packages/app build:    ? Next.js 15.5.3
+Step #2 - "pack": packages/app build:    Creating an optimized production build ...
+Step #2 - "pack": packages/functions build: Done
+Step #2 - "pack": packages/app build:  ? Compiled successfully in 31.9s
+Step #2 - "pack": packages/app build:    Linting and checking validity of types ...
+Step #2 - "pack": packages/app build:  ? ESLint: Cannot read config file: /workspace/.eslintrc.js Error: module is not defined in ES module scope This file is being treated as an ES module because it has a '.js' file extension and '/workspace/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+Step #2 - "pack": packages/app build:    Collecting page data ...
+Step #2 - "pack": packages/app build:    Generating static pages (0/3) ...
+Step #2 - "pack": packages/app build:  ? Generating static pages (3/3)
+Step #2 - "pack": packages/app build:    Finalizing page optimization ...
+Step #2 - "pack": packages/app build:    Collecting build traces ...
+Step #2 - "pack": packages/app build: Route (app)                                      Size  First Load JS
+Step #2 - "pack": packages/app build: ? ? /_not-found                                 996 B         102 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]                                 7.46 kB         256 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/admin                           2.55 kB         246 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/articles                        5.42 kB         248 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/articles/[id]                    115 kB         360 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/auth                            2.91 kB         242 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/blog                            1.72 kB         141 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/blog/[slug]                      3.5 kB         133 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/chatbot                         10.7 kB         135 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/comments                        3.43 kB         243 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/contacto                        28.5 kB         152 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/cuenta                          5.34 kB         245 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/dashboard                       3.44 kB         246 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/feedback                         3.6 kB         243 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/herramientas/servicios          2.38 kB         132 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/herramientas/tracker            3.17 kB         243 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/homepage                        3.42 kB         248 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/legal/aviso-legal                 174 B         105 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/legal/descargo-responsabilidad    174 B         105 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/legal/privacidad                  174 B         105 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/legal/terminos                    174 B         105 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/login                           3.25 kB         243 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/recuperacion                    4.18 kB         133 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/recuperacion/password           7.01 kB         247 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/recuperar-password              2.31 kB         237 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/registro                        3.08 kB         238 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/seguridad                         986 B         140 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/suscripcion                     4.19 kB         128 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/users                           3.89 kB         243 kB
+Step #2 - "pack": packages/app build: + First Load JS shared by all                  101 kB
+Step #2 - "pack": packages/app build:   ? chunks/27877061-9ba3884dbaa7cfe6.js       54.2 kB
+Step #2 - "pack": packages/app build:   ? chunks/7759-96501787d7b03936.js           45.3 kB
+Step #2 - "pack": packages/app build:   ? other shared chunks (total)               1.93 kB
+Step #2 - "pack": packages/app build: ? Middleware                                  44.7 kB
+Step #2 - "pack": packages/app build: ?  (Static)   prerendered as static content
+Step #2 - "pack": packages/app build: ?  (Dynamic)  server-rendered on demand
+Step #2 - "pack": packages/app build: Done
+Step #2 - "pack": packages/app postbuild$ node -e "const fs=require('fs');const path=require('path');fs.mkdirSync('.next/standalone/packages/types',{recursive:true});fs.cpSync('../types/dist','.next/standalone/packages/types/dist',{recursive:true});fs.mkdirSync('.next/standalone/.next',{recursive:true});fs.copyFileSync('.next/routes-manifest.json','.next/standalone/.next/routes-manifest.json')"
+Step #2 - "pack": packages/app postbuild: Done
+Step #2 - "pack": node:fs:449
+Step #2 - "pack":     return binding.readFileUtf8(path, stringToFlags(options.flag));
+Step #2 - "pack":                    ^
+Step #2 - "pack":
+Step #2 - "pack": Error: ENOENT: no such file or directory, open '/workspace/.next/standalone/.next/routes-manifest.json'
+Step #2 - "pack":     at readFileSync (node:fs:449:20)
+Step #2 - "pack":     at loadRouteManifest (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/utils.js:35:18)
+Step #2 - "pack":     at addRouteOverrides (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/overrides.js:145:27)
+Step #2 - "pack":     at file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/bin/build.js:37:11
+Step #2 - "pack":     at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+Step #2 - "pack":   errno: -2,
+Step #2 - "pack":   code: 'ENOENT',
+Step #2 - "pack":   syscall: 'open',
+Step #2 - "pack":   path: '/workspace/.next/standalone/.next/routes-manifest.json'
+Step #2 - "pack": }
+Step #2 - "pack":
+Step #2 - "pack": Node.js v20.19.5
+Step #2 - "pack": Done "npm exec --prefix /layers/google.nodejs.firebasenextjs/npm_m..." (1m57.996433529s)
+Step #2 - "pack": --------------------------------------------------------------------------------
+Step #2 - "pack": failed to build: (error ID: f34f96f3):
+Step #2 - "pack": {"reason":"Failed Framework Build","code":"fah/failed-framework-build","userFacingMessage":"Your application failed to run the framework build command 'npm exec --prefix /layers/google.nodejs.firebasenextjs/npm_modules apphosting-adapter-nextjs-build' successfully. Please check the raw log to address the error and confirm that your application builds locally before redeploying.","rawLog":"(error ID: d0a693a9):
+Step #2 - "pack": > brujula-cripto@1.0.0 build
+Step #2 - "pack": > pnpm -r build
+Step #2 - "pack":
+Step #2 - "pack": Scope: 3 of 4 workspace projects
+Step #2 - "pack": packages/types build$ tsc
+Step #2 - "pack": packages/types build: Done
+Step #2 - "pack": packages/functions build$ tsc
+Step #2 - "pack": packages/app prebuild$ cd ../types && npm run build
+Step #2 - "pack": packages/app prebuild: > @brujula-cripto/types@1.0.0 build
+Step #2 - "pack": packages/app prebuild: > tsc
+Step #2 - "pack": packages/app prebuild: Done
+Step #2 - "pack": packages/app build$ next build
+Step #2 - "pack": packages/app build:    ? Next.js 15.5.3
+Step #2 - "pack": packages/app build:    Creating an optimized production build ...
+Step #2 - "pack": packages/functions build: Done
+Step #2 - "pack": packages/app build:  ? Compiled successfully in 31.9s
+Step #2 - "pack": packages/app build:    Linting and checking validity of types ...
+Step #2 - "pack": packages/app build:  ? ESLint: Cannot read config file: /workspace/.eslintrc.js Error: module is not defined in ES module scope This file is being treated as an ES module because it has a '.js' file extension and '/workspace/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+Step #2 - "pack": packages/app build:    Collecting page data ...
+Step #2 - "pack": packages/app build:    Generating static pages (0/3) ...
+Step #2 - "pack": packages/app build:  ? Generating static pages (3/3)
+Step #2 - "pack": packages/app build:    Finalizing page optimization ...
+Step #2 - "pack": packages/app build:    Collecting build traces ...
+Step #2 - "pack": packages/app build: Route (app)                                      Size  First Load JS
+Step #2 - "pack": packages/app build: ? ? /_not-found                                 996 B         102 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]                                 7.46 kB         256 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/admin                           2.55 kB         246 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/articles                        5.42 kB         248 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/articles/[id]                    115 kB         360 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/auth                            2.91 kB         242 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/blog                            1.72 kB         141 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/blog/[slug]                      3.5 kB         133 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/chatbot                         10.7 kB         135 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/comments                        3.43 kB         243 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/contacto                        28.5 kB         152 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/cuenta                          5.34 kB         245 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/dashboard                       3.44 kB         246 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/feedback                         3.6 kB         243 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/herramientas/servicios          2.38 kB         132 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/herramientas/tracker            3.17 kB         243 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/homepage                        3.42 kB         248 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/legal/aviso-legal                 174 B         105 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/legal/descargo-responsabilidad    174 B         105 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/legal/privacidad                  174 B         105 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/legal/terminos                    174 B         105 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/login                           3.25 kB         243 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/recuperacion                    4.18 kB         133 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/recuperacion/password           7.01 kB         247 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/recuperar-password              2.31 kB         237 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/registro                        3.08 kB         238 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/seguridad                         986 B         140 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/suscripcion                     4.19 kB         128 kB
+Step #2 - "pack": packages/app build: ? ? /[locale]/users                           3.89 kB         243 kB
+Step #2 - "pack": packages/app build: + First Load JS shared by all                  101 kB
+Step #2 - "pack": packages/app build:   ? chunks/27877061-9ba3884dbaa7cfe6.js       54.2 kB
+Step #2 - "pack": packages/app build:   ? chunks/7759-96501787d7b03936.js           45.3 kB
+Step #2 - "pack": packages/app build:   ? other shared chunks (total)               1.93 kB
+Step #2 - "pack": packages/app build: ? Middleware                                  44.7 kB
+Step #2 - "pack": packages/app build: ?  (Static)   prerendered as static content
+Step #2 - "pack": packages/app build: ?  (Dynamic)  server-rendered on demand
+Step #2 - "pack": packages/app build: Done
+Step #2 - "pack": packages/app postbuild$ node -e "const fs=require('fs');const path=require('path');fs.mkdirSync('.next/standalone/packages/types',{recursive:true});fs.cpSync('../types/dist','.next/standalone/packages/types/dist',{recursive:true});fs.mkdirSync('.next/standalone/.next',{recursive:true});fs.copyFileSync('.next/routes-manifest.json','.next/standalone/.next/routes-manifest.json')"
+Step #2 - "pack": packages/app postbuild: Done
+Step #2 - "pack": node:fs:449
+Step #2 - "pack":     return binding.readFileUtf8(path, stringToFlags(options.flag));
+Step #2 - "pack":                    ^
+Step #2 - "pack":
+Step #2 - "pack": Error: ENOENT: no such file or directory, open '/workspace/.next/standalone/.next/routes-manifest.json'
+Step #2 - "pack":     at readFileSync (node:fs:449:20)
+Step #2 - "pack":     at loadRouteManifest (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/utils.js:35:18)
+Step #2 - "pack":     at addRouteOverrides (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/overrides.js:145:27)
+Step #2 - "pack":     at file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/bin/build.js:37:11
+Step #2 - "pack":     at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+Step #2 - "pack":   errno: -2,
+Step #2 - "pack":   code: 'ENOENT',
+Step #2 - "pack":   syscall: 'open',
+Step #2 - "pack":   path: '/workspace/.next/standalone/.next/routes-manifest.json'
+Step #2 - "pack": }
+Step #2 - "pack":
+Step #2 - "pack": Node.js v20.19.5"}
+Step #2 - "pack": ERROR: failed to build: exit status 1
+Step #2 - "pack": ERROR: failed to build: executing lifecycle: failed with status code: 51
+Finished Step #2 - "pack"
+ERROR
+ERROR: build step 2 "gcr.io/k8s-skaffold/pack" failed: step exited with non-zero status: 1
+------------------------------------------------------------------------------
