@@ -9,7 +9,11 @@
     "target": "es2017",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@brujula-cripto/types": ["../types/src/index"]
+    }
   },
   "compileOnSave": true,
   "include": ["src"]
