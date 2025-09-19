@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "cd ../types && npm run build",
+    "prebuild": "cd ../types && pnpm build",
     "build": "next build",
     "postbuild": "node -e \"const fs=require('fs');const path=require('path');fs.mkdirSync('.next/standalone/packages/types',{recursive:true});fs.cpSync('../types/dist','.next/standalone/packages/types/dist',{recursive:true});fs.mkdirSync('.next/standalone/.next',{recursive:true});const routesFile=fs.existsSync('.next/routes-manifest.json')?'.next/routes-manifest.json':'.next/app-path-routes-manifest.json';fs.copyFileSync(routesFile,'.next/standalone/.next/routes-manifest.json')\"",
     "start": "NODE_ENV=production node server.js",

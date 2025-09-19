@@ -1,18 +1,6 @@
-# -----------------------------------------------------------------------------
-# ARCHIVO apphosting.yaml DEFINITIVO PARA BRÚJULA CRIPTO
-# -----------------------------------------------------------------------------
-
-# [CORRECCIÓN 1: CONTEXTO DE BUILD]
-# Se establece la raíz del repositorio como el directorio de trabajo.
-# Esto es ESENCIAL para que el Dockerfile pueda acceder a todos los archivos del monorepo.
 rootDirectory: .
-
-# Se especifica la ruta al Dockerfile relativo a la raíz del repositorio.
 dockerfile: packages/app/Dockerfile
 
-# -----------------------------------------------------------------------------
-# CONFIGURACIÓN DEL ENTORNO DE EJECUCIÓN (CLOUD RUN)
-# -----------------------------------------------------------------------------
 runConfig:
   runtime: nodejs20
   minInstances: 0
@@ -21,9 +9,6 @@ runConfig:
   cpu: 1
   memoryMiB: 512
 
-# -----------------------------------------------------------------------------
-# GESTIÓN DE SECRETOS Y VARIABLES DE ENTORNO
-# -----------------------------------------------------------------------------
 env:
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
     secret: NEXT_PUBLIC_FIREBASE_API_KEY
