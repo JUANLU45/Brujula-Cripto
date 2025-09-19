@@ -18,7 +18,9 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          # Cambia la versión 10 a 9.15.9 para que coincida con tu package.json raíz
+          # O podrías eliminar esta línea 'version' si siempre quieres que tome la de package.json
+          version: 9.15.9 
 
       - name: Setup Node
         uses: actions/setup-node@v4
