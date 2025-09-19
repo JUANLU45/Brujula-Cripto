@@ -18,7 +18,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 9.15.9 # Mantenemos esta versión que coincide con tu package.json raíz
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -28,6 +28,10 @@ jobs:
 
       - name: Install deps (workspace)
         run: pnpm install --frozen-lockfile
+
+      # ¡NUEVO PASO! Construir el paquete de tipos antes de la verificación de tipos global
+      - name: Build Types Package
+        run: pnpm --filter @brujula-cripto/types build # Construye solo el paquete de tipos
 
       - name: Typecheck (tsc sin emitir)
         run: |
