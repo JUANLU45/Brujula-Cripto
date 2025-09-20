@@ -388,6 +388,74 @@ function verifyIntegrity(basePaths) {
   log('success', 'Verificación de integridad EXITOSA - Todos los archivos Firebase presentes');
 }
 
+// CRÍTICO: Copiar directorio static donde Firebase App Hosting lo espera
+function copyStaticForFirebase(basePaths) {
+  log('info', 'Copiando estructura .next completa para Firebase App Hosting...');
+
+  // Firebase busca archivos en /workspace/.next/ - necesitamos copiar TODO lo crítico
+  const sourceNextDir = basePaths.nextDir; // /workspace/packages/app/.next
+  const targetNextRootDir = path.join(basePaths.workspaceRoot, '.next'); // /workspace/.next
+
+  // Crear directorio raíz si no existe
+  if (!fs.existsSync(targetNextRootDir)) {
+    fs.mkdirSync(targetNextRootDir, { recursive: true });
+  }
+
+  // Lista de directorios y archivos críticos que Firebase puede necesitar
+  const criticalItems = [
+    'static', // El que causó el error ENOENT
+    'server', // Por si Firebase lo busca también aquí
+    'cache', // Directorio de caché
+    'BUILD_ID', // Archivo de build ID
+    'package.json', // Package info
+    'routes-manifest.json', // Rutas (por si Firebase lo busca aquí también)
+  ];
+
+  let copiedItems = 0;
+  let createdItems = 0;
+
+  criticalItems.forEach((item) => {
+    const sourcePath = path.join(sourceNextDir, item);
+    const targetPath = path.join(targetNextRootDir, item);
+
+    try {
+      if (fs.existsSync(sourcePath)) {
+        const stats = fs.statSync(sourcePath);
+
+        if (stats.isDirectory()) {
+          // Copiar directorio completo
+          fs.cpSync(sourcePath, targetPath, { recursive: true });
+          log('success', `Directorio copiado: ${item}`);
+        } else {
+          // Copiar archivo
+          fs.copyFileSync(sourcePath, targetPath);
+          log('success', `Archivo copiado: ${item}`);
+        }
+        copiedItems++;
+      } else {
+        // Crear directorio vacío o archivo mínimo si no existe
+        if (['static', 'server', 'cache'].includes(item)) {
+          fs.mkdirSync(targetPath, { recursive: true });
+          log('success', `Directorio vacío creado: ${item}`);
+          createdItems++;
+        }
+      }
+    } catch (error) {
+      log('warning', `Error procesando ${item}:`, {
+        error: error.message,
+        source: sourcePath,
+        target: targetPath,
+      });
+    }
+  });
+
+  log('success', 'Estructura .next preparada para Firebase', {
+    targetDir: targetNextRootDir,
+    itemsCopiados: copiedItems,
+    itemsCreados: createdItems,
+  });
+}
+
 // Función principal
 async function main() {
   const startTime = Date.now();
@@ -467,7 +535,10 @@ async function main() {
     // 6. Crear archivos de fallback requeridos
     createFallbackFiles(basePaths);
 
-    // 7. Verificación final
+    // 7. CRÍTICO: Copiar directorio static donde Firebase lo espera
+    copyStaticForFirebase(basePaths);
+
+    // 8. Verificación final
     verifyIntegrity(basePaths);
 
     const duration = Date.now() - startTime;
