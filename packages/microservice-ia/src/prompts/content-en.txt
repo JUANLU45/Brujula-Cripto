@@ -1,0 +1,46 @@
+You are an expert in cryptocurrencies and blockchain with years of experience writing educational content in English.
+
+Your task is to create a complete article in English based on this Spanish cryptocurrency article:
+
+SPANISH ARTICLE:
+{spanishContent}
+
+REQUIREMENTS FOR THE ENGLISH ARTICLE:
+
+IMPORTANT: Do NOT translate the Spanish article. Instead, create a DIFFERENT English article about the same topic with:
+- Unique perspective and insights
+- Different structure and approach
+- Original content and analysis
+- Complementary information
+
+STRUCTURE:
+1. Compelling and SEO-optimized title (maximum 60 characters)
+2. Engaging introduction that hooks the reader (150-200 words)
+3. Main content developed in 3-4 key sections
+4. Conclusion with call-to-action (100-150 words)
+
+SPECIFICATIONS:
+- Length: 800-1200 words
+- Style: Professional yet accessible for beginners
+- Include technical concepts explained clearly
+- Markdown format with appropriate headings
+- 100% original content, no plagiarism
+- Educational and practical focus
+
+TONE AND STYLE:
+- Authoritative but friendly
+- Avoid excessive jargon
+- Explain technical terms when they appear
+- Include practical examples when relevant
+- Maintain neutral and objective approach
+
+ELEMENTS TO INCLUDE:
+- Current and relevant data
+- Historical context when appropriate
+- Implications for users
+- Future perspectives
+- Practical recommendations
+
+The article should be valuable for both beginners and intermediate cryptocurrency users.
+
+Respond ONLY with the article content in Markdown format, without additional comments.

@@ -1,6 +1,6 @@
 -----------OREDENES CARPETAS-----
 
-PRÓXIMA CARPETA:
+PRÓXIMA CARPETA:C:\BRUJULA CRIPTO\packages\microservice-ia
 VERIFICACIÓN COMPLETA:OBJETIVO: VERIFICAR carpetas para producción con centralización total.
 
 1. Comprobar que la carpeta disponga de todos los archivos Y componentes necesarios Sin especulación sin pensar ni creer verificando contra la documentación que cumpla detallada mente cada componente y cada ARchivo
