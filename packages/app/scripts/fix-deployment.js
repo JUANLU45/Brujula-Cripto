@@ -254,20 +254,27 @@ function copyNextJsFiles(basePaths, verificationResult) {
     }
 
     // 3. Copiar archivos adicionales críticos
-    const additionalFiles = ['BUILD_ID', 'package.json', 'export-marker.json'];
+    const additionalFiles = [
+      { file: 'BUILD_ID', source: nextDir },
+      { file: 'package.json', source: nextDir },
+      { file: 'export-marker.json', source: nextDir },
+      { file: 'server.js', source: path.join(nextDir, 'standalone') }, // server.js está en standalone
+    ];
 
-    additionalFiles.forEach((file) => {
-      const source = path.join(nextDir, file);
-      const target = path.join(targetNextDir, file);
+    additionalFiles.forEach(({ file, source }) => {
+      const sourcePath = path.join(source, file);
+      const targetPath = path.join(targetNextDir, file);
 
-      if (fs.existsSync(source)) {
+      if (fs.existsSync(sourcePath)) {
         try {
-          fs.copyFileSync(source, target);
+          fs.copyFileSync(sourcePath, targetPath);
           log('success', `Copiado adicional: ${file}`);
           copiedCount++;
         } catch (error) {
           log('warning', `Error copiando ${file}:`, { error: error.message });
         }
+      } else {
+        log('warning', `Archivo no encontrado: ${sourcePath}`);
       }
     });
 

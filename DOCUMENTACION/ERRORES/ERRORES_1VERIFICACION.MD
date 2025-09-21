@@ -1,246 +1,559 @@
-INFO 2025-09-19T19:43:16.808764954Z Step #2 - "pack": node:fs:449
-INFO 2025-09-19T19:43:16.808783334Z Step #2 - "pack": return binding.readFileUtf8(path, stringToFlags(options.flag));
-INFO 2025-09-19T19:43:16.808784394Z Step #2 - "pack": ^
-INFO 2025-09-19T19:43:16.808784703Z Step #2 - "pack":
-  {
-    "textPayload": "Step #2 - \"pack\": ",
-    "insertId": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48-583",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "project_id": "brujula-cripto",
-        "build_id": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48",
-        "build_trigger_id": ""
-      }
-    },
-    "timestamp": "2025-09-19T19:43:16.808784703Z",
-    "severity": "INFO",
-    "labels": {
-      "build_step": "Step #2 - \"pack\"",
-      "build_tags": "fah,build-2025-09-19-018,backen-brujula-cripto,2dfc1b360782e08a28a8a74e48d218cf00892360,p-fah,r-nodejs,b-nodejs_20250914_RC00,bt-PACK"
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-19T19:43:17.381790876Z"
-  }
-INFO 2025-09-19T19:43:16.808785603Z Step #2 - "pack": Error: ENOENT: no such file or directory, open '/workspace/.next/standalone/.next/routes-manifest.json'
-INFO 2025-09-19T19:43:16.808786254Z Step #2 - "pack": at readFileSync (node:fs:449:20)
-INFO 2025-09-19T19:43:16.808787054Z Step #2 - "pack": at loadRouteManifest (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/utils.js:35:18)
-INFO 2025-09-19T19:43:16.808787723Z Step #2 - "pack": at addRouteOverrides (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/overrides.js:145:27)
-INFO 2025-09-19T19:43:16.808788454Z Step #2 - "pack": at file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/bin/build.js:37:11
-INFO 2025-09-19T19:43:16.808790394Z Step #2 - "pack": at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
-INFO 2025-09-19T19:43:16.808790703Z Step #2 - "pack": errno: -2,
-  {
-    "textPayload": "Step #2 - \"pack\":   errno: -2,",
-    "insertId": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48-590",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "build_trigger_id": "",
-        "build_id": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48",
-        "project_id": "brujula-cripto"
-      }
-    },
-    "timestamp": "2025-09-19T19:43:16.808790703Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-19-018,backen-brujula-cripto,2dfc1b360782e08a28a8a74e48d218cf00892360,p-fah,r-nodejs,b-nodejs_20250914_RC00,bt-PACK",
-      "build_step": "Step #2 - \"pack\""
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-19T19:43:17.381790876Z"
-  }
-INFO 2025-09-19T19:43:16.808790963Z Step #2 - "pack": code: 'ENOENT',
-INFO 2025-09-19T19:43:16.808791963Z Step #2 - "pack": syscall: 'open',
-INFO 2025-09-19T19:43:16.808794963Z Step #2 - "pack": path: '/workspace/.next/standalone/.next/routes-manifest.json'
-INFO 2025-09-19T19:43:16.808795223Z Step #2 - "pack": }
-INFO 2025-09-19T19:43:16.808796123Z Step #2 - "pack":
-INFO 2025-09-19T19:43:16.808797463Z Step #2 - "pack": Node.js v20.19.5
-INFO 2025-09-19T19:43:16.824913543Z Step #2 - "pack": Done "npm exec --prefix /layers/google.nodejs.firebasenextjs/npm_m..." (1m19.691295132s)
-INFO 2025-09-19T19:43:16.833818803Z Step #2 - "pack": --------------------------------------------------------------------------------
-INFO 2025-09-19T19:43:16.833830263Z Step #2 - "pack": failed to build: (error ID: fecc284c):
-INFO 2025-09-19T19:43:16.833832423Z Step #2 - "pack": {"reason":"Failed Framework Build","code":"fah/failed-framework-build","userFacingMessage":"Your application failed to run the framework build command 'npm exec --prefix /layers/google.nodejs.firebasenextjs/npm_modules apphosting-adapter-nextjs-build' successfully. Please check the raw log to address the error and confirm that your application builds locally before redeploying.","rawLog":"(error ID: d0a693a9):
-INFO 2025-09-19T19:43:16.833833003Z Step #2 - "pack": > brujula-cripto@1.0.0 build
-INFO 2025-09-19T19:43:16.833833613Z Step #2 - "pack": > pnpm -r build
-INFO 2025-09-19T19:43:16.833836293Z Step #2 - "pack":
-INFO 2025-09-19T19:43:16.833836663Z Step #2 - "pack": Scope: 3 of 4 workspace projects
-INFO 2025-09-19T19:43:16.833836913Z Step #2 - "pack": packages/types build$ tsc
-INFO 2025-09-19T19:43:16.833837333Z Step #2 - "pack": packages/types build: Done
-INFO 2025-09-19T19:43:16.833837643Z Step #2 - "pack": packages/app prebuild$ cd ../types && pnpm build
-INFO 2025-09-19T19:43:16.833837953Z Step #2 - "pack": packages/functions build$ tsc
-INFO 2025-09-19T19:43:16.833838743Z Step #2 - "pack": packages/app prebuild: > @brujula-cripto/types@1.0.0 build /workspace/packages/types
-INFO 2025-09-19T19:43:16.833838973Z Step #2 - "pack": packages/app prebuild: > tsc
-INFO 2025-09-19T19:43:16.833839213Z Step #2 - "pack": packages/app prebuild: Done
-INFO 2025-09-19T19:43:16.833839463Z Step #2 - "pack": packages/app build$ next build
-INFO 2025-09-19T19:43:16.833839893Z Step #2 - "pack": packages/app build: ▲ Next.js 15.5.3
-INFO 2025-09-19T19:43:16.833840293Z Step #2 - "pack": packages/app build: Creating an optimized production build ...
-INFO 2025-09-19T19:43:16.833842013Z Step #2 - "pack": packages/functions build: Done
-INFO 2025-09-19T19:43:16.833842563Z Step #2 - "pack": packages/app build: ✓ Compiled successfully in 21.8s
-INFO 2025-09-19T19:43:16.833843083Z Step #2 - "pack": packages/app build: Linting and checking validity of types ...
-INFO 2025-09-19T19:43:16.833845083Z Step #2 - "pack": packages/app build: ⨯ ESLint: Plugin "react-hooks" was conflicted between ".eslintrc.json » eslint-config-next/core-web-vitals » /workspace/node_modules/.pnpm/eslint-config-next@15.5.3_eslint@8.57.1_typescript@5.9.2/node_modules/eslint-config-next/index.js » plugin:react-hooks/recommended" and "../../.eslintrc.cjs » eslint-config-next/core-web-vitals » /workspace/node_modules/.pnpm/eslint-config-next@15.5.3_eslint@9.35.0_jiti@1.21.7__typescript@5.9.2/node_modules/eslint-config-next/index.js » plugin:react-hooks/recommended".
-INFO 2025-09-19T19:43:16.833845443Z Step #2 - "pack": packages/app build: Collecting page data ...
-INFO 2025-09-19T19:43:16.833846223Z Step #2 - "pack": packages/app build: Generating static pages (0/3) ...
-INFO 2025-09-19T19:43:16.833846633Z Step #2 - "pack": packages/app build: ✓ Generating static pages (3/3)
-INFO 2025-09-19T19:43:16.833847023Z Step #2 - "pack": packages/app build: Finalizing page optimization ...
-INFO 2025-09-19T19:43:16.833849553Z Step #2 - "pack": packages/app build: Collecting build traces ...
-INFO 2025-09-19T19:43:16.833850053Z Step #2 - "pack": packages/app build: Route (app) Size First Load JS
-INFO 2025-09-19T19:43:16.833852393Z Step #2 - "pack": packages/app build: ┌ ○ /_not-found 996 B 102 kB
-INFO 2025-09-19T19:43:16.833853513Z Step #2 - "pack": packages/app build: ├ ƒ /[locale] 7.47 kB 256 kB
-INFO 2025-09-19T19:43:16.833853813Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/admin 2.55 kB 246 kB
-INFO 2025-09-19T19:43:16.833855593Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/articles 5.42 kB 248 kB
-INFO 2025-09-19T19:43:16.833856233Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/articles/[id] 115 kB 360 kB
-INFO 2025-09-19T19:43:16.833856593Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/auth 2.91 kB 243 kB
-INFO 2025-09-19T19:43:16.833856943Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/blog 1.72 kB 141 kB
-INFO 2025-09-19T19:43:16.833857293Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/blog/[slug] 3.5 kB 133 kB
-INFO 2025-09-19T19:43:16.833857663Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/chatbot 10.7 kB 135 kB
-INFO 2025-09-19T19:43:16.833858003Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/comments 3.43 kB 243 kB
-INFO 2025-09-19T19:43:16.833858343Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/contacto 28.5 kB 152 kB
-INFO 2025-09-19T19:43:16.833858683Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/cuenta 5.31 kB 245 kB
-INFO 2025-09-19T19:43:16.833859063Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/dashboard 3.44 kB 246 kB
-INFO 2025-09-19T19:43:16.833859443Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/feedback 3.6 kB 243 kB
-INFO 2025-09-19T19:43:16.833859833Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/herramientas/servicios 2.38 kB 132 kB
-INFO 2025-09-19T19:43:16.833860213Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/herramientas/tracker 3.17 kB 243 kB
-INFO 2025-09-19T19:43:16.833860583Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/homepage 3.42 kB 248 kB
-INFO 2025-09-19T19:43:16.833861033Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/aviso-legal 174 B 105 kB
-INFO 2025-09-19T19:43:16.833861373Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/descargo-responsabilidad 174 B 105 kB
-INFO 2025-09-19T19:43:16.833861883Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/privacidad 174 B 105 kB
-INFO 2025-09-19T19:43:16.833862233Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/legal/terminos 174 B 105 kB
-INFO 2025-09-19T19:43:16.833862583Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/login 3.25 kB 243 kB
-INFO 2025-09-19T19:43:16.833863043Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/recuperacion 4.18 kB 133 kB
-INFO 2025-09-19T19:43:16.833863413Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/recuperacion/password 6.97 kB 247 kB
-INFO 2025-09-19T19:43:16.833863783Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/recuperar-password 2.31 kB 237 kB
-INFO 2025-09-19T19:43:16.833864153Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/registro 3.08 kB 238 kB
-INFO 2025-09-19T19:43:16.833864513Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/seguridad 986 B 140 kB
-INFO 2025-09-19T19:43:16.833864873Z Step #2 - "pack": packages/app build: ├ ƒ /[locale]/suscripcion 4.19 kB 128 kB
-INFO 2025-09-19T19:43:16.833865233Z Step #2 - "pack": packages/app build: └ ƒ /[locale]/users 3.89 kB 244 kB
-INFO 2025-09-19T19:43:16.833865583Z Step #2 - "pack": packages/app build: + First Load JS shared by all 101 kB
-INFO 2025-09-19T19:43:16.833865953Z Step #2 - "pack": packages/app build: ├ chunks/27877061-9ba3884dbaa7cfe6.js 54.2 kB
-INFO 2025-09-19T19:43:16.833866303Z Step #2 - "pack": packages/app build: ├ chunks/7759-96501787d7b03936.js 45.3 kB
-INFO 2025-09-19T19:43:16.833866653Z Step #2 - "pack": packages/app build: └ other shared chunks (total) 1.93 kB
-INFO 2025-09-19T19:43:16.833873913Z Step #2 - "pack": packages/app build: ƒ Middleware 44.8 kB
-INFO 2025-09-19T19:43:16.833874233Z Step #2 - "pack": packages/app build: ○ (Static) prerendered as static content
-INFO 2025-09-19T19:43:16.833874553Z Step #2 - "pack": packages/app build: ƒ (Dynamic) server-rendered on demand
-INFO 2025-09-19T19:43:16.833875173Z Step #2 - "pack": packages/app build: Done
-INFO 2025-09-19T19:43:16.833876383Z Step #2 - "pack": packages/app postbuild$ node -e "const fs=require('fs');const path=require('path');fs.mkdirSync('.next/standalone/packages/types',{recursive:true});fs.cpSync('../types/dist','.next/standalone/packages/types/dist',{recursive:true});fs.mkdirSync('.next/standalone/.next',{recursive:true});const routesFile=fs.existsSync('.next/routes-manifest.json')?'.next/routes-manifest.json':'.next/app-path-routes-manifest.json';fs.copyFileSync(routesFile,'.next/standalone/.next/routes-manifest.json');"
-INFO 2025-09-19T19:43:16.833876743Z Step #2 - "pack": packages/app postbuild: Done
-INFO 2025-09-19T19:43:16.833877023Z Step #2 - "pack": node:fs:449
-INFO 2025-09-19T19:43:16.833877323Z Step #2 - "pack": return binding.readFileUtf8(path, stringToFlags(options.flag));
-INFO 2025-09-19T19:43:16.833877573Z Step #2 - "pack": ^
-INFO 2025-09-19T19:43:16.833877763Z Step #2 - "pack":
-INFO 2025-09-19T19:43:16.833878473Z Step #2 - "pack": Error: ENOENT: no such file or directory, open '/workspace/.next/standalone/.next/routes-manifest.json'
-INFO 2025-09-19T19:43:16.833878883Z Step #2 - "pack": at readFileSync (node:fs:449:20)
-INFO 2025-09-19T19:43:16.833879643Z Step #2 - "pack": at loadRouteManifest (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/utils.js:35:18)
-INFO 2025-09-19T19:43:16.833880343Z Step #2 - "pack": at addRouteOverrides (file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/overrides.js:145:27)
-INFO 2025-09-19T19:43:16.833880943Z Step #2 - "pack": at file:///layers/google.nodejs.firebasenextjs/npm_modules/node_modules/@apphosting/adapter-nextjs/dist/bin/build.js:37:11
-INFO 2025-09-19T19:43:16.833881323Z Step #2 - "pack": at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
-INFO 2025-09-19T19:43:16.833881633Z Step #2 - "pack": errno: -2,
-  {
-    "textPayload": "Step #2 - \"pack\":   errno: -2,",
-    "insertId": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48-674",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "project_id": "brujula-cripto",
-        "build_id": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48",
-        "build_trigger_id": ""
-      }
-    },
-    "timestamp": "2025-09-19T19:43:16.833881633Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-19-018,backen-brujula-cripto,2dfc1b360782e08a28a8a74e48d218cf00892360,p-fah,r-nodejs,b-nodejs_20250914_RC00,bt-PACK",
-      "build_step": "Step #2 - \"pack\""
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-19T19:43:17.381790876Z"
-  }
-INFO 2025-09-19T19:43:16.833881903Z Step #2 - "pack": code: 'ENOENT',
-INFO 2025-09-19T19:43:16.833882283Z Step #2 - "pack": syscall: 'open',
-INFO 2025-09-19T19:43:16.833882623Z Step #2 - "pack": path: '/workspace/.next/standalone/.next/routes-manifest.json'
-INFO 2025-09-19T19:43:16.833882823Z Step #2 - "pack": }
-INFO 2025-09-19T19:43:16.833883143Z Step #2 - "pack":
-INFO 2025-09-19T19:43:16.833883423Z Step #2 - "pack": Node.js v20.19.5"}
-INFO 2025-09-19T19:43:16.835322423Z Step #2 - "pack": ERROR: failed to build: exit status 1
-  {
-    "textPayload": "Step #2 - \"pack\": ERROR: failed to build: exit status 1",
-    "insertId": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48-681",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "project_id": "brujula-cripto",
-        "build_id": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48",
-        "build_trigger_id": ""
-      }
-    },
-    "timestamp": "2025-09-19T19:43:16.835322423Z",
-    "severity": "INFO",
-    "labels": {
-      "build_step": "Step #2 - \"pack\"",
-      "build_tags": "fah,build-2025-09-19-018,backen-brujula-cripto,2dfc1b360782e08a28a8a74e48d218cf00892360,p-fah,r-nodejs,b-nodejs_20250914_RC00,bt-PACK"
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-19T19:43:17.381790876Z"
-  }
-INFO 2025-09-19T19:43:19.244378134Z Step #2 - "pack": ERROR: failed to build: executing lifecycle: failed with status code: 51
-  {
-    "textPayload": "Step #2 - \"pack\": ERROR: failed to build: executing lifecycle: failed with status code: 51",
-    "insertId": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48-682",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "project_id": "brujula-cripto",
-        "build_trigger_id": "",
-        "build_id": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48"
-      }
-    },
-    "timestamp": "2025-09-19T19:43:19.244378134Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-19-018,backen-brujula-cripto,2dfc1b360782e08a28a8a74e48d218cf00892360,p-fah,r-nodejs,b-nodejs_20250914_RC00,bt-PACK",
-      "build_step": "Step #2 - \"pack\""
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-19T19:43:19.346240345Z"
-  }
-INFO 2025-09-19T19:43:19.510021043Z Finished Step #2 - "pack"
-INFO 2025-09-19T19:43:19.510099653Z ERROR
-  {
-    "textPayload": "ERROR",
-    "insertId": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48-684",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "build_trigger_id": "",
-        "build_id": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48",
-        "project_id": "brujula-cripto"
-      }
-    },
-    "timestamp": "2025-09-19T19:43:19.510099653Z",
-    "severity": "INFO",
-    "labels": {
-      "build_step": "MAIN",
-      "build_tags": "fah,build-2025-09-19-018,backen-brujula-cripto,2dfc1b360782e08a28a8a74e48d218cf00892360,p-fah,r-nodejs,b-nodejs_20250914_RC00,bt-PACK"
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-19T19:43:19.619599490Z"
-  }
-INFO 2025-09-19T19:43:19.510114903Z ERROR: build step 2 "gcr.io/k8s-skaffold/pack" failed: step exited with non-zero status: 1
-  {
-    "textPayload": "ERROR: build step 2 \"gcr.io/k8s-skaffold/pack\" failed: step exited with non-zero status: 1",
-    "insertId": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48-685",
-    "resource": {
-      "type": "build",
-      "labels": {
-        "project_id": "brujula-cripto",
-        "build_trigger_id": "",
-        "build_id": "e7a02558-e5e8-467f-ae7d-0cb4ac51fa48"
-      }
-    },
-    "timestamp": "2025-09-19T19:43:19.510114903Z",
-    "severity": "INFO",
-    "labels": {
-      "build_tags": "fah,build-2025-09-19-018,backen-brujula-cripto,2dfc1b360782e08a28a8a74e48d218cf00892360,p-fah,r-nodejs,b-nodejs_20250914_RC00,bt-PACK",
-      "build_step": "MAIN"
-    },
-    "logName": "projects/brujula-cripto/logs/cloudbuild",
-    "receiveTimestamp": "2025-09-19T19:43:19.619599490Z"
-  }
+e muestran los registros de los últimos 30 días, de 22/8/25, 9:06 p.m. a 21/9/25, 9:06 p.m..
+2025-09-20 11:23:08.039
+Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.
+
+{
+insertId: "68ce727c00009a561a788cde"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988b9d57296b1b108c434faf9cd7ccc1aca6e204b3c23324a11bec080e25aa4940bf77389361e30bcefbf992438a7174c82fc00dd640fb6edbae394f62e452dd86586f998c63571e132b2c5"
+scaling_reason: "DEPLOYMENT_ROLLOUT"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem"
+receiveTimestamp: "2025-09-20T09:23:08.046096524Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+severity: "INFO"
+textPayload: "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check."
+timestamp: "2025-09-20T09:23:08.039510Z"
+}
+2025-09-20 11:23:08.956
+node:internal/modules/cjs/loader:1210
+
+{
+insertId: "68ce727c000e96f1cc405bbd"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988b9d57296b1b108c434faf9cd7ccc1aca6e204b3c23324a11bec080e25aa4940bf77389361e30bcefbf992438a7174c82fc00dd640fb6edbae394f62e452dd86586f998c63571e132b2c5"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
+receiveTimestamp: "2025-09-20T09:23:08.962282915Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+textPayload: "node:internal/modules/cjs/loader:1210"
+timestamp: "2025-09-20T09:23:08.956145Z"
+}
+2025-09-20 11:23:08.956
+  throw err;
+
+{
+insertId: "68ce727c000e970b6157b545"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988b9d57296b1b108c434faf9cd7ccc1aca6e204b3c23324a11bec080e25aa4940bf77389361e30bcefbf992438a7174c82fc00dd640fb6edbae394f62e452dd86586f998c63571e132b2c5"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
+receiveTimestamp: "2025-09-20T09:23:08.962282915Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+textPayload: "  throw err;"
+timestamp: "2025-09-20T09:23:08.956171Z"
+}
+2025-09-20 11:23:08.956
+  ^
+2025-09-20 11:23:08.956
+Error: Cannot find module '/workspace/.next/standalone/server.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+
+{
+errorGroups: [
+0: {
+id: "CNWu5da0iZ-3Og"
+}
+]
+insertId: "68ce727c000e97383627067c"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988b9d57296b1b108c434faf9cd7ccc1aca6e204b3c23324a11bec080e25aa4940bf77389361e30bcefbf992438a7174c82fc00dd640fb6edbae394f62e452dd86586f998c63571e132b2c5"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
+receiveTimestamp: "2025-09-20T09:23:08.962282915Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+severity: "ERROR"
+textPayload: "Error: Cannot find module '/workspace/.next/standalone/server.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {"
+timestamp: "2025-09-20T09:23:08.956216Z"
+}
+2025-09-20 11:23:08.956
+  code: 'MODULE_NOT_FOUND',
+
+{
+insertId: "68ce727c000e973cec0b2f58"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988b9d57296b1b108c434faf9cd7ccc1aca6e204b3c23324a11bec080e25aa4940bf77389361e30bcefbf992438a7174c82fc00dd640fb6edbae394f62e452dd86586f998c63571e132b2c5"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
+receiveTimestamp: "2025-09-20T09:23:08.962282915Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+textPayload: "  code: 'MODULE_NOT_FOUND',"
+timestamp: "2025-09-20T09:23:08.956220Z"
+}
+2025-09-20 11:23:08.956
+  requireStack: []
+
+{
+insertId: "68ce727c000e97419b4e1b5e"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988b9d57296b1b108c434faf9cd7ccc1aca6e204b3c23324a11bec080e25aa4940bf77389361e30bcefbf992438a7174c82fc00dd640fb6edbae394f62e452dd86586f998c63571e132b2c5"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
+receiveTimestamp: "2025-09-20T09:23:08.962282915Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+textPayload: "  requireStack: []"
+timestamp: "2025-09-20T09:23:08.956225Z"
+}
+2025-09-20 11:23:08.956
+}
+
+{
+insertId: "68ce727c000e97501fdf9958"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988b9d57296b1b108c434faf9cd7ccc1aca6e204b3c23324a11bec080e25aa4940bf77389361e30bcefbf992438a7174c82fc00dd640fb6edbae394f62e452dd86586f998c63571e132b2c5"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
+receiveTimestamp: "2025-09-20T09:23:08.962282915Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+textPayload: "}"
+timestamp: "2025-09-20T09:23:08.956240Z"
+}
+2025-09-20 11:23:08.956
+Node.js v20.19.5
+
+{
+insertId: "68ce727c000e975652bd4788"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988b9d57296b1b108c434faf9cd7ccc1aca6e204b3c23324a11bec080e25aa4940bf77389361e30bcefbf992438a7174c82fc00dd640fb6edbae394f62e452dd86586f998c63571e132b2c5"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
+receiveTimestamp: "2025-09-20T09:23:08.962282915Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+textPayload: "Node.js v20.19.5"
+timestamp: "2025-09-20T09:23:08.956246Z"
+}
+2025-09-20 11:23:09.403
+Container called exit(1).
+
+{
+insertId: "68ce727d000628c040f0d032"
+labels: {
+container_name: "backen-brujula-cripto-1"
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988b9d57296b1b108c434faf9cd7ccc1aca6e204b3c23324a11bec080e25aa4940bf77389361e30bcefbf992438a7174c82fc00dd640fb6edbae394f62e452dd86586f998c63571e132b2c5"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem"
+receiveTimestamp: "2025-09-20T09:23:09.709802398Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+severity: "WARNING"
+textPayload: "Container called exit(1)."
+timestamp: "2025-09-20T09:23:09.403637130Z"
+}
+2025-09-20 11:23:09.515
+Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started.
+Connection failed with status CANCELLED.
+
+{
+insertId: "68ce727d0007df54984dbe36"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988b9d57296b1b108c434faf9cd7ccc1aca6e204b3c23324a11bec080e25aa4940bf77389361e30bcefbf992438a7174c82fc00dd640fb6edbae394f62e452dd86586f998c63571e132b2c5"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem"
+receiveTimestamp: "2025-09-20T09:23:09.709802398Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+severity: "ERROR"
+textPayload: "Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started.
+Connection failed with status CANCELLED."
+timestamp: "2025-09-20T09:23:09.515924Z"
+}
+2025-09-20 11:23:09.529
+
+Cloud Run
+
+UpdateService
+
+…cken-brujula-cripto-build-2025-09-20-003
+Ready condition status changed to False for Revision backen-brujula-cripto-build-2025-09-20-003 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
+
+Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-20-003&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-20-003%22 
+For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
+
+{
+insertId: "uu8o1ldq776"
+logName: "projects/brujula-cripto/logs/cloudaudit.googleapis.com%2Fsystem_event"
+protoPayload: {
+@type: "type.googleapis.com/google.cloud.audit.AuditLog"
+methodName: "/Services.UpdateService"
+resourceName: "namespaces/brujula-cripto/revisions/backen-brujula-cripto-build-2025-09-20-003"
+response: {
+@type: "type.googleapis.com/google.cloud.run.v1.Revision"
+apiVersion: "serving.knative.dev/v1"
+kind: "Revision"
+metadata: {
+annotations: {
+autoscaling.knative.dev/maxScale: "10"
+autoscaling.knative.dev/minScale: "0"
+run.googleapis.com/cpu-throttling: "true"
+run.googleapis.com/execution-environment: "gen1"
+run.googleapis.com/ingress: "all"
+run.googleapis.com/operation-id: "4e8a205b-3a5b-4c63-9b13-c1c377e38a46"
+run.googleapis.com/secrets: "secret-alias-1:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_API_KEY,secret-alias-10:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,secret-alias-11:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_1H,secret-alias-12:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_5H,secret-alias-13:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_10H,secret-alias-2:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,secret-alias-3:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_PROJECT_ID,secret-alias-4:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,secret-alias-5:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,secret-alias-6:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_APP_ID,secret-alias-7:projects/442091888028/secrets/NEXT_PUBLIC_API_BASE_URL,secret-alias-8:projects/442091888028/secrets/NEXT_PUBLIC_BASE_URL,secret-alias-9:projects/442091888028/secrets/NEXT_PUBLIC_APP_URL"
+run.googleapis.com/sessionAffinity: "false"
+run.googleapis.com/startup-cpu-boost: "true"
+serving.knative.dev/creator: "service-442091888028@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"
+}
+creationTimestamp: "2025-09-20T09:22:40.954105Z"
+generation: 1
+labels: {
+cloud.googleapis.com/location: "us-central1"
+goog-managed-by: "firebase-app-hosting"
+run.googleapis.com/startupProbeType: "Default"
+serving.knative.dev/configuration: "backen-brujula-cripto"
+serving.knative.dev/configurationGeneration: "3"
+serving.knative.dev/route: "backen-brujula-cripto"
+serving.knative.dev/service: "backen-brujula-cripto"
+serving.knative.dev/serviceUid: "a2e5ddfb-7366-40cc-ac76-829e6d38804d"
+}
+name: "backen-brujula-cripto-build-2025-09-20-003"
+namespace: "442091888028"
+ownerReferences: [
+0: {
+apiVersion: "serving.knative.dev/v1"
+blockOwnerDeletion: true
+controller: true
+kind: "Configuration"
+name: "backen-brujula-cripto"
+uid: "75ab64cb-27d1-46ba-a526-d9233c150b33"
+}
+]
+resourceVersion: "AAY/OCJ7ucM"
+selfLink: "/apis/serving.knative.dev/v1/namespaces/442091888028/revisions/backen-brujula-cripto-build-2025-09-20-003"
+uid: "2c556695-2e05-4970-84b4-17ea40cba649"
+}
+spec: {
+containerConcurrency: 80
+containers: [
+0: {
+env: [
+0: {
+name: "NEXT_PUBLIC_FIREBASE_API_KEY"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-1"
+}
+}
+}
+1: {
+name: "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-2"
+}
+}
+}
+2: {
+name: "NEXT_PUBLIC_FIREBASE_PROJECT_ID"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-3"
+}
+}
+}
+3: {
+name: "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-4"
+}
+}
+}
+4: {
+name: "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-5"
+}
+}
+}
+5: {
+name: "NEXT_PUBLIC_FIREBASE_APP_ID"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-6"
+}
+}
+}
+6: {
+name: "NEXT_PUBLIC_API_BASE_URL"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-7"
+}
+}
+}
+7: {
+name: "NEXT_PUBLIC_BASE_URL"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-8"
+}
+}
+}
+8: {
+name: "NEXT_PUBLIC_APP_URL"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-9"
+}
+}
+}
+9: {
+name: "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-10"
+}
+}
+}
+10: {
+name: "NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_1H"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-11"
+}
+}
+}
+11: {
+name: "NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_5H"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-12"
+}
+}
+}
+12: {
+name: "NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_10H"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-13"
+}
+}
+}
+13: {
+name: "FIREBASE_CONFIG"
+value: "{"databaseURL":"","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}"
+}
+]
+image: "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto@sha256:a8c9625a87c409384f5bbf883f650fd8026f48789f8ebf8c73cc978fa3bc4daa"
+name: "backen-brujula-cripto-1"
+ports: [
+0: {
+containerPort: 8080
+name: "http1"
+}
+]
+resources: {
+limits: {
+cpu: "1.00"
+memory: "512Mi"
+}
+}
+startupProbe: {
+failureThreshold: 1
+periodSeconds: 240
+tcpSocket: {
+port: 8080
+}
+timeoutSeconds: 240
+}
+}
+]
+serviceAccountName: "firebase-app-hosting-compute@brujula-cripto.iam.gserviceaccount.com"
+timeoutSeconds: 300
+}
+status: {
+conditions: [
+0: {
+lastTransitionTime: "2025-09-20T09:23:09.516227Z"
+message: "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
+
+Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-20-003&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-20-003%22 
+For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+reason: "HealthCheckContainerError"
+status: "False"
+type: "Ready"
+}
+1: {
+lastTransitionTime: "2025-09-20T09:23:09.516227Z"
+message: "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
+
+Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-20-003&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-20-003%22 
+For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+reason: "HealthCheckContainerError"
+status: "False"
+type: "ContainerHealthy"
+}
+2: {
+lastTransitionTime: "2025-09-20T09:23:06.425879Z"
+message: "Container image import completed in 24.66s."
+status: "True"
+type: "ContainerReady"
+}
+3: {
+lastTransitionTime: "2025-09-20T09:23:07.868982Z"
+message: "Provisioning imported containers completed in 1.44s. Checking container health. This will wait for up to 4m for the configured startup probe, including an initial delay of 0s."
+status: "True"
+type: "ResourcesAvailable"
+}
+4: {
+lastTransitionTime: "2025-09-20T09:23:07.868982Z"
+message: "System will retry after 0:00:00 from lastTransitionTime for attempt 0."
+reason: "ImmediateRetry"
+severity: "Info"
+status: "True"
+type: "Retry"
+}
+]
+containerStatuses: [
+0: {
+imageDigest: "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto@sha256:a8c9625a87c409384f5bbf883f650fd8026f48789f8ebf8c73cc978fa3bc4daa"
+name: "backen-brujula-cripto-1"
+}
+]
+imageDigest: "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto@sha256:a8c9625a87c409384f5bbf883f650fd8026f48789f8ebf8c73cc978fa3bc4daa"
+logUrl: "https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-20-003&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-20-003%22"
+observedGeneration: 1
+}
+}
+serviceName: "run.googleapis.com"
+status: {
+code: 9
+message: "Ready condition status changed to False for Revision backen-brujula-cripto-build-2025-09-20-003 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
+
+Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-20-003&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-20-003%22 
+For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+}
+}
+receiveTimestamp: "2025-09-20T09:23:10.368294807Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-20-003"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+severity: "ERROR"
+timestamp: "2025-09-20T09:23:09.529692Z"
+}
