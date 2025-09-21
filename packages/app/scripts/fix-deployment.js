@@ -260,9 +260,9 @@ function copyNextJsFiles(basePaths, verificationResult) {
       { file: 'export-marker.json', source: nextDir, target: targetNextDir },
       {
         file: 'server.js',
-        source: path.join(nextDir, 'standalone'),
+        source: path.join(nextDir, 'standalone', 'packages', 'app'),
         target: basePaths.standaloneDir,
-      }, // server.js va directo a standalone
+      }, // server.js ubicación real en monorepo: .next/standalone/packages/app/server.js
     ];
 
     additionalFiles.forEach(({ file, source, target }) => {
