@@ -269,7 +269,7 @@ function copyNextJsFiles(basePaths, verificationResult) {
         file: 'server.js',
         source: path.join(nextDir, 'standalone', 'packages', 'app'),
         target: path.join(basePaths.workspaceRoot, '.next', 'standalone'),
-        targetName: 'server.cjs', // Para Firebase App Hosting
+        targetName: 'server.js', // Firebase busca EXACTAMENTE este archivo
       },
     ];
 
@@ -377,9 +377,25 @@ function createFallbackFiles(basePaths) {
   }
 
   log('success', 'Todos los archivos de fallback creados exitosamente');
-}
 
-// Copiar manifest de rutas con fallback robusto (LEGACY - ahora incluido en copyNextJsFiles)
+  // CRÍTICO: Eliminar "type": "module" del package.json standalone para evitar conflicto ES modules
+  const standalonePackageJsonPath = path.join(basePaths.standaloneDir, 'package.json');
+  if (fs.existsSync(standalonePackageJsonPath)) {
+    try {
+      const packageJson = JSON.parse(fs.readFileSync(standalonePackageJsonPath, 'utf8'));
+      if (packageJson.type === 'module') {
+        delete packageJson.type;
+        fs.writeFileSync(standalonePackageJsonPath, JSON.stringify(packageJson, null, 2));
+        log(
+          'success',
+          'Eliminado "type": "module" del package.json standalone para compatibilidad',
+        );
+      }
+    } catch (error) {
+      log('warning', 'Error modificando package.json standalone:', { error: error.message });
+    }
+  }
+} // Copiar manifest de rutas con fallback robusto (LEGACY - ahora incluido en copyNextJsFiles)
 function copyRoutesManifest(basePaths, routesFile) {
   log('info', 'Función legacy - routes manifest incluido en copyNextJsFiles');
   // Esta función ahora es redundante pero se mantiene por compatibilidad

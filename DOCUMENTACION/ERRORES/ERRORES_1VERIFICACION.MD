@@ -1,362 +1,447 @@
-2025-09-18 00:28:45.233
-
-Cloud Run
-
-CreateService
-
-us-central1:backen-brujula-cripto
-
-service-442091888028@gcp-…
-audit_log, method: "google.cloud.run.v2.Services.CreateService", principal_email: "service-442091888028@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"
-2025-09-18 00:28:45.520
-
-Cloud Run
-
-CreateService
-
-us-central1:backen-brujula-cripto
-
-service-442091888028@gcp-…
-audit_log, method: "google.cloud.run.v2.Services.CreateService", principal_email: "service-442091888028@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"
-2025-09-18 00:30:11.430
+Se muestran los registros de los últimos 30 días, de 23/8/25, 12:04 a.m. a 22/9/25, 12:04 a.m..
+2025-09-22 00:03:24.670
 Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.
-2025-09-18 00:30:12.376
-node:internal/modules/cjs/loader:1210
-
-2025-09-18 00:30:12.376
-  throw err;
-2025-09-18 00:30:12.376
-  ^
-2025-09-18 00:30:12.376
-Error: Cannot find module '/workspace/.next/standalone/server.js'     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)     at Module._load (node:internal/modules/cjs/loader:1038:27)     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)     at node:internal/main/run_main_module:28:49 {
 
 {
-errorGroups: [1]
-insertId: "68cb36740005c09b1b971466"
-labels: {2}
-logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
-receiveTimestamp: "2025-09-17T22:30:12.383587624Z"
-resource: {2}
-severity: "ERROR"
-textPayload: "Error: Cannot find module '/workspace/.next/standalone/server.js'
-    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
-    at Module._load (node:internal/modules/cjs/loader:1038:27)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
-    at node:internal/main/run_main_module:28:49 {"
-timestamp: "2025-09-17T22:30:12.376987Z"
-}
-2025-09-18 00:30:12.376
-  code: 'MODULE_NOT_FOUND',
-2025-09-18 00:30:12.376
-  requireStack: []
-2025-09-18 00:30:12.376
-}
-2025-09-18 00:30:12.377
-Node.js v20.19.5
-2025-09-18 00:30:12.674
-Container called exit(1).
-2025-09-18 00:30:12.786
-Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
-
-{
-insertId: "68cb3674000bff027fbb3140"
-labels: {2}
-logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem"
-receiveTimestamp: "2025-09-17T22:30:13.101669518Z"
-resource: {2}
-severity: "ERROR"
-textPayload: "Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started.
-Connection failed with status CANCELLED."
-timestamp: "2025-09-17T22:30:12.786178Z"
-}
-2025-09-18 00:30:12.791
-
-Cloud Run
-
-CreateService
-
-…cken-brujula-cripto-build-2025-09-17-020
-Ready condition status changed to False for Revision backen-brujula-cripto-build-2025-09-17-020 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.  Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-17-020&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-17-020%22  For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
-
-{
-insertId: "-sa8jqpdjzig"
-logName: "projects/brujula-cripto/logs/cloudaudit.googleapis.com%2Fsystem_event"
-protoPayload: {
-@type: "type.googleapis.com/google.cloud.audit.AuditLog"
-methodName: "/Services.CreateService"
-resourceName: "namespaces/brujula-cripto/revisions/backen-brujula-cripto-build-2025-09-17-020"
-response: {6}
-serviceName: "run.googleapis.com"
-status: {2}
-}
-receiveTimestamp: "2025-09-17T22:30:13.547779689Z"
-resource: {2}
-severity: "ERROR"
-timestamp: "2025-09-17T22:30:12.791699Z"
-}
-2025-09-18 00:30:12.914
-
-Cloud Run
-
-CreateService
-
-backen-brujula-cripto
-Ready condition status changed to False for Service backen-brujula-cripto with message: Revision 'backen-brujula-cripto-build-2025-09-17-020' is not ready and cannot serve traffic. The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.  Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-17-020&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-17-020%22  For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
-{
-insertId: "-3l8ktle11lxq"
-logName: "projects/brujula-cripto/logs/cloudaudit.googleapis.com%2Fsystem_event"
-protoPayload: {
-@type: "type.googleapis.com/google.cloud.audit.AuditLog"
-methodName: "/Services.CreateService"
-resourceName: "namespaces/brujula-cripto/services/backen-brujula-cripto"
-response: {6}
-serviceName: "run.googleapis.com"
-status: {2}
-}
-receiveTimestamp: "2025-09-17T22:30:12.970258639Z"
-resource: {2}
-severity: "ERROR"
-timestamp: "2025-09-17T22:30:12.914813Z"
-}
-2025-09-18 09:04:02.345
-
-Cloud Run
-
-UpdateService
-
-us-central1:backen-brujula-cripto
-
-service-442091888028@gcp-…
-audit_log, method: "google.cloud.run.v2.Services.UpdateService", principal_email: "service-442091888028@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"
-2025-09-18 09:04:33.089
-Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.
-2025-09-18 09:04:33.931
-node:internal/modules/cjs/loader:1210
-2025-09-18 09:04:33.931
-  throw err;
-{
-insertId: "68cbaf01000e37afa7f28861"
+insertId: "68d0762c000a3a7babff6338"
 labels: {
 goog-managed-by: "firebase-app-hosting"
-instanceId: "0069c7a98805955dd878e47af5976f08a765723e939caf48c77a03518e443c941da0b1503573f77b1378f0b3cf4fd58a736983336a3d57df8a136cad8a30711b48e820fbfc06b87ba5c5fe3503475e"
+instanceId: "0069c7a988a4d1bf765266b2004e7165df570c4c4fef528940d99c9559d747eef7f6a5d97b8756d26c4b2dd59ff83ea0d0d33f4d1b9c1eb5f635bfde85332790cc788e70b772a2675510feda916687"
+scaling_reason: "DEPLOYMENT_ROLLOUT"
 }
-logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
-receiveTimestamp: "2025-09-18T07:04:33.936798281Z"
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem"
+receiveTimestamp: "2025-09-21T22:03:24.674868845Z"
 resource: {
 labels: {
 configuration_name: "backen-brujula-cripto"
 location: "us-central1"
 project_id: "brujula-cripto"
-revision_name: "backen-brujula-cripto-build-2025-09-18-001"
+revision_name: "backen-brujula-cripto-build-2025-09-21-006"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+severity: "INFO"
+textPayload: "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check."
+timestamp: "2025-09-21T22:03:24.670331Z"
+}
+2025-09-22 00:03:25.745
+node:internal/modules/cjs/loader:1210
+
+{
+insertId: "68d0762d000b60d28a470821"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988a4d1bf765266b2004e7165df570c4c4fef528940d99c9559d747eef7f6a5d97b8756d26c4b2dd59ff83ea0d0d33f4d1b9c1eb5f635bfde85332790cc788e70b772a2675510feda916687"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
+receiveTimestamp: "2025-09-21T22:03:25.750452019Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-21-006"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+textPayload: "node:internal/modules/cjs/loader:1210"
+timestamp: "2025-09-21T22:03:25.745682Z"
+}
+2025-09-22 00:03:25.745
+  throw err;
+
+{
+insertId: "68d0762d000b60e685933e55"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988a4d1bf765266b2004e7165df570c4c4fef528940d99c9559d747eef7f6a5d97b8756d26c4b2dd59ff83ea0d0d33f4d1b9c1eb5f635bfde85332790cc788e70b772a2675510feda916687"
+}
+logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
+receiveTimestamp: "2025-09-21T22:03:25.750452019Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-21-006"
 service_name: "backen-brujula-cripto"
 }
 type: "cloud_run_revision"
 }
 textPayload: "  throw err;"
-timestamp: "2025-09-18T07:04:33.931759Z"
+timestamp: "2025-09-21T22:03:25.745702Z"
 }
-2025-09-18 09:04:33.931
+2025-09-22 00:03:25.745
   ^
-2025-09-18 09:04:33.931
-Error: Cannot find module '/workspace/.next/standalone/server.js'     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)     at Module._load (node:internal/modules/cjs/loader:1038:27)     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)     at node:internal/main/run_main_module:28:49 {
+2025-09-22 00:03:25.745
+Error: Cannot find module '/workspace/.next/standalone/server.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+
 {
-errorGroups: [1]
-insertId: "68cbaf01000e37cc1e1873d8"
-labels: {2}
+errorGroups: [
+0: {
+id: "CNWu5da0iZ-3Og"
+}
+]
+insertId: "68d0762d000b61113316c8b5"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988a4d1bf765266b2004e7165df570c4c4fef528940d99c9559d747eef7f6a5d97b8756d26c4b2dd59ff83ea0d0d33f4d1b9c1eb5f635bfde85332790cc788e70b772a2675510feda916687"
+}
 logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
-receiveTimestamp: "2025-09-18T07:04:33.936798281Z"
-resource: {2}
+receiveTimestamp: "2025-09-21T22:03:25.750452019Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-21-006"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
 severity: "ERROR"
 textPayload: "Error: Cannot find module '/workspace/.next/standalone/server.js'
     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
     at Module._load (node:internal/modules/cjs/loader:1038:27)
     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
     at node:internal/main/run_main_module:28:49 {"
-timestamp: "2025-09-18T07:04:33.931788Z"
+timestamp: "2025-09-21T22:03:25.745745Z"
 }
-2025-09-18 09:04:33.931
+2025-09-22 00:03:25.745
   code: 'MODULE_NOT_FOUND',
-2025-09-18 09:04:33.931
+2025-09-22 00:03:25.745
   requireStack: []
-2025-09-18 09:04:33.931
+2025-09-22 00:03:25.745
 }
-2025-09-18 09:04:33.931
+2025-09-22 00:03:25.745
 Node.js v20.19.5
-2025-09-18 09:04:34.356
+2025-09-22 00:03:26.075
 Container called exit(1).
-2025-09-18 09:04:34.441
-Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
-2025-09-18 09:04:34.452
+2025-09-22 00:03:26.183
+Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started.
+Connection failed with status CANCELLED.
 
-Cloud Run
-
-UpdateService
-
-…cken-brujula-cripto-build-2025-09-18-001
-Ready condition status changed to False for Revision backen-brujula-cripto-build-2025-09-18-001 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.  Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-18-001&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-18-001%22  For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
-2025-09-18 09:04:34.601
-
-Cloud Run
-
-UpdateService
-
-backen-brujula-cripto
-Ready condition status changed to False for Service backen-brujula-cripto with message: Revision 'backen-brujula-cripto-build-2025-09-18-001' is not ready and cannot serve traffic. The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.  Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-18-001&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-18-001%22  For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
-2025-09-20 11:22:40.684
-
-Cloud Run
-
-UpdateService
-
-us-central1:backen-brujula-cripto
-
-service-442091888028@gcp-…
-audit_log, method: "google.cloud.run.v2.Services.UpdateService", principal_email: "service-442091888028@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"
-2025-09-20 11:23:08.039
-Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.
-2025-09-20 11:23:08.956
-node:internal/modules/cjs/loader:1210
-2025-09-20 11:23:08.956
-  throw err;
-2025-09-20 11:23:08.956
-  ^
-2025-09-20 11:23:08.956
-Error: Cannot find module '/workspace/.next/standalone/server.js'     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)     at Module._load (node:internal/modules/cjs/loader:1038:27)     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)     at node:internal/main/run_main_module:28:49 {
-2025-09-20 11:23:08.956
-  code: 'MODULE_NOT_FOUND',
-2025-09-20 11:23:08.956
-  requireStack: []
-2025-09-20 11:23:08.956
-}
-2025-09-20 11:23:08.956
-Node.js v20.19.5
-2025-09-20 11:23:09.403
-Container called exit(1).
-2025-09-20 11:23:09.515
-Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
-2025-09-20 11:23:09.529
-
-Cloud Run
-
-UpdateService
-
-…cken-brujula-cripto-build-2025-09-20-003
-Ready condition status changed to False for Revision backen-brujula-cripto-build-2025-09-20-003 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.  Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-20-003&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-20-003%22  For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
-2025-09-20 11:23:09.691
-
-Cloud Run
-
-UpdateService
-
-backen-brujula-cripto
-Ready condition status changed to False for Service backen-brujula-cripto with message: Revision 'backen-brujula-cripto-build-2025-09-20-003' is not ready and cannot serve traffic. The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.  Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-20-003&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-20-003%22  For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
-2025-09-21 22:04:43.187
-
-Cloud Run
-
-UpdateService
-
-us-central1:backen-brujula-cripto
-
-service-442091888028@gcp-…
-audit_log, method: "google.cloud.run.v2.Services.UpdateService", principal_email: "service-442091888028@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"
-2025-09-21 22:05:47.604
-Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.
-2025-09-21 22:05:48.522
-node:internal/modules/cjs/loader:1210
-2025-09-21 22:05:48.522
-  throw err;
-2025-09-21 22:05:48.522
-  ^
-2025-09-21 22:05:48.522
-Error: Cannot find module '/workspace/.next/standalone/server.js'     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)     at Module._load (node:internal/modules/cjs/loader:1038:27)     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)     at node:internal/main/run_main_module:28:49 {
 {
-errorGroups: [1]
-insertId: "68d05a9c0007fae853059e55"
-labels: {2}
-logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
-receiveTimestamp: "2025-09-21T20:05:48.528529034Z"
-resource: {2}
-severity: "ERROR"
-textPayload: "Error: Cannot find module '/workspace/.next/standalone/server.js'
-    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
-    at Module._load (node:internal/modules/cjs/loader:1038:27)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
-    at node:internal/main/run_main_module:28:49 {"
-timestamp: "2025-09-21T20:05:48.522984Z"
+insertId: "68d0762e0002ce2c2f2ef02d"
+labels: {
+goog-managed-by: "firebase-app-hosting"
+instanceId: "0069c7a988a4d1bf765266b2004e7165df570c4c4fef528940d99c9559d747eef7f6a5d97b8756d26c4b2dd59ff83ea0d0d33f4d1b9c1eb5f635bfde85332790cc788e70b772a2675510feda916687"
 }
-2025-09-21 22:05:48.522
-  code: 'MODULE_NOT_FOUND',
-2025-09-21 22:05:48.522
-  requireStack: []
-2025-09-21 22:05:48.522
-}
-2025-09-21 22:05:48.523
-Node.js v20.19.5
-2025-09-21 22:05:48.995
-Container called exit(1).
-{
-insertId: "68d05a9c000f3100691978bb"
-labels: {3}
 logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem"
-receiveTimestamp: "2025-09-21T20:05:49.274472324Z"
-resource: {2}
-severity: "WARNING"
-textPayload: "Container called exit(1)."
-timestamp: "2025-09-21T20:05:48.995549298Z"
+receiveTimestamp: "2025-09-21T22:03:26.339265027Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-21-006"
+service_name: "backen-brujula-cripto"
 }
-2025-09-21 22:05:49.092
-Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
-{
-insertId: "68d05a9d00016a9942b0ce71"
-labels: {2}
-logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem"
-receiveTimestamp: "2025-09-21T20:05:49.274472324Z"
-resource: {2}
+type: "cloud_run_revision"
+}
 severity: "ERROR"
 textPayload: "Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started.
 Connection failed with status CANCELLED."
-timestamp: "2025-09-21T20:05:49.092825Z"
+timestamp: "2025-09-21T22:03:26.183852Z"
 }
-2025-09-21 22:05:49.104
+2025-09-22 00:03:26.191
 
 Cloud Run
 
 UpdateService
 
-…cken-brujula-cripto-build-2025-09-21-001
-Ready condition status changed to False for Revision backen-brujula-cripto-build-2025-09-21-001 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.  Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-001&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-001%22  For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
-2025-09-21 22:05:49.234
+…cken-brujula-cripto-build-2025-09-21-006
+Ready condition status changed to False for Revision backen-brujula-cripto-build-2025-09-21-006 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
 
-Cloud Run
+Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-006&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-006%22 
+For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
 
-UpdateService
+{
+insertId: "gnf767d1lfs"
+logName: "projects/brujula-cripto/logs/cloudaudit.googleapis.com%2Fsystem_event"
+protoPayload: {
+@type: "type.googleapis.com/google.cloud.audit.AuditLog"
+methodName: "/Services.UpdateService"
+resourceName: "namespaces/brujula-cripto/revisions/backen-brujula-cripto-build-2025-09-21-006"
+response: {
+@type: "type.googleapis.com/google.cloud.run.v1.Revision"
+apiVersion: "serving.knative.dev/v1"
+kind: "Revision"
+metadata: {
+annotations: {
+autoscaling.knative.dev/maxScale: "10"
+autoscaling.knative.dev/minScale: "0"
+run.googleapis.com/cpu-throttling: "true"
+run.googleapis.com/execution-environment: "gen1"
+run.googleapis.com/ingress: "all"
+run.googleapis.com/operation-id: "d114783b-8cba-4eb3-9d43-7cb63d0a78f1"
+run.googleapis.com/secrets: "secret-alias-1:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_API_KEY,secret-alias-10:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,secret-alias-11:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_1H,secret-alias-12:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_5H,secret-alias-13:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_10H,secret-alias-2:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,secret-alias-3:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_PROJECT_ID,secret-alias-4:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,secret-alias-5:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,secret-alias-6:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_APP_ID,secret-alias-7:projects/442091888028/secrets/NEXT_PUBLIC_API_BASE_URL,secret-alias-8:projects/442091888028/secrets/NEXT_PUBLIC_BASE_URL,secret-alias-9:projects/442091888028/secrets/NEXT_PUBLIC_APP_URL"
+run.googleapis.com/sessionAffinity: "false"
+run.googleapis.com/startup-cpu-boost: "true"
+serving.knative.dev/creator: "service-442091888028@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"
+}
+creationTimestamp: "2025-09-21T22:02:17.221311Z"
+generation: 1
+labels: {
+cloud.googleapis.com/location: "us-central1"
+goog-managed-by: "firebase-app-hosting"
+run.googleapis.com/startupProbeType: "Default"
+serving.knative.dev/configuration: "backen-brujula-cripto"
+serving.knative.dev/configurationGeneration: "9"
+serving.knative.dev/route: "backen-brujula-cripto"
+serving.knative.dev/service: "backen-brujula-cripto"
+serving.knative.dev/serviceUid: "a2e5ddfb-7366-40cc-ac76-829e6d38804d"
+}
+name: "backen-brujula-cripto-build-2025-09-21-006"
+namespace: "442091888028"
+ownerReferences: [
+0: {
+apiVersion: "serving.knative.dev/v1"
+blockOwnerDeletion: true
+controller: true
+kind: "Configuration"
+name: "backen-brujula-cripto"
+uid: "75ab64cb-27d1-46ba-a526-d9233c150b33"
+}
+]
+resourceVersion: "AAY/Vt9KNpU"
+selfLink: "/apis/serving.knative.dev/v1/namespaces/442091888028/revisions/backen-brujula-cripto-build-2025-09-21-006"
+uid: "1b4d6dc4-2eff-426d-a726-eef48f6f8538"
+}
+spec: {
+containerConcurrency: 80
+containers: [
+0: {
+env: [
+0: {
+name: "NEXT_PUBLIC_FIREBASE_API_KEY"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-1"
+}
+}
+}
+1: {
+name: "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-2"
+}
+}
+}
+2: {
+name: "NEXT_PUBLIC_FIREBASE_PROJECT_ID"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-3"
+}
+}
+}
+3: {
+name: "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-4"
+}
+}
+}
+4: {
+name: "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-5"
+}
+}
+}
+5: {
+name: "NEXT_PUBLIC_FIREBASE_APP_ID"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-6"
+}
+}
+}
+6: {
+name: "NEXT_PUBLIC_API_BASE_URL"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-7"
+}
+}
+}
+7: {
+name: "NEXT_PUBLIC_BASE_URL"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-8"
+}
+}
+}
+8: {
+name: "NEXT_PUBLIC_APP_URL"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-9"
+}
+}
+}
+9: {
+name: "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-10"
+}
+}
+}
+10: {
+name: "NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_1H"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-11"
+}
+}
+}
+11: {
+name: "NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_5H"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-12"
+}
+}
+}
+12: {
+name: "NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_10H"
+valueFrom: {
+secretKeyRef: {
+key: "1"
+name: "secret-alias-13"
+}
+}
+}
+13: {
+name: "FIREBASE_CONFIG"
+value: "{"databaseURL":"","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}"
+}
+]
+image: "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto@sha256:030bb288c409873ce26a9b5c7b24ebb3ca00e23090da81ee2db31679662c1469"
+name: "backen-brujula-cripto-1"
+ports: [
+0: {
+containerPort: 8080
+name: "http1"
+}
+]
+resources: {
+limits: {
+cpu: "1.00"
+memory: "512Mi"
+}
+}
+startupProbe: {
+failureThreshold: 1
+periodSeconds: 240
+tcpSocket: {
+port: 8080
+}
+timeoutSeconds: 240
+}
+}
+]
+serviceAccountName: "firebase-app-hosting-compute@brujula-cripto.iam.gserviceaccount.com"
+timeoutSeconds: 300
+}
+status: {
+conditions: [
+0: {
+lastTransitionTime: "2025-09-21T22:03:26.184085Z"
+message: "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
 
-backen-brujula-cripto
-Ready condition status changed to False for Service backen-brujula-cripto with message: Revision 'backen-brujula-cripto-build-2025-09-21-001' is not ready and cannot serve traffic. The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.  Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-001&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-001%22  For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
-2025-09-21 22:24:29.251
+Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-006&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-006%22 
+For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+reason: "HealthCheckContainerError"
+status: "False"
+type: "Ready"
+}
+1: {
+lastTransitionTime: "2025-09-21T22:03:26.184085Z"
+message: "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
 
-Cloud Run
+Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-006&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-006%22 
+For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+reason: "HealthCheckContainerError"
+status: "False"
+type: "ContainerHealthy"
+}
+2: {
+lastTransitionTime: "2025-09-21T22:03:23.145794Z"
+message: "Container image import completed in 1m5.26s."
+status: "True"
+type: "ContainerReady"
+}
+3: {
+lastTransitionTime: "2025-09-21T22:03:24.557567Z"
+message: "Provisioning imported containers completed in 1.41s. Checking container health. This will wait for up to 4m for the configured startup probe, including an initial delay of 0s."
+status: "True"
+type: "ResourcesAvailable"
+}
+4: {
+lastTransitionTime: "2025-09-21T22:03:24.557567Z"
+message: "System will retry after 0:00:00 from lastTransitionTime for attempt 0."
+reason: "ImmediateRetry"
+severity: "Info"
+status: "True"
+type: "Retry"
+}
+]
+containerStatuses: [
+0: {
+imageDigest: "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto@sha256:030bb288c409873ce26a9b5c7b24ebb3ca00e23090da81ee2db31679662c1469"
+name: "backen-brujula-cripto-1"
+}
+]
+imageDigest: "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto@sha256:030bb288c409873ce26a9b5c7b24ebb3ca00e23090da81ee2db31679662c1469"
+logUrl: "https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-006&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-006%22"
+observedGeneration: 1
+}
+}
+serviceName: "run.googleapis.com"
+status: {
+code: 9
+message: "Ready condition status changed to False for Revision backen-brujula-cripto-build-2025-09-21-006 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
 
-UpdateService
-
-us-central1:backen-brujula-cripto
-
-service-442091888028@gcp-…
-audit_log, method: "google.cloud.run.v2.Services.UpdateService", principal_email: "service-442091888028@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"
-2025-09-21 22:24:38.953
-
-Cloud Run
-
-UpdateService
-
-us-central1:backen-brujula-cripto
-
-service-442091888028@gcp-…
-audit_log, method: "google.cloud.run.v2.Services.UpdateService", principal_email: "service-442091888028@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"
-2025-09-21 22:25:05.760
-Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.
-2025-09-21 22:25:06.918
-node:internal/modules/cjs/loader:1210
-2025-09-21 22:25:06.918
-  throw err;
+Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-006&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-006%22 
+For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+}
+}
+receiveTimestamp: "2025-09-21T22:03:26.589313385Z"
+resource: {
+labels: {
+configuration_name: "backen-brujula-cripto"
+location: "us-central1"
+project_id: "brujula-cripto"
+revision_name: "backen-brujula-cripto-build-2025-09-21-006"
+service_name: "backen-brujula-cripto"
+}
+type: "cloud_run_revision"
+}
+severity: "ERROR"
+timestamp: "2025-09-21T22:03:26.191688Z"
+}
