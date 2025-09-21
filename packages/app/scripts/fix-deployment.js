@@ -262,7 +262,14 @@ function copyNextJsFiles(basePaths, verificationResult) {
         file: 'server.js',
         source: path.join(nextDir, 'standalone', 'packages', 'app'),
         target: basePaths.standaloneDir,
-        targetName: 'server.cjs', // Renombrar a .cjs como dice Node.js
+        targetName: 'server.cjs', // Para Docker CMD
+      },
+      // NUEVA COPIA PARA FIREBASE APP HOSTING:
+      {
+        file: 'server.js',
+        source: path.join(nextDir, 'standalone', 'packages', 'app'),
+        target: path.join(basePaths.workspaceRoot, '.next', 'standalone'),
+        targetName: 'server.cjs', // Para Firebase App Hosting
       },
     ];
 
