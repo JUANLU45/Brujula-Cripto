@@ -35,13 +35,29 @@ ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copiamos directamente a /workspace, no a un subdirectorio
-COPY --from=builder /app/packages/app/.next/standalone ./
+# Creamos la estructura de directorios que Firebase espera
+RUN mkdir -p /workspace/.next/standalone
+
+# Copiamos el servidor a AMBAS ubicaciones (la que Firebase espera y la normal)
+COPY --from=builder /app/packages/app/.next/standalone/server.js /workspace/.next/standalone/server.js
+COPY --from=builder /app/packages/app/.next/standalone/node_modules /workspace/.next/standalone/node_modules
+COPY --from=builder /app/packages/app/.next/standalone/package.json /workspace/.next/standalone/package.json
+
+# Copiamos todo lo demás a sus ubicaciones normales
+COPY --from=builder /app/packages/app/.next/standalone/* ./
 COPY --from=builder /app/packages/app/public ./public
 COPY --from=builder /app/packages/app/.next/static ./.next/static
 
-# Verificamos que el archivo existe y diagnosticamos la estructura
-RUN ls -la && echo "Contenido del directorio:" && find . -type f -name "server*" | xargs ls -la
+# Copiamos el static también a la ubicación que Firebase espera
+COPY --from=builder /app/packages/app/.next/static ./.next/static
+
+# Verificamos la estructura final para diagnóstico
+RUN echo "=== ESTRUCTURA FINAL DE DIRECTORIOS ===" && \
+    ls -la /workspace && \
+    echo "=== ARCHIVOS SERVER* ENCONTRADOS ===" && \
+    find /workspace -name "server*" -type f && \
+    echo "=== CONTENIDO DE .NEXT ===" && \
+    ls -la /workspace/.next
 
 RUN chown -R nextjs:nodejs /workspace
 
@@ -50,6 +66,5 @@ USER nextjs
 EXPOSE 8080
 ENV PORT=8080
 
-# Corregimos el nombre del archivo si es necesario
-# Si tu archivo se llama server.cjs, cambia esta línea
-CMD ["node", "server.js"]
+# Usamos la ubicación EXACTA que Firebase espera
+CMD ["node", ".next/standalone/server.js"]
