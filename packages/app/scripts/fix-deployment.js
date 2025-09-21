@@ -262,12 +262,14 @@ function copyNextJsFiles(basePaths, verificationResult) {
         file: 'server.js',
         source: path.join(nextDir, 'standalone', 'packages', 'app'),
         target: basePaths.standaloneDir,
-      }, // server.js ubicación real en monorepo: .next/standalone/packages/app/server.js
+        targetName: 'server.cjs', // Renombrar a .cjs como dice Node.js
+      },
     ];
 
-    additionalFiles.forEach(({ file, source, target }) => {
+    additionalFiles.forEach(({ file, source, target, targetName }) => {
       const sourcePath = path.join(source, file);
-      const targetPath = path.join(target, file);
+      const finalTargetName = targetName || file;
+      const targetPath = path.join(target, finalTargetName);
 
       if (fs.existsSync(sourcePath)) {
         try {

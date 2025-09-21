@@ -1,425 +1,233 @@
-
----------DESPLIGUIE FALLIDO 102-----------
-
-e muestran los registros de los últimos 30 días, de 22/8/25, 10:06 p.m. a 21/9/25, 10:06 p.m..
-2025-09-21 22:05:47.604
-Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.
-
-{
-insertId: "68d05a9b000937cb218e6a93"
-labels: {
-goog-managed-by: "firebase-app-hosting"
-instanceId: "0069c7a98836c9ce44a7d257297a78133855f74df0520d682a501f876e08bce68ba7fbafee458ae1088f15fae121294c7209a74db7f1670b83efd2ec9bf3cbdbc5cd570a469b1a8da488d866f152f0"
-scaling_reason: "DEPLOYMENT_ROLLOUT"
-}
-logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem"
-receiveTimestamp: "2025-09-21T20:05:47.607474481Z"
-resource: {
-labels: {
-configuration_name: "backen-brujula-cripto"
-location: "us-central1"
-project_id: "brujula-cripto"
-revision_name: "backen-brujula-cripto-build-2025-09-21-001"
-service_name: "backen-brujula-cripto"
-}
-type: "cloud_run_revision"
-}
-severity: "INFO"
-textPayload: "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check."
-timestamp: "2025-09-21T20:05:47.604107Z"
-}
-2025-09-21 22:05:48.522
-node:internal/modules/cjs/loader:1210
-
-{
-insertId: "68d05a9c0007faa8cf53f25e"
-labels: {2}
-logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
-receiveTimestamp: "2025-09-21T20:05:48.528529034Z"
-resource: {2}
-textPayload: "node:internal/modules/cjs/loader:1210"
-timestamp: "2025-09-21T20:05:48.522920Z"
-}
-2025-09-21 22:05:48.522
-  throw err;
-
-{
-insertId: "68d05a9c0007fabd9934b55c"
-labels: {2}
-logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
-receiveTimestamp: "2025-09-21T20:05:48.528529034Z"
-resource: {2}
-textPayload: "  throw err;"
-timestamp: "2025-09-21T20:05:48.522941Z"
-}
-2025-09-21 22:05:48.522
-  ^
-2025-09-21 22:05:48.522
-Error: Cannot find module '/workspace/.next/standalone/server.js'
-    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
-    at Module._load (node:internal/modules/cjs/loader:1038:27)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
-    at node:internal/main/run_main_module:28:49 {
-
-{
-errorGroups: [
-0: {
-id: "CNWu5da0iZ-3Og"
-}
-]
-insertId: "68d05a9c0007fae853059e55"
-labels: {
-goog-managed-by: "firebase-app-hosting"
-instanceId: "0069c7a98836c9ce44a7d257297a78133855f74df0520d682a501f876e08bce68ba7fbafee458ae1088f15fae121294c7209a74db7f1670b83efd2ec9bf3cbdbc5cd570a469b1a8da488d866f152f0"
-}
-logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr"
-receiveTimestamp: "2025-09-21T20:05:48.528529034Z"
-resource: {
-labels: {
-configuration_name: "backen-brujula-cripto"
-location: "us-central1"
-project_id: "brujula-cripto"
-revision_name: "backen-brujula-cripto-build-2025-09-21-001"
-service_name: "backen-brujula-cripto"
-}
-type: "cloud_run_revision"
-}
-severity: "ERROR"
-textPayload: "Error: Cannot find module '/workspace/.next/standalone/server.js'
-    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
-    at Module._load (node:internal/modules/cjs/loader:1038:27)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
-    at node:internal/main/run_main_module:28:49 {"
-timestamp: "2025-09-21T20:05:48.522984Z"
-}
-2025-09-21 22:05:48.522
-  code: 'MODULE_NOT_FOUND',
-2025-09-21 22:05:48.522
-  requireStack: []
-2025-09-21 22:05:48.522
-}
-2025-09-21 22:05:48.523
-Node.js v20.19.5
-2025-09-21 22:05:48.995
-Container called exit(1).
-2025-09-21 22:05:49.092
-Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started.
-Connection failed with status CANCELLED.
-
-{
-insertId: "68d05a9d00016a9942b0ce71"
-labels: {
-goog-managed-by: "firebase-app-hosting"
-instanceId: "0069c7a98836c9ce44a7d257297a78133855f74df0520d682a501f876e08bce68ba7fbafee458ae1088f15fae121294c7209a74db7f1670b83efd2ec9bf3cbdbc5cd570a469b1a8da488d866f152f0"
-}
-logName: "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem"
-receiveTimestamp: "2025-09-21T20:05:49.274472324Z"
-resource: {
-labels: {
-configuration_name: "backen-brujula-cripto"
-location: "us-central1"
-project_id: "brujula-cripto"
-revision_name: "backen-brujula-cripto-build-2025-09-21-001"
-service_name: "backen-brujula-cripto"
-}
-type: "cloud_run_revision"
-}
-severity: "ERROR"
-textPayload: "Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started.
-Connection failed with status CANCELLED."
-timestamp: "2025-09-21T20:05:49.092825Z"
-}
-2025-09-21 22:05:49.104
-
-Cloud Run
-
-UpdateService
-
-…cken-brujula-cripto-build-2025-09-21-001
-Ready condition status changed to False for Revision backen-brujula-cripto-build-2025-09-21-001 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
-
-Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-001&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-001%22 
-For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
-
-{
-insertId: "ciixb4d27aa"
-logName: "projects/brujula-cripto/logs/cloudaudit.googleapis.com%2Fsystem_event"
-protoPayload: {
-@type: "type.googleapis.com/google.cloud.audit.AuditLog"
-methodName: "/Services.UpdateService"
-resourceName: "namespaces/brujula-cripto/revisions/backen-brujula-cripto-build-2025-09-21-001"
-response: {
-@type: "type.googleapis.com/google.cloud.run.v1.Revision"
-apiVersion: "serving.knative.dev/v1"
-kind: "Revision"
-metadata: {
-annotations: {
-autoscaling.knative.dev/maxScale: "10"
-autoscaling.knative.dev/minScale: "0"
-run.googleapis.com/cpu-throttling: "true"
-run.googleapis.com/execution-environment: "gen1"
-run.googleapis.com/ingress: "all"
-run.googleapis.com/operation-id: "7f0b4131-bbb7-4965-a9d2-eee6f17db7a7"
-run.googleapis.com/secrets: "secret-alias-1:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_API_KEY,secret-alias-10:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,secret-alias-11:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_1H,secret-alias-12:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_5H,secret-alias-13:projects/442091888028/secrets/NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_10H,secret-alias-2:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,secret-alias-3:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_PROJECT_ID,secret-alias-4:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,secret-alias-5:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,secret-alias-6:projects/442091888028/secrets/NEXT_PUBLIC_FIREBASE_APP_ID,secret-alias-7:projects/442091888028/secrets/NEXT_PUBLIC_API_BASE_URL,secret-alias-8:projects/442091888028/secrets/NEXT_PUBLIC_BASE_URL,secret-alias-9:projects/442091888028/secrets/NEXT_PUBLIC_APP_URL"
-run.googleapis.com/sessionAffinity: "false"
-run.googleapis.com/startup-cpu-boost: "true"
-serving.knative.dev/creator: "service-442091888028@gcp-sa-firebaseapphosting.iam.gserviceaccount.com"
-}
-creationTimestamp: "2025-09-21T20:04:43.429670Z"
-generation: 1
-labels: {
-cloud.googleapis.com/location: "us-central1"
-goog-managed-by: "firebase-app-hosting"
-run.googleapis.com/startupProbeType: "Default"
-serving.knative.dev/configuration: "backen-brujula-cripto"
-serving.knative.dev/configurationGeneration: "4"
-serving.knative.dev/route: "backen-brujula-cripto"
-serving.knative.dev/service: "backen-brujula-cripto"
-serving.knative.dev/serviceUid: "a2e5ddfb-7366-40cc-ac76-829e6d38804d"
-}
-name: "backen-brujula-cripto-build-2025-09-21-001"
-namespace: "442091888028"
-ownerReferences: [
-0: {
-apiVersion: "serving.knative.dev/v1"
-blockOwnerDeletion: true
-controller: true
-kind: "Configuration"
-name: "backen-brujula-cripto"
-uid: "75ab64cb-27d1-46ba-a526-d9233c150b33"
-}
-]
-resourceVersion: "AAY/VTqnjfY"
-selfLink: "/apis/serving.knative.dev/v1/namespaces/442091888028/revisions/backen-brujula-cripto-build-2025-09-21-001"
-uid: "d4d11845-ae1b-4093-b527-9104e13017a4"
-}
-spec: {
-containerConcurrency: 80
-containers: [
-0: {
-env: [
-0: {
-name: "NEXT_PUBLIC_FIREBASE_API_KEY"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-1"
-}
-}
-}
-1: {
-name: "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-2"
-}
-}
-}
-2: {
-name: "NEXT_PUBLIC_FIREBASE_PROJECT_ID"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-3"
-}
-}
-}
-3: {
-name: "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-4"
-}
-}
-}
-4: {
-name: "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-5"
-}
-}
-}
-5: {
-name: "NEXT_PUBLIC_FIREBASE_APP_ID"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-6"
-}
-}
-}
-6: {
-name: "NEXT_PUBLIC_API_BASE_URL"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-7"
-}
-}
-}
-7: {
-name: "NEXT_PUBLIC_BASE_URL"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-8"
-}
-}
-}
-8: {
-name: "NEXT_PUBLIC_APP_URL"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-9"
-}
-}
-}
-9: {
-name: "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-10"
-}
-}
-}
-10: {
-name: "NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_1H"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-11"
-}
-}
-}
-11: {
-name: "NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_5H"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-12"
-}
-}
-}
-12: {
-name: "NEXT_PUBLIC_STRIPE_PRICE_PREMIUM_10H"
-valueFrom: {
-secretKeyRef: {
-key: "1"
-name: "secret-alias-13"
-}
-}
-}
-13: {
-name: "FIREBASE_CONFIG"
-value: "{"databaseURL":"","projectId":"brujula-cripto","storageBucket":"brujula-cripto.firebasestorage.app"}"
-}
-]
-image: "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto@sha256:6a6198b82a71331453f0879124529da70e7872880f9641f34fc777b51eccdc84"
-name: "backen-brujula-cripto-1"
-ports: [
-0: {
-containerPort: 8080
-name: "http1"
-}
-]
-resources: {
-limits: {
-cpu: "1.00"
-memory: "512Mi"
-}
-}
-startupProbe: {
-failureThreshold: 1
-periodSeconds: 240
-tcpSocket: {
-port: 8080
-}
-timeoutSeconds: 240
-}
-}
-]
-serviceAccountName: "firebase-app-hosting-compute@brujula-cripto.iam.gserviceaccount.com"
-timeoutSeconds: 300
-}
-status: {
-conditions: [
-0: {
-lastTransitionTime: "2025-09-21T20:05:49.093366Z"
-message: "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
-
-Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-001&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-001%22 
-For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
-reason: "HealthCheckContainerError"
-status: "False"
-type: "Ready"
-}
-1: {
-lastTransitionTime: "2025-09-21T20:05:49.093366Z"
-message: "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
-
-Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-001&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-001%22 
-For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
-reason: "HealthCheckContainerError"
-status: "False"
-type: "ContainerHealthy"
-}
-2: {
-lastTransitionTime: "2025-09-21T20:05:46.038204Z"
-message: "Container image import completed in 1m1.88s."
-status: "True"
-type: "ContainerReady"
-}
-3: {
-lastTransitionTime: "2025-09-21T20:05:47.500004Z"
-message: "Provisioning imported containers completed in 1.46s. Checking container health. This will wait for up to 4m for the configured startup probe, including an initial delay of 0s."
-status: "True"
-type: "ResourcesAvailable"
-}
-4: {
-lastTransitionTime: "2025-09-21T20:05:47.500004Z"
-message: "System will retry after 0:00:00 from lastTransitionTime for attempt 0."
-reason: "ImmediateRetry"
-severity: "Info"
-status: "True"
-type: "Retry"
-}
-]
-containerStatuses: [
-0: {
-imageDigest: "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto@sha256:6a6198b82a71331453f0879124529da70e7872880f9641f34fc777b51eccdc84"
-name: "backen-brujula-cripto-1"
-}
-]
-imageDigest: "us-central1-docker.pkg.dev/brujula-cripto/firebaseapphosting-images/backen-brujula-cripto@sha256:6a6198b82a71331453f0879124529da70e7872880f9641f34fc777b51eccdc84"
-logUrl: "https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-001&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-001%22"
-observedGeneration: 1
-}
-}
-serviceName: "run.googleapis.com"
-status: {
-code: 9
-message: "Ready condition status changed to False for Revision backen-brujula-cripto-build-2025-09-21-001 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
-
-Logs URL: https://console.cloud.google.com/logs/viewer?project=brujula-cripto&resource=cloud_run_revision/service_name/backen-brujula-cripto/revision_name/backen-brujula-cripto-build-2025-09-21-001&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backen-brujula-cripto%22%0Aresource.labels.revision_name%3D%22backen-brujula-cripto-build-2025-09-21-001%22 
-For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
-}
-}
-receiveTimestamp: "2025-09-21T20:05:49.489770110Z"
-resource: {
-labels: {
-configuration_name: "backen-brujula-cripto"
-location: "us-central1"
-project_id: "brujula-cripto"
-revision_name: "backen-brujula-cripto-build-2025-09-21-001"
-service_name: "backen-brujula-cripto"
-}
-type: "cloud_run_revision"
-}
-severity: "ERROR"
-timestamp: "2025-09-21T20:05:49.104826Z"
+DEFAULT 2025-09-21T21:10:07.683533Z ReferenceError: require is not defined in ES module scope, you can use import instead
+DEFAULT 2025-09-21T21:10:07.683536Z This file is being treated as an ES module because it has a '.js' file extension and '/workspace/.next/standalone/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+DEFAULT 2025-09-21T21:10:07.683541Z at file:///workspace/.next/standalone/server.js:1:14
+DEFAULT 2025-09-21T21:10:07.683546Z at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+DEFAULT 2025-09-21T21:10:07.683551Z at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+DEFAULT 2025-09-21T21:10:07.683556Z at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+DEFAULT 2025-09-21T21:10:07.683562Z Node.js v20.19.5
+WARNING 2025-09-21T21:10:08.578210131Z Container called exit(1).
+ERROR 2025-09-21T21:10:08.689977Z Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
+INFO 2025-09-21T21:10:13.373745Z Starting new instance. Reason: AUTOSCALING - Instance started due to configured scaling factors (e.g. CPU utilization, request throughput, etc.) or no existing capacity for current traffic.
+DEFAULT 2025-09-21T21:10:13.872932Z file:///workspace/.next/standalone/server.js:1
+DEFAULT 2025-09-21T21:10:13.872944Z const path = require('path')
+DEFAULT 2025-09-21T21:10:13.872949Z ^
+DEFAULT 2025-09-21T21:10:13.872969Z ReferenceError: require is not defined in ES module scope, you can use import instead
+DEFAULT 2025-09-21T21:10:13.872975Z This file is being treated as an ES module because it has a '.js' file extension and '/workspace/.next/standalone/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+DEFAULT 2025-09-21T21:10:13.872980Z at file:///workspace/.next/standalone/server.js:1:14
+DEFAULT 2025-09-21T21:10:13.872984Z at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+DEFAULT 2025-09-21T21:10:13.872988Z at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+DEFAULT 2025-09-21T21:10:13.872992Z at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+DEFAULT 2025-09-21T21:10:13.872998Z Node.js v20.19.5
+WARNING 2025-09-21T21:10:14.774922383Z Container called exit(1).
+ERROR 2025-09-21T21:10:14.895422Z Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
+INFO 2025-09-21T21:10:56.378071Z Starting new instance. Reason: AUTOSCALING - Instance started due to configured scaling factors (e.g. CPU utilization, request throughput, etc.) or no existing capacity for current traffic.
+DEFAULT 2025-09-21T21:10:56.756669Z file:///workspace/.next/standalone/server.js:1
+DEFAULT 2025-09-21T21:10:56.756690Z const path = require('path')
+DEFAULT 2025-09-21T21:10:56.756695Z ^
+DEFAULT 2025-09-21T21:10:56.756714Z ReferenceError: require is not defined in ES module scope, you can use import instead
+DEFAULT 2025-09-21T21:10:56.756717Z This file is being treated as an ES module because it has a '.js' file extension and '/workspace/.next/standalone/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+DEFAULT 2025-09-21T21:10:56.756721Z at file:///workspace/.next/standalone/server.js:1:14
+DEFAULT 2025-09-21T21:10:56.756723Z at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+DEFAULT 2025-09-21T21:10:56.756727Z at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+DEFAULT 2025-09-21T21:10:56.756730Z at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+DEFAULT 2025-09-21T21:10:56.756734Z Node.js v20.19.5
+WARNING 2025-09-21T21:10:57.631523282Z Container called exit(1).
+ERROR 2025-09-21T21:10:57.719274Z Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
+INFO 2025-09-21T21:11:04.375774Z Starting new instance. Reason: AUTOSCALING - Instance started due to configured scaling factors (e.g. CPU utilization, request throughput, etc.) or no existing capacity for current traffic.
+DEFAULT 2025-09-21T21:11:04.921926Z file:///workspace/.next/standalone/server.js:1
+DEFAULT 2025-09-21T21:11:04.921939Z const path = require('path')
+DEFAULT 2025-09-21T21:11:04.921944Z ^
+DEFAULT 2025-09-21T21:11:04.921961Z ReferenceError: require is not defined in ES module scope, you can use import instead
+DEFAULT 2025-09-21T21:11:04.921964Z This file is being treated as an ES module because it has a '.js' file extension and '/workspace/.next/standalone/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+DEFAULT 2025-09-21T21:11:04.921967Z at file:///workspace/.next/standalone/server.js:1:14
+DEFAULT 2025-09-21T21:11:04.921971Z at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+DEFAULT 2025-09-21T21:11:04.921973Z at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+DEFAULT 2025-09-21T21:11:04.921977Z at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+DEFAULT 2025-09-21T21:11:04.921981Z Node.js v20.19.5
+WARNING 2025-09-21T21:11:05.804922669Z Container called exit(1).
+ERROR 2025-09-21T21:11:05.916106Z Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
+INFO 2025-09-21T21:11:13.374874Z Starting new instance. Reason: AUTOSCALING - Instance started due to configured scaling factors (e.g. CPU utilization, request throughput, etc.) or no existing capacity for current traffic.
+DEFAULT 2025-09-21T21:11:13.687951Z file:///workspace/.next/standalone/server.js:1
+DEFAULT 2025-09-21T21:11:13.687962Z const path = require('path')
+DEFAULT 2025-09-21T21:11:13.687966Z ^
+DEFAULT 2025-09-21T21:11:13.687981Z ReferenceError: require is not defined in ES module scope, you can use import instead
+DEFAULT 2025-09-21T21:11:13.687983Z This file is being treated as an ES module because it has a '.js' file extension and '/workspace/.next/standalone/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+DEFAULT 2025-09-21T21:11:13.687986Z at file:///workspace/.next/standalone/server.js:1:14
+DEFAULT 2025-09-21T21:11:13.687989Z at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+DEFAULT 2025-09-21T21:11:13.687992Z at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+DEFAULT 2025-09-21T21:11:13.687995Z at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+DEFAULT 2025-09-21T21:11:13.687999Z Node.js v20.19.5
+WARNING 2025-09-21T21:11:14.578669590Z Container called exit(1).
+ERROR 2025-09-21T21:11:14.677328Z Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
+INFO 2025-09-21T21:11:23.374954Z Starting new instance. Reason: AUTOSCALING - Instance started due to configured scaling factors (e.g. CPU utilization, request throughput, etc.) or no existing capacity for current traffic.
+DEFAULT 2025-09-21T21:11:23.682831Z file:///workspace/.next/standalone/server.js:1
+DEFAULT 2025-09-21T21:11:23.682843Z const path = require('path')
+DEFAULT 2025-09-21T21:11:23.682848Z ^
+DEFAULT 2025-09-21T21:11:23.682870Z ReferenceError: require is not defined in ES module scope, you can use import instead
+DEFAULT 2025-09-21T21:11:23.682874Z This file is being treated as an ES module because it has a '.js' file extension and '/workspace/.next/standalone/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+DEFAULT 2025-09-21T21:11:23.682878Z at file:///workspace/.next/standalone/server.js:1:14
+DEFAULT 2025-09-21T21:11:23.682883Z at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+DEFAULT 2025-09-21T21:11:23.682887Z at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+DEFAULT 2025-09-21T21:11:23.682891Z at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+DEFAULT 2025-09-21T21:11:23.682897Z Node.js v20.19.5
+WARNING 2025-09-21T21:11:24.574752002Z Container called exit(1).
+ERROR 2025-09-21T21:11:24.678009Z Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
+  {
+    "textPayload": "Default STARTUP TCP probe failed 1 time consecutively for container \"backen-brujula-cripto-1\" on port 8080. The instance was not started.\nConnection failed with status CANCELLED.",
+    "insertId": "68d069fc000a5879e975957b",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "brujula-cripto",
+        "revision_name": "backen-brujula-cripto-build-2025-09-21-004",
+        "service_name": "backen-brujula-cripto",
+        "configuration_name": "backen-brujula-cripto",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-09-21T21:11:24.678009Z",
+    "severity": "ERROR",
+    "labels": {
+      "goog-managed-by": "firebase-app-hosting",
+      "instanceId": "0069c7a988e9b5a3be7aec33814ce32902f130d6dcd828504592bfc855aedac069a3773448293d142989aab95d6d49827b83123711e1b2c66dcba7adeffb374a11e013afe73afdddb7c34bd1354e03"
+    },
+    "logName": "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-09-21T21:11:24.691856517Z"
+  }
+INFO 2025-09-21T21:11:36.378207Z Starting new instance. Reason: AUTOSCALING - Instance started due to configured scaling factors (e.g. CPU utilization, request throughput, etc.) or no existing capacity for current traffic.
+DEFAULT 2025-09-21T21:11:36.776968Z file:///workspace/.next/standalone/server.js:1
+DEFAULT 2025-09-21T21:11:36.776987Z const path = require('path')
+DEFAULT 2025-09-21T21:11:36.776992Z ^
+DEFAULT 2025-09-21T21:11:36.777009Z ReferenceError: require is not defined in ES module scope, you can use import instead
+DEFAULT 2025-09-21T21:11:36.777012Z This file is being treated as an ES module because it has a '.js' file extension and '/workspace/.next/standalone/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+DEFAULT 2025-09-21T21:11:36.777015Z at file:///workspace/.next/standalone/server.js:1:14
+DEFAULT 2025-09-21T21:11:36.777018Z at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+DEFAULT 2025-09-21T21:11:36.777021Z at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+DEFAULT 2025-09-21T21:11:36.777024Z at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+DEFAULT 2025-09-21T21:11:36.777028Z Node.js v20.19.5
+WARNING 2025-09-21T21:11:37.673407615Z Container called exit(1).
+ERROR 2025-09-21T21:11:37.782810Z Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
+  {
+    "textPayload": "Default STARTUP TCP probe failed 1 time consecutively for container \"backen-brujula-cripto-1\" on port 8080. The instance was not started.\nConnection failed with status CANCELLED.",
+    "insertId": "68d06a09000bf1da0b686a2f",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "backen-brujula-cripto-build-2025-09-21-004",
+        "project_id": "brujula-cripto",
+        "service_name": "backen-brujula-cripto",
+        "location": "us-central1",
+        "configuration_name": "backen-brujula-cripto"
+      }
+    },
+    "timestamp": "2025-09-21T21:11:37.782810Z",
+    "severity": "ERROR",
+    "labels": {
+      "goog-managed-by": "firebase-app-hosting",
+      "instanceId": "0069c7a988d57b3f1425382ae0a181d09848a27ea1655712b91fd97734d3ec5afabd60a68c957e80f87910c3efffb487a4ba93e8f64f2642f3ef5e6fe3cc6dee7373293de0da7991a49397af921ad7"
+    },
+    "logName": "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-09-21T21:11:38.049254628Z"
+  }
+INFO 2025-09-21T21:11:51.373492Z Starting new instance. Reason: AUTOSCALING - Instance started due to configured scaling factors (e.g. CPU utilization, request throughput, etc.) or no existing capacity for current traffic.
+  {
+    "textPayload": "Starting new instance. Reason: AUTOSCALING - Instance started due to configured scaling factors (e.g. CPU utilization, request throughput, etc.) or no existing capacity for current traffic.",
+    "insertId": "68d06a170005b2f40437609e",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "project_id": "brujula-cripto",
+        "configuration_name": "backen-brujula-cripto",
+        "service_name": "backen-brujula-cripto",
+        "revision_name": "backen-brujula-cripto-build-2025-09-21-004"
+      }
+    },
+    "timestamp": "2025-09-21T21:11:51.373492Z",
+    "severity": "INFO",
+    "labels": {
+      "goog-managed-by": "firebase-app-hosting",
+      "scaling_reason": "AUTOSCALING",
+      "instanceId": "0069c7a988aad4c3878cea62ba1f46f283d0fcccd6b37022f66ac7df75cfc5e0c73c8364d85263589280cd3780f7117b9f1fe95f8e907b0cf583741d6187800747bf0fef8b9f826f7256c972e64481"
+    },
+    "logName": "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-09-21T21:11:51.378694850Z"
+  }
+DEFAULT 2025-09-21T21:11:51.704761Z file:///workspace/.next/standalone/server.js:1
+DEFAULT 2025-09-21T21:11:51.704788Z const path = require('path')
+DEFAULT 2025-09-21T21:11:51.704795Z ^
+DEFAULT 2025-09-21T21:11:51.704818Z ReferenceError: require is not defined in ES module scope, you can use import instead
+DEFAULT 2025-09-21T21:11:51.704821Z This file is being treated as an ES module because it has a '.js' file extension and '/workspace/.next/standalone/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+DEFAULT 2025-09-21T21:11:51.704825Z at file:///workspace/.next/standalone/server.js:1:14
+DEFAULT 2025-09-21T21:11:51.704829Z at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+DEFAULT 2025-09-21T21:11:51.704833Z at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+DEFAULT 2025-09-21T21:11:51.704837Z at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+DEFAULT 2025-09-21T21:11:51.704843Z Node.js v20.19.5
+  {
+    "textPayload": "Node.js v20.19.5",
+    "insertId": "68d06a17000ac14b533d26d2",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "backen-brujula-cripto",
+        "revision_name": "backen-brujula-cripto-build-2025-09-21-004",
+        "configuration_name": "backen-brujula-cripto",
+        "project_id": "brujula-cripto",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-09-21T21:11:51.704843Z",
+    "labels": {
+      "instanceId": "0069c7a988aad4c3878cea62ba1f46f283d0fcccd6b37022f66ac7df75cfc5e0c73c8364d85263589280cd3780f7117b9f1fe95f8e907b0cf583741d6187800747bf0fef8b9f826f7256c972e64481",
+      "goog-managed-by": "firebase-app-hosting"
+    },
+    "logName": "projects/brujula-cripto/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-09-21T21:11:51.710821097Z"
+  }
+WARNING 2025-09-21T21:11:52.594647671Z Container called exit(1).
+  {
+    "textPayload": "Container called exit(1).",
+    "insertId": "68d06a18000912e0232e0085",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "revision_name": "backen-brujula-cripto-build-2025-09-21-004",
+        "configuration_name": "backen-brujula-cripto",
+        "project_id": "brujula-cripto",
+        "service_name": "backen-brujula-cripto"
+      }
+    },
+    "timestamp": "2025-09-21T21:11:52.594647671Z",
+    "severity": "WARNING",
+    "labels": {
+      "container_name": "backen-brujula-cripto-1",
+      "instanceId": "0069c7a988aad4c3878cea62ba1f46f283d0fcccd6b37022f66ac7df75cfc5e0c73c8364d85263589280cd3780f7117b9f1fe95f8e907b0cf583741d6187800747bf0fef8b9f826f7256c972e64481",
+      "goog-managed-by": "firebase-app-hosting"
+    },
+    "logName": "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-09-21T21:11:52.711882462Z"
+  }
+ERROR 2025-09-21T21:11:52.707652Z Default STARTUP TCP probe failed 1 time consecutively for container "backen-brujula-cripto-1" on port 8080. The instance was not started. Connection failed with status CANCELLED.
+  {
+    "textPayload": "Default STARTUP TCP probe failed 1 time consecutively for container \"backen-brujula-cripto-1\" on port 8080. The instance was not started.\nConnection failed with status CANCELLED.",
+    "insertId": "68d06a18000acc443b01a2b8",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "brujula-cripto",
+        "configuration_name": "backen-brujula-cripto",
+        "service_name": "backen-brujula-cripto",
+        "revision_name": "backen-brujula-cripto-build-2025-09-21-004",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-09-21T21:11:52.707652Z",
+    "severity": "ERROR",
+    "labels": {
+      "instanceId": "0069c7a988aad4c3878cea62ba1f46f283d0fcccd6b37022f66ac7df75cfc5e0c73c8364d85263589280cd3780f7117b9f1fe95f8e907b0cf583741d6187800747bf0fef8b9f826f7256c972e64481",
+      "goog-managed-by": "firebase-app-hosting"
+    },
+    "logName": "projects/brujula-cripto/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-09-21T21:11:53.042596571Z"
+  }
