@@ -16,6 +16,7 @@
   "apphosting": {
     "backendId": "backen-brujula-cripto",
     "rootDir": ".",
-    "ignore": ["node_modules", ".git"]
+    "ignore": ["node_modules", ".git"],
+    "dockerfile": "packages/app/Dockerfile"
   }
 }
