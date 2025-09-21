@@ -27,20 +27,29 @@ RUN pnpm --filter @brujula-cripto/app build
 # --- FASE 3: IMAGEN FINAL DE PRODUCCIÓN ---
 FROM node:20-alpine AS runner
 
-WORKDIR /app
+# Cambiado a /workspace para coincidir con la expectativa de Firebase
+WORKDIR /workspace
 
 ENV NODE_ENV=production
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+# Copiamos directamente a /workspace, no a un subdirectorio
 COPY --from=builder /app/packages/app/.next/standalone ./
+COPY --from=builder /app/packages/app/public ./public
+COPY --from=builder /app/packages/app/.next/static ./.next/static
 
-RUN chown -R nextjs:nodejs /app
+# Verificamos que el archivo existe y diagnosticamos la estructura
+RUN ls -la && echo "Contenido del directorio:" && find . -type f -name "server*" | xargs ls -la
+
+RUN chown -R nextjs:nodejs /workspace
 
 USER nextjs
 
 EXPOSE 8080
 ENV PORT=8080
 
-CMD ["node", "server.cjs"]
+# Corregimos el nombre del archivo si es necesario
+# Si tu archivo se llama server.cjs, cambia esta línea
+CMD ["node", "server.js"]
