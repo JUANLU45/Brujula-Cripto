@@ -258,7 +258,11 @@ function copyNextJsFiles(basePaths, verificationResult) {
       { file: 'BUILD_ID', source: nextDir, target: targetNextDir },
       { file: 'package.json', source: nextDir, target: targetNextDir },
       { file: 'export-marker.json', source: nextDir, target: targetNextDir },
-      { file: 'server.js', source: path.join(nextDir, 'standalone'), target: basePaths.standaloneDir }, // server.js va directo a standalone
+      {
+        file: 'server.js',
+        source: path.join(nextDir, 'standalone'),
+        target: basePaths.standaloneDir,
+      }, // server.js va directo a standalone
     ];
 
     additionalFiles.forEach(({ file, source, target }) => {
