@@ -30,8 +30,10 @@ if (!fs.existsSync('/workspace/.next/standalone/package.json')) {
 
 // Ejecutar el servidor
 try {
-  console.log('Iniciando servidor Next.js desde /workspace/server.js');
-  require('/workspace/server.js');
+  console.log(
+    'Iniciando servidor Next.js desde /workspace/.next/standalone/packages/app/server.js',
+  );
+  require('/workspace/.next/standalone/packages/app/server.js');
 } catch (error) {
   console.error('Error iniciando servidor:', error);
   process.exit(1);
