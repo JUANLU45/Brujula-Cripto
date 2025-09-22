@@ -48,22 +48,28 @@ COPY --from=builder /app/packages/app/.next/static/ /workspace/.next/static/
 # 3. CLAVE: Crear manualmente el directorio .next/standalone si no existe
 RUN mkdir -p /workspace/.next/standalone
 
-# 4. SOLUCIÓN: Copiar server.js a la ubicación EXACTA que Firebase espera
+# 4. SOLUCIÓN DEFINITIVA: CORREGIR EN EL ORIGEN ANTES DE QUE BUILDPACK COPIE
+# Modificar package.json en la ubicación ORIGINAL que el buildpack copiará
+RUN echo '{"main":"server.js"}' > /workspace/.next/standalone/packages/app/package.json
+
+# 5. Mantener archivos como respaldo en destinos tradicionales
 COPY --from=builder /app/packages/app/.next/standalone/packages/app/server.js /workspace/.next/standalone/server.js
 COPY --from=builder /app/packages/app/.next/standalone/packages/app/server.js /workspace/server.js
-
-# 5. SOLUCIÓN AL ERROR DE ES MODULES: Corregir package.json en la raíz de workspace
-RUN echo '{"name":"next-standalone","version":"0.0.0","main":"server.js"}' > /workspace/package.json
-RUN echo '{"name":"next-standalone","version":"0.0.0","main":"server.js"}' > /workspace/.next/standalone/package.json
+RUN echo '{"main":"server.js"}' > /workspace/package.json
+RUN echo '{"main":"server.js"}' > /workspace/.next/standalone/package.json
 
 # 6. Público y otras dependencias
 COPY --from=builder /app/packages/app/public/ /workspace/public/
 
 # DIAGNÓSTICO FINAL EXPLÍCITO
-RUN echo "=== VERIFICACIÓN FINAL server.js ====" && \
+RUN echo "=== VERIFICACIÓN CRÍTICA: ORIGEN CORREGIDO ====" && \
+  echo "Verificando package.json en ubicación ORIGINAL (donde buildpack tomará):" && \
+  ls -la /workspace/.next/standalone/packages/app/package.json && \
+  cat /workspace/.next/standalone/packages/app/package.json && \
+  echo "=== VERIFICACIÓN RESPALDOS ====" && \
   ls -la /workspace/.next/standalone/server.js && \
   ls -la /workspace/server.js && \
-  echo "=== CONTENIDO DEL PACKAGE.JSON CORREGIDO ====" && \
+  echo "=== CONTENIDO PACKAGE.JSON CORREGIDOS ====" && \
   cat /workspace/.next/standalone/package.json
 
 # Ajuste de permisos
