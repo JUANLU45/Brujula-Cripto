@@ -52,13 +52,18 @@ RUN mkdir -p /workspace/.next/standalone
 COPY --from=builder /app/packages/app/.next/standalone/server.js /workspace/.next/standalone/server.js
 COPY --from=builder /app/packages/app/.next/standalone/server.js /workspace/server.js
 
-# 5. Público y otras dependencias
+# 5. SOLUCIÓN AL ERROR DE ES MODULES: Reemplazar package.json que causa el error
+RUN echo '{"name":"next-standalone","version":"0.0.0","main":"server.js"}' > /workspace/.next/standalone/package.json
+
+# 6. Público y otras dependencias
 COPY --from=builder /app/packages/app/public/ /workspace/public/
 
 # DIAGNÓSTICO FINAL EXPLÍCITO
 RUN echo "=== VERIFICACIÓN FINAL server.js ====" && \
     ls -la /workspace/.next/standalone/server.js && \
-    ls -la /workspace/server.js
+    ls -la /workspace/server.js && \
+    echo "=== CONTENIDO DEL PACKAGE.JSON CORREGIDO ====" && \
+    cat /workspace/.next/standalone/package.json
 
 # Ajuste de permisos
 RUN chown -R nextjs:nodejs /workspace
