@@ -72,5 +72,5 @@ USER nextjs
 
 EXPOSE 8080
 
-# COMANDO CORREGIDO - RUTA EXACTA AL SERVER.JS FUNCIONAL
-CMD ["node", ".next/standalone/packages/app/server.js"]
+# COMANDO CORREGIDO - RUTA ABSOLUTA AL SERVER.JS FUNCIONAL
+CMD ["node", "/workspace/.next/standalone/packages/app/server.js"]
