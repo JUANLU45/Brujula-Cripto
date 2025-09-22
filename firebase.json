@@ -17,6 +17,7 @@
     "backendId": "backen-brujula-cripto",
     "rootDir": ".",
     "ignore": ["node_modules", ".git"],
-    "dockerfile": "packages/app/Dockerfile"
+    "dockerfile": "packages/app/Dockerfile",
+    "entryPoint": "entrypoint.js"
   }
 }
