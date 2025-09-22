@@ -26,7 +26,7 @@ RUN pnpm --filter @brujula-cripto/app build
 
 # DIAGNÓSTICO: Verificar dónde se generó el server.js
 RUN echo "=== UBICACIÓN DE server.js GENERADO ===" && \
-  find /app -name "server.js" -type f
+    find /app -name "server.js" -type f
 
 # --- FASE 3: IMAGEN FINAL DE PRODUCCIÓN ---
 FROM node:20-alpine AS runner
@@ -61,10 +61,10 @@ COPY --from=builder /app/packages/app/public/ /workspace/public/
 
 # DIAGNÓSTICO FINAL EXPLÍCITO
 RUN echo "=== VERIFICACIÓN FINAL server.js ====" && \
-  ls -la /workspace/.next/standalone/server.js && \
-  ls -la /workspace/server.js && \
-  echo "=== CONTENIDO DEL PACKAGE.JSON CORREGIDO ====" && \
-  cat /workspace/.next/standalone/package.json
+    ls -la /workspace/.next/standalone/server.js && \
+    ls -la /workspace/server.js && \
+    echo "=== CONTENIDO DEL PACKAGE.JSON CORREGIDO ====" && \
+    cat /workspace/.next/standalone/package.json
 
 # Ajuste de permisos
 RUN chown -R nextjs:nodejs /workspace

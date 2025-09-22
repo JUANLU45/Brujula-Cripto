@@ -11,10 +11,7 @@ if (!fs.existsSync('/workspace/.next/standalone')) {
 }
 
 // Copiar server.js a la ubicación que Firebase espera
-if (
-  fs.existsSync('/workspace/server.js') &&
-  !fs.existsSync('/workspace/.next/standalone/server.js')
-) {
+if (fs.existsSync('/workspace/server.js') && !fs.existsSync('/workspace/.next/standalone/server.js')) {
   console.log('Copiando server.js a la ubicación requerida...');
   fs.copyFileSync('/workspace/server.js', '/workspace/.next/standalone/server.js');
 }
