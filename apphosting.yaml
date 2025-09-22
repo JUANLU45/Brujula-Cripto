@@ -1,8 +1,10 @@
 rootDirectory: .
 
+scripts:
+  runCommand: node --loader=module-alias/register .next/standalone/server.js
+
 runConfig:
   runtime: nodejs20
-  runCommand: node --loader=module-alias/register .next/standalone/server.js
   minInstances: 0
   maxInstances: 10
   concurrency: 80
