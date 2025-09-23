@@ -81,8 +81,7 @@ C:\...\PROYEC_PARTE1.MD a PROYEC_PARTE7.MD Con la prohibición de prohibido espe
 La única verdad está en el código Y documentas la verdad
 
 ---------CORRECCIÓN DE ERRORES----------
-
-C:\BRUJULA CRIPTO\DOCUMENTACION\ERRORES\ERRORES_1VERIFICACION.MD Corrige todos los errores de este
+MD Corrige todos los errores de es
 archivo de forma profesional y milimétrica comprobándolo contra la documentación FUENTES DE
 DOCUMENTACIÓN (Obligatorias):
 

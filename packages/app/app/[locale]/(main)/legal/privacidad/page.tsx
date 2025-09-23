@@ -24,7 +24,7 @@ export async function generateMetadata(props: PrivacidadPageProps): Promise<Meta
 
 export default async function PrivacidadPage(props: PrivacidadPageProps): Promise<JSX.Element> {
   const params = await props.params;
-  const t = await getTranslations('legal_pages.privacy_policy');
+  const t = await getTranslations('legal_pages');
   const navT = await getTranslations('navigation');
 
   return (
@@ -33,11 +33,9 @@ export default async function PrivacidadPage(props: PrivacidadPageProps): Promis
         {/* Header */}
         <div className="mb-8">
           <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white md:text-4xl">
-            {t('title')}
+            {t('privacy_policy.title')}
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            Protegemos su privacidad con medidas técnicas y organizativas avanzadas
-          </p>
+          <p className="text-lg text-gray-600 dark:text-gray-300">{t('privacy_policy.subtitle')}</p>
         </div>
 
         {/* Content */}
@@ -45,60 +43,60 @@ export default async function PrivacidadPage(props: PrivacidadPageProps): Promis
           {/* Data Collection */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('data_collection.title')}
+              {t('privacy_policy.data_collection.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('data_collection.content')}
+              {t('privacy_policy.data_collection.content')}
             </p>
           </section>
 
           {/* Data Usage */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('data_usage.title')}
+              {t('privacy_policy.data_usage.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('data_usage.content')}
+              {t('privacy_policy.data_usage.content')}
             </p>
           </section>
 
           {/* Data Protection */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('data_protection.title')}
+              {t('privacy_policy.data_protection.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('data_protection.content')}
+              {t('privacy_policy.data_protection.content')}
             </p>
           </section>
 
           {/* Third Parties */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('third_parties.title')}
+              {t('privacy_policy.third_parties.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('third_parties.content')}
+              {t('privacy_policy.third_parties.content')}
             </p>
           </section>
 
           {/* User Rights */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('user_rights.title')}
+              {t('privacy_policy.user_rights.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('user_rights.content')}
+              {t('privacy_policy.user_rights.content')}
             </p>
           </section>
 
           {/* Cookies */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('cookies.title')}
+              {t('privacy_policy.cookies.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('cookies.content')}
+              {t('privacy_policy.cookies.content')}
             </p>
           </section>
         </div>

@@ -25,6 +25,24 @@
   --color-brand: 59 130 246;
   --color-brand-hover: 37 99 235;
 
+  /* Fondos diferenciados para jerarquía visual - Modo claro */
+  --color-surface-nav: 249 250 251; /* gray-50 */
+  --color-surface-footer: 243 244 246; /* gray-100 */
+  --color-surface-main: 255 255 255; /* white */
+
+  /* Variables para interactividad moderna centralizada */
+  --interaction-timing: 0.2s;
+  --interaction-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --hover-lift: -8px;
+  --active-scale: 0.98;
+  --glow-opacity: 0.4;
+
+  /* Colores interactivos modo claro */
+  --color-interactive-hover: 37 99 235; /* primary-600 */
+  --color-interactive-focus: 59 130 246; /* primary-500 */
+  --color-interactive-active: 29 78 216; /* primary-700 */
+  --color-interactive-glow: 96 165 250; /* primary-400 */
+
   /* Espaciado personalizado */
   --spacing-18: 4.5rem;
   --spacing-88: 22rem;
@@ -34,6 +52,17 @@
   /* Colores de marca para tema oscuro */
   --color-brand: 96 165 250;
   --color-brand-hover: 147 197 253;
+
+  /* Fondos diferenciados para jerarquía visual - Modo oscuro */
+  --color-surface-nav: 31 41 55; /* gray-800 */
+  --color-surface-footer: 31 41 55; /* gray-800 */
+  --color-surface-main: 17 24 39; /* gray-900 */
+
+  /* Colores interactivos modo oscuro */
+  --color-interactive-hover: 96 165 250; /* primary-400 */
+  --color-interactive-focus: 147 197 253; /* primary-300 */
+  --color-interactive-active: 59 130 246; /* primary-500 */
+  --color-interactive-glow: 147 197 253; /* primary-300 */
 }
 
 /* Reset básico para consistencia */
@@ -409,6 +438,72 @@ a {
 .compass-needle {
   animation: needle-swing 3s ease-in-out infinite alternate;
   transform-origin: 12px 12px;
+}
+
+/* Clases interactivas centralizadas para tarjetas modernas */
+.card-interactive {
+  transition: all var(--interaction-timing) var(--interaction-easing);
+  will-change: transform, box-shadow, border-color;
+}
+
+.card-interactive:hover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-color: rgb(var(--color-interactive-hover));
+}
+
+.card-interactive:focus-within {
+  outline: 2px solid rgb(var(--color-interactive-focus));
+  outline-offset: 2px;
+}
+
+.card-interactive:active {
+  transform: scale(var(--active-scale));
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.icon-interactive {
+  transition: transform var(--interaction-timing) var(--interaction-easing);
+  will-change: transform;
+}
+
+.group:hover .icon-interactive {
+  transform: scale(1.1) rotate(3deg);
+}
+
+/* Estados de carga con skeleton shimmer */
+.skeleton-pulse {
+  animation: skeleton-shimmer 2s infinite linear;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.dark .skeleton-pulse {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Soporte para reduced motion (accesibilidad) */
+@media (prefers-reduced-motion: reduce) {
+  .card-interactive,
+  .icon-interactive {
+    transition: none;
+  }
+
+  .card-interactive:hover {
+    transform: none;
+  }
+
+  .group:hover .icon-interactive {
+    transform: none;
+  }
 }
 
 @keyframes spin {

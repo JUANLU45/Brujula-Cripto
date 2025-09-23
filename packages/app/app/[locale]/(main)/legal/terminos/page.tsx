@@ -24,7 +24,7 @@ export async function generateMetadata(props: TerminosPageProps): Promise<Metada
 
 export default async function TerminosPage(props: TerminosPageProps): Promise<JSX.Element> {
   const params = await props.params;
-  const t = await getTranslations('legal_pages.terms_conditions');
+  const t = await getTranslations('legal_pages');
   const navT = await getTranslations('navigation');
 
   return (
@@ -33,10 +33,10 @@ export default async function TerminosPage(props: TerminosPageProps): Promise<JS
         {/* Header */}
         <div className="mb-8">
           <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white md:text-4xl">
-            {t('title')}
+            {t('terms_conditions.title')}
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            Condiciones de uso de nuestros servicios educativos y herramientas
+            {t('terms_conditions.subtitle')}
           </p>
         </div>
 
@@ -45,70 +45,70 @@ export default async function TerminosPage(props: TerminosPageProps): Promise<JS
           {/* Acceptance */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('acceptance.title')}
+              {t('terms_conditions.acceptance.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('acceptance.content')}
+              {t('terms_conditions.acceptance.content')}
             </p>
           </section>
 
           {/* Services */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('services.title')}
+              {t('terms_conditions.services.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('services.content')}
+              {t('terms_conditions.services.content')}
             </p>
           </section>
 
           {/* User Obligations */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('user_obligations.title')}
+              {t('terms_conditions.user_obligations.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('user_obligations.content')}
+              {t('terms_conditions.user_obligations.content')}
             </p>
           </section>
 
           {/* Prohibited Uses */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('prohibited_uses.title')}
+              {t('terms_conditions.prohibited_uses.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('prohibited_uses.content')}
+              {t('terms_conditions.prohibited_uses.content')}
             </p>
           </section>
 
           {/* Subscription Terms */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('subscription_terms.title')}
+              {t('terms_conditions.subscription_terms.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('subscription_terms.content')}
+              {t('terms_conditions.subscription_terms.content')}
             </p>
           </section>
 
           {/* Limitation of Liability */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('limitation_liability.title')}
+              {t('terms_conditions.limitation_liability.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('limitation_liability.content')}
+              {t('terms_conditions.limitation_liability.content')}
             </p>
           </section>
 
           {/* Modifications */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('modifications.title')}
+              {t('terms_conditions.modifications.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('modifications.content')}
+              {t('terms_conditions.modifications.content')}
             </p>
           </section>
         </div>

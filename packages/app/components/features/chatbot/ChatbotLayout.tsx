@@ -155,10 +155,10 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
 
   return (
     <div className={`flex h-screen bg-gray-50 dark:bg-gray-900 ${className}`}>
-      {/* Sidebar Overlay (móvil) */}
+      {/* Sidebar Overlay */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+          className="fixed inset-0 z-40 bg-black/50 lg:bg-black/20"
           onClick={handleSidebarOverlayClick}
           onKeyDown={handleSidebarOverlayKeyDown}
           role="button"
@@ -169,7 +169,9 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-80 transform bg-white shadow-lg transition-transform duration-300 ease-in-out dark:bg-gray-800 lg:relative lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} `}
+        className={`fixed inset-y-0 left-0 z-50 w-80 transform bg-white shadow-lg transition-transform duration-300 ease-in-out dark:bg-gray-800 lg:relative ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
       >
         <ChatbotSidebarHeader
           user={user}
@@ -197,12 +199,21 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-1 flex-col lg:ml-0">
-        {/* Header (móvil) */}
-        <div className="border-b border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800 lg:hidden">
-          <Button variant="ghost" size="sm" onClick={() => setIsSidebarOpen(true)}>
-            <MenuIcon />
-          </Button>
+      <div className="flex flex-1 flex-col">
+        {/* Header */}
+        <div className="border-b border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+          {!isSidebarOpen && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsSidebarOpen(true)}
+              className="transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+              aria-label="Abrir panel de conversaciones"
+            >
+              <MenuIcon />
+              <span className="ml-2 text-sm">Conversaciones</span>
+            </Button>
+          )}
         </div>
 
         {/* Chat Interface */}

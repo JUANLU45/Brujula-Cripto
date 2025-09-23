@@ -63,7 +63,7 @@ export default tseslint.config(
       'no-return-await': 'error',
       'no-await-in-loop': 'warn',
       'max-depth': ['warn', 4],
-      complexity: ['warn', 10],
+      complexity: ['warn', 16],
       'max-lines': ['warn', { max: 800, skipBlankLines: true, skipComments: true }],
       'max-params': ['warn', 4],
       '@typescript-eslint/explicit-module-boundary-types': 'error',

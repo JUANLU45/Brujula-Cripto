@@ -35,6 +35,35 @@ module.exports = {
           light: '#3b82f6',
           dark: '#60a5fa',
         },
+        // Fondos diferenciados para jerarquía visual
+        surface: {
+          // Navegación y header
+          nav: {
+            light: '#f9fafb', // gray-50
+            dark: '#1f2937', // gray-800
+          },
+          // Footer y secciones secundarias
+          footer: {
+            light: '#f3f4f6', // gray-100
+            dark: '#1f2937', // gray-800
+          },
+          // Contenido principal
+          main: {
+            light: '#ffffff', // white
+            dark: '#111827', // gray-900
+          },
+        },
+        // Colores interactivos centralizados para efectos modernos
+        interactive: {
+          hover: 'rgb(37 99 235)', // primary-600
+          focus: 'rgb(59 130 246)', // primary-500
+          active: 'rgb(29 78 216)', // primary-700
+          glow: 'rgb(96 165 250)', // primary-400
+          // Borders especializados
+          'border-hover': 'rgb(96 165 250)', // primary-400
+          'border-focus': 'rgb(59 130 246)', // primary-500
+          'border-default': 'rgb(229 231 235)', // gray-200
+        },
       },
     },
   },

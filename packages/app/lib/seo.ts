@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 
 interface SEOMetadataParams {
   locale: 'es' | 'en';
@@ -10,9 +9,14 @@ interface SEOMetadataParams {
   path?: string;
 }
 
+interface TranslationMessages {
+  [key: string]: string | TranslationMessages;
+}
+
 /**
  * Genera metadatos SEO centralizados usando claves de traducción i18n
  * Cumple con centralización absoluta - CERO objetos literales
+ * CORRECCIÓN ROBUSTA: Acceso directo a traducciones con tipos seguros
  */
 export async function generateSEOMetadata({
   locale,
@@ -22,11 +26,25 @@ export async function generateSEOMetadata({
   imageUrl,
   path = '',
 }: SEOMetadataParams): Promise<Metadata> {
-  const t = await getTranslations({ locale });
+  // CORRECCIÓN ROBUSTA: Importar traducciones completas con tipos seguros
+  const messages = ((await import(`../i18n/${locale}.json`)) as { default: TranslationMessages })
+    .default;
 
-  const title = t(titleKey);
-  const description = t(descriptionKey);
-  const keywords = keywordsKey ? t(keywordsKey) : undefined;
+  // Función tipada para acceder a claves anidadas usando dot notation
+  const getNestedValue = (obj: TranslationMessages, key: string): string => {
+    const result = key.split('.').reduce<TranslationMessages | string>((current, prop) => {
+      if (typeof current === 'object' && current !== null && prop in current) {
+        return current[prop];
+      }
+      return key; // Fallback a la clave original
+    }, obj);
+
+    return typeof result === 'string' ? result : key;
+  };
+
+  const title = getNestedValue(messages, titleKey);
+  const description = getNestedValue(messages, descriptionKey);
+  const keywords = keywordsKey ? getNestedValue(messages, keywordsKey) : undefined;
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://brujulacripto.com';
   const url = `${baseUrl}/${locale}${path}`;

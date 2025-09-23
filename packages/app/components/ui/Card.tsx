@@ -2,17 +2,43 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn(
-        'rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900',
-        className,
-      )}
-      {...props}
-    />
-  ),
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'default' | 'interactive' | 'feature' | 'stat';
+  hover?: boolean;
+}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, variant = 'default', hover = false, ...props }, ref) => {
+    const baseStyles = 'rounded-lg border bg-white shadow-sm dark:bg-gray-900';
+
+    const variantStyles = {
+      default: 'border-gray-200 dark:border-gray-700',
+      interactive: cn(
+        'border-interactive-border-default dark:border-gray-700',
+        'card-interactive',
+        hover && 'hover:border-interactive-border-hover hover:shadow-xl',
+      ),
+      feature: cn(
+        'border-primary-200 dark:border-primary-800',
+        'bg-gradient-to-br from-white to-primary-50/30',
+        'dark:from-gray-900 dark:to-primary-950/20',
+        'card-interactive',
+      ),
+      stat: cn(
+        'border-gray-200 dark:border-gray-700',
+        'transition-all duration-200',
+        'hover:bg-gray-50 dark:hover:bg-gray-800',
+      ),
+    };
+
+    return (
+      <div
+        ref={ref}
+        className={cn(baseStyles, variantStyles[variant], 'p-6', className)}
+        {...props}
+      />
+    );
+  },
 );
 Card.displayName = 'Card';
 

@@ -106,7 +106,7 @@ const Footer = (): JSX.Element => {
   ];
 
   return (
-    <footer className="border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
+    <footer className="border-t-2 border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Contenido principal del footer */}
         <div className="py-8">
@@ -124,7 +124,7 @@ const Footer = (): JSX.Element => {
                 {t('brand.name')}
               </h2>
             </div>
-            <p className="mx-auto max-w-md text-lg font-medium text-blue-600 dark:text-blue-400">
+            <p className="mx-auto max-w-md text-lg font-medium text-primary-600 dark:text-primary-400">
               {t('footer.tagline')}
             </p>
           </div>
@@ -141,7 +141,7 @@ const Footer = (): JSX.Element => {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                      className="text-gray-600 transition-colors hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
                     >
                       {link.label}
                     </Link>
@@ -164,7 +164,7 @@ const Footer = (): JSX.Element => {
                         'transition-colors',
                         link.important
                           ? 'font-semibold text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300'
-                          : 'text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400',
+                          : 'text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400',
                       )}
                     >
                       {link.label}
@@ -184,7 +184,7 @@ const Footer = (): JSX.Element => {
                   <EnvelopeIcon className="h-4 w-4 text-gray-400" />
                   <a
                     href={`mailto:${t('brand.emails.support')}`}
-                    className="text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-gray-600 transition-colors hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
                   >
                     {t('footer.contact.support')}
                   </a>
@@ -193,7 +193,7 @@ const Footer = (): JSX.Element => {
                   <EnvelopeIcon className="h-4 w-4 text-gray-400" />
                   <a
                     href={`mailto:${t('brand.emails.info')}`}
-                    className="text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-gray-600 transition-colors hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
                   >
                     {t('footer.contact.info')}
                   </a>
@@ -209,7 +209,7 @@ const Footer = (): JSX.Element => {
                       <a
                         key={social.label}
                         href={social.href}
-                        className="text-gray-400 transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+                        className="text-gray-400 transition-colors hover:text-primary-600 dark:hover:text-primary-400"
                         aria-label={social.label}
                       >
                         {/* Icons placeholder - se pueden reemplazar con iconos reales */}
@@ -246,7 +246,7 @@ const Footer = (): JSX.Element => {
                       <li key={link.href}>
                         <Link
                           href={link.href}
-                          className="block py-1 text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                          className="block py-1 text-gray-600 transition-colors hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
                         >
                           {link.label}
                         </Link>
@@ -283,7 +283,7 @@ const Footer = (): JSX.Element => {
                             'block py-1 transition-colors',
                             link.important
                               ? 'font-semibold text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300'
-                              : 'text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400',
+                              : 'text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400',
                           )}
                         >
                           {link.label}
@@ -299,13 +299,13 @@ const Footer = (): JSX.Element => {
             <div className="space-y-2 text-center">
               <a
                 href={`mailto:${t('brand.emails.support')}`}
-                className="block text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                className="block text-gray-600 transition-colors hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
               >
                 {t('footer.contact.support')}
               </a>
               <a
                 href={`mailto:${t('brand.emails.info')}`}
-                className="block text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                className="block text-gray-600 transition-colors hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
               >
                 {t('footer.contact.info')}
               </a>

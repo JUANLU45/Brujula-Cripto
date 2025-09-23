@@ -40,7 +40,9 @@ export function ArticleCard({
 
   return (
     <Card
-      className={`overflow-hidden transition-shadow hover:shadow-lg ${compact ? 'p-4' : 'p-6'} ${className}`}
+      variant="interactive"
+      hover={true}
+      className={`overflow-hidden ${compact ? 'p-4' : 'p-6'} ${className}`}
     >
       {/* Article Image */}
       <ArticleCardImage

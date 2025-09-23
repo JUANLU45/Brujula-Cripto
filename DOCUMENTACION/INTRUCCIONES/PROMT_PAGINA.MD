@@ -1,7 +1,5 @@
-Tarea de Verificación Completa de Páginas Objetivo Principal: Realizar una verificación exhaustiva
-NADA DE CODIGO FALSO, PLACEBO, JAEQUEADO, MOKEADO de las páginas principaI C:\BRUJULA
-CRIPTO\packages\app\app\[locale]\(dashboard) una centralización total de todos los elementos y
-componentes.C:\BRUJULA CRIPTO\packages\app\components\features\dashboard Fase 1: Análisis Previo
+Tarea de Verificación E implementación Completa de Páginas Objetivo Principal: Realizar una verificación exhaustiva E implementación perfecta sin 
+NADA DE CODIGO FALSO, PLACEBO, JAEQUEADO, MOKEADO de las páginas principaI C:\BRUJULA CRIPTO\packages\app\app\api\articles\route.ts
 (Obligatorio)
 
 Antes de comenzar, es fundamental analizar en detalle los 8 documentos de referencia del proyecto
@@ -88,12 +86,9 @@ Analítica: Google Analytics 4 (GA4) para medir la interacción.
 Base de Datos: Firestore para la gestión centralizada de datos (usuarios, contenido, etc.).
 ----------CREAR------------
 
-PROHIBIDO PLACEBO, ARQUEADO,MOKADO O FALSO Crear la página principal del proyecto, asegurando que
-estén listas para producción y que cumplan con una centralización total de componentes, datos y
-configuraciones. PAGINA:C:\BRUJULA CRIPTO\packages\app\app\[locale]\(main)\blog COMPONENTES YA
-CREADOS : C:\BRUJULA CRIPTO\packages\app\components\features\blog COMPONENTES UI: C:\BRUJULA
-CRIPTO\packages\app\components\ui Fase 1: Análisis Previo (Obligatorio)
-
+ Crear la páginal del proyecto, asegurando que
+esté lista para producción y que cumplan con una centralización total de componentes, datos y
+configuraciones. C:\BRUJULA CRIPTO\packages\app\app\api\articles\route.ts 
 Antes de iniciar el desarrollo, es imprescindible realizar un análisis exhaustivo de los 8
 documentos de referencia del proyecto. La implementación de cada página debe cumplir detalladamente
 con cada sección y caso de uso especificado en ellos.
@@ -232,7 +227,7 @@ Finalización y Criterios de Aceptación:
 
 ------------------SUBCRIPCION------
 
-LEE LA DOCUMENTACION ES UNA ORDEN Y PROHIBIDO PLACEBO, ARQUEADO,MOKADO O FALSO AVISO CREAR LA PAGINA
+LEE LA DOCUMENTACION ES UNA ORDEN Y PROHIBIDO PLACEBO, ARQUEADO,MOKADO O FALSO Objetivo dejar lab LA PAGINA ¿ 
 TAL Y COMO ESPECIFICA LOS DOCUMENTOS , y que cumplan con una centralización total de componentes,
 datos E IDIOMAS CENTRALIZADOS CON SUS CLAVES Y CONFIGURACIONES DE LA. PAGINAS:C:\BRUJULA
 CRIPTO\packages\app\app\[locale]\(main)\suscripcion\page.tsx IMPORTANTE usando perfectamente sin

@@ -74,7 +74,13 @@ export function ChatbotSidebarHeader({
             </div>
           )}
         </div>
-        <Button variant="ghost" size="sm" onClick={onCloseSidebar} className="lg:hidden">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={onCloseSidebar}
+          className="transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+          aria-label="Cerrar panel de conversaciones"
+        >
           <CloseIcon />
         </Button>
       </div>

@@ -399,6 +399,7 @@
       },
       "privacy_policy": {
         "title": "Política de Privacidad",
+        "subtitle": "Protegemos su privacidad con medidas técnicas y organizativas avanzadas",
         "data_collection": {
           "title": "Recopilación de Datos",
           "content": "Recopilamos únicamente los datos necesarios para proporcionar nuestros servicios: email para autenticación, preferencias de usuario y datos de facturación para suscripciones premium."
@@ -426,6 +427,7 @@
       },
       "terms_conditions": {
         "title": "Términos y Condiciones",
+        "subtitle": "Condiciones de uso de nuestros servicios educativos y herramientas",
         "acceptance": {
           "title": "Aceptación de Términos",
           "content": "Al utilizar Brújula Cripto, acepta estos términos completamente. Si no está de acuerdo, no utilice nuestros servicios."
@@ -457,33 +459,50 @@
       },
       "disclaimer": {
         "title": "Descargo de Responsabilidad",
+        "company_info": {
+          "title": "Información de la Empresa",
+          "content": "Brújula Cripto es una plataforma especializada en educación, análisis y herramientas para criptomonedas. Contacto: info@brujulacripto.com | Soporte: soporte@brujulacripto.com | Ubicación: Alicante, España."
+        },
         "investment_warning": {
-          "title": "Advertencia de Inversión",
-          "content": "ADVERTENCIA: Las criptomonedas son activos de alto riesgo. Los precios pueden fluctuar extremadamente. Nunca invierta más de lo que puede permitirse perder completamente."
+          "title": "Advertencia Crítica de Inversión",
+          "content": "⚠️ ADVERTENCIA CRÍTICA: Las criptomonedas son activos de extremo riesgo con volatilidad impredecible. Los precios pueden fluctuar dramáticamente en minutos. NUNCA invierta dinero que no puede permitirse perder completamente. Las pérdidas pueden superar el 100% de su inversión inicial."
         },
         "educational_purpose": {
-          "title": "Propósito Educativo",
-          "content": "Todo nuestro contenido es estrictamente educativo e informativo. NO constituye asesoramiento financiero, de inversión o legal. Consulte siempre con profesionales cualificados."
+          "title": "Propósito Estrictamente Educativo",
+          "content": "TODO nuestro contenido es exclusivamente educativo e informativo. NO constituye asesoramiento financiero, de inversión, legal o fiscal. NO recomendamos comprar, vender o mantener criptomonedas específicas. Consulte SIEMPRE con asesores profesionales cualificados antes de tomar decisiones financieras."
         },
         "no_guarantees": {
-          "title": "Sin Garantías",
-          "content": "No garantizamos: exactitud absoluta de la información, resultados de inversión, funcionamiento ininterrumpido de servicios o compatibilidad con todos los sistemas."
+          "title": "Ausencia Total de Garantías",
+          "content": "Brújula Cripto NO garantiza: (1) Exactitud absoluta de información de mercado, (2) Resultados específicos de inversión, (3) Funcionamiento ininterrumpido de servicios, (4) Compatibilidad con todos los sistemas, (5) Éxito en recuperación de activos, (6) Prevención de pérdidas financieras."
         },
         "tool_limitations": {
-          "title": "Limitaciones de Herramientas",
-          "content": "Las herramientas de recuperación tienen limitaciones técnicas. El éxito depende de múltiples factores fuera de nuestro control. Use bajo su responsabilidad."
+          "title": "Limitaciones Críticas de Herramientas",
+          "content": "Nuestras herramientas de recuperación tienen limitaciones técnicas inherentes. El éxito depende de factores fuera de nuestro control: estado del hardware, complejidad criptográfica, tiempo transcurrido, y datos disponibles. NO garantizamos recuperación exitosa. Use bajo su exclusiva responsabilidad."
         },
         "market_volatility": {
-          "title": "Volatilidad del Mercado",
-          "content": "Los mercados de criptomonedas son extremadamente volátiles e impredecibles. Las pérdidas pueden superar las inversiones iniciales, especialmente con apalancamiento."
+          "title": "Volatilidad Extrema del Mercado",
+          "content": "Los mercados de criptomonedas exhiben volatilidad extrema e impredecible. Las fluctuaciones pueden ser: (1) Superiores al 50% en 24 horas, (2) Causadas por noticias, regulaciones o manipulación, (3) Amplificadas por apalancamiento hasta pérdidas totales, (4) Irreversibles una vez ejecutadas."
         },
         "regulatory_risks": {
-          "title": "Riesgos Regulatorios",
-          "content": "Las regulaciones de criptomonedas cambian constantemente. Verifique la legalidad en su jurisdicción antes de usar cualquier servicio relacionado con criptomonedas."
+          "title": "Riesgos Regulatorios Cambiantes",
+          "content": "Las regulaciones de criptomonedas cambian constantemente sin previo aviso. DEBE verificar la legalidad en su jurisdicción antes de usar cualquier servicio cripto. Algunos países prohíben o restringen criptomonedas. El incumplimiento puede resultar en sanciones legales o pérdida total de activos."
         },
         "security_responsibility": {
-          "title": "Responsabilidad de Seguridad",
-          "content": "Usted es responsable de: mantener seguras sus credenciales, usar autenticación de dos factores, verificar direcciones de transacciones y mantener copias de seguridad seguras."
+          "title": "Responsabilidad Absoluta de Seguridad",
+          "content": "Usted es COMPLETAMENTE responsable de: (1) Mantener seguras sus credenciales y claves privadas, (2) Usar autenticación de dos factores, (3) Verificar direcciones de transacciones antes de enviar, (4) Mantener copias de seguridad seguras y actualizadas, (5) Proteger sus dispositivos de malware."
+        },
+        "liability_limitation": {
+          "title": "Limitación Estricta de Responsabilidad",
+          "content": "En ningún caso Brújula Cripto será responsable por: daños directos, indirectos, incidentales, especiales, consecuenciales o punitivos, incluyendo pérdida de beneficios, datos, oportunidades comerciales o reputación, incluso si se advirtió de la posibilidad de tales daños."
+        },
+        "user_acknowledgment": {
+          "title": "Reconocimiento del Usuario",
+          "content": "Al usar nuestros servicios, usted reconoce y acepta que: (1) Ha leído y comprendido completamente este descargo, (2) Asume todos los riesgos asociados, (3) No responsabilizará a Brújula Cripto por pérdidas, (4) Actúa por su propia voluntad y decisión informada."
+        },
+        "header_warning": "ADVERTENCIA IMPORTANTE: Las criptomonedas son activos de alto riesgo. Lea todo este descargo antes de usar nuestros servicios.",
+        "final_warning": {
+          "title": "RECORDATORIO FINAL",
+          "content": "Al usar cualquier servicio de Brújula Cripto, usted acepta expresamente que comprende estos riesgos y asume toda la responsabilidad. Nunca invierta dinero que no puede permitirse perder completamente."
         }
       }
     },
@@ -675,7 +694,18 @@
     },
     "list": {
       "loading": "Cargando artículos...",
-      "noResults": "No se encontraron artículos"
+      "noResults": "No se encontraron artículos",
+      "searchPlaceholder": "Buscar artículos...",
+      "errors": {
+        "loadFailed": "Error al cargar el blog",
+        "unknown": "Error desconocido"
+      }
+    },
+    "search": {
+      "placeholder": "Buscar artículos...",
+      "button": "Buscar",
+      "noResults": "No se encontraron artículos para tu búsqueda",
+      "clear": "Limpiar búsqueda"
     }
   },
   "payments": {

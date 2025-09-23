@@ -24,7 +24,7 @@ export async function generateMetadata(props: AvisoLegalPageProps): Promise<Meta
 
 export default async function AvisoLegalPage(props: AvisoLegalPageProps): Promise<JSX.Element> {
   const params = await props.params;
-  const t = await getTranslations('legal_pages.legal_notice');
+  const t = await getTranslations('legal_pages');
   const navT = await getTranslations('navigation');
 
   return (
@@ -33,10 +33,10 @@ export default async function AvisoLegalPage(props: AvisoLegalPageProps): Promis
         {/* Header */}
         <div className="mb-8">
           <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white md:text-4xl">
-            {t('title')}
+            {t('legal_notice.title')}
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            {t('company_info.description')}
+            {t('legal_notice.company_info.description')}
           </p>
         </div>
 
@@ -45,15 +45,17 @@ export default async function AvisoLegalPage(props: AvisoLegalPageProps): Promis
           {/* Company Information */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('company_info.title')}
+              {t('legal_notice.company_info.title')}
             </h2>
             <div className="space-y-2 rounded-lg bg-gray-50 p-6 dark:bg-gray-800">
               <p className="text-gray-700 dark:text-gray-300">
-                <strong>{t('company_info.name')}</strong>
+                <strong>{t('legal_notice.company_info.name')}</strong>
               </p>
-              <p className="text-gray-700 dark:text-gray-300">{t('company_info.address')}</p>
               <p className="text-gray-700 dark:text-gray-300">
-                <strong>Email:</strong> {t('company_info.contact')}
+                {t('legal_notice.company_info.address')}
+              </p>
+              <p className="text-gray-700 dark:text-gray-300">
+                <strong>Email:</strong> {t('legal_notice.company_info.contact')}
               </p>
             </div>
           </section>
@@ -61,40 +63,40 @@ export default async function AvisoLegalPage(props: AvisoLegalPageProps): Promis
           {/* Website Purpose */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('purpose.title')}
+              {t('legal_notice.purpose.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('purpose.content')}
+              {t('legal_notice.purpose.content')}
             </p>
           </section>
 
           {/* Intellectual Property */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('intellectual_property.title')}
+              {t('legal_notice.intellectual_property.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('intellectual_property.content')}
+              {t('legal_notice.intellectual_property.content')}
             </p>
           </section>
 
           {/* Liability */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('liability.title')}
+              {t('legal_notice.liability.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('liability.content')}
+              {t('legal_notice.liability.content')}
             </p>
           </section>
 
           {/* Applicable Law */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-              {t('applicable_law.title')}
+              {t('legal_notice.applicable_law.title')}
             </h2>
             <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-              {t('applicable_law.content')}
+              {t('legal_notice.applicable_law.content')}
             </p>
           </section>
         </div>

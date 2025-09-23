@@ -119,6 +119,11 @@ const Navbar = (): JSX.Element => {
   // Enlaces de navegación principales
   const mainNavLinks = [
     {
+      href: `/${locale}`,
+      label: t('home'),
+      current: pathname === `/${locale}` || pathname === '/',
+    },
+    {
       href: `/${locale}/blog`,
       label: t('blog'),
       current: pathname.includes('/blog'),
@@ -127,6 +132,11 @@ const Navbar = (): JSX.Element => {
       href: `/${locale}/seguridad`,
       label: t('security_guides'),
       current: pathname.includes('/seguridad'),
+    },
+    {
+      href: `/${locale}/chatbot`,
+      label: t('chatbot'),
+      current: pathname.includes('/chatbot'),
     },
   ];
 
@@ -161,7 +171,7 @@ const Navbar = (): JSX.Element => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-gray-800 dark:bg-gray-900/95 dark:supports-[backdrop-filter]:bg-gray-900/60">
+    <nav className="sticky top-0 z-50 w-full border-b border-gray-200/50 bg-gray-50/95 backdrop-blur-lg supports-[backdrop-filter]:bg-gray-50/80 dark:border-gray-700/50 dark:bg-gray-800/95 dark:supports-[backdrop-filter]:bg-gray-800/80">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -188,9 +198,9 @@ const Navbar = (): JSX.Element => {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400',
+                  'text-sm font-medium transition-colors hover:text-primary-600 dark:hover:text-primary-400',
                   link.current
-                    ? 'text-blue-600 dark:text-blue-400'
+                    ? 'text-primary-600 dark:text-primary-400'
                     : 'text-gray-700 dark:text-gray-300',
                 )}
               >
@@ -202,7 +212,7 @@ const Navbar = (): JSX.Element => {
             <div className="relative">
               <button
                 onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
-                className="flex items-center space-x-1 text-sm font-medium text-gray-700 transition-colors hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
+                className="flex items-center space-x-1 text-sm font-medium text-gray-700 transition-colors hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400"
               >
                 <span>{t('tools.title')}</span>
                 <ChevronDownIcon
@@ -214,12 +224,12 @@ const Navbar = (): JSX.Element => {
               </button>
 
               {isToolsDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-80 rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700">
+                <div className="absolute left-0 mt-2 w-80 rounded-md bg-white/90 py-2 shadow-xl ring-1 ring-gray-200/50 backdrop-blur-md dark:bg-gray-800/90 dark:ring-gray-700/50">
                   {toolsLinks.map((tool) => (
                     <Link
                       key={tool.href}
                       href={tool.href}
-                      className="block px-4 py-3 text-sm hover:bg-gray-50 dark:hover:bg-gray-700"
+                      className="block px-4 py-3 text-sm transition-all duration-200 hover:bg-gray-50/80 hover:backdrop-blur-sm dark:hover:bg-gray-700/80"
                       onClick={() => setIsToolsDropdownOpen(false)}
                     >
                       <div className="font-medium text-gray-900 dark:text-white">{tool.label}</div>
@@ -233,7 +243,7 @@ const Navbar = (): JSX.Element => {
             {/* Contacto */}
             <Link
               href={`/${locale}/contacto`}
-              className="text-sm font-medium text-gray-700 transition-colors hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400"
             >
               {t('contact')}
             </Link>
@@ -253,16 +263,16 @@ const Navbar = (): JSX.Element => {
               </button>
 
               {isLanguageDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-20 rounded-md bg-white py-1 shadow-lg ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700">
+                <div className="absolute right-0 mt-2 w-20 rounded-md bg-white/90 py-1 shadow-xl ring-1 ring-gray-200/50 backdrop-blur-md dark:bg-gray-800/90 dark:ring-gray-700/50">
                   <button
                     onClick={() => {
                       switchLanguage('es');
                       setIsLanguageDropdownOpen(false);
                     }}
                     className={cn(
-                      'block w-full px-3 py-2 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700',
+                      'block w-full px-3 py-2 text-left text-sm transition-all duration-200 hover:bg-gray-50/80 dark:hover:bg-gray-700/80',
                       locale === 'es' &&
-                        'bg-blue-50 text-blue-600 dark:bg-blue-900 dark:text-blue-400',
+                        'bg-primary-50 text-primary-600 dark:bg-primary-900 dark:text-primary-400',
                     )}
                   >
                     ES
@@ -273,9 +283,9 @@ const Navbar = (): JSX.Element => {
                       setIsLanguageDropdownOpen(false);
                     }}
                     className={cn(
-                      'block w-full px-3 py-2 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700',
+                      'block w-full px-3 py-2 text-left text-sm transition-all duration-200 hover:bg-gray-50/80 dark:hover:bg-gray-700/80',
                       locale === 'en' &&
-                        'bg-blue-50 text-blue-600 dark:bg-blue-900 dark:text-blue-400',
+                        'bg-primary-50 text-primary-600 dark:bg-primary-900 dark:text-primary-400',
                     )}
                   >
                     EN
@@ -287,7 +297,7 @@ const Navbar = (): JSX.Element => {
             {/* Selector de tema */}
             <button
               onClick={toggleTheme}
-              className="rounded-md p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+              className="hover:bg-surface-nav rounded-md p-2 text-gray-700 transition-all duration-200 hover:backdrop-blur-sm dark:text-gray-300 dark:hover:bg-gray-700/80"
               aria-label={t('theme_toggle')}
             >
               {mounted && theme === 'dark' ? (
@@ -300,7 +310,7 @@ const Navbar = (): JSX.Element => {
             {/* Botón menú móvil */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="rounded-md p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 md:hidden"
+              className="hover:bg-surface-nav rounded-md p-2 text-gray-700 transition-all duration-200 hover:backdrop-blur-sm dark:text-gray-300 dark:hover:bg-gray-700/80 md:hidden"
               aria-label={t('mobile_menu')}
             >
               {isMobileMenuOpen ? (
@@ -323,8 +333,8 @@ const Navbar = (): JSX.Element => {
                   className={cn(
                     'block px-3 py-2 text-base font-medium',
                     link.current
-                      ? 'bg-blue-50 text-blue-600 dark:bg-blue-900 dark:text-blue-400'
-                      : 'text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800',
+                      ? 'bg-primary-50 text-primary-600 dark:bg-primary-900 dark:text-primary-400'
+                      : 'hover:bg-surface-nav text-gray-700 dark:text-gray-300 dark:hover:bg-gray-800',
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -342,7 +352,7 @@ const Navbar = (): JSX.Element => {
                     <Link
                       key={tool.href}
                       href={tool.href}
-                      className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
+                      className="hover:bg-surface-nav block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {tool.label}
@@ -354,7 +364,7 @@ const Navbar = (): JSX.Element => {
               {/* Contacto en móvil */}
               <Link
                 href={`/${locale}/contacto`}
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
+                className="hover:bg-surface-nav block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('contact')}

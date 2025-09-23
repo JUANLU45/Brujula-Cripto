@@ -61,6 +61,11 @@
     }
   },
   "recovery": {
+    "seo": {
+      "title": "Password Recovery Tools | Brújula Cripto",
+      "description": "Professional password recovery tools for wallets and cryptocurrencies. Secure, private and step-by-step recovery process.",
+      "keywords": "password recovery, wallet recovery, crypto tools, blockchain security, keystore recovery, seed phrase recovery"
+    },
     "banner": {
       "title": "Stay Calm, We're Here to Help.",
       "subtitle": "Answer a few simple questions and we'll guide you to the right solution.",
@@ -327,6 +332,7 @@
       },
       "privacy_policy": {
         "title": "Privacy Policy",
+        "subtitle": "We protect your privacy with advanced technical and organizational measures",
         "data_collection": {
           "title": "Data Collection",
           "content": "We collect only data necessary to provide our services: email for authentication, user preferences and billing data for premium subscriptions."
@@ -354,6 +360,7 @@
       },
       "terms_conditions": {
         "title": "Terms and Conditions",
+        "subtitle": "Terms of use for our educational services and tools",
         "acceptance": {
           "title": "Acceptance of Terms",
           "content": "By using Brújula Cripto, you fully accept these terms. If you disagree, do not use our services."
@@ -385,33 +392,50 @@
       },
       "disclaimer": {
         "title": "Disclaimer",
+        "company_info": {
+          "title": "Company Information",
+          "content": "Brújula Cripto is a platform specialized in education, analysis and tools for cryptocurrencies. Contact: info@brujulacripto.com | Support: soporte@brujulacripto.com | Location: Alicante, Spain."
+        },
         "investment_warning": {
-          "title": "Investment Warning",
-          "content": "WARNING: Cryptocurrencies are high-risk assets. Prices can fluctuate extremely. Never invest more than you can afford to lose completely."
+          "title": "Critical Investment Warning",
+          "content": "⚠️ CRITICAL WARNING: Cryptocurrencies are extremely high-risk assets with unpredictable volatility. Prices can fluctuate dramatically in minutes. NEVER invest money you cannot afford to lose completely. Losses can exceed 100% of your initial investment."
         },
         "educational_purpose": {
-          "title": "Educational Purpose",
-          "content": "All our content is strictly educational and informational. It does NOT constitute financial, investment or legal advice. Always consult with qualified professionals."
+          "title": "Strictly Educational Purpose",
+          "content": "ALL our content is exclusively educational and informational. It does NOT constitute financial, investment, legal or tax advice. We do NOT recommend buying, selling or holding specific cryptocurrencies. ALWAYS consult with qualified professional advisors before making financial decisions."
         },
         "no_guarantees": {
-          "title": "No Guarantees",
-          "content": "We do not guarantee: absolute accuracy of information, investment results, uninterrupted service operation or compatibility with all systems."
+          "title": "Complete Absence of Guarantees",
+          "content": "Brújula Cripto does NOT guarantee: (1) Absolute accuracy of market information, (2) Specific investment results, (3) Uninterrupted service operation, (4) Compatibility with all systems, (5) Success in asset recovery, (6) Prevention of financial losses."
         },
         "tool_limitations": {
-          "title": "Tool Limitations",
-          "content": "Recovery tools have technical limitations. Success depends on multiple factors beyond our control. Use at your own risk."
+          "title": "Critical Tool Limitations",
+          "content": "Our recovery tools have inherent technical limitations. Success depends on factors beyond our control: hardware condition, cryptographic complexity, elapsed time, and available data. We do NOT guarantee successful recovery. Use at your exclusive risk."
         },
         "market_volatility": {
-          "title": "Market Volatility",
-          "content": "Cryptocurrency markets are extremely volatile and unpredictable. Losses can exceed initial investments, especially with leverage."
+          "title": "Extreme Market Volatility",
+          "content": "Cryptocurrency markets exhibit extreme and unpredictable volatility. Fluctuations can be: (1) Greater than 50% in 24 hours, (2) Caused by news, regulations or manipulation, (3) Amplified by leverage to total losses, (4) Irreversible once executed."
         },
         "regulatory_risks": {
-          "title": "Regulatory Risks",
-          "content": "Cryptocurrency regulations constantly change. Verify legality in your jurisdiction before using any cryptocurrency-related service."
+          "title": "Changing Regulatory Risks",
+          "content": "Cryptocurrency regulations change constantly without prior notice. You MUST verify legality in your jurisdiction before using any crypto service. Some countries prohibit or restrict cryptocurrencies. Non-compliance may result in legal sanctions or total asset loss."
         },
         "security_responsibility": {
-          "title": "Security Responsibility",
-          "content": "You are responsible for: keeping your credentials secure, using two-factor authentication, verifying transaction addresses and maintaining secure backups."
+          "title": "Absolute Security Responsibility",
+          "content": "You are COMPLETELY responsible for: (1) Keeping your credentials and private keys secure, (2) Using two-factor authentication, (3) Verifying transaction addresses before sending, (4) Maintaining secure and updated backups, (5) Protecting your devices from malware."
+        },
+        "liability_limitation": {
+          "title": "Strict Liability Limitation",
+          "content": "Under no circumstances will Brújula Cripto be liable for: direct, indirect, incidental, special, consequential or punitive damages, including loss of profits, data, business opportunities or reputation, even if advised of the possibility of such damages."
+        },
+        "user_acknowledgment": {
+          "title": "User Acknowledgment",
+          "content": "By using our services, you acknowledge and agree that: (1) You have read and fully understood this disclaimer, (2) You assume all associated risks, (3) You will not hold Brújula Cripto responsible for losses, (4) You act of your own free will and informed decision."
+        },
+        "header_warning": "IMPORTANT WARNING: Cryptocurrencies are high-risk assets. Read this entire disclaimer before using our services.",
+        "final_warning": {
+          "title": "FINAL REMINDER",
+          "content": "By using any Brújula Cripto service, you expressly accept that you understand these risks and assume full responsibility. Never invest money you cannot afford to lose completely."
         }
       }
     },
@@ -561,6 +585,11 @@
       "title": "Explore Our Crypto Security Blog",
       "subtitle": "Expert Guides, News and Tips",
       "description": "Stay up to date with best practices in cryptocurrencies",
+      "seo": {
+        "title": "Crypto Security Blog | Brújula Cripto",
+        "description": "Explore our crypto security blog. Expert guides, news and tips to protect your digital assets.",
+        "keywords": "cryptocurrencies, security, blockchain, wallet, recovery, crypto guides, blockchain news"
+      },
       "error": {
         "title": "Error loading blog",
         "retry": "Try again"
@@ -577,7 +606,12 @@
     },
     "list": {
       "loading": "Loading articles...",
-      "noResults": "No articles found"
+      "noResults": "No articles found",
+      "searchPlaceholder": "Search articles...",
+      "errors": {
+        "loadFailed": "Failed to load blog",
+        "unknown": "Unknown error"
+      }
     },
     "article": {
       "actions": "Actions",
@@ -594,6 +628,12 @@
         "previous": "Previous",
         "next": "Next"
       }
+    },
+    "search": {
+      "placeholder": "Search articles...",
+      "button": "Search",
+      "noResults": "No articles found for your search",
+      "clear": "Clear search"
     }
   },
   "payments": {

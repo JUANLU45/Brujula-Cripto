@@ -20,7 +20,7 @@ los métodos con los datos de los dos miniservicios de todos los archivosPROHIBI
 MENTIR Y ESPECULAR ODIO A LA ESPECULACIÓN Y A LA MENTIRAN Y EL CODIGO PLACEBO, ARKEADO,
 FALSO,COMANDOS FALSOS, COMAMDOS CON LA SALIDA AMAÑADAY O PREPARADA, ODIOO LO FALSO Y DENUNCIO SI NO
 SE SUIGEN LAS ORDENES DE COMPORTAMIENTO ETC. Verificando compatibilidad con todos los métodos de
-todos los archivos de los dos miniservicios verificando compatibilidad con todos los datos
+todos los archivos de los documentos verificando compatibilidad con todos los datos
 verificando compatibilidad
 
 Verifica si toda LAS MEJORAS IMPLIMENTADAS que hay en este archivo Verificando compatibilidad con
