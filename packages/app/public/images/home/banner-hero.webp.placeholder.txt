@@ -1,1 +1,0 @@
-PLACEHOLDER: banner-hero.webp - HomepageBanner.tsx:27 - 1920x1080px WebP 85% <200KB - Next.js Image with fill, priority=true, sizes=100vw, object-cover - TEMPORARY FILE UNTIL REAL IMAGE PROVIDED

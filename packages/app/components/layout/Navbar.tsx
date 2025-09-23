@@ -102,12 +102,19 @@ const XMarkIcon = ({ className }: { className?: string }): JSX.Element => (
 
 const Navbar = (): JSX.Element => {
   const t = useTranslations('navigation');
+  const brandT = useTranslations('brand');
   const locale = useLocale();
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [isToolsDropdownOpen, setIsToolsDropdownOpen] = React.useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+
+  // Evitar error de hidratación
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Enlaces de navegación principales
   const mainNavLinks = [
@@ -162,13 +169,13 @@ const Navbar = (): JSX.Element => {
             <Link href={`/${locale}`} className="flex items-center space-x-2">
               <Image
                 src="/images/logo/brujula-logo.svg"
-                alt={t('brand.logo_alt')}
+                alt={brandT('logo_alt')}
                 width={32}
                 height={32}
                 className="h-8 w-8"
               />
               <span className="text-xl font-bold text-gray-900 dark:text-white">
-                {t('brand.name')}
+                {brandT('name')}
               </span>
             </Link>
           </div>
@@ -283,7 +290,7 @@ const Navbar = (): JSX.Element => {
               className="rounded-md p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
               aria-label={t('theme_toggle')}
             >
-              {theme === 'dark' ? (
+              {mounted && theme === 'dark' ? (
                 <SunIcon className="h-5 w-5" />
               ) : (
                 <MoonIcon className="h-5 w-5" />

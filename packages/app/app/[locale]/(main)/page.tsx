@@ -31,12 +31,12 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 // Componente para sección de herramientas según PAGINAS.MD
 function ToolsSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
-  const t = useTranslations('common.navigation');
+  const t = useTranslations('navigation');
 
   const tools = [
     {
       href: `/${locale}/recuperacion`,
-      titleKey: 'recovery',
+      titleKey: 'tools.diagnosis_recovery',
       icon: (
         <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
@@ -50,7 +50,7 @@ function ToolsSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
     },
     {
       href: `/${locale}/herramientas/tracker`,
-      titleKey: 'tools.tracker',
+      titleKey: 'tools.transaction_tracker',
       icon: (
         <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
@@ -64,7 +64,7 @@ function ToolsSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
     },
     {
       href: `/${locale}/seguridad`,
-      titleKey: 'security',
+      titleKey: 'security_guides',
       icon: (
         <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
@@ -78,7 +78,7 @@ function ToolsSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
     },
     {
       href: `/${locale}/herramientas/servicios`,
-      titleKey: 'tools.services',
+      titleKey: 'tools.service_directory',
       icon: (
         <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path

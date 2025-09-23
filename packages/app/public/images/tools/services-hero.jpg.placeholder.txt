@@ -1,6 +1,0 @@
-PLACEHOLDER: services-hero.jpg
-USED IN: servicios/page.tsx:76 (OpenGraph específico)
-FORMAT: JPG
-DIMENSIONS: 1200x630px (OpenGraph estándar)
-MAX WEIGHT: 500KB
-STATUS: TEMPORARY PLACEHOLDER - REPLACE WITH REAL IMAGE

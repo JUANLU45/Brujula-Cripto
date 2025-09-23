@@ -1,9 +1,0 @@
-PLACEHOLDER: favicon.ico
-CONFIGURED IN: middleware.ts:46,103 (exclusiones i18n)
-FORMAT: ICO (máxima compatibilidad)
-DIMENSIONS: 32x32px (estándar navegadores)
-CONFIGURATION: Múltiples tamaños en un archivo (16x16, 32x32)
-MAX WEIGHT: 10KB
-STATUS: TEMPORARY PLACEHOLDER - REPLACE WITH REAL ICO FILE
-LOCATION: /favicon.ico (raíz de public)
-CRITICAL: UX navegador básica

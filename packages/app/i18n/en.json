@@ -257,6 +257,7 @@
     }
   },
   "navigation": {
+    "home": "Home",
     "blog": "Blog",
     "tools": {
       "title": "Tools",
@@ -269,6 +270,12 @@
     },
     "security_guides": "Security Guides",
     "contact": "Contact",
+    "legal": {
+      "legal_notice": "Legal Notice",
+      "privacy_policy": "Privacy Policy",
+      "terms_conditions": "Terms & Conditions",
+      "disclaimer": "Disclaimer"
+    },
     "language_selector": "Language selector",
     "theme_toggle": "Toggle theme",
     "mobile_menu": "Mobile menu",

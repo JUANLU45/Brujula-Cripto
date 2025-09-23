@@ -329,6 +329,7 @@
     }
   },
   "navigation": {
+    "home": "Inicio",
     "blog": "Blog",
     "tools": {
       "title": "Herramientas",
@@ -341,6 +342,12 @@
     },
     "security_guides": "Guías de Seguridad",
     "contact": "Contacto",
+    "legal": {
+      "legal_notice": "Aviso Legal",
+      "privacy_policy": "Política de Privacidad",
+      "terms_conditions": "Términos y Condiciones",
+      "disclaimer": "Descargo de Responsabilidad"
+    },
     "language_selector": "Selector de idioma",
     "theme_toggle": "Cambiar tema",
     "mobile_menu": "Menú móvil",
