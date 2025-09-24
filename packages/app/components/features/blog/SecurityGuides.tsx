@@ -31,9 +31,11 @@ export function SecurityGuides({
       {/* Header Section */}
       <Card className="border-0 bg-gradient-to-r from-blue-50 to-indigo-50 p-8 dark:from-blue-950/20 dark:to-indigo-950/20">
         <div className="text-center">
-          <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">{t('security')}</h1>
+          <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
+            {t('security.title')}
+          </h1>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            Guías especializadas para proteger tus activos digitales
+            {t('security.subtitle')}
           </p>
         </div>
       </Card>

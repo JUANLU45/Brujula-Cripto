@@ -135,7 +135,7 @@ const Navbar = (): JSX.Element => {
     },
     {
       href: `/${locale}/seguridad`,
-      label: t('security_guides'),
+      label: t('navigation.security_guides'),
       current: pathname.includes('/seguridad'),
     },
     {

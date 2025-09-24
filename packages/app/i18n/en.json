@@ -7,6 +7,87 @@
       "info": "info@brujulacripto.com"
     }
   },
+  "auth": {
+    "title": "Administrator Access",
+    "subtitle": "Enter your administrator credentials",
+    "email": "Email",
+    "password": "Password",
+    "login": "Sign In",
+    "signin": {
+      "title": "Sign In",
+      "subtitle": "Access your Brújula Cripto account",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Your password",
+      "signIn": "Sign In",
+      "signingIn": "Signing in...",
+      "or": "Or",
+      "signInWithGoogle": "Continue with Google",
+      "forgotPassword": "Forgot your password?",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "signup": {
+      "title": "Create Account",
+      "subtitle": "Join Brújula Cripto and access professional tools",
+      "whyChoose": "Why choose Brújula Cripto?",
+      "benefits": {
+        "recoveryTools": "Professional recovery tools",
+        "realTimeAnalysis": "Real-time transaction analysis",
+        "expertSupport": "Expert support and educational content",
+        "privacySecurity": "Complete privacy and maximum security"
+      },
+      "disclaimer": {
+        "title": "User Responsibility",
+        "content": "By registering, you acknowledge that you are fully responsible for using our tools. Brújula Cripto is assistance software without result guarantees.",
+        "readFull": "Read full disclaimer"
+      },
+      "premium": {
+        "question": "Need unlimited access?",
+        "viewPlans": "View Premium plans"
+      },
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Minimum 6 characters",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "acceptTerms": "I accept the",
+      "termsAndConditions": "Terms and Conditions",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy",
+      "signUp": "Create Account",
+      "signingUp": "Creating account...",
+      "or": "Or",
+      "signUpWithGoogle": "Sign up with Google",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "seo": {
+        "title": "Sign Up | Brújula Cripto - Join the Crypto Security Platform",
+        "description": "Create your free account at Brújula Cripto. Access recovery tools, analysis and cryptocurrency protection. Join thousands of users who trust us."
+      }
+    },
+    "passwordReset": {
+      "title": "Reset Password",
+      "subtitle": "We'll send you a link to reset your password",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "sendEmail": "Send Email",
+      "sendResetEmail": "Send Reset Email",
+      "sending": "Sending...",
+      "backToLogin": "Back to login",
+      "success": "We've sent you an email with instructions to reset your password",
+      "emailSent": "Email Sent",
+      "checkEmail": "Check your email for the recovery link"
+    },
+    "legal": {
+      "loginNotice": "By signing in, you agree to our",
+      "terms": "Terms and Conditions",
+      "and": "and",
+      "privacy": "Privacy Policy"
+    }
+  },
   "homepage": {
     "seo": {
       "title": "Brújula Cripto - Real Tools to Protect and Recover Cryptocurrencies",
@@ -613,87 +694,6 @@
     "actions": {
       "view_site": "View Site",
       "logout": "Logout"
-    },
-    "auth": {
-      "title": "Administrator Access",
-      "subtitle": "Enter your administrator credentials",
-      "email": "Email",
-      "password": "Password",
-      "login": "Sign In",
-      "signin": {
-        "title": "Sign In",
-        "subtitle": "Access your Brújula Cripto account",
-        "email": "Email",
-        "emailPlaceholder": "your@email.com",
-        "password": "Password",
-        "passwordPlaceholder": "Your password",
-        "signIn": "Sign In",
-        "signingIn": "Signing in...",
-        "or": "Or",
-        "signInWithGoogle": "Continue with Google",
-        "forgotPassword": "Forgot your password?",
-        "noAccount": "Don't have an account?",
-        "signUp": "Sign up"
-      },
-      "signup": {
-        "title": "Create Account",
-        "subtitle": "Join Brújula Cripto and access professional tools",
-        "whyChoose": "Why choose Brújula Cripto?",
-        "benefits": {
-          "recoveryTools": "Professional recovery tools",
-          "realTimeAnalysis": "Real-time transaction analysis",
-          "expertSupport": "Expert support and educational content",
-          "privacySecurity": "Complete privacy and maximum security"
-        },
-        "disclaimer": {
-          "title": "User Responsibility",
-          "content": "By registering, you acknowledge that you are fully responsible for using our tools. Brújula Cripto is assistance software without result guarantees.",
-          "readFull": "Read full disclaimer"
-        },
-        "premium": {
-          "question": "Need unlimited access?",
-          "viewPlans": "View Premium plans"
-        },
-        "email": "Email",
-        "emailPlaceholder": "your@email.com",
-        "password": "Password",
-        "passwordPlaceholder": "Minimum 6 characters",
-        "confirmPassword": "Confirm Password",
-        "confirmPasswordPlaceholder": "Confirm your password",
-        "acceptTerms": "I accept the",
-        "termsAndConditions": "Terms and Conditions",
-        "and": "and",
-        "privacyPolicy": "Privacy Policy",
-        "signUp": "Create Account",
-        "signingUp": "Creating account...",
-        "or": "Or",
-        "signUpWithGoogle": "Sign up with Google",
-        "hasAccount": "Already have an account?",
-        "signIn": "Sign in",
-        "seo": {
-          "title": "Sign Up | Brújula Cripto - Join the Crypto Security Platform",
-          "description": "Create your free account at Brújula Cripto. Access recovery tools, analysis and cryptocurrency protection. Join thousands of users who trust us."
-        }
-      },
-      "passwordReset": {
-        "title": "Reset Password",
-        "subtitle": "We'll send you a link to reset your password",
-        "email": "Email",
-        "emailPlaceholder": "your@email.com",
-        "sendEmail": "Send Email",
-        "sendResetEmail": "Send Reset Email",
-        "sending": "Sending...",
-        "backToLogin": "Back to login",
-        "success": "We've sent you an email with instructions to reset your password",
-        "emailSent": "Email Sent",
-        "checkEmail": "Check your email for the recovery link"
-      },
-      "legal": {
-        "loginNotice": "By signing in, you agree to our",
-        "terms": "Terms and Conditions",
-        "and": "and",
-        "privacy": "Privacy Policy"
-      }
     },
     "editor": {
       "title": "Article Editor",
