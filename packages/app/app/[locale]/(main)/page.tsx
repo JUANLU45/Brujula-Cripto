@@ -40,75 +40,65 @@ function ToolsSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
       href: `/${locale}/recuperacion`,
       titleKey: 'tools.diagnosis_recovery',
       icon: (
-        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
-          <Image
-            src="/images/iconos/diagnostico-recuperacion.svg"
-            alt="Diagnóstico y Recuperación"
-            width={20}
-            height={20}
-            className="h-5 w-5"
-          />
-        </div>
+        <Image
+          src="/images/iconos/diagnostico-recuperacion.svg"
+          alt="Diagnóstico y Recuperación"
+          width={76}
+          height={76}
+          className="h-20 w-20"
+        />
       ),
     },
     {
       href: `/${locale}/herramientas/tracker`,
       titleKey: 'tools.transaction_tracker',
       icon: (
-        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
-          <Image
-            src="/images/iconos/transaction-tracker.svg"
-            alt="Transaction Tracker"
-            width={20}
-            height={20}
-            className="h-5 w-5"
-          />
-        </div>
+        <Image
+          src="/images/iconos/transaction-tracker.svg"
+          alt="Transaction Tracker"
+          width={76}
+          height={76}
+          className="h-20 w-20"
+        />
       ),
     },
     {
       href: `/${locale}/seguridad`,
       titleKey: 'security_guides',
       icon: (
-        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
-          <Image
-            src="/images/iconos/seguridad-guias.svg"
-            alt="Seguridad y Guías"
-            width={20}
-            height={20}
-            className="h-5 w-5"
-          />
-        </div>
+        <Image
+          src="/images/iconos/seguridad-guias.svg"
+          alt="Seguridad y Guías"
+          width={76}
+          height={76}
+          className="h-20 w-20"
+        />
       ),
     },
     {
       href: `/${locale}/herramientas/servicios`,
       titleKey: 'tools.service_directory',
       icon: (
-        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
-          <Image
-            src="/images/iconos/directorio-servicios.svg"
-            alt="Directorio de Servicios"
-            width={20}
-            height={20}
-            className="h-5 w-5"
-          />
-        </div>
+        <Image
+          src="/images/iconos/directorio-servicios.svg"
+          alt="Directorio de Servicios"
+          width={76}
+          height={76}
+          className="h-20 w-20"
+        />
       ),
     },
     {
       href: `/${locale}/chatbot`,
       titleKey: 'chatbot',
       icon: (
-        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
-          <Image
-            src="/images/chatbot/chatbot-logo.svg"
-            alt="Chatbot"
-            width={20}
-            height={20}
-            className="h-5 w-5"
-          />
-        </div>
+        <Image
+          src="/images/chatbot/chatbot-logo.svg"
+          alt="Chatbot"
+          width={76}
+          height={76}
+          className="h-20 w-20"
+        />
       ),
     },
   ];

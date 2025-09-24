@@ -42,15 +42,13 @@ export function ChatbotMessageList({
               {message.role === 'user' ? (
                 <span className="text-sm font-medium text-white">U</span>
               ) : (
-                <div className="flex h-5 w-5 items-center justify-center rounded-full border border-primary-200 bg-white p-0.5 dark:border-primary-400">
-                  <Image
-                    src="/images/chatbot/chatbot-logo.svg"
-                    alt="Brújula"
-                    width={16}
-                    height={16}
-                    className="h-4 w-4"
-                  />
-                </div>
+                <Image
+                  src="/images/chatbot/chatbot-logo.svg"
+                  alt="Brújula"
+                  width={76}
+                  height={76}
+                  className="h-20 w-20"
+                />
               )}
             </div>
 
@@ -85,15 +83,13 @@ export function ChatbotMessageList({
       {isLoading && (
         <div className="flex justify-start">
           <div className="flex max-w-3xl gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
-              <Image
-                src="/images/chatbot/chatbot-logo.svg"
-                alt="Brújula"
-                width={20}
-                height={20}
-                className="h-5 w-5"
-              />
-            </div>
+            <Image
+              src="/images/chatbot/chatbot-logo.svg"
+              alt="Brújula"
+              width={76}
+              height={76}
+              className="h-20 w-20"
+            />
             <Card className="p-4">
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 animate-pulse rounded-full bg-blue-600"></div>

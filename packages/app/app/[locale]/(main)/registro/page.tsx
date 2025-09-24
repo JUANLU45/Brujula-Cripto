@@ -19,7 +19,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   });
 }
 
-export default async function RegisterPage({ params: _params }: PageProps): Promise<JSX.Element> {
+export default async function RegisterPage(props: PageProps): Promise<JSX.Element> {
+  const _params = await props.params;
   const t = await getTranslations('auth.signup');
 
   const benefits = [

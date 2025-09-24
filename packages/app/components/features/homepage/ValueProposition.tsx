@@ -22,13 +22,13 @@ export function ValueProposition(): JSX.Element {
           {/* Columna 1: Protección Proactiva */}
           <div className="group text-center">
             <div className="mb-6 flex justify-center">
-              <div className="rounded-full bg-blue-100 p-4 transition-transform duration-300 group-hover:scale-110 dark:bg-blue-900/30">
+              <div className="rounded-full border border-blue-200/40 bg-gradient-to-br from-blue-50 to-blue-100 p-2 shadow-xl transition-transform duration-300 group-hover:scale-110 dark:border-blue-400/40 dark:from-blue-900/30 dark:to-blue-800/30">
                 <Image
                   src="/images/iconos/escudo-proteccion.svg"
                   alt="Protección Proactiva"
-                  width={48}
-                  height={48}
-                  className="h-12 w-12"
+                  width={113}
+                  height={113}
+                  className="h-28 w-28"
                 />
               </div>
             </div>
@@ -43,13 +43,13 @@ export function ValueProposition(): JSX.Element {
           {/* Columna 2: Herramientas Reales */}
           <div className="group text-center">
             <div className="mb-6 flex justify-center">
-              <div className="rounded-full bg-green-100 p-4 transition-transform duration-300 group-hover:scale-110 dark:bg-green-900/30">
+              <div className="rounded-full border border-green-200/40 bg-gradient-to-br from-green-50 to-green-100 p-2 shadow-xl transition-transform duration-300 group-hover:scale-110 dark:border-green-400/40 dark:from-green-900/30 dark:to-green-800/30">
                 <Image
                   src="/images/iconos/herramientas-llaves.svg"
                   alt="Herramientas Reales"
-                  width={48}
-                  height={48}
-                  className="h-12 w-12"
+                  width={113}
+                  height={113}
+                  className="h-28 w-28"
                 />
               </div>
             </div>
@@ -64,13 +64,13 @@ export function ValueProposition(): JSX.Element {
           {/* Columna 3: Guía Experta */}
           <div className="group text-center">
             <div className="mb-6 flex justify-center">
-              <div className="rounded-full bg-purple-100 p-4 transition-transform duration-300 group-hover:scale-110 dark:bg-purple-900/30">
+              <div className="rounded-full border border-purple-200/40 bg-gradient-to-br from-purple-50 to-purple-100 p-2 shadow-xl transition-transform duration-300 group-hover:scale-110 dark:border-purple-400/40 dark:from-purple-900/30 dark:to-purple-800/30">
                 <Image
                   src="/images/iconos/brujula-guia.svg"
                   alt="Guía Experta"
-                  width={48}
-                  height={48}
-                  className="h-12 w-12"
+                  width={113}
+                  height={113}
+                  className="h-28 w-28"
                 />
               </div>
             </div>

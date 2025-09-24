@@ -19,13 +19,13 @@ export function ChatbotWelcomeScreen({
 }: ChatbotWelcomeScreenProps): JSX.Element {
   return (
     <div className="flex h-full flex-col items-center justify-center">
-      <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-full border-2 border-primary-200 bg-primary-600 p-3 shadow-lg dark:border-primary-400">
+      <div className="mb-8">
         <Image
           src="/images/chatbot/chatbot-logo.svg"
           alt="Brújula Cripto Chatbot"
-          width={56}
-          height={56}
-          className="h-14 w-14"
+          width={76}
+          height={76}
+          className="h-20 w-20"
         />
       </div>
       <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">{title}</h2>

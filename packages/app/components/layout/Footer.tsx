@@ -131,9 +131,9 @@ const Footer = (): JSX.Element => {
               <Image
                 src="/images/logo/brujula-logo.svg"
                 alt={t('brand.logo_alt')}
-                width={40}
-                height={40}
-                className="h-10 w-10"
+                width={48}
+                height={48}
+                className="h-12 w-12 drop-shadow-sm"
               />
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                 {t('brand.name')}

@@ -2,28 +2,25 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 import { SignInForm } from '@/components/features/auth/SignInForm';
+import { generateSEOMetadata } from '@/lib/seo';
 
-interface Props {
-  params: Promise<{ locale: string }>;
+interface LoginPageProps {
+  params: Promise<{ locale: 'es' | 'en' }>;
 }
 
-export async function generateMetadata({ params: _params }: Props): Promise<Metadata> {
-  const t = await getTranslations('auth.signin');
-
-  return {
-    title: `${t('title')} | Brújula Cripto`,
-    description: t('subtitle'),
-    robots: 'index, follow',
-    openGraph: {
-      title: `${t('title')} | Brújula Cripto`,
-      description: t('subtitle'),
-      type: 'website',
-    },
-  };
-}
-
-export default async function LoginPage(props: Props): Promise<JSX.Element> {
+export async function generateMetadata(props: LoginPageProps): Promise<Metadata> {
   const params = await props.params;
+  return generateSEOMetadata({
+    locale: params.locale,
+    titleKey: 'auth.signin.title',
+    descriptionKey: 'auth.signin.subtitle',
+    path: '/login',
+  });
+}
+
+export default async function LoginPage(props: LoginPageProps): Promise<JSX.Element> {
+  const params = await props.params;
+  const { locale } = params;
   const t = await getTranslations('auth.signin');
   const tLegal = await getTranslations('auth.legal');
 
@@ -48,14 +45,14 @@ export default async function LoginPage(props: Props): Promise<JSX.Element> {
           <p className="text-xs text-gray-500 dark:text-gray-400">
             {tLegal('loginNotice')}{' '}
             <a
-              href={`/${params.locale}/legal/terminos`}
+              href={`/${locale}/legal/terminos`}
               className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
             >
               {tLegal('terms')}
             </a>{' '}
             {tLegal('and')}{' '}
             <a
-              href={`/${params.locale}/legal/privacidad`}
+              href={`/${locale}/legal/privacidad`}
               className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
             >
               {tLegal('privacy')}
