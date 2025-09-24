@@ -10,7 +10,6 @@ import { FeaturedPostsCarousel } from '@/components/features/homepage/FeaturedPo
 import { FeedbackButton } from '@/components/features/homepage/FeedbackButton';
 import { HomepageBanner } from '@/components/features/homepage/HomepageBanner';
 import { ValueProposition } from '@/components/features/homepage/ValueProposition';
-import { DiagnosticIcon, ServiceIcon, TransactionIcon } from '@/components/ui/Icons';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 import { generateSEOMetadata } from '@/lib/seo';
 
@@ -40,22 +39,62 @@ function ToolsSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
     {
       href: `/${locale}/recuperacion`,
       titleKey: 'tools.diagnosis_recovery',
-      icon: <DiagnosticIcon className="h-8 w-8" />,
+      icon: (
+        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
+          <Image
+            src="/images/iconos/diagnostico-recuperacion.svg"
+            alt="Diagnóstico y Recuperación"
+            width={20}
+            height={20}
+            className="h-5 w-5"
+          />
+        </div>
+      ),
     },
     {
       href: `/${locale}/herramientas/tracker`,
       titleKey: 'tools.transaction_tracker',
-      icon: <TransactionIcon className="h-8 w-8" />,
+      icon: (
+        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
+          <Image
+            src="/images/iconos/transaction-tracker.svg"
+            alt="Transaction Tracker"
+            width={20}
+            height={20}
+            className="h-5 w-5"
+          />
+        </div>
+      ),
     },
     {
       href: `/${locale}/seguridad`,
       titleKey: 'security_guides',
-      icon: <DiagnosticIcon className="h-8 w-8" />,
+      icon: (
+        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
+          <Image
+            src="/images/iconos/seguridad-guias.svg"
+            alt="Seguridad y Guías"
+            width={20}
+            height={20}
+            className="h-5 w-5"
+          />
+        </div>
+      ),
     },
     {
       href: `/${locale}/herramientas/servicios`,
       titleKey: 'tools.service_directory',
-      icon: <ServiceIcon className="h-8 w-8" />,
+      icon: (
+        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
+          <Image
+            src="/images/iconos/directorio-servicios.svg"
+            alt="Directorio de Servicios"
+            width={20}
+            height={20}
+            className="h-5 w-5"
+          />
+        </div>
+      ),
     },
     {
       href: `/${locale}/chatbot`,
