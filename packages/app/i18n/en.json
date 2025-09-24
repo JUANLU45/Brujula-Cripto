@@ -450,6 +450,142 @@
     "scroll_to_top": "Scroll to top",
     "back_to_top": "Back to top"
   },
+  "legal_pages": {
+    "legal_notice": {
+      "title": "Legal Notice",
+      "company_info": {
+        "title": "Company Information",
+        "name": "Brújula Cripto",
+        "address": "Registered: Spain, European Union",
+        "contact": "contact@brujulacripto.com",
+        "description": "Platform specialized in education, analysis and tools for cryptocurrencies."
+      },
+      "purpose": {
+        "title": "Website Purpose",
+        "content": "This platform provides educational content, market analysis, wallet recovery tools and premium services related to cryptocurrencies. All content is for informational and educational purposes only."
+      },
+      "intellectual_property": {
+        "title": "Intellectual Property",
+        "content": "All content, designs, logos, texts, graphics, and source code are the exclusive property of Brújula Cripto or its licensors. Reproduction without express authorization is prohibited."
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "content": "Use of our tools and content is at your own risk. We do not guarantee specific results nor are we responsible for financial losses arising from the use of our services."
+      },
+      "applicable_law": {
+        "title": "Applicable Law",
+        "content": "This legal notice is governed by Spanish and European legislation. Any dispute will be resolved in the competent courts of Spain."
+      }
+    },
+    "privacy_policy": {
+      "title": "Privacy Policy",
+      "subtitle": "We protect your privacy with advanced technical and organizational measures",
+      "data_collection": {
+        "title": "Data Collection",
+        "content": "We collect only the data necessary to provide our services: email for authentication, user preferences and billing data for premium subscriptions."
+      },
+      "data_usage": {
+        "title": "Data Usage",
+        "content": "Your data is used exclusively to: provide access to services, process payments, send important updates and improve user experience."
+      },
+      "data_protection": {
+        "title": "Data Protection",
+        "content": "We implement advanced technical and organizational security measures. Your data is protected through encryption, restricted access and regular security audits."
+      },
+      "third_parties": {
+        "title": "Third Parties",
+        "content": "We use trusted services: Firebase (Google) for authentication and database, Stripe for payment processing. These providers comply with GDPR and international standards."
+      },
+      "user_rights": {
+        "title": "Your Rights",
+        "content": "You have the right to: access your data, rectify it, delete it, portability and object to processing. Contact us to exercise these rights."
+      },
+      "cookies": {
+        "title": "Cookies and Similar Technologies",
+        "content": "We use essential cookies for functionality, theme preferences and authentication. We do not use advertising tracking cookies."
+      }
+    },
+    "terms_conditions": {
+      "title": "Terms and Conditions",
+      "subtitle": "Terms of use of our educational services and tools",
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "content": "By using Brújula Cripto, you accept these terms completely. If you do not agree, do not use our services."
+      },
+      "services": {
+        "title": "Service Description",
+        "content": "We offer: free educational content, wallet recovery tools, market analysis, professional services directory and premium subscription with advanced features."
+      },
+      "user_obligations": {
+        "title": "User Obligations",
+        "content": "You commit to: use services legally, not share account credentials, provide truthful information and respect intellectual property."
+      },
+      "prohibited_uses": {
+        "title": "Prohibited Uses",
+        "content": "It is prohibited to: use services for illegal activities, attempt to breach security, distribute malware, reverse engineer or unauthorized commercial use."
+      },
+      "subscription_terms": {
+        "title": "Subscription Terms",
+        "content": "Premium subscriptions renew automatically. You can cancel at any time. Refunds will be processed according to our 14-day refund policy."
+      },
+      "limitation_liability": {
+        "title": "Limitation of Liability",
+        "content": "Our maximum liability is limited to the value of your subscription. We are not responsible for indirect damages, data loss or loss of profits."
+      },
+      "modifications": {
+        "title": "Modifications",
+        "content": "We reserve the right to modify these terms. Important modifications will be communicated with 30 days notice."
+      }
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "company_info": {
+        "title": "Company Information",
+        "content": "Brújula Cripto is a platform specialized in education, analysis and tools for cryptocurrencies. Contact: info@brujulacripto.com | Support: soporte@brujulacripto.com | Location: Alicante, Spain."
+      },
+      "investment_warning": {
+        "title": "Critical Investment Warning",
+        "content": "⚠️ CRITICAL WARNING: Cryptocurrencies are extremely high-risk assets with unpredictable volatility. Prices can fluctuate dramatically within minutes. NEVER invest money you cannot afford to lose completely. Losses can exceed 100% of your initial investment."
+      },
+      "educational_purpose": {
+        "title": "Strictly Educational Purpose",
+        "content": "ALL our content is exclusively educational and informational. It does NOT constitute financial, investment, legal or tax advice. We do NOT recommend buying, selling or holding specific cryptocurrencies. ALWAYS consult with qualified professional advisors before making financial decisions."
+      },
+      "no_guarantees": {
+        "title": "Total Absence of Guarantees",
+        "content": "Brújula Cripto does NOT guarantee: (1) Absolute accuracy of market information, (2) Specific investment results, (3) Uninterrupted service operation, (4) Compatibility with all systems, (5) Success in asset recovery, (6) Prevention of financial losses."
+      },
+      "tool_limitations": {
+        "title": "Critical Tool Limitations",
+        "content": "Our recovery tools have inherent technical limitations. Success depends on factors beyond our control: hardware condition, cryptographic complexity, elapsed time, and available data. We do NOT guarantee successful recovery. Use at your exclusive risk."
+      },
+      "market_volatility": {
+        "title": "Extreme Market Volatility",
+        "content": "Cryptocurrency markets exhibit extreme and unpredictable volatility. Fluctuations can be: (1) Greater than 50% in 24 hours, (2) Caused by news, regulations or manipulation, (3) Amplified by leverage to total losses, (4) Irreversible once executed."
+      },
+      "regulatory_risks": {
+        "title": "Changing Regulatory Risks",
+        "content": "Cryptocurrency regulations change constantly without prior notice. You MUST verify legality in your jurisdiction before using any crypto service. Some countries prohibit or restrict cryptocurrencies. Non-compliance may result in legal sanctions or total asset loss."
+      },
+      "security_responsibility": {
+        "title": "Absolute Security Responsibility",
+        "content": "You are COMPLETELY responsible for: (1) Keeping your credentials and private keys secure, (2) Using two-factor authentication, (3) Verifying transaction addresses before sending, (4) Maintaining secure and updated backups, (5) Protecting your devices from malware."
+      },
+      "liability_limitation": {
+        "title": "Strict Liability Limitation",
+        "content": "Under no circumstances will Brújula Cripto be liable for: direct, indirect, incidental, special, consequential or punitive damages, including loss of profits, data, business opportunities or reputation, even if advised of the possibility of such damages."
+      },
+      "user_acknowledgment": {
+        "title": "User Acknowledgment",
+        "content": "By using our services, you acknowledge and accept that: (1) You have read and fully understood this disclaimer, (2) You assume all associated risks, (3) You will not hold Brújula Cripto responsible for losses, (4) You act of your own free will and informed decision."
+      },
+      "header_warning": "IMPORTANT WARNING: Cryptocurrencies are high-risk assets. Read this entire disclaimer before using our services.",
+      "final_warning": {
+        "title": "FINAL REMINDER",
+        "content": "By using any Brújula Cripto service, you expressly accept that you understand these risks and assume all responsibility. Never invest money you cannot afford to lose completely."
+      }
+    }
+  },
   "buttons": {
     "start": "Start",
     "continue": "Continue",

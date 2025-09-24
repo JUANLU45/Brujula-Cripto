@@ -9,6 +9,8 @@ import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 
+import { Button } from '@/components/ui/Button';
+import { useAuth } from '@/lib/auth/AuthProvider';
 import { cn } from '@/lib/utils';
 
 // Iconos SVG inline para evitar dependencias externas
@@ -103,12 +105,15 @@ const XMarkIcon = ({ className }: { className?: string }): JSX.Element => (
 const Navbar = (): JSX.Element => {
   const t = useTranslations('navigation');
   const brandT = useTranslations('brand');
+  const authT = useTranslations('auth');
   const locale = useLocale();
   const { theme, setTheme } = useTheme();
+  const { user, userData, logout } = useAuth();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [isToolsDropdownOpen, setIsToolsDropdownOpen] = React.useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = React.useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
 
   // Evitar error de hidratación
@@ -168,6 +173,16 @@ const Navbar = (): JSX.Element => {
   // Función para alternar tema
   const toggleTheme = (): void => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  // Función para cerrar sesión
+  const handleLogout = async (): Promise<void> => {
+    try {
+      await logout();
+      window.location.href = `/${locale}`;
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
   };
 
   return (
@@ -251,6 +266,69 @@ const Navbar = (): JSX.Element => {
 
           {/* Acciones de la derecha */}
           <div className="flex items-center space-x-4">
+            {/* Botones de autenticación / Usuario */}
+            {user ? (
+              /* Usuario autenticado */
+              <div className="relative">
+                <button
+                  onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
+                  className="flex items-center space-x-2 rounded-md p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                >
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600">
+                    <span className="text-sm font-medium text-white">
+                      {userData?.displayName?.charAt(0)?.toUpperCase() ||
+                        (user.email && user.email.charAt(0).toUpperCase()) ||
+                        'U'}
+                    </span>
+                  </div>
+                  <span className="hidden text-sm font-medium md:block">
+                    {userData?.displayName || (user.email && user.email.split('@')[0]) || 'Usuario'}
+                  </span>
+                </button>
+
+                {isUserDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-56 rounded-md bg-white/90 py-2 shadow-xl ring-1 ring-gray-200/50 backdrop-blur-md dark:bg-gray-800/90 dark:ring-gray-700/50">
+                    <Link
+                      href={`/${locale}/cuenta`}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50/80 dark:text-gray-300 dark:hover:bg-gray-700/80"
+                      onClick={() => setIsUserDropdownOpen(false)}
+                    >
+                      Mi Cuenta
+                    </Link>
+                    <Link
+                      href={`/${locale}/dashboard`}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50/80 dark:text-gray-300 dark:hover:bg-gray-700/80"
+                      onClick={() => setIsUserDropdownOpen(false)}
+                    >
+                      Panel de Usuario
+                    </Link>
+                    <hr className="my-1 border-gray-200 dark:border-gray-600" />
+                    <button
+                      onClick={() => {
+                        setIsUserDropdownOpen(false);
+                        void handleLogout();
+                      }}
+                      className="block w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-gray-50/80 dark:text-red-400 dark:hover:bg-gray-700/80"
+                    >
+                      Cerrar Sesión
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              /* Usuario no autenticado */
+              <div className="hidden md:flex md:items-center md:space-x-2">
+                <Link href={`/${locale}/login`}>
+                  <Button variant="ghost" size="sm">
+                    {authT('signin.signIn')}
+                  </Button>
+                </Link>
+                <Link href={`/${locale}/registro`}>
+                  <Button size="sm">{authT('signup.signUp')}</Button>
+                </Link>
+              </div>
+            )}
+
             {/* Selector de idioma */}
             <div className="relative">
               <button
@@ -369,6 +447,52 @@ const Navbar = (): JSX.Element => {
               >
                 {t('contact')}
               </Link>
+
+              {/* Enlaces de autenticación en móvil */}
+              {user ? (
+                <div className="border-t border-gray-200 pt-4 dark:border-gray-700">
+                  <Link
+                    href={`/${locale}/cuenta`}
+                    className="hover:bg-surface-nav block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Mi Cuenta
+                  </Link>
+                  <Link
+                    href={`/${locale}/dashboard`}
+                    className="hover:bg-surface-nav block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Panel de Usuario
+                  </Link>
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      void handleLogout();
+                    }}
+                    className="hover:bg-surface-nav block w-full px-3 py-2 text-left text-base font-medium text-red-600 dark:text-red-400 dark:hover:bg-gray-800"
+                  >
+                    Cerrar Sesión
+                  </button>
+                </div>
+              ) : (
+                <div className="border-t border-gray-200 pt-4 dark:border-gray-700">
+                  <Link
+                    href={`/${locale}/login`}
+                    className="hover:bg-surface-nav block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {authT('signin.signIn')}
+                  </Link>
+                  <Link
+                    href={`/${locale}/registro`}
+                    className="hover:bg-surface-nav block px-3 py-2 text-base font-medium text-primary-600 dark:text-primary-400 dark:hover:bg-gray-800"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {authT('signup.signUp')}
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         )}

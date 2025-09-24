@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 import type { Metadata } from 'next';
@@ -9,12 +10,7 @@ import { FeaturedPostsCarousel } from '@/components/features/homepage/FeaturedPo
 import { FeedbackButton } from '@/components/features/homepage/FeedbackButton';
 import { HomepageBanner } from '@/components/features/homepage/HomepageBanner';
 import { ValueProposition } from '@/components/features/homepage/ValueProposition';
-import {
-  ChatBubbleIcon,
-  DiagnosticIcon,
-  ServiceIcon,
-  TransactionIcon,
-} from '@/components/ui/Icons';
+import { DiagnosticIcon, ServiceIcon, TransactionIcon } from '@/components/ui/Icons';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 import { generateSEOMetadata } from '@/lib/seo';
 
@@ -64,7 +60,17 @@ function ToolsSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
     {
       href: `/${locale}/chatbot`,
       titleKey: 'chatbot',
-      icon: <ChatBubbleIcon className="h-8 w-8" />,
+      icon: (
+        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 bg-primary-600 p-1.5 shadow-md dark:border-primary-400">
+          <Image
+            src="/images/chatbot/chatbot-logo.svg"
+            alt="Chatbot"
+            width={20}
+            height={20}
+            className="h-5 w-5"
+          />
+        </div>
+      ),
     },
   ];
 

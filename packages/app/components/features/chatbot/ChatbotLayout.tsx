@@ -25,6 +25,7 @@ interface ChatbotLayoutProps {
 export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutProps): JSX.Element {
   // Estados del layout
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [_mounted, setMounted] = useState(false);
   const [activeConversationId, setActiveConversationId] = useState<string | null>(null);
   const [showUpsellModal, setShowUpsellModal] = useState(false);
   const [messageCount, setMessageCount] = useState(0);
@@ -68,6 +69,15 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
     isRegistered,
     formattedCredits,
   });
+
+  // Establecer estado inicial responsivo
+  useEffect(() => {
+    setMounted(true);
+    // Auto-abrir sidebar en desktop después del montaje
+    if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
+      setIsSidebarOpen(true);
+    }
+  }, []);
 
   // Cargar conversaciones al montar el componente
   useEffect(() => {
@@ -169,8 +179,10 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-80 transform bg-white shadow-lg transition-transform duration-300 ease-in-out dark:bg-gray-800 lg:relative ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed inset-y-0 left-0 z-50 transform bg-white shadow-lg transition-all duration-300 ease-in-out dark:bg-gray-800 lg:static lg:z-0 ${
+          isSidebarOpen
+            ? 'w-80 translate-x-0 lg:w-80'
+            : 'w-80 -translate-x-full lg:w-0 lg:translate-x-0 lg:overflow-hidden'
         }`}
       >
         <ChatbotSidebarHeader
@@ -199,21 +211,21 @@ export function ChatbotLayout({ locale, user, className = '' }: ChatbotLayoutPro
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-1 flex-col transition-all duration-300">
         {/* Header */}
         <div className="border-b border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
-          {!isSidebarOpen && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsSidebarOpen(true)}
-              className="transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-              aria-label="Abrir panel de conversaciones"
-            >
-              <MenuIcon />
-              <span className="ml-2 text-sm">Conversaciones</span>
-            </Button>
-          )}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+            aria-label={
+              isSidebarOpen ? 'Cerrar panel de conversaciones' : 'Abrir panel de conversaciones'
+            }
+          >
+            <MenuIcon />
+            <span className="ml-2 text-sm">{isSidebarOpen ? 'Ocultar' : 'Conversaciones'}</span>
+          </Button>
         </div>
 
         {/* Chat Interface */}

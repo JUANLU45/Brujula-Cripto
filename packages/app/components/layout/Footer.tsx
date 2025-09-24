@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/Button';
+import { useAuth } from '@/lib/auth/AuthProvider';
 import { cn } from '@/lib/utils';
 
 // Usando iconos SVG simples sin dependencias externas
@@ -66,8 +67,10 @@ const EnvelopeIcon = ({ className }: { className?: string }): JSX.Element => (
 const Footer = (): JSX.Element => {
   const t = useTranslations();
   const locale = useLocale();
+  const { user } = useAuth();
   const [isLegalAccordionOpen, setIsLegalAccordionOpen] = React.useState(false);
   const [isNavigationAccordionOpen, setIsNavigationAccordionOpen] = React.useState(false);
+  const [isAccountAccordionOpen, setIsAccountAccordionOpen] = React.useState(false);
 
   // Función para subir al inicio
   const scrollToTop = (): void => {
@@ -97,6 +100,18 @@ const Footer = (): JSX.Element => {
       important: true,
     },
   ];
+
+  // Enlaces de cuenta de usuario
+  const accountLinks = user
+    ? [
+        { href: `/${locale}/cuenta`, label: 'Mi Cuenta' },
+        { href: `/${locale}/dashboard`, label: 'Panel de Usuario' },
+        { href: `/${locale}/suscripcion`, label: 'Suscripción' },
+      ]
+    : [
+        { href: `/${locale}/login`, label: 'Iniciar Sesión' },
+        { href: `/${locale}/registro`, label: 'Crear Cuenta' },
+      ];
 
   // Enlaces sociales (preparados para futuro)
   const socialLinks = [
@@ -129,8 +144,8 @@ const Footer = (): JSX.Element => {
             </p>
           </div>
 
-          {/* Contenido desktop (3 columnas) */}
-          <div className="hidden md:grid md:grid-cols-3 md:gap-8">
+          {/* Contenido desktop (4 columnas) */}
+          <div className="hidden md:grid md:grid-cols-4 md:gap-6">
             {/* Columna 1: Navegación */}
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
@@ -150,7 +165,26 @@ const Footer = (): JSX.Element => {
               </ul>
             </div>
 
-            {/* Columna 2: Legal */}
+            {/* Columna 2: Mi Cuenta */}
+            <div>
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
+                {user ? 'Mi Cuenta' : 'Cuenta'}
+              </h3>
+              <ul className="space-y-3">
+                {accountLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-gray-600 transition-colors hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Columna 3: Legal */}
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
                 {t('footer.legal.title')}
@@ -174,7 +208,7 @@ const Footer = (): JSX.Element => {
               </ul>
             </div>
 
-            {/* Columna 3: Contacto */}
+            {/* Columna 4: Contacto */}
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
                 {t('footer.contact.title')}
@@ -224,6 +258,39 @@ const Footer = (): JSX.Element => {
 
           {/* Contenido móvil (acordeones) */}
           <div className="space-y-4 md:hidden">
+            {/* Acordeón Mi Cuenta */}
+            <div className="rounded-lg border border-gray-200 dark:border-gray-700">
+              <button
+                onClick={() => setIsAccountAccordionOpen(!isAccountAccordionOpen)}
+                className="flex w-full items-center justify-between rounded-lg bg-white px-4 py-3 text-left dark:bg-gray-800"
+              >
+                <span className="text-sm font-semibold text-gray-900 dark:text-white">
+                  {user ? 'Mi Cuenta' : 'Cuenta'}
+                </span>
+                {isAccountAccordionOpen ? (
+                  <ChevronUpIcon className="h-4 w-4 text-gray-500" />
+                ) : (
+                  <ChevronDownIcon className="h-4 w-4 text-gray-500" />
+                )}
+              </button>
+              {isAccountAccordionOpen && (
+                <div className="rounded-b-lg bg-white px-4 pb-3 dark:bg-gray-800">
+                  <ul className="space-y-2">
+                    {accountLinks.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="block py-1 text-gray-600 transition-colors hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
             {/* Acordeón Navegación */}
             <div className="rounded-lg border border-gray-200 dark:border-gray-700">
               <button

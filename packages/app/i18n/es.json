@@ -370,142 +370,6 @@
       "terms_conditions": "Términos y Condiciones",
       "disclaimer": "Descargo de Responsabilidad"
     },
-    "legal_pages": {
-      "legal_notice": {
-        "title": "Aviso Legal",
-        "company_info": {
-          "title": "Información de la Empresa",
-          "name": "Brújula Cripto",
-          "address": "Registro: España, Unión Europea",
-          "contact": "contacto@brujulacripto.com",
-          "description": "Plataforma especializada en educación, análisis y herramientas para criptomonedas."
-        },
-        "purpose": {
-          "title": "Propósito del Sitio Web",
-          "content": "Esta plataforma proporciona contenido educativo, análisis de mercado, herramientas de recuperación de billeteras y servicios premium relacionados con criptomonedas. Todo el contenido es únicamente para fines informativos y educativos."
-        },
-        "intellectual_property": {
-          "title": "Propiedad Intelectual",
-          "content": "Todos los contenidos, diseños, logotipos, textos, gráficos, y código fuente son propiedad exclusiva de Brújula Cripto o sus licenciantes. Está prohibida la reproducción sin autorización expresa."
-        },
-        "liability": {
-          "title": "Limitación de Responsabilidad",
-          "content": "El uso de nuestras herramientas y contenido es bajo su propia responsabilidad. No garantizamos resultados específicos ni nos hacemos responsables de pérdidas financieras derivadas del uso de nuestros servicios."
-        },
-        "applicable_law": {
-          "title": "Ley Aplicable",
-          "content": "Este aviso legal se rige por la legislación española y europea. Cualquier disputa se resolverá en los tribunales competentes de España."
-        }
-      },
-      "privacy_policy": {
-        "title": "Política de Privacidad",
-        "subtitle": "Protegemos su privacidad con medidas técnicas y organizativas avanzadas",
-        "data_collection": {
-          "title": "Recopilación de Datos",
-          "content": "Recopilamos únicamente los datos necesarios para proporcionar nuestros servicios: email para autenticación, preferencias de usuario y datos de facturación para suscripciones premium."
-        },
-        "data_usage": {
-          "title": "Uso de Datos",
-          "content": "Sus datos se utilizan exclusivamente para: proporcionar acceso a servicios, procesar pagos, enviar actualizaciones importantes y mejorar la experiencia de usuario."
-        },
-        "data_protection": {
-          "title": "Protección de Datos",
-          "content": "Implementamos medidas de seguridad técnicas y organizativas avanzadas. Sus datos están protegidos mediante cifrado, acceso restringido y auditorías regulares de seguridad."
-        },
-        "third_parties": {
-          "title": "Terceros",
-          "content": "Utilizamos servicios confiables: Firebase (Google) para autenticación y base de datos, Stripe para procesamiento de pagos. Estos proveedores cumplen con GDPR y estándares internacionales."
-        },
-        "user_rights": {
-          "title": "Sus Derechos",
-          "content": "Tiene derecho a: acceder a sus datos, rectificarlos, eliminarlos, portabilidad y oponerse al procesamiento. Contacte con nosotros para ejercer estos derechos."
-        },
-        "cookies": {
-          "title": "Cookies y Tecnologías Similares",
-          "content": "Utilizamos cookies esenciales para funcionamiento, preferencias de tema y autenticación. No utilizamos cookies de seguimiento publicitario."
-        }
-      },
-      "terms_conditions": {
-        "title": "Términos y Condiciones",
-        "subtitle": "Condiciones de uso de nuestros servicios educativos y herramientas",
-        "acceptance": {
-          "title": "Aceptación de Términos",
-          "content": "Al utilizar Brújula Cripto, acepta estos términos completamente. Si no está de acuerdo, no utilice nuestros servicios."
-        },
-        "services": {
-          "title": "Descripción de Servicios",
-          "content": "Ofrecemos: contenido educativo gratuito, herramientas de recuperación de billeteras, análisis de mercado, directorio de servicios profesionales y suscripción premium con funciones avanzadas."
-        },
-        "user_obligations": {
-          "title": "Obligaciones del Usuario",
-          "content": "Se compromete a: usar los servicios legalmente, no compartir credenciales de cuenta, proporcionar información veraz y respetar la propiedad intelectual."
-        },
-        "prohibited_uses": {
-          "title": "Usos Prohibidos",
-          "content": "Está prohibido: usar servicios para actividades ilegales, intentar vulnerar la seguridad, distribuir malware, hacer ingeniería inversa o uso comercial no autorizado."
-        },
-        "subscription_terms": {
-          "title": "Términos de Suscripción",
-          "content": "Las suscripciones premium se renuevan automáticamente. Puede cancelar en cualquier momento. Los reembolsos se procesarán según nuestra política de reembolso de 14 días."
-        },
-        "limitation_liability": {
-          "title": "Limitación de Responsabilidad",
-          "content": "Nuestra responsabilidad máxima está limitada al valor de su suscripción. No somos responsables de daños indirectos, pérdida de datos o lucro cesante."
-        },
-        "modifications": {
-          "title": "Modificaciones",
-          "content": "Nos reservamos el derecho de modificar estos términos. Las modificaciones importantes se comunicarán con 30 días de antelación."
-        }
-      },
-      "disclaimer": {
-        "title": "Descargo de Responsabilidad",
-        "company_info": {
-          "title": "Información de la Empresa",
-          "content": "Brújula Cripto es una plataforma especializada en educación, análisis y herramientas para criptomonedas. Contacto: info@brujulacripto.com | Soporte: soporte@brujulacripto.com | Ubicación: Alicante, España."
-        },
-        "investment_warning": {
-          "title": "Advertencia Crítica de Inversión",
-          "content": "⚠️ ADVERTENCIA CRÍTICA: Las criptomonedas son activos de extremo riesgo con volatilidad impredecible. Los precios pueden fluctuar dramáticamente en minutos. NUNCA invierta dinero que no puede permitirse perder completamente. Las pérdidas pueden superar el 100% de su inversión inicial."
-        },
-        "educational_purpose": {
-          "title": "Propósito Estrictamente Educativo",
-          "content": "TODO nuestro contenido es exclusivamente educativo e informativo. NO constituye asesoramiento financiero, de inversión, legal o fiscal. NO recomendamos comprar, vender o mantener criptomonedas específicas. Consulte SIEMPRE con asesores profesionales cualificados antes de tomar decisiones financieras."
-        },
-        "no_guarantees": {
-          "title": "Ausencia Total de Garantías",
-          "content": "Brújula Cripto NO garantiza: (1) Exactitud absoluta de información de mercado, (2) Resultados específicos de inversión, (3) Funcionamiento ininterrumpido de servicios, (4) Compatibilidad con todos los sistemas, (5) Éxito en recuperación de activos, (6) Prevención de pérdidas financieras."
-        },
-        "tool_limitations": {
-          "title": "Limitaciones Críticas de Herramientas",
-          "content": "Nuestras herramientas de recuperación tienen limitaciones técnicas inherentes. El éxito depende de factores fuera de nuestro control: estado del hardware, complejidad criptográfica, tiempo transcurrido, y datos disponibles. NO garantizamos recuperación exitosa. Use bajo su exclusiva responsabilidad."
-        },
-        "market_volatility": {
-          "title": "Volatilidad Extrema del Mercado",
-          "content": "Los mercados de criptomonedas exhiben volatilidad extrema e impredecible. Las fluctuaciones pueden ser: (1) Superiores al 50% en 24 horas, (2) Causadas por noticias, regulaciones o manipulación, (3) Amplificadas por apalancamiento hasta pérdidas totales, (4) Irreversibles una vez ejecutadas."
-        },
-        "regulatory_risks": {
-          "title": "Riesgos Regulatorios Cambiantes",
-          "content": "Las regulaciones de criptomonedas cambian constantemente sin previo aviso. DEBE verificar la legalidad en su jurisdicción antes de usar cualquier servicio cripto. Algunos países prohíben o restringen criptomonedas. El incumplimiento puede resultar en sanciones legales o pérdida total de activos."
-        },
-        "security_responsibility": {
-          "title": "Responsabilidad Absoluta de Seguridad",
-          "content": "Usted es COMPLETAMENTE responsable de: (1) Mantener seguras sus credenciales y claves privadas, (2) Usar autenticación de dos factores, (3) Verificar direcciones de transacciones antes de enviar, (4) Mantener copias de seguridad seguras y actualizadas, (5) Proteger sus dispositivos de malware."
-        },
-        "liability_limitation": {
-          "title": "Limitación Estricta de Responsabilidad",
-          "content": "En ningún caso Brújula Cripto será responsable por: daños directos, indirectos, incidentales, especiales, consecuenciales o punitivos, incluyendo pérdida de beneficios, datos, oportunidades comerciales o reputación, incluso si se advirtió de la posibilidad de tales daños."
-        },
-        "user_acknowledgment": {
-          "title": "Reconocimiento del Usuario",
-          "content": "Al usar nuestros servicios, usted reconoce y acepta que: (1) Ha leído y comprendido completamente este descargo, (2) Asume todos los riesgos asociados, (3) No responsabilizará a Brújula Cripto por pérdidas, (4) Actúa por su propia voluntad y decisión informada."
-        },
-        "header_warning": "ADVERTENCIA IMPORTANTE: Las criptomonedas son activos de alto riesgo. Lea todo este descargo antes de usar nuestros servicios.",
-        "final_warning": {
-          "title": "RECORDATORIO FINAL",
-          "content": "Al usar cualquier servicio de Brújula Cripto, usted acepta expresamente que comprende estos riesgos y asume toda la responsabilidad. Nunca invierta dinero que no puede permitirse perder completamente."
-        }
-      }
-    },
     "contact": {
       "title": "Contacto",
       "support": "Soporte",
@@ -516,6 +380,142 @@
     "disclaimer_link": "Descargo de Responsabilidad",
     "scroll_to_top": "Subir al inicio",
     "back_to_top": "Subir"
+  },
+  "legal_pages": {
+    "legal_notice": {
+      "title": "Aviso Legal",
+      "company_info": {
+        "title": "Información de la Empresa",
+        "name": "Brújula Cripto",
+        "address": "Registro: España, Unión Europea",
+        "contact": "contacto@brujulacripto.com",
+        "description": "Plataforma especializada en educación, análisis y herramientas para criptomonedas."
+      },
+      "purpose": {
+        "title": "Propósito del Sitio Web",
+        "content": "Esta plataforma proporciona contenido educativo, análisis de mercado, herramientas de recuperación de billeteras y servicios premium relacionados con criptomonedas. Todo el contenido es únicamente para fines informativos y educativos."
+      },
+      "intellectual_property": {
+        "title": "Propiedad Intelectual",
+        "content": "Todos los contenidos, diseños, logotipos, textos, gráficos, y código fuente son propiedad exclusiva de Brújula Cripto o sus licenciantes. Está prohibida la reproducción sin autorización expresa."
+      },
+      "liability": {
+        "title": "Limitación de Responsabilidad",
+        "content": "El uso de nuestras herramientas y contenido es bajo su propia responsabilidad. No garantizamos resultados específicos ni nos hacemos responsables de pérdidas financieras derivadas del uso de nuestros servicios."
+      },
+      "applicable_law": {
+        "title": "Ley Aplicable",
+        "content": "Este aviso legal se rige por la legislación española y europea. Cualquier disputa se resolverá en los tribunales competentes de España."
+      }
+    },
+    "privacy_policy": {
+      "title": "Política de Privacidad",
+      "subtitle": "Protegemos su privacidad con medidas técnicas y organizativas avanzadas",
+      "data_collection": {
+        "title": "Recopilación de Datos",
+        "content": "Recopilamos únicamente los datos necesarios para proporcionar nuestros servicios: email para autenticación, preferencias de usuario y datos de facturación para suscripciones premium."
+      },
+      "data_usage": {
+        "title": "Uso de Datos",
+        "content": "Sus datos se utilizan exclusivamente para: proporcionar acceso a servicios, procesar pagos, enviar actualizaciones importantes y mejorar la experiencia de usuario."
+      },
+      "data_protection": {
+        "title": "Protección de Datos",
+        "content": "Implementamos medidas de seguridad técnicas y organizativas avanzadas. Sus datos están protegidos mediante cifrado, acceso restringido y auditorías regulares de seguridad."
+      },
+      "third_parties": {
+        "title": "Terceros",
+        "content": "Utilizamos servicios confiables: Firebase (Google) para autenticación y base de datos, Stripe para procesamiento de pagos. Estos proveedores cumplen con GDPR y estándares internacionales."
+      },
+      "user_rights": {
+        "title": "Sus Derechos",
+        "content": "Tiene derecho a: acceder a sus datos, rectificarlos, eliminarlos, portabilidad y oponerse al procesamiento. Contacte con nosotros para ejercer estos derechos."
+      },
+      "cookies": {
+        "title": "Cookies y Tecnologías Similares",
+        "content": "Utilizamos cookies esenciales para funcionamiento, preferencias de tema y autenticación. No utilizamos cookies de seguimiento publicitario."
+      }
+    },
+    "terms_conditions": {
+      "title": "Términos y Condiciones",
+      "subtitle": "Condiciones de uso de nuestros servicios educativos y herramientas",
+      "acceptance": {
+        "title": "Aceptación de Términos",
+        "content": "Al utilizar Brújula Cripto, acepta estos términos completamente. Si no está de acuerdo, no utilice nuestros servicios."
+      },
+      "services": {
+        "title": "Descripción de Servicios",
+        "content": "Ofrecemos: contenido educativo gratuito, herramientas de recuperación de billeteras, análisis de mercado, directorio de servicios profesionales y suscripción premium con funciones avanzadas."
+      },
+      "user_obligations": {
+        "title": "Obligaciones del Usuario",
+        "content": "Se compromete a: usar los servicios legalmente, no compartir credenciales de cuenta, proporcionar información veraz y respetar la propiedad intelectual."
+      },
+      "prohibited_uses": {
+        "title": "Usos Prohibidos",
+        "content": "Está prohibido: usar servicios para actividades ilegales, intentar vulnerar la seguridad, distribuir malware, hacer ingeniería inversa o uso comercial no autorizado."
+      },
+      "subscription_terms": {
+        "title": "Términos de Suscripción",
+        "content": "Las suscripciones premium se renuevan automáticamente. Puede cancelar en cualquier momento. Los reembolsos se procesarán según nuestra política de reembolso de 14 días."
+      },
+      "limitation_liability": {
+        "title": "Limitación de Responsabilidad",
+        "content": "Nuestra responsabilidad máxima está limitada al valor de su suscripción. No somos responsables de daños indirectos, pérdida de datos o lucro cesante."
+      },
+      "modifications": {
+        "title": "Modificaciones",
+        "content": "Nos reservamos el derecho de modificar estos términos. Las modificaciones importantes se comunicarán con 30 días de antelación."
+      }
+    },
+    "disclaimer": {
+      "title": "Descargo de Responsabilidad",
+      "company_info": {
+        "title": "Información de la Empresa",
+        "content": "Brújula Cripto es una plataforma especializada en educación, análisis y herramientas para criptomonedas. Contacto: info@brujulacripto.com | Soporte: soporte@brujulacripto.com | Ubicación: Alicante, España."
+      },
+      "investment_warning": {
+        "title": "Advertencia Crítica de Inversión",
+        "content": "⚠️ ADVERTENCIA CRÍTICA: Las criptomonedas son activos de extremo riesgo con volatilidad impredecible. Los precios pueden fluctuar dramáticamente en minutos. NUNCA invierta dinero que no puede permitirse perder completamente. Las pérdidas pueden superar el 100% de su inversión inicial."
+      },
+      "educational_purpose": {
+        "title": "Propósito Estrictamente Educativo",
+        "content": "TODO nuestro contenido es exclusivamente educativo e informativo. NO constituye asesoramiento financiero, de inversión, legal o fiscal. NO recomendamos comprar, vender o mantener criptomonedas específicas. Consulte SIEMPRE con asesores profesionales cualificados antes de tomar decisiones financieras."
+      },
+      "no_guarantees": {
+        "title": "Ausencia Total de Garantías",
+        "content": "Brújula Cripto NO garantiza: (1) Exactitud absoluta de información de mercado, (2) Resultados específicos de inversión, (3) Funcionamiento ininterrumpido de servicios, (4) Compatibilidad con todos los sistemas, (5) Éxito en recuperación de activos, (6) Prevención de pérdidas financieras."
+      },
+      "tool_limitations": {
+        "title": "Limitaciones Críticas de Herramientas",
+        "content": "Nuestras herramientas de recuperación tienen limitaciones técnicas inherentes. El éxito depende de factores fuera de nuestro control: estado del hardware, complejidad criptográfica, tiempo transcurrido, y datos disponibles. NO garantizamos recuperación exitosa. Use bajo su exclusiva responsabilidad."
+      },
+      "market_volatility": {
+        "title": "Volatilidad Extrema del Mercado",
+        "content": "Los mercados de criptomonedas exhiben volatilidad extrema e impredecible. Las fluctuaciones pueden ser: (1) Superiores al 50% en 24 horas, (2) Causadas por noticias, regulaciones o manipulación, (3) Amplificadas por apalancamiento hasta pérdidas totales, (4) Irreversibles una vez ejecutadas."
+      },
+      "regulatory_risks": {
+        "title": "Riesgos Regulatorios Cambiantes",
+        "content": "Las regulaciones de criptomonedas cambian constantemente sin previo aviso. DEBE verificar la legalidad en su jurisdicción antes de usar cualquier servicio cripto. Algunos países prohíben o restringen criptomonedas. El incumplimiento puede resultar en sanciones legales o pérdida total de activos."
+      },
+      "security_responsibility": {
+        "title": "Responsabilidad Absoluta de Seguridad",
+        "content": "Usted es COMPLETAMENTE responsable de: (1) Mantener seguras sus credenciales y claves privadas, (2) Usar autenticación de dos factores, (3) Verificar direcciones de transacciones antes de enviar, (4) Mantener copias de seguridad seguras y actualizadas, (5) Proteger sus dispositivos de malware."
+      },
+      "liability_limitation": {
+        "title": "Limitación Estricta de Responsabilidad",
+        "content": "En ningún caso Brújula Cripto será responsable por: daños directos, indirectos, incidentales, especiales, consecuenciales o punitivos, incluyendo pérdida de beneficios, datos, oportunidades comerciales o reputación, incluso si se advirtió de la posibilidad de tales daños."
+      },
+      "user_acknowledgment": {
+        "title": "Reconocimiento del Usuario",
+        "content": "Al usar nuestros servicios, usted reconoce y acepta que: (1) Ha leído y comprendido completamente este descargo, (2) Asume todos los riesgos asociados, (3) No responsabilizará a Brújula Cripto por pérdidas, (4) Actúa por su propia voluntad y decisión informada."
+      },
+      "header_warning": "ADVERTENCIA IMPORTANTE: Las criptomonedas son activos de alto riesgo. Lea todo este descargo antes de usar nuestros servicios.",
+      "final_warning": {
+        "title": "RECORDATORIO FINAL",
+        "content": "Al usar cualquier servicio de Brújula Cripto, usted acepta expresamente que comprende estos riesgos y asume toda la responsabilidad. Nunca invierta dinero que no puede permitirse perder completamente."
+      }
+    }
   },
   "buttons": {
     "start": "Empezar",
