@@ -68,18 +68,20 @@ export function BlogPage({
           priority
           sizes="100vw"
         />
-        {/* Overlay oscuro usando clases Tailwind - CENTRALIZADO */}
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-black/40"></div>
+        {/* Overlay oscuro mejorado para mejor contraste - CENTRALIZADO */}
+        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/70"></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="container mx-auto px-4 text-center text-white">
-            <h1 className="mb-4 text-4xl font-bold md:text-6xl">{defaultBanner.title}</h1>
+            <h1 className="text-shadow-lg mb-4 text-4xl font-bold drop-shadow-lg md:text-6xl">
+              {defaultBanner.title}
+            </h1>
             {defaultBanner.subtitle && (
-              <h2 className="mb-6 text-xl font-medium opacity-90 md:text-2xl">
+              <h2 className="text-shadow-md mb-6 text-xl font-medium opacity-95 drop-shadow-md md:text-2xl">
                 {defaultBanner.subtitle}
               </h2>
             )}
-            <p className="mx-auto max-w-3xl text-lg opacity-80 md:text-xl">
+            <p className="text-shadow-sm mx-auto max-w-3xl text-lg opacity-90 drop-shadow-sm md:text-xl">
               {defaultBanner.description}
             </p>
 
