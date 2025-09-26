@@ -1,13 +1,6 @@
-import { getApps, initializeApp } from 'firebase-admin/app';
-import { FieldValue, getFirestore, Timestamp } from 'firebase-admin/firestore';
+import { Timestamp } from 'firebase-admin/firestore';
 import { HttpsError, onCall, type CallableRequest } from 'firebase-functions/v2/https';
-
-// Inicializar Firebase Admin si no está ya inicializado
-if (getApps().length === 0) {
-  initializeApp();
-}
-
-const db = getFirestore();
+import { database } from './database';
 
 interface TrackUsageRequest {
   serviceType: 'herramientas' | 'chatbot';
@@ -38,7 +31,7 @@ interface SessionData {
   startTime?: Timestamp;
   endTime?: Timestamp;
   lastActivity?: Timestamp;
-  creditsUsedInSession?: FieldValue | number;
+  creditsUsedInSession?: any | number;
   status?: 'active' | 'completed' | 'completed_with_insufficient_credits';
 }
 
@@ -119,7 +112,7 @@ function processIncrementAction(
 
   const sessionData: SessionData = {
     lastActivity: Timestamp.now(),
-    creditsUsedInSession: FieldValue.increment(creditsToDeduct),
+    creditsUsedInSession: database.incrementValue(creditsToDeduct),
   };
 
   return { sessionData, creditsToDeduct };
@@ -135,7 +128,7 @@ function processEndAction(
   let creditsToDeduct = secondsUsed || 1;
   const sessionData: SessionData = {
     endTime: Timestamp.now(),
-    creditsUsedInSession: FieldValue.increment(creditsToDeduct),
+    creditsUsedInSession: database.incrementValue(creditsToDeduct),
   };
 
   if (currentCredits >= creditsToDeduct) {
@@ -160,24 +153,19 @@ async function updateUserCreditsAndSession(
 ): Promise<void> {
   // Actualizar créditos del usuario si es necesario
   if (creditsToDeduct > 0) {
-    await db
-      .collection('users')
-      .doc(uid)
-      .update({
-        usageCreditsInSeconds: FieldValue.increment(-creditsToDeduct),
-        lastActivity: Timestamp.now(),
-        updatedAt: Timestamp.now(),
-      });
+    const currentUser = await database.getDocument('users', uid);
+    const currentCredits = currentUser?.data?.usageCreditsInSeconds || 0;
+    
+    await database.updateDocument('users', uid, {
+      usageCreditsInSeconds: currentCredits - creditsToDeduct,
+      lastActivity: Timestamp.now(),
+      updatedAt: Timestamp.now(),
+    });
   }
 
   // Registrar la actividad de uso
   if (sessionId && Object.keys(sessionData).length > 0) {
-    await db
-      .collection('users')
-      .doc(uid)
-      .collection('usageSessions')
-      .doc(sessionId)
-      .set(sessionData, { merge: true });
+    await database.setSubDocument('users', uid, 'usageSessions', sessionId, sessionData);
   }
 }
 
@@ -209,7 +197,7 @@ async function logUsageHistory({
     creditsAfterAction: currentCredits - creditsToDeduct,
   };
 
-  await db.collection('users').doc(uid).collection('usageHistory').add(historyEntry);
+  await database.addSubDocument('users', uid, 'usageHistory', historyEntry);
 }
 
 /**
@@ -253,14 +241,13 @@ async function validateAndGetUserData(
   const validatedData = validateTrackUsageData(request.data);
 
   // Obtener documento del usuario
-  const userRef = db.collection('users').doc(uid);
-  const userDoc = await userRef.get();
+  const userDoc = await database.getDocument('users', uid);
 
-  if (!userDoc.exists) {
+  if (!userDoc || !userDoc.exists) {
     throw new HttpsError('not-found', 'Usuario no encontrado');
   }
 
-  const userData = userDoc.data() as UserData | undefined;
+  const userData = userDoc.data as UserData | undefined;
   const currentCredits = userData?.usageCreditsInSeconds || 0;
 
   // Validar que el usuario tenga suficientes créditos
@@ -344,13 +331,13 @@ export const getUserCredits = onCall(
       }
 
       const uid = request.auth.uid;
-      const userDoc = await db.collection('users').doc(uid).get();
+      const userDoc = await database.getDocument('users', uid);
 
-      if (!userDoc.exists) {
+      if (!userDoc || !userDoc.exists) {
         throw new HttpsError('not-found', 'Usuario no encontrado');
       }
 
-      const userData = userDoc.data() as UserData | undefined;
+      const userData = userDoc.data as UserData | undefined;
       const usageCreditsInSeconds = userData?.usageCreditsInSeconds || 0;
 
       // Convertir segundos a formato H:M:S para la UI

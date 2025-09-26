@@ -1,14 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUserCredits = exports.trackUsage = void 0;
-const app_1 = require("firebase-admin/app");
 const firestore_1 = require("firebase-admin/firestore");
 const https_1 = require("firebase-functions/v2/https");
-// Inicializar Firebase Admin si no está ya inicializado
-if ((0, app_1.getApps)().length === 0) {
-    (0, app_1.initializeApp)();
-}
-const db = (0, firestore_1.getFirestore)();
+const database_1 = require("./database");
 /**
  * Cloud Function que descuenta usageCreditsInSeconds en tiempo real
  * durante uso de herramientas/chatbot, trigger por eventos usuario
@@ -58,7 +53,7 @@ function processIncrementAction(secondsUsed, currentCredits) {
     }
     const sessionData = {
         lastActivity: firestore_1.Timestamp.now(),
-        creditsUsedInSession: firestore_1.FieldValue.increment(creditsToDeduct),
+        creditsUsedInSession: database_1.database.incrementValue(creditsToDeduct),
     };
     return { sessionData, creditsToDeduct };
 }
@@ -69,7 +64,7 @@ function processEndAction(secondsUsed, currentCredits) {
     let creditsToDeduct = secondsUsed || 1;
     const sessionData = {
         endTime: firestore_1.Timestamp.now(),
-        creditsUsedInSession: firestore_1.FieldValue.increment(creditsToDeduct),
+        creditsUsedInSession: database_1.database.incrementValue(creditsToDeduct),
     };
     if (currentCredits >= creditsToDeduct) {
         sessionData.status = 'completed';
@@ -85,25 +80,20 @@ function processEndAction(secondsUsed, currentCredits) {
  * Actualiza los créditos del usuario y la sesión
  */
 async function updateUserCreditsAndSession(uid, creditsToDeduct, sessionId, sessionData) {
+    var _a;
     // Actualizar créditos del usuario si es necesario
     if (creditsToDeduct > 0) {
-        await db
-            .collection('users')
-            .doc(uid)
-            .update({
-            usageCreditsInSeconds: firestore_1.FieldValue.increment(-creditsToDeduct),
+        const currentUser = await database_1.database.getDocument('users', uid);
+        const currentCredits = ((_a = currentUser === null || currentUser === void 0 ? void 0 : currentUser.data) === null || _a === void 0 ? void 0 : _a.usageCreditsInSeconds) || 0;
+        await database_1.database.updateDocument('users', uid, {
+            usageCreditsInSeconds: currentCredits - creditsToDeduct,
             lastActivity: firestore_1.Timestamp.now(),
             updatedAt: firestore_1.Timestamp.now(),
         });
     }
     // Registrar la actividad de uso
     if (sessionId && Object.keys(sessionData).length > 0) {
-        await db
-            .collection('users')
-            .doc(uid)
-            .collection('usageSessions')
-            .doc(sessionId)
-            .set(sessionData, { merge: true });
+        await database_1.database.setSubDocument('users', uid, 'usageSessions', sessionId, sessionData);
     }
 }
 /**
@@ -119,7 +109,7 @@ async function logUsageHistory({ uid, serviceType, actionType, creditsToDeduct, 
         creditsBeforeAction: currentCredits,
         creditsAfterAction: currentCredits - creditsToDeduct,
     };
-    await db.collection('users').doc(uid).collection('usageHistory').add(historyEntry);
+    await database_1.database.addSubDocument('users', uid, 'usageHistory', historyEntry);
 }
 /**
  * Procesa la acción y determina los créditos a deducir
@@ -145,12 +135,11 @@ async function validateAndGetUserData(request) {
     const uid = request.auth.uid;
     const validatedData = validateTrackUsageData(request.data);
     // Obtener documento del usuario
-    const userRef = db.collection('users').doc(uid);
-    const userDoc = await userRef.get();
-    if (!userDoc.exists) {
+    const userDoc = await database_1.database.getDocument('users', uid);
+    if (!userDoc || !userDoc.exists) {
         throw new https_1.HttpsError('not-found', 'Usuario no encontrado');
     }
-    const userData = userDoc.data();
+    const userData = userDoc.data;
     const currentCredits = (userData === null || userData === void 0 ? void 0 : userData.usageCreditsInSeconds) || 0;
     // Validar que el usuario tenga suficientes créditos
     if (currentCredits <= 0 && validatedData.actionType !== 'start') {
@@ -216,11 +205,11 @@ exports.getUserCredits = (0, https_1.onCall)({
             throw new https_1.HttpsError('unauthenticated', 'Usuario no autenticado');
         }
         const uid = request.auth.uid;
-        const userDoc = await db.collection('users').doc(uid).get();
-        if (!userDoc.exists) {
+        const userDoc = await database_1.database.getDocument('users', uid);
+        if (!userDoc || !userDoc.exists) {
             throw new https_1.HttpsError('not-found', 'Usuario no encontrado');
         }
-        const userData = userDoc.data();
+        const userData = userDoc.data;
         const usageCreditsInSeconds = (userData === null || userData === void 0 ? void 0 : userData.usageCreditsInSeconds) || 0;
         // Convertir segundos a formato H:M:S para la UI
         const hours = Math.floor(usageCreditsInSeconds / 3600);

@@ -4,8 +4,8 @@ exports.getService = exports.listServices = exports.deleteService = exports.upda
 // serviceDirectoryHandlers.ts
 // Fuente: PROYEC_PARTE1.MD línea 197
 const auth_1 = require("firebase-admin/auth");
-const firestore_1 = require("firebase-admin/firestore");
 const https_1 = require("firebase-functions/v2/https");
+const database_1 = require("../lib/database");
 /**
  * Verificar si el usuario es administrador
  */
@@ -40,11 +40,10 @@ exports.createService = (0, https_1.onCall)(async (request) => {
             specialties: Array.isArray(specialties) ? specialties : [],
             isVerified: Boolean(isVerified),
         };
-        const db = (0, firestore_1.getFirestore)();
-        const docRef = await db.collection('professionalServices').add(Object.assign(Object.assign({}, serviceData), { createdAt: firestore_1.FieldValue.serverTimestamp(), updatedAt: firestore_1.FieldValue.serverTimestamp() }));
+        const serviceId = await database_1.database.addDocument('professionalServices', Object.assign(Object.assign({}, serviceData), { createdAt: database_1.database.serverTimestamp(), updatedAt: database_1.database.serverTimestamp() }));
         return {
             success: true,
-            serviceId: docRef.id,
+            serviceId: serviceId,
             message: 'Servicio creado exitosamente',
         };
     }
@@ -62,7 +61,7 @@ exports.createService = (0, https_1.onCall)(async (request) => {
 const buildUpdateData = (requestData) => {
     const { name, description, website, logoUrl, specialties, isVerified } = requestData;
     const updateData = {
-        updatedAt: firestore_1.FieldValue.serverTimestamp(),
+        updatedAt: database_1.database.serverTimestamp(),
     };
     // Solo actualizar campos proporcionados
     if (name !== undefined) {
@@ -97,14 +96,12 @@ exports.updateService = (0, https_1.onCall)(async (request) => {
             throw new https_1.HttpsError('invalid-argument', 'ID del servicio es requerido');
         }
         const updateData = buildUpdateData(requestData);
-        const db = (0, firestore_1.getFirestore)();
-        const serviceRef = db.collection('professionalServices').doc(serviceId);
         // Verificar que el servicio existe
-        const serviceDoc = await serviceRef.get();
-        if (!serviceDoc.exists) {
+        const serviceDoc = await database_1.database.getDocument('professionalServices', serviceId);
+        if (!serviceDoc || !serviceDoc.exists) {
             throw new https_1.HttpsError('not-found', 'Servicio no encontrado');
         }
-        await serviceRef.update(updateData);
+        await database_1.database.updateDocument('professionalServices', serviceId, updateData);
         return {
             success: true,
             message: 'Servicio actualizado exitosamente',
@@ -129,14 +126,12 @@ exports.deleteService = (0, https_1.onCall)(async (request) => {
         if (!serviceId) {
             throw new https_1.HttpsError('invalid-argument', 'ID del servicio es requerido');
         }
-        const db = (0, firestore_1.getFirestore)();
-        const serviceRef = db.collection('professionalServices').doc(serviceId);
         // Verificar que el servicio existe
-        const serviceDoc = await serviceRef.get();
-        if (!serviceDoc.exists) {
+        const serviceDoc = await database_1.database.getDocument('professionalServices', serviceId);
+        if (!serviceDoc || !serviceDoc.exists) {
             throw new https_1.HttpsError('not-found', 'Servicio no encontrado');
         }
-        await serviceRef.delete();
+        await database_1.database.deleteDocument('professionalServices', serviceId);
         return {
             success: true,
             message: 'Servicio eliminado exitosamente',
@@ -156,12 +151,10 @@ exports.deleteService = (0, https_1.onCall)(async (request) => {
 exports.listServices = (0, https_1.onCall)(async (request) => {
     try {
         await verifyAdminUser(request.auth);
-        const db = (0, firestore_1.getFirestore)();
-        const servicesSnapshot = await db
-            .collection('professionalServices')
-            .orderBy('createdAt', 'desc')
-            .get();
-        const services = servicesSnapshot.docs.map((doc) => (Object.assign({ id: doc.id }, doc.data())));
+        const servicesSnapshot = await database_1.database.queryCollection('professionalServices', [], {
+            orderBy: { field: 'createdAt', direction: 'desc' }
+        });
+        const services = servicesSnapshot.map((doc) => (Object.assign({ id: doc.id }, doc.data)));
         return {
             success: true,
             services,
@@ -187,14 +180,13 @@ exports.getService = (0, https_1.onCall)(async (request) => {
         if (!serviceId) {
             throw new https_1.HttpsError('invalid-argument', 'ID del servicio es requerido');
         }
-        const db = (0, firestore_1.getFirestore)();
-        const serviceDoc = await db.collection('professionalServices').doc(serviceId).get();
-        if (!serviceDoc.exists) {
+        const serviceDoc = await database_1.database.getDocument('professionalServices', serviceId);
+        if (!serviceDoc || !serviceDoc.exists) {
             throw new https_1.HttpsError('not-found', 'Servicio no encontrado');
         }
         return {
             success: true,
-            service: Object.assign({ id: serviceDoc.id }, serviceDoc.data()),
+            service: Object.assign({ id: serviceDoc.id }, serviceDoc.data),
         };
     }
     catch (error) {

@@ -1,6 +1,5 @@
-import { getApps, initializeApp } from 'firebase-admin/app';
-import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { HttpsError, onCall, type CallableRequest } from 'firebase-functions/v2/https';
+import { database } from '../lib/database';
 
 import {
   WalletFileType,
@@ -15,12 +14,7 @@ import type {
   RecoverySessionResponse 
 } from '@brujula-cripto/types';
 
-// Inicializar Firebase Admin si no está ya inicializado
-if (getApps().length === 0) {
-  initializeApp();
-}
-
-const db = getFirestore();
+// Database abstraction - imported from centralized factory
 
 interface AnalyzeFileRecoveryRequest {
   sessionId: string;
@@ -335,11 +329,11 @@ async function saveRecoveryCase(
     recoveryProbability: analysis.recoveryProbability,
     recommendedTools: analysis.recommendedTools,
     status: RecoveryStatus.READY,
-    createdAt: FieldValue.serverTimestamp(),
-    updatedAt: FieldValue.serverTimestamp(),
+    createdAt: database.serverTimestamp(),
+    updatedAt: database.serverTimestamp(),
   };
 
-  await db.collection('users').doc(uid).collection('fileRecoveryCases').doc(sessionId).set(recoveryCase);
+  await database.setSubDocument('users', uid, 'fileRecoveryCases', sessionId, recoveryCase);
 }
 
 /**
@@ -362,12 +356,12 @@ export const analyzeFileRecovery = onCall(
       const { sessionId, diagnosis } = validatedRequest;
 
       // Verificar créditos del usuario
-      const userDoc = await db.collection('users').doc(uid).get();
-      if (!userDoc.exists) {
+      const userDoc = await database.getDocument('users', uid);
+      if (!userDoc || !userDoc.exists) {
         throw new HttpsError('not-found', 'Usuario no encontrado');
       }
 
-      const userData = userDoc.data();
+      const userData = userDoc.data;
       const userCredits = userData?.usageCreditsInSeconds || 0;
       
       if (userCredits < 60) { // Mínimo 1 minuto para análisis
@@ -393,20 +387,20 @@ export const analyzeFileRecovery = onCall(
       await saveRecoveryCase(uid, sessionId, diagnosis, analysis);
 
       // Descontar créditos (60 segundos por análisis)
-      await db.collection('users').doc(uid).update({
+      await database.updateDocument('users', uid, {
         usageCreditsInSeconds: userCredits - 60,
-        lastActivity: FieldValue.serverTimestamp(),
-        updatedAt: FieldValue.serverTimestamp(),
+        lastActivity: database.serverTimestamp(),
+        updatedAt: database.serverTimestamp(),
       });
 
       // Registrar uso en historial
-      await db.collection('users').doc(uid).collection('usageHistory').add({
+      await database.addSubDocument('users', uid, 'usageHistory', {
         serviceType: 'herramientas',
         actionType: 'complete',
         service: 'deleted-files-recovery',
         secondsUsed: 60,
         sessionId,
-        timestamp: FieldValue.serverTimestamp(),
+        timestamp: database.serverTimestamp(),
         creditsBeforeAction: userCredits,
         creditsAfterAction: userCredits - 60,
       });

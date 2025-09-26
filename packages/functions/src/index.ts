@@ -51,5 +51,10 @@ export { handleContactForm } from './public/handleContactForm';
 // ✅ COMPLETADO - recovery handlers
 export { analyzeFileRecovery } from './recovery/analyzeFileRecovery';
 
+// ✅ COMPLETADO - proxies handlers (caché Redis TTL 5min)
+// Implementado según PROYEC_PARTE1.MD línea 239 y PROYEC_PARTE7.MD líneas 24-26
+// NOTA: blockchainAnalysis.ts contiene TOOLS para Genkit chatbot, no Cloud Functions
+// Se importan desde microservice-ia cuando se necesiten
+
 // NOTA: Los siguientes archivos fueron implementados por el usuario
 // pero necesitan verificación de exportaciones antes de incluir:

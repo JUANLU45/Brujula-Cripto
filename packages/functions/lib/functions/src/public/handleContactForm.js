@@ -37,16 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleContactForm = void 0;
-const app_1 = require("firebase-admin/app");
-const firestore_1 = require("firebase-admin/firestore");
 const v2_1 = require("firebase-functions/v2");
 const https_1 = require("firebase-functions/v2/https");
 const z = __importStar(require("zod"));
+const database_1 = require("../lib/database");
 // Configuración global para Cloud Functions v2
 (0, v2_1.setGlobalOptions)({ region: 'europe-west1' });
-// Inicializar Firebase Admin
-const app = (0, app_1.initializeApp)();
-const db = (0, firestore_1.getFirestore)(app);
 // Schema de validación para datos de contacto
 const ContactFormSchema = z.object({
     name: z
@@ -117,17 +113,17 @@ exports.handleContactForm = (0, https_1.onRequest)({
             name: name.trim(),
             email: email.toLowerCase().trim(),
             message: message.trim(),
-            submittedAt: new Date(),
+            submittedAt: database_1.database.serverTimestamp(),
             status: 'new',
         };
         // Guardar en Firestore
-        const docRef = await db.collection('contactSubmissions').add(contactSubmission);
-        console.log(`Contact form submitted successfully. Document ID: ${docRef.id}, Email: ${email}`);
+        const submissionId = await database_1.database.addDocument('contactSubmissions', contactSubmission);
+        console.log(`Contact form submitted successfully. Document ID: ${submissionId}, Email: ${email}`);
         // Respuesta exitosa
         response.status(200).json({
             success: true,
             message: 'Formulario de contacto enviado exitosamente',
-            submissionId: docRef.id,
+            submissionId: submissionId,
         });
     }
     catch (error) {

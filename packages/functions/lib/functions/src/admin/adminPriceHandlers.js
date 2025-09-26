@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.calculateCost = exports.resetPricingToDefault = exports.updatePricingConfig = exports.getPricingConfig = void 0;
 const auth_1 = require("firebase-admin/auth");
-const firestore_1 = require("firebase-admin/firestore");
 const https_1 = require("firebase-functions/v2/https");
+const database_1 = require("../lib/database");
 /**
  * Verificar si el usuario es administrador
  */
@@ -24,9 +24,8 @@ const verifyAdminUser = async (authUser) => {
 exports.getPricingConfig = (0, https_1.onCall)(async (request) => {
     try {
         await verifyAdminUser(request.auth);
-        const db = (0, firestore_1.getFirestore)();
-        const pricingDoc = await db.collection('siteConfig').doc('pricing').get();
-        if (!pricingDoc.exists) {
+        const pricingDoc = await database_1.database.getDocument('siteConfig', 'pricing');
+        if (!pricingDoc || !pricingDoc.exists) {
             // Retornar configuración por defecto según documentación
             const defaultConfig = {
                 firstTwoHours: {
@@ -50,7 +49,7 @@ exports.getPricingConfig = (0, https_1.onCall)(async (request) => {
         }
         return {
             success: true,
-            pricing: pricingDoc.data(),
+            pricing: pricingDoc.data,
             message: 'Configuración de precios obtenida exitosamente',
         };
     }
@@ -80,11 +79,10 @@ const validatePriceInputs = (firstTwoHoursPrice, additionalHoursPrice) => {
 /**
  * Obtiene la configuración actual o por defecto
  */
-const getCurrentOrDefaultConfig = async (db) => {
-    const pricingRef = db.collection('siteConfig').doc('pricing');
-    const currentDoc = await pricingRef.get();
-    if (currentDoc.exists) {
-        return currentDoc.data();
+const getCurrentOrDefaultConfig = async () => {
+    const currentDoc = await database_1.database.getDocument('siteConfig', 'pricing');
+    if (currentDoc && currentDoc.exists) {
+        return currentDoc.data;
     }
     // Configuración inicial por defecto
     return {
@@ -133,7 +131,7 @@ const buildUpdatedConfig = (currentConfig, firstTwoHoursPrice, additionalHoursPr
     return {
         firstTwoHours: buildFirstTwoHoursConfig(currentConfig, firstTwoHoursPrice),
         additionalHours: buildAdditionalHoursConfig(currentConfig, additionalHoursPrice),
-        lastUpdated: firestore_1.FieldValue.serverTimestamp(),
+        lastUpdated: database_1.database.serverTimestamp(),
         updatedBy: authUid !== null && authUid !== void 0 ? authUid : 'unknown',
     };
 };
@@ -147,13 +145,11 @@ exports.updatePricingConfig = (0, https_1.onCall)(async (request) => {
         const { firstTwoHoursPrice, additionalHoursPrice } = request.data;
         // Validación de datos de entrada
         validatePriceInputs(firstTwoHoursPrice, additionalHoursPrice);
-        const db = (0, firestore_1.getFirestore)();
-        const pricingRef = db.collection('siteConfig').doc('pricing');
         // Obtener configuración actual
-        const currentConfig = await getCurrentOrDefaultConfig(db);
+        const currentConfig = await getCurrentOrDefaultConfig();
         // Construir configuración actualizada
         const updatedConfig = buildUpdatedConfig(currentConfig, firstTwoHoursPrice, additionalHoursPrice, (_a = request.auth) === null || _a === void 0 ? void 0 : _a.uid);
-        await pricingRef.set(updatedConfig, { merge: true });
+        await database_1.database.setDocument('siteConfig', 'pricing', updatedConfig);
         return {
             success: true,
             pricing: Object.assign(Object.assign({}, updatedConfig), { lastUpdated: new Date() }),
@@ -186,11 +182,10 @@ exports.resetPricingToDefault = (0, https_1.onCall)(async (request) => {
                 currency: 'EUR',
                 description: 'Precio por hora para horas adicionales',
             },
-            lastUpdated: firestore_1.FieldValue.serverTimestamp(),
+            lastUpdated: database_1.database.serverTimestamp(),
             updatedBy: (_b = (_a = request.auth) === null || _a === void 0 ? void 0 : _a.uid) !== null && _b !== void 0 ? _b : 'unknown',
         };
-        const db = (0, firestore_1.getFirestore)();
-        await db.collection('siteConfig').doc('pricing').set(defaultConfig);
+        await database_1.database.setDocument('siteConfig', 'pricing', defaultConfig);
         return {
             success: true,
             pricing: Object.assign(Object.assign({}, defaultConfig), { lastUpdated: new Date() }),
@@ -218,10 +213,9 @@ exports.calculateCost = (0, https_1.onCall)(async (request) => {
         if (typeof hours !== 'number' || hours <= 0) {
             throw new https_1.HttpsError('invalid-argument', 'Las horas deben ser un número positivo');
         }
-        const db = (0, firestore_1.getFirestore)();
-        const pricingDoc = await db.collection('siteConfig').doc('pricing').get();
+        const pricingDoc = await database_1.database.getDocument('siteConfig', 'pricing');
         let pricingConfig;
-        if (!pricingDoc.exists) {
+        if (!pricingDoc || !pricingDoc.exists) {
             // Usar configuración por defecto
             pricingConfig = {
                 firstTwoHours: {
@@ -239,7 +233,7 @@ exports.calculateCost = (0, https_1.onCall)(async (request) => {
             };
         }
         else {
-            pricingConfig = pricingDoc.data();
+            pricingConfig = pricingDoc.data;
         }
         // Calcular costo según la lógica documentada
         let totalCost = 0;

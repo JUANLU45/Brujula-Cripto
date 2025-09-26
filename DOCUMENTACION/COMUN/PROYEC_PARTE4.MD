@@ -8,7 +8,7 @@ IA: Gemini Pro (vía Vertex AI) Trigger: Google Cloud Scheduler
 2. Lógica y Centralización
 
 Prompts Centralizados: Los prompts para Gemini estarán en archivos .txt (/src/prompts) para ser
-mejorados sin tocar el código. Tipos Compartidos: Importará IArticle desde @brújula-cripto/types.
+mejorados sin tocar el código. Tipos Compartidos: Importará IArticle y abstracciones de BD (IDatabaseAdapter) desde @brújula-cripto/types.
 Validación Robusta: Se usará Zod para validar la salida final del LLM.
 
 3. Flujo de Ejecución Detallado - Actualizado para i18n
@@ -22,8 +22,15 @@ y tags basados en el contenido de ambos idiomas. check-slug-uniqueness: Consulta
 asegurar que el slug no existe. Si existe, añade un sufijo. assemble-and-validate: Construye el
 objeto IArticle final con los contenidos de es y en y los metadatos. Valida el objeto completo con
 Zod. save-to-firestore: Si la validación pasa, guarda el artículo completo en la base de datos con
-status: 'draft' y source: 'ai-generated'. Logging: Cada paso registra su estado en Google Cloud
-Logging.
+status: 'draft' y source: 'ai-generated'. 
+
+**✅ IMPORTANTE - ABSTRACCIONES DE BD**: Este microservicio debe usar las mismas abstracciones implementadas en el backend principal:
+- **Importar**: `import { database } from '../lib/database'` (adaptar ruta)
+- **Usar**: `await database.addDocument('articles', articleData)` 
+- **No usar**: Llamadas directas a Firebase/Firestore
+- **Seguir patrón**: Misma arquitectura vendor-agnostic que Cloud Functions
+
+Logging: Cada paso registra su estado en Google Cloud Logging.
 
 4. Seguridad y Configuración
 

@@ -4,27 +4,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createStripePortalSession = void 0;
-const app_1 = require("firebase-admin/app");
-const firestore_1 = require("firebase-admin/firestore");
 const params_1 = require("firebase-functions/params");
 const https_1 = require("firebase-functions/v2/https");
+const firestore_1 = require("firebase-admin/firestore");
 const stripe_1 = __importDefault(require("stripe"));
-// Inicializar Firebase Admin si no está ya inicializado
-if ((0, app_1.getApps)().length === 0) {
-    (0, app_1.initializeApp)();
-}
-const db = (0, firestore_1.getFirestore)();
+const database_1 = require("../lib/database");
 // Secreto para la API de Stripe
 const stripeSecretKey = (0, params_1.defineSecret)('STRIPE_SECRET_KEY');
 /**
  * Valida la autenticación y obtiene los datos del usuario con Stripe Customer ID
  */
 async function validateUserAndGetStripeId(uid) {
-    const userDoc = await db.collection('users').doc(uid).get();
-    if (!userDoc.exists) {
+    const userDoc = await database_1.database.getDocument('users', uid);
+    if (!userDoc || !userDoc.exists) {
         throw new https_1.HttpsError('not-found', 'Usuario no encontrado');
     }
-    const userData = userDoc.data();
+    const userData = userDoc.data;
     const stripeCustomerId = userData === null || userData === void 0 ? void 0 : userData.stripeCustomerId;
     if (!stripeCustomerId) {
         throw new https_1.HttpsError('failed-precondition', 'Usuario no tiene Customer ID de Stripe');
@@ -39,17 +34,16 @@ async function logPortalAccess({ uid, stripeCustomerId, portalSessionId, returnU
         stripeCustomerId,
         portalSessionId,
         returnUrl,
-        accessedAt: new Date(),
+        accessedAt: firestore_1.Timestamp.now(),
         userAgent: request.rawRequest.get('User-Agent') || 'unknown',
         ipAddress: request.rawRequest.ip || 'unknown',
     };
-    await db.collection('users').doc(uid).collection('portalAccess').add(portalAccessData);
+    await database_1.database.addSubDocument('users', uid, 'portalAccess', portalAccessData);
     // Actualizar último acceso al portal en el documento del usuario
-    const userUpdateData = {
-        lastPortalAccess: new Date(),
-        updatedAt: new Date(),
-    };
-    await db.collection('users').doc(uid).update(userUpdateData);
+    await database_1.database.updateDocument('users', uid, {
+        lastPortalAccess: firestore_1.Timestamp.now(),
+        updatedAt: firestore_1.Timestamp.now(),
+    });
 }
 /**
  * Cloud Function que crea una sesión del Portal de Cliente de Stripe

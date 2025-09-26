@@ -11,6 +11,8 @@ interface UsePaymentProcessingProps {
   onError?: (error: string) => void;
   acceptedTerms: boolean;
   acceptedDisclaimer: boolean;
+  consentText: string;
+  isConsentValid: boolean;
   setIsProcessing: (processing: boolean) => void;
   setErrorMessage: (message: string | null) => void;
   fallbackErrorMessage: string;
@@ -29,6 +31,12 @@ export function usePaymentProcessing(props: UsePaymentProcessingProps): UsePayme
 
     if (!validation.isValid) {
       props.setErrorMessage(validation.errorMessage || '');
+      return;
+    }
+
+    // Validación campo ACEPTO
+    if (!props.isConsentValid) {
+      props.setErrorMessage('Debe escribir "ACEPTO" para continuar con el pago');
       return;
     }
 

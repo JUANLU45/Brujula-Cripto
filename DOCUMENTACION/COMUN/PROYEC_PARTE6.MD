@@ -80,7 +80,7 @@ _Una sección limpia con 3 iconos y texto breve._
 ### **Sección 4: Botón de Feedback (`FeedbackButton.tsx`)**
 
 - **Ubicación:** Flotante en esquina inferior derecha de la homepage, visible solo para usuarios
-  suscritos (`hasPremiumAccess: true`).
+  usuarios con créditos disponibles (verificando `usageCreditsInSeconds > 0`).
 - **Interacción:** Al click, abre modal para enviar mensaje de feedback (reconociendo al usuario vía
   `uid`). Admin puede anular/anular pendiente el botón desde panel, dirigir a URL personalizada,
   cambiar texto (ej. "Envía Feedback"), imagen/icono (brújula por defecto), etc.
@@ -132,7 +132,7 @@ _Objetivo: Guiar al usuario en pánico con empatía y claridad, sin promesas fal
 
 ## **3. PÁGINA DE SUSCRIPCIÓN (`/suscripcion`)**
 
-_Objetivo: Comunicar el inmenso valor del plan Premium de forma clara y directa, demostrando
+_Objetivo: Comunicar el inmenso valor de los paquetes de horas de forma clara y directa, demostrando
 diferencias con competidores a través de comparaciones interactivas y numéricas._
 
 ### **Metaetiquetas SEO**
@@ -151,11 +151,11 @@ diferencias con competidores a través de comparaciones interactivas y numérica
 - **Contenido (ES):**
   - **Título (H1):** `Invierte en tu Tranquilidad.`
   - **Subtítulo:**
-    `Nuestras herramientas gratuitas te ayudan. Nuestra suscripción Premium te protege con privacidad total, un ecosistema completo y control absoluto—mejor que cualquier competidor.`
+    `Nuestras herramientas gratuitas te ayudan. Nuestros paquetes de horas te protegen con privacidad total, un ecosistema completo y control absoluto—mejor que cualquier competidor.`
 - **Contenido (EN):**
   - **Title (H1):** `Invest in Your Peace of Mind.`
   - **Subtitle:**
-    `Our free tools help you. Our Premium subscription protects you with total privacy, a complete ecosystem, and full control—better than any competitor.`
+    `Our free tools help you. Our hour packages protect you with total privacy, a complete ecosystem, and full control—better than any competitor.`
 
 ### **Sección 2: Tabla de Precios (`PricingPage.tsx`)**
 
@@ -165,9 +165,9 @@ _Dos columnas lado a lado, destacando la opción Premium._
   - **Precio (ES/EN):** `0€ / Siempre` | `$0 / Forever`
   - **Características:** `Diagnóstico Interactivo`, `Blog y Guías`,
     `Recuperación de Contraseña (Limitada)`, `Chatbot (Limitado)`.
-- **Columna 2: Premium (con un borde resaltado)**
-  - **Precio:** `[Precio] € / pago único` (o mensual, según se defina)
-  - **Botón (ES/EN):** `Obtener Premium` | `Get Premium`
+- **Columna 2: Paquetes de Horas (con un borde resaltado)**
+  - **Precio:** `[Precio] € / paquete de horas` (pago único por horas)
+  - **Botón (ES/EN):** `Comprar Horas` | `Buy Hours`
   - **Características:**
     - `✅ Todo lo del plan Gratuito, y además:`
     - `🚀 **Máxima Potencia** en Recuperación de Contraseña`

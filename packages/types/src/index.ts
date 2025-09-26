@@ -70,11 +70,15 @@ export interface IUser {
   /** Si es administrador */
   isAdmin: boolean;
 
-  /** Si tiene suscripción premium */
+  /** Indica si el usuario tiene créditos por horas disponibles (usageCreditsInSeconds > 0). 
+   * LEGACY: Campo mantenido por compatibilidad - usar usageCreditsInSeconds directamente */
   isPremium: boolean;
 
   /** Créditos de tiempo en segundos */
   usageCreditsInSeconds: number;
+
+  /** ID de cliente en Stripe para gestión de pagos */
+  stripeCustomerId?: string;
 
   /** Fecha de creación */
   createdAt: Date;
@@ -87,6 +91,30 @@ export interface IUser {
     language: 'es' | 'en';
     theme: 'light' | 'dark' | 'system';
     notifications: boolean;
+  };
+
+  /** Configuración de presupuesto del usuario */
+  budgetConfig?: {
+    /** Límite de gasto en euros */
+    spendLimit: number;
+    /** Umbral de advertencia (porcentaje del límite) */
+    warningThreshold: number;
+    /** Si está habilitado el monitoreo */
+    enabled: boolean;
+    /** Período de monitoreo en días */
+    periodDays: number;
+  };
+
+  /** Estado actual del presupuesto */
+  budgetStatus?: {
+    /** Gasto actual en el período */
+    currentSpend: number;
+    /** Última alerta enviada */
+    lastAlert?: BudgetAlert;
+    /** Última actualización */
+    lastUpdate: number;
+    /** Última vez que se configuró el presupuesto */
+    configUpdated?: number;
   };
 }
 
@@ -170,6 +198,11 @@ export interface IChatMessage {
     tokensUsed?: number;
     model?: string;
     processingTime?: number;
+    feedback?: {
+      rating: 'positive' | 'negative' | null;
+      timestamp: number;
+      userId?: string;
+    };
   };
 }
 
@@ -241,6 +274,22 @@ export interface ContactFormData {
 export interface NewsletterFormData {
   email: string;
   language: 'es' | 'en';
+}
+
+/**
+ * Interfaz para alertas de presupuesto
+ */
+export interface BudgetAlert {
+  /** ID del usuario */
+  userId: string;
+  /** Umbral alcanzado */
+  threshold: number;
+  /** Gasto actual */
+  currentSpend: number;
+  /** Tipo de alerta */
+  alertType: 'warning' | 'limit' | 'exceeded';
+  /** Timestamp de la alerta */
+  timestamp: number;
 }
 
 /**
@@ -321,3 +370,6 @@ export interface StripePaymentIntent {
 
 // Exportar tipos para herramienta de archivos eliminados
 export * from './deleted-files';
+
+// Exportar abstracciones de base de datos
+export * from './database';

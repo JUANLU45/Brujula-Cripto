@@ -4,14 +4,8 @@
 // Propósito: Handlers para CRUD de artículos (crear/editar/eliminar/publicar), integración IA para moderación comentarios
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.listArticles = exports.publishArticle = exports.deleteArticle = exports.updateArticle = exports.createArticle = void 0;
-const app_1 = require("firebase-admin/app");
-const firestore_1 = require("firebase-admin/firestore");
 const https_1 = require("firebase-functions/v2/https");
-// Inicializar Firebase Admin si no está ya inicializado
-if (!(0, app_1.getApps)().length) {
-    (0, app_1.initializeApp)();
-}
-const db = (0, firestore_1.getFirestore)();
+const database_1 = require("../lib/database");
 // Crear artículo
 exports.createArticle = (0, https_1.onCall)(async (request) => {
     var _a, _b;
@@ -25,14 +19,14 @@ exports.createArticle = (0, https_1.onCall)(async (request) => {
         if (!articleData.slug) {
             throw new Error('El slug es requerido');
         }
-        const existingDoc = await db.collection('articles').doc(articleData.slug).get();
-        if (existingDoc.exists) {
+        const existingDoc = await database_1.database.getDocument('articles', articleData.slug);
+        if (existingDoc && existingDoc.exists) {
             throw new Error('El slug ya existe');
         }
         // Preparar datos del artículo
         const newArticle = Object.assign(Object.assign({}, articleData), { createdAt: new Date(), updatedAt: new Date(), status: articleData.status || 'draft', source: 'manual' });
         // Guardar en Firestore
-        await db.collection('articles').doc(articleData.slug).set(newArticle);
+        await database_1.database.setDocument('articles', articleData.slug, newArticle);
         return { success: true, slug: articleData.slug };
     }
     catch (error) {
@@ -49,14 +43,13 @@ exports.updateArticle = (0, https_1.onCall)(async (request) => {
     }
     const { slug, updateData } = request.data;
     try {
-        const articleRef = db.collection('articles').doc(slug);
-        const articleDoc = await articleRef.get();
-        if (!articleDoc.exists) {
+        const articleDoc = await database_1.database.getDocument('articles', slug);
+        if (!articleDoc || !articleDoc.exists) {
             throw new Error('Artículo no encontrado');
         }
         // Actualizar con timestamp
         const updatedData = Object.assign(Object.assign({}, updateData), { updatedAt: new Date() });
-        await articleRef.update(updatedData);
+        await database_1.database.updateDocument('articles', slug, updatedData);
         return { success: true, slug };
     }
     catch (error) {
@@ -73,7 +66,7 @@ exports.deleteArticle = (0, https_1.onCall)(async (request) => {
     }
     const { slug } = request.data;
     try {
-        await db.collection('articles').doc(slug).delete();
+        await database_1.database.deleteDocument('articles', slug);
         return { success: true, slug };
     }
     catch (error) {
@@ -90,12 +83,11 @@ exports.publishArticle = (0, https_1.onCall)(async (request) => {
     }
     const { slug } = request.data;
     try {
-        const articleRef = db.collection('articles').doc(slug);
-        const articleDoc = await articleRef.get();
-        if (!articleDoc.exists) {
+        const articleDoc = await database_1.database.getDocument('articles', slug);
+        if (!articleDoc || !articleDoc.exists) {
             throw new Error('Artículo no encontrado');
         }
-        await articleRef.update({
+        await database_1.database.updateDocument('articles', slug, {
             status: 'published',
             updatedAt: new Date(),
         });
@@ -115,12 +107,19 @@ exports.listArticles = (0, https_1.onCall)(async (request) => {
     }
     const { status, limit = 50 } = request.data || {};
     try {
-        let query = db.collection('articles').orderBy('updatedAt', 'desc');
+        const filters = [];
         if (status) {
-            query = query.where('status', '==', status);
+            filters.push({
+                field: 'status',
+                operator: 'eq',
+                value: status
+            });
         }
-        const snapshot = await query.limit(limit).get();
-        const articles = snapshot.docs.map((doc) => (Object.assign({ id: doc.id }, doc.data())));
+        const queryOptions = {
+            orderBy: { field: 'updatedAt', direction: 'desc' },
+            limit
+        };
+        const articles = await database_1.database.queryCollection('articles', filters, queryOptions);
         return { success: true, articles };
     }
     catch (error) {

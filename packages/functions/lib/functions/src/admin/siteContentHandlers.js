@@ -4,19 +4,13 @@
 // Propósito: Handlers para editar contenido de homepage (banner, etc.), almacenado en siteContent/homepage
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resetHomepageContent = exports.updateHomepageContent = exports.getHomepageContent = void 0;
-const app_1 = require("firebase-admin/app");
-const firestore_1 = require("firebase-admin/firestore");
 const https_1 = require("firebase-functions/v2/https");
-// Inicializar Firebase Admin si no está ya inicializado
-if (!(0, app_1.getApps)().length) {
-    (0, app_1.initializeApp)();
-}
-const db = (0, firestore_1.getFirestore)();
+const database_1 = require("../lib/database");
 // Obtener contenido de homepage
 exports.getHomepageContent = (0, https_1.onCall)(async () => {
     try {
-        const doc = await db.collection('siteContent').doc('homepage').get();
-        if (!doc.exists) {
+        const doc = await database_1.database.getDocument('siteContent', 'homepage');
+        if (!doc || !doc.exists) {
             // Retornar contenido por defecto según TEXTOS_IMAGENES.MD
             const defaultContent = {
                 bannerImageUrl: '/images/home/banner-hero.webp',
@@ -30,7 +24,7 @@ exports.getHomepageContent = (0, https_1.onCall)(async () => {
             };
             return { success: true, content: defaultContent };
         }
-        return { success: true, content: doc.data() };
+        return { success: true, content: doc.data };
     }
     catch (error) {
         console.error('Error obteniendo contenido homepage:', error);
@@ -63,7 +57,7 @@ exports.updateHomepageContent = (0, https_1.onCall)(async (request) => {
             }
         }
         // Actualizar en Firestore
-        await db.collection('siteContent').doc('homepage').set(contentData, { merge: true });
+        await database_1.database.setDocument('siteContent', 'homepage', contentData);
         return { success: true, message: 'Contenido actualizado correctamente' };
     }
     catch (error) {
@@ -89,7 +83,7 @@ exports.resetHomepageContent = (0, https_1.onCall)(async (request) => {
             bannerButtonText_en: 'Start Diagnosis',
             bannerButtonLink: '/recuperacion',
         };
-        await db.collection('siteContent').doc('homepage').set(defaultContent);
+        await database_1.database.setDocument('siteContent', 'homepage', defaultContent);
         return { success: true, message: 'Contenido reseteado a valores por defecto' };
     }
     catch (error) {

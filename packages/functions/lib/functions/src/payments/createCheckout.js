@@ -4,15 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createCheckout = void 0;
-const app_1 = require("firebase-admin/app");
-const firestore_1 = require("firebase-admin/firestore");
 const https_1 = require("firebase-functions/v2/https");
 const stripe_1 = __importDefault(require("stripe"));
-// Inicializar Firebase Admin si no está ya inicializado
-if (!(0, app_1.getApps)().length) {
-    (0, app_1.initializeApp)();
-}
-const db = (0, firestore_1.getFirestore)();
+const database_1 = require("../lib/database");
 // Inicializar Stripe con clave secreta desde Secret Manager
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 if (!stripeSecretKey) {
@@ -46,7 +40,7 @@ async function getOrCreateStripeCustomer(uid, userData) {
         email: userData.email,
         metadata: { firebaseUID: uid },
     });
-    await db.collection('users').doc(uid).update({
+    await database_1.database.updateDocument('users', uid, {
         stripeCustomerId: customer.id,
     });
     return customer.id;
@@ -56,11 +50,11 @@ async function getOrCreateStripeCustomer(uid, userData) {
  */
 async function calculateHoursPrice(hours) {
     var _a, _b;
-    const pricingDoc = await db.collection('siteConfig').doc('pricing').get();
+    const pricingDoc = await database_1.database.getDocument('siteConfig', 'pricing');
     let firstTwoHoursPrice = 4.99;
     let additionalHoursPrice = 3.99;
-    if (pricingDoc.exists) {
-        const pricingData = pricingDoc.data();
+    if (pricingDoc && pricingDoc.exists) {
+        const pricingData = pricingDoc.data;
         firstTwoHoursPrice = ((_a = pricingData === null || pricingData === void 0 ? void 0 : pricingData.firstTwoHours) === null || _a === void 0 ? void 0 : _a.price) || 4.99;
         additionalHoursPrice = ((_b = pricingData === null || pricingData === void 0 ? void 0 : pricingData.additionalHours) === null || _b === void 0 ? void 0 : _b.price) || 3.99;
     }
@@ -101,14 +95,13 @@ exports.createCheckout = (0, https_1.onCall)(async (request) => {
         }
         const validatedData = validateCheckoutData(request.data);
         const { hours, successUrl, cancelUrl } = validatedData;
-        const db = (0, firestore_1.getFirestore)();
         const userId = request.auth.uid;
         // Obtener documento del usuario para verificar stripeCustomerId
-        const userDoc = await db.collection('users').doc(userId).get();
-        if (!userDoc.exists) {
+        const userDoc = await database_1.database.getDocument('users', userId);
+        if (!userDoc || !userDoc.exists) {
             throw new https_1.HttpsError('not-found', 'Usuario no encontrado');
         }
-        const userData = userDoc.data();
+        const userData = userDoc.data;
         if (!userData) {
             throw new https_1.HttpsError('not-found', 'Datos de usuario no válidos');
         }

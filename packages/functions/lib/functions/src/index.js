@@ -2,7 +2,7 @@
 // index.ts - Entry point para Cloud Functions
 // Fuente: PROYEC_PARTE1.MD líneas 194-218 y PROYEC_PARTE3.MD
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.handleContactForm = exports.trackUsage = exports.getUserCredits = exports.stripeWebhooks = exports.createStripePortalSession = exports.createCheckout = exports.updatePricingConfig = exports.resetPricingToDefault = exports.getPricingConfig = exports.calculateCost = exports.updateService = exports.listServices = exports.getService = exports.deleteService = exports.createService = exports.updateHomepageContent = exports.resetHomepageContent = exports.getHomepageContent = exports.updateArticle = exports.publishArticle = exports.listArticles = exports.deleteArticle = exports.createArticle = exports.setAdminRole = void 0;
+exports.analyzeFileRecovery = exports.handleContactForm = exports.trackUsage = exports.getUserCredits = exports.stripeWebhooks = exports.createStripePortalSession = exports.createCheckout = exports.updatePricingConfig = exports.resetPricingToDefault = exports.getPricingConfig = exports.calculateCost = exports.updateService = exports.listServices = exports.getService = exports.deleteService = exports.createService = exports.updateHomepageContent = exports.resetHomepageContent = exports.getHomepageContent = exports.updateArticle = exports.publishArticle = exports.listArticles = exports.deleteArticle = exports.createArticle = exports.setAdminRole = void 0;
 // Importar handlers admin
 var setAdminRole_1 = require("./admin/setAdminRole");
 Object.defineProperty(exports, "setAdminRole", { enumerable: true, get: function () { return setAdminRole_1.setAdminRole; } });
@@ -45,6 +45,9 @@ Object.defineProperty(exports, "trackUsage", { enumerable: true, get: function (
 // ✅ COMPLETADO - public handlers
 var handleContactForm_1 = require("./public/handleContactForm");
 Object.defineProperty(exports, "handleContactForm", { enumerable: true, get: function () { return handleContactForm_1.handleContactForm; } });
+// ✅ COMPLETADO - recovery handlers
+var analyzeFileRecovery_1 = require("./recovery/analyzeFileRecovery");
+Object.defineProperty(exports, "analyzeFileRecovery", { enumerable: true, get: function () { return analyzeFileRecovery_1.analyzeFileRecovery; } });
 // NOTA: Los siguientes archivos fueron implementados por el usuario
 // pero necesitan verificación de exportaciones antes de incluir:
 //# sourceMappingURL=index.js.map

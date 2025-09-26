@@ -61,6 +61,28 @@ function ChatbotContentArea({
       formatTimestamp={(timestamp) => formatTimestamp(timestamp, locale)}
       typingMessage={t('messages.typing') || 'Brújula está escribiendo...'}
       messagesEndRef={messagesEndRef}
+      onMessageFeedback={async (messageId, rating) => {
+        try {
+          const response = await fetch('/api/chatbot/feedback', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              messageId,
+              rating,
+            }),
+          });
+          
+          if (!response.ok) {
+            throw new Error('Error enviando feedback');
+          }
+          
+          console.log(`Feedback ${rating} enviado para mensaje ${messageId}`);
+        } catch (error) {
+          console.error('Error enviando feedback:', error);
+        }
+      }}
     />
   );
 }

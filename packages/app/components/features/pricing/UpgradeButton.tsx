@@ -1,10 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useTranslations } from 'next-intl';
 
+import type { IUser } from '@brujula-cripto/types';
+
 import { Button } from '@/components/ui/Button';
+import { useIdleDetection } from '@/hooks/useIdleDetection';
 
 import { usePaymentProcessing } from './usePaymentProcessing';
 
@@ -39,6 +42,8 @@ export default function UpgradeButton({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [acceptedDisclaimer, setAcceptedDisclaimer] = useState(false);
+  const [consentText, setConsentText] = useState('');
+  const [isConsentValid, setIsConsentValid] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -52,9 +57,28 @@ export default function UpgradeButton({
     onError,
     acceptedTerms,
     acceptedDisclaimer,
+    consentText,
+    isConsentValid,
     setIsProcessing,
     setErrorMessage,
     fallbackErrorMessage: t('errors.paymentFailed'),
+  });
+
+  // Validación texto "ACEPTO"
+  useEffect(() => {
+    setIsConsentValid(consentText.toUpperCase().trim() === 'ACEPTO');
+  }, [consentText]);
+
+  // Detección de inactividad para pausar créditos
+  const { isIdle, timeRemaining, isPaused } = useIdleDetection({
+    idleTimeout: 300000, // 5 minutos
+    onIdle: () => {
+      console.log('Usuario inactivo - pausando créditos');
+    },
+    onActive: () => {
+      console.log('Usuario activo - reanudando créditos');
+    },
+    enabled: true,
   });
 
   const handleButtonClick = (): void => {

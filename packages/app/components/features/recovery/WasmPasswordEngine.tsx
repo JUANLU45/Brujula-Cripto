@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
+import type { IUser } from '@brujula-cripto/types';
+
 import UpgradeButton from '@/components/features/payments/UpgradeButton';
 import { Button } from '@/components/ui/Button';
 import { trackUsage } from '@/lib/api';

@@ -43,7 +43,7 @@ Endpoints de la API: GET /conversations, POST /conversations, PUT /conversations
 Chatbot: Una barra lateral con la lista de conversaciones (crear, renombrar, favorito, borrar) y la
 ventana de chat principal.
 
-5. Modelo de Monetización y Propuesta de Valor La suscripción hasPremiumChatAccess desbloquea el
+5. Modelo de Monetización y Propuesta de Valor Los créditos disponibles en usageCreditsInSeconds desbloquean el
    valor real del chatbot: el análisis proactivo de la blockchain. A. El Valor para el Usuario
    Gratuito (El Anzuelo 🎣) El usuario gratuito obtiene un experto en cripto para consultas
    generales. Cuando pide un análisis de wallet, el chatbot le ofrece una "demostración" limitada
@@ -51,12 +51,12 @@ ventana de chat principal.
 
 Respuesta Gratuita: "He identificado que la dirección 0x123... es una wallet válida en Ethereum.
 Para realizar un análisis completo en tiempo real, incluyendo el valor de tu portafolio, desglose de
-tokens/NFTs y un informe de riesgos de seguridad, necesitas acceso Premium. ¿Quieres saber más?"
+tokens/NFTs y un informe de riesgos de seguridad, necesitas créditos de horas disponibles. ¿Quieres saber más?"
 
 B. El Valor para el Usuario de Pago (La Solución Completa 🛡️) El usuario de pago obtiene un analista
 de seguridad personal. El chatbot le entrega un informe completo y accionable.
 
-Respuesta Premium: "Claro. Aquí tienes el análisis de tu wallet:
+Respuesta con Horas: "Claro. Aquí tienes el análisis de tu wallet:
 
 Valor Total: 1,250.45 € Activos: 150.2 MATIC, 0.25 WETH, 500.10 USDC... NFTs: 2 de la colección
 "CryptoPunks Polygon". 🚨 ¡ANÁLISIS DE RIESGOS! 🚨
@@ -73,7 +73,7 @@ catastróficas.
 Frontend (packages/app): Se creará una nueva ruta /chatbot con los componentes de la interfaz
 (ChatbotUI.tsx, ConversationList.tsx). El archivo lib/api.ts se ampliará para llamar a los endpoints
 del nuevo miniservicio. Backend (packages/functions): Se añadirán las funciones de pago de Stripe
-para la nueva suscripción, que modificarán el campo hasPremiumChatAccess en el perfil del usuario.
+para paquetes de horas, que sumarán segundos al campo usageCreditsInSeconds en el perfil del usuario.
 Tipos (packages/types): Se añadirán las nuevas interfaces: IChatConversation (EXPANDIDA 2025) y
 IChatMessage.
 
@@ -118,10 +118,10 @@ página.
 
 Descripción: En endpoints API, implementar límites: Usuarios gratuitos limitados a 10 mensajes/día,
 usando Firestore para contar via userId. Si excede, retornar error 429 con mensaje upselling. No
-altera flujos premium.
+altera flujos de usuarios con horas disponibles.
 
 B. Integración de Pago por Horas
 
-Descripción: Reemplazar hasPremiumChatAccess por chequeo de usageCreditsInSeconds. En flujos de
+Descripción: Sistema basado completamente en chequeo de usageCreditsInSeconds. En flujos de
 interacción, llamar a trackUsage para descontar segundos durante uso. Crédito inicial 1800s (30min)
 para registrados. Upselling en respuestas gratuitas si créditos bajos.

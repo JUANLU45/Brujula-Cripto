@@ -3,16 +3,9 @@
 // Propósito: Handlers para CRUD de artículos (crear/editar/eliminar/publicar), integración IA para moderación comentarios
 
 import type { IArticle } from '@brujula-cripto/types';
-import { getApps, initializeApp } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
 import { onCall } from 'firebase-functions/v2/https';
-
-// Inicializar Firebase Admin si no está ya inicializado
-if (!getApps().length) {
-  initializeApp();
-}
-
-const db = getFirestore();
+import { database } from '../lib/database';
+import { QueryFilter, QueryOptions } from '@brujula-cripto/types';
 
 // Crear artículo
 export const createArticle = onCall(async (request) => {
@@ -28,8 +21,8 @@ export const createArticle = onCall(async (request) => {
     if (!articleData.slug) {
       throw new Error('El slug es requerido');
     }
-    const existingDoc = await db.collection('articles').doc(articleData.slug).get();
-    if (existingDoc.exists) {
+    const existingDoc = await database.getDocument('articles', articleData.slug);
+    if (existingDoc && existingDoc.exists) {
       throw new Error('El slug ya existe');
     }
 
@@ -43,7 +36,7 @@ export const createArticle = onCall(async (request) => {
     };
 
     // Guardar en Firestore
-    await db.collection('articles').doc(articleData.slug).set(newArticle);
+    await database.setDocument('articles', articleData.slug, newArticle);
 
     return { success: true, slug: articleData.slug };
   } catch (error) {
@@ -62,10 +55,9 @@ export const updateArticle = onCall(async (request) => {
   const { slug, updateData } = request.data as { slug: string; updateData: Partial<IArticle> };
 
   try {
-    const articleRef = db.collection('articles').doc(slug);
-    const articleDoc = await articleRef.get();
+    const articleDoc = await database.getDocument('articles', slug);
 
-    if (!articleDoc.exists) {
+    if (!articleDoc || !articleDoc.exists) {
       throw new Error('Artículo no encontrado');
     }
 
@@ -75,7 +67,7 @@ export const updateArticle = onCall(async (request) => {
       updatedAt: new Date(),
     };
 
-    await articleRef.update(updatedData);
+    await database.updateDocument('articles', slug, updatedData);
 
     return { success: true, slug };
   } catch (error) {
@@ -94,7 +86,7 @@ export const deleteArticle = onCall(async (request) => {
   const { slug } = request.data as { slug: string };
 
   try {
-    await db.collection('articles').doc(slug).delete();
+    await database.deleteDocument('articles', slug);
     return { success: true, slug };
   } catch (error) {
     console.error('Error eliminando artículo:', error);
@@ -112,14 +104,13 @@ export const publishArticle = onCall(async (request) => {
   const { slug } = request.data as { slug: string };
 
   try {
-    const articleRef = db.collection('articles').doc(slug);
-    const articleDoc = await articleRef.get();
+    const articleDoc = await database.getDocument('articles', slug);
 
-    if (!articleDoc.exists) {
+    if (!articleDoc || !articleDoc.exists) {
       throw new Error('Artículo no encontrado');
     }
 
-    await articleRef.update({
+    await database.updateDocument('articles', slug, {
       status: 'published',
       updatedAt: new Date(),
     });
@@ -141,17 +132,22 @@ export const listArticles = onCall(async (request) => {
   const { status, limit = 50 } = (request.data as { status?: string; limit?: number }) || {};
 
   try {
-    let query = db.collection('articles').orderBy('updatedAt', 'desc');
-
+    const filters: QueryFilter[] = [];
+    
     if (status) {
-      query = query.where('status', '==', status);
+      filters.push({
+        field: 'status',
+        operator: 'eq',
+        value: status
+      });
     }
 
-    const snapshot = await query.limit(limit).get();
-    const articles = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    const queryOptions: QueryOptions = {
+      orderBy: { field: 'updatedAt', direction: 'desc' },
+      limit
+    };
+
+    const articles = await database.queryCollection('articles', filters, queryOptions);
 
     return { success: true, articles };
   } catch (error) {

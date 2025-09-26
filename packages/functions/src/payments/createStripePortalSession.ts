@@ -1,15 +1,9 @@
-import { getApps, initializeApp } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
 import { defineSecret } from 'firebase-functions/params';
 import { HttpsError, onCall, type CallableRequest } from 'firebase-functions/v2/https';
+import { Timestamp } from 'firebase-admin/firestore';
 import Stripe from 'stripe';
-
-// Inicializar Firebase Admin si no está ya inicializado
-if (getApps().length === 0) {
-  initializeApp();
-}
-
-const db = getFirestore();
+import { database } from '../lib/database';
+import type { IUser } from '@brujula-cripto/types';
 
 // Secreto para la API de Stripe
 const stripeSecretKey = defineSecret('STRIPE_SECRET_KEY');
@@ -18,18 +12,11 @@ interface PortalRequest {
   returnUrl?: string;
 }
 
-interface UserData {
-  stripeCustomerId?: string;
-  email?: string;
-  lastPortalAccess?: Date;
-  updatedAt?: Date;
-}
-
 interface PortalAccessData {
   stripeCustomerId: string;
   portalSessionId: string;
   returnUrl: string;
-  accessedAt: Date;
+  accessedAt: Timestamp;
   userAgent: string;
   ipAddress: string;
 }
@@ -38,13 +25,13 @@ interface PortalAccessData {
  * Valida la autenticación y obtiene los datos del usuario con Stripe Customer ID
  */
 async function validateUserAndGetStripeId(uid: string): Promise<string> {
-  const userDoc = await db.collection('users').doc(uid).get();
+  const userDoc = await database.getDocument('users', uid);
 
-  if (!userDoc.exists) {
+  if (!userDoc || !userDoc.exists) {
     throw new HttpsError('not-found', 'Usuario no encontrado');
   }
 
-  const userData = userDoc.data() as UserData | undefined;
+  const userData = userDoc.data as IUser | undefined;
   const stripeCustomerId = userData?.stripeCustomerId;
 
   if (!stripeCustomerId) {
@@ -74,20 +61,18 @@ async function logPortalAccess({
     stripeCustomerId,
     portalSessionId,
     returnUrl,
-    accessedAt: new Date(),
+    accessedAt: Timestamp.now(),
     userAgent: request.rawRequest.get('User-Agent') || 'unknown',
     ipAddress: request.rawRequest.ip || 'unknown',
   };
 
-  await db.collection('users').doc(uid).collection('portalAccess').add(portalAccessData);
+  await database.addSubDocument('users', uid, 'portalAccess', portalAccessData);
 
   // Actualizar último acceso al portal en el documento del usuario
-  const userUpdateData: Partial<UserData> = {
-    lastPortalAccess: new Date(),
-    updatedAt: new Date(),
-  };
-
-  await db.collection('users').doc(uid).update(userUpdateData);
+  await database.updateDocument('users', uid, {
+    lastPortalAccess: Timestamp.now(),
+    updatedAt: Timestamp.now(),
+  });
 }
 
 /**

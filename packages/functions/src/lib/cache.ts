@@ -4,13 +4,23 @@
  * Sin alterar flujos existentes
  */
 
+import { defineSecret } from 'firebase-functions/params';
 import { Redis } from '@upstash/redis';
 
-// Configuración Redis (Upstash)
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL || '',
-  token: process.env.UPSTASH_REDIS_REST_TOKEN || '',
-});
+// Definir secrets para Redis
+const upstashRedisUrl = defineSecret('UPSTASH_REDIS_REST_URL');
+const upstashRedisToken = defineSecret('UPSTASH_REDIS_REST_TOKEN');
+
+// Exportar secrets para ser usados en declaraciones de funciones
+export const redisSecrets = [upstashRedisUrl, upstashRedisToken];
+
+// Función para obtener instancia Redis configurada con secrets
+function getRedisInstance(): Redis {
+  return new Redis({
+    url: upstashRedisUrl.value(),
+    token: upstashRedisToken.value(),
+  });
+}
 
 // TTL por defecto: 5 minutos (300 segundos)
 const DEFAULT_TTL = 300;
@@ -20,6 +30,7 @@ const DEFAULT_TTL = 300;
  */
 export async function get<T>(key: string): Promise<T | null> {
   try {
+    const redis = getRedisInstance();
     const value = await redis.get(key);
     return value as T;
   } catch (error) {
@@ -33,6 +44,7 @@ export async function get<T>(key: string): Promise<T | null> {
  */
 export async function set<T>(key: string, value: T, ttl: number = DEFAULT_TTL): Promise<boolean> {
   try {
+    const redis = getRedisInstance();
     await redis.setex(key, ttl, JSON.stringify(value));
     return true;
   } catch (error) {
@@ -46,6 +58,7 @@ export async function set<T>(key: string, value: T, ttl: number = DEFAULT_TTL): 
  */
 export async function del(key: string): Promise<boolean> {
   try {
+    const redis = getRedisInstance();
     await redis.del(key);
     return true;
   } catch (error) {
@@ -59,6 +72,7 @@ export async function del(key: string): Promise<boolean> {
  */
 export async function exists(key: string): Promise<boolean> {
   try {
+    const redis = getRedisInstance();
     const result = await redis.exists(key);
     return result === 1;
   } catch (error) {

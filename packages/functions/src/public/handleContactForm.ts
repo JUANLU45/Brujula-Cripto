@@ -2,18 +2,13 @@
 // Fuente: PROYEC_PARTE1.MD línea 213
 // Propósito: Procesa envíos de contacto, guarda en contactSubmissions (name, email, message, submittedAt, status)
 
-import { initializeApp } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
 import { setGlobalOptions } from 'firebase-functions/v2';
 import { onRequest } from 'firebase-functions/v2/https';
 import * as z from 'zod';
+import { database } from '../lib/database';
 
 // Configuración global para Cloud Functions v2
 setGlobalOptions({ region: 'europe-west1' });
-
-// Inicializar Firebase Admin
-const app = initializeApp();
-const db = getFirestore(app);
 
 // Tipos para errores de validación de Zod
 interface ValidationErrorDetails {
@@ -103,22 +98,22 @@ export const handleContactForm = onRequest(
         name: name.trim(),
         email: email.toLowerCase().trim(),
         message: message.trim(),
-        submittedAt: new Date(),
+        submittedAt: database.serverTimestamp(),
         status: 'new' as SubmissionStatus,
       };
 
       // Guardar en Firestore
-      const docRef = await db.collection('contactSubmissions').add(contactSubmission);
+      const submissionId = await database.addDocument('contactSubmissions', contactSubmission);
 
       console.log(
-        `Contact form submitted successfully. Document ID: ${docRef.id}, Email: ${email}`,
+        `Contact form submitted successfully. Document ID: ${submissionId}, Email: ${email}`,
       );
 
       // Respuesta exitosa
       response.status(200).json({
         success: true,
         message: 'Formulario de contacto enviado exitosamente',
-        submissionId: docRef.id,
+        submissionId: submissionId,
       });
     } catch (error) {
       console.error('Error procesando formulario de contacto:', error);

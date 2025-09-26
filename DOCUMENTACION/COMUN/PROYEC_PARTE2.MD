@@ -82,7 +82,7 @@
 ### **B. Mapeo de Autenticación con Google OAuth**
 
 - **Descripción:** En `SignInForm.tsx`, aclarar mapeo: Al autenticar con Google, usar
-  `firebase.auth().signInWithPopup(googleProvider)` y mapear `uid` directamente a `stripeCustomerId`
+  `firebase.auth().signInWithPopup(googleProvider)` y registrar usuario en sistema
   en Firestore vía hook post-login. Añadir en documentación de componente.
 
 ### **C. Feedback en Formularios**
@@ -102,7 +102,7 @@
   (`PaginationControls.tsx`). Cada tarjeta (`ArticleCard.tsx`) con imagen de portada, título,
   excerpt, tags clicables (enlazan a artículos de misma tag/categoría), botones de compartir en
   redes (usando Web Share API nativa para X, Telegram, etc.). Solo suscritos
-  (`hasPremiumAccess: true`) pueden dar like (almacenado en Firestore) y enviar comentarios
+  (usuarios con créditos disponibles en `usageCreditsInSeconds`) pueden dar like (almacenado en Firestore) y enviar comentarios
   (moderados vía admin).
 - **SEO Enfocado:** Usar Next.js metadata API para metaetiquetas dinámicas por página, canonical
   links, structured data (JSON-LD para articles). Categorías dinámicas gestionadas desde admin
@@ -133,7 +133,7 @@
 
 - **Componente:** `WasmPasswordEngine.tsx`.
 - **Interacción:** Formulario para introducir datos (ej. diccionarios), con niveles gratuito
-  (limitado) y premium (ilimitado). Muestra progreso y resultados.
+  (limitado) y con horas compradas (ilimitado). Muestra progreso y resultados.
 
 ### **D. Página de Guías de Seguridad (`/seguridad` )**
 
@@ -202,7 +202,7 @@ _Estas páginas son fundamentales y deben estar perfectamente redactadas._
 _La legalidad y la claridad en el pago son innegociables._
 
 1. **Oferta:** En la página de la herramienta de recuperación de contraseñas, junto al Nivel
-   Gratuito, se mostrará claramente la oferta del Nivel Premium (`PricingTier.tsx`).
+   Gratuito, se mostrará claramente la oferta de Paquetes de Horas (`PricingTier.tsx`).
 2. **Consentimiento Explícito:** Junto al botón de pago (`UpgradeButton.tsx`), habrá una **casilla
    de verificación (checkbox) obligatoria** con el siguiente texto:
    - > `☐ He leído y acepto los [Términos y Condiciones](/legal/terminos) y entiendo el [Descargo de Responsabilidad](/legal/descargo-responsabilidad), reconociendo que el pago desbloquea la herramienta de software sin garantía de éxito en la recuperación.`

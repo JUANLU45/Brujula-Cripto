@@ -1,6 +1,6 @@
 import { getAuth } from 'firebase-admin/auth';
-import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
+import { database } from '../lib/database';
 
 // Interfaz para la estructura de precios según documentación
 interface PricingConfig {
@@ -54,10 +54,9 @@ export const getPricingConfig = onCall(async (request) => {
   try {
     await verifyAdminUser(request.auth);
 
-    const db = getFirestore();
-    const pricingDoc = await db.collection('siteConfig').doc('pricing').get();
+    const pricingDoc = await database.getDocument('siteConfig', 'pricing');
 
-    if (!pricingDoc.exists) {
+    if (!pricingDoc || !pricingDoc.exists) {
       // Retornar configuración por defecto según documentación
       const defaultConfig: PricingConfig = {
         firstTwoHours: {
@@ -83,7 +82,7 @@ export const getPricingConfig = onCall(async (request) => {
 
     return {
       success: true,
-      pricing: pricingDoc.data() as PricingConfig,
+      pricing: pricingDoc.data as PricingConfig,
       message: 'Configuración de precios obtenida exitosamente',
     };
   } catch (error) {
@@ -123,14 +122,11 @@ const validatePriceInputs = (firstTwoHoursPrice?: number, additionalHoursPrice?:
 /**
  * Obtiene la configuración actual o por defecto
  */
-const getCurrentOrDefaultConfig = async (
-  db: FirebaseFirestore.Firestore,
-): Promise<Partial<PricingConfig>> => {
-  const pricingRef = db.collection('siteConfig').doc('pricing');
-  const currentDoc = await pricingRef.get();
+const getCurrentOrDefaultConfig = async (): Promise<Partial<PricingConfig>> => {
+  const currentDoc = await database.getDocument('siteConfig', 'pricing');
 
-  if (currentDoc.exists) {
-    return currentDoc.data() as PricingConfig;
+  if (currentDoc && currentDoc.exists) {
+    return currentDoc.data as PricingConfig;
   }
 
   // Configuración inicial por defecto
@@ -196,7 +192,7 @@ const buildUpdatedConfig = (
   return {
     firstTwoHours: buildFirstTwoHoursConfig(currentConfig, firstTwoHoursPrice),
     additionalHours: buildAdditionalHoursConfig(currentConfig, additionalHoursPrice),
-    lastUpdated: FieldValue.serverTimestamp(),
+    lastUpdated: database.serverTimestamp(),
     updatedBy: authUid ?? 'unknown',
   };
 };
@@ -216,11 +212,8 @@ export const updatePricingConfig = onCall(async (request) => {
     // Validación de datos de entrada
     validatePriceInputs(firstTwoHoursPrice, additionalHoursPrice);
 
-    const db = getFirestore();
-    const pricingRef = db.collection('siteConfig').doc('pricing');
-
     // Obtener configuración actual
-    const currentConfig = await getCurrentOrDefaultConfig(db);
+    const currentConfig = await getCurrentOrDefaultConfig();
 
     // Construir configuración actualizada
     const updatedConfig = buildUpdatedConfig(
@@ -230,7 +223,7 @@ export const updatePricingConfig = onCall(async (request) => {
       request.auth?.uid,
     );
 
-    await pricingRef.set(updatedConfig, { merge: true });
+    await database.setDocument('siteConfig', 'pricing', updatedConfig);
 
     return {
       success: true,
@@ -269,12 +262,11 @@ export const resetPricingToDefault = onCall(async (request) => {
         currency: 'EUR',
         description: 'Precio por hora para horas adicionales',
       },
-      lastUpdated: FieldValue.serverTimestamp(),
+      lastUpdated: database.serverTimestamp(),
       updatedBy: request.auth?.uid ?? 'unknown',
     };
 
-    const db = getFirestore();
-    await db.collection('siteConfig').doc('pricing').set(defaultConfig);
+    await database.setDocument('siteConfig', 'pricing', defaultConfig);
 
     return {
       success: true,
@@ -311,12 +303,11 @@ export const calculateCost = onCall(async (request) => {
       throw new HttpsError('invalid-argument', 'Las horas deben ser un número positivo');
     }
 
-    const db = getFirestore();
-    const pricingDoc = await db.collection('siteConfig').doc('pricing').get();
+    const pricingDoc = await database.getDocument('siteConfig', 'pricing');
 
     let pricingConfig: PricingConfig;
 
-    if (!pricingDoc.exists) {
+    if (!pricingDoc || !pricingDoc.exists) {
       // Usar configuración por defecto
       pricingConfig = {
         firstTwoHours: {
@@ -333,7 +324,7 @@ export const calculateCost = onCall(async (request) => {
         updatedBy: '',
       };
     } else {
-      pricingConfig = pricingDoc.data() as PricingConfig;
+      pricingConfig = pricingDoc.data as PricingConfig;
     }
 
     // Calcular costo según la lógica documentada

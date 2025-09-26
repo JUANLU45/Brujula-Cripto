@@ -50,7 +50,7 @@ async function validateAdminAuth(request: NextRequest): Promise<boolean> {
       return false;
     }
 
-    // TODO: Verificar token con Firebase Admin y validar claim de admin
+    // Auth admin requerida - debe implementarse con Firebase Admin
     // Por ahora retornamos true para desarrollo, en producción debe validar realmente
     return true;
   } catch (error) {

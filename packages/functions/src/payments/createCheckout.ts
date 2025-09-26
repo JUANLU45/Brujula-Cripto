@@ -1,24 +1,11 @@
-import { getApps, initializeApp } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
+import { defineSecret } from 'firebase-functions/params';
 import Stripe from 'stripe';
+import { database } from '../lib/database';
+import type { IUser } from '@brujula-cripto/types';
 
-// Inicializar Firebase Admin si no está ya inicializado
-if (!getApps().length) {
-  initializeApp();
-}
-
-const db = getFirestore();
-
-// Inicializar Stripe con clave secreta desde Secret Manager
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-if (!stripeSecretKey) {
-  throw new Error('La variable de entorno STRIPE_SECRET_KEY no está definida');
-}
-
-const stripe = new Stripe(stripeSecretKey, {
-  apiVersion: '2023-10-16',
-});
+// Definir secret para Stripe
+const stripeSecretKey = defineSecret('STRIPE_SECRET_KEY');
 
 interface CheckoutRequest {
   hours: number;
@@ -26,12 +13,7 @@ interface CheckoutRequest {
   cancelUrl?: string;
 }
 
-// Tipos para documentos de Firestore
-interface UserData {
-  stripeCustomerId?: string;
-  email?: string;
-  // Otros campos del usuario pueden agregarse aquí
-}
+// Usar tipos centralizados desde @brujula-cripto/types
 
 interface PricingData {
   firstTwoHours?: {
@@ -73,7 +55,7 @@ function validateCheckoutData(data: unknown): CheckoutRequest {
 /**
  * Función auxiliar para obtener o crear cliente de Stripe
  */
-async function getOrCreateStripeCustomer(uid: string, userData: UserData): Promise<string> {
+async function getOrCreateStripeCustomer(stripe: Stripe, uid: string, userData: IUser): Promise<string> {
   if (userData.stripeCustomerId) {
     return userData.stripeCustomerId;
   }
@@ -83,7 +65,7 @@ async function getOrCreateStripeCustomer(uid: string, userData: UserData): Promi
     metadata: { firebaseUID: uid },
   });
 
-  await db.collection('users').doc(uid).update({
+  await database.updateDocument('users', uid, {
     stripeCustomerId: customer.id,
   });
 
@@ -96,12 +78,12 @@ async function getOrCreateStripeCustomer(uid: string, userData: UserData): Promi
 async function calculateHoursPrice(
   hours: number,
 ): Promise<{ totalPrice: number; priceBreakdown: PriceBreakdown }> {
-  const pricingDoc = await db.collection('siteConfig').doc('pricing').get();
+  const pricingDoc = await database.getDocument('siteConfig', 'pricing');
   let firstTwoHoursPrice = 4.99;
   let additionalHoursPrice = 3.99;
 
-  if (pricingDoc.exists) {
-    const pricingData = pricingDoc.data() as PricingData | undefined;
+  if (pricingDoc && pricingDoc.exists) {
+    const pricingData = pricingDoc.data as PricingData | undefined;
     firstTwoHoursPrice = pricingData?.firstTwoHours?.price || 4.99;
     additionalHoursPrice = pricingData?.additionalHours?.price || 3.99;
   }
@@ -138,7 +120,16 @@ async function calculateHoursPrice(
  * Crear sesión de checkout de Stripe para paquetes de horas
  * Fuente: PROYEC_PARTE1.MD línea 206
  */
-export const createCheckout = onCall(async (request) => {
+export const createCheckout = onCall(
+  {
+    secrets: [stripeSecretKey],
+    region: 'us-central1',
+  },
+  async (request) => {
+  // Inicializar Stripe dentro de la función con el secret
+  const stripe = new Stripe(stripeSecretKey.value(), {
+    apiVersion: '2023-10-16',
+  });
   try {
     // Verificar autenticación del usuario
     if (!request.auth) {
@@ -148,22 +139,21 @@ export const createCheckout = onCall(async (request) => {
     const validatedData = validateCheckoutData(request.data);
     const { hours, successUrl, cancelUrl } = validatedData;
 
-    const db = getFirestore();
     const userId = request.auth.uid;
 
     // Obtener documento del usuario para verificar stripeCustomerId
-    const userDoc = await db.collection('users').doc(userId).get();
-    if (!userDoc.exists) {
+    const userDoc = await database.getDocument('users', userId);
+    if (!userDoc || !userDoc.exists) {
       throw new HttpsError('not-found', 'Usuario no encontrado');
     }
 
-    const userData = userDoc.data() as UserData | undefined;
+    const userData = userDoc.data as IUser | undefined;
     if (!userData) {
       throw new HttpsError('not-found', 'Datos de usuario no válidos');
     }
 
     // Obtener o crear cliente de Stripe
-    const stripeCustomerId = await getOrCreateStripeCustomer(userId, userData);
+    const stripeCustomerId = await getOrCreateStripeCustomer(stripe, userId, userData);
 
     // Calcular precios
     const { totalPrice, priceBreakdown } = await calculateHoursPrice(hours);
