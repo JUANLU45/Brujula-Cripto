@@ -4,8 +4,8 @@
  */
 
 interface TrackUsageRequest {
-  service: 'password-recovery' | 'portfolio-optimization' | 'advanced-analysis';
-  action: 'start' | 'stop' | 'complete';
+  service: 'password-recovery' | 'portfolio-optimization' | 'advanced-analysis' | 'deleted-files-recovery';
+  action: 'start' | 'stop' | 'complete' | 'error';
   sessionId?: string;
   estimatedDuration?: number; // en segundos
 }

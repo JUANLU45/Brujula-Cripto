@@ -48,5 +48,8 @@ export { getUserCredits, trackUsage } from './lib/trackUsage';
 // ✅ COMPLETADO - public handlers
 export { handleContactForm } from './public/handleContactForm';
 
+// ✅ COMPLETADO - recovery handlers
+export { analyzeFileRecovery } from './recovery/analyzeFileRecovery';
+
 // NOTA: Los siguientes archivos fueron implementados por el usuario
 // pero necesitan verificación de exportaciones antes de incluir:

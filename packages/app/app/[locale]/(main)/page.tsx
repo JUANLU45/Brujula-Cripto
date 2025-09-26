@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import type { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import { FeaturedPostsCarousel } from '@/components/features/homepage/FeaturedPostsCarousel';
 import { FeedbackButton } from '@/components/features/homepage/FeedbackButton';
@@ -12,6 +12,12 @@ import { HomepageBanner } from '@/components/features/homepage/HomepageBanner';
 import { ValueProposition } from '@/components/features/homepage/ValueProposition';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 import { generateSEOMetadata } from '@/lib/seo';
+import { getArticles } from '@/lib/api';
+import app from '@/lib/firebase';
+import { getFunctions, httpsCallable } from 'firebase/functions';
+
+// Importar la instancia de Firebase functions centralizada
+const functions = getFunctions(app);
 
 interface PageProps {
   params: Promise<{
@@ -32,8 +38,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 }
 
 // Componente para sección de herramientas según PAGINAS.MD
-function ToolsSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
-  const t = useTranslations('navigation');
+async function ToolsSection({ locale }: { locale: 'es' | 'en' }): Promise<JSX.Element> {
+  const t = await getTranslations('navigation');
 
   const tools = [
     {
@@ -130,8 +136,8 @@ function ToolsSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
 }
 
 // Componente disclaimer según PAGINAS.MD
-function DisclaimerSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
-  const t = useTranslations('homepage.disclaimer');
+async function DisclaimerSection({ locale }: { locale: 'es' | 'en' }): Promise<JSX.Element> {
+  const t = await getTranslations('homepage.disclaimer');
 
   return (
     <section className="bg-blue-50 py-8 dark:bg-blue-900/20">
@@ -150,29 +156,82 @@ function DisclaimerSection({ locale }: { locale: 'es' | 'en' }): JSX.Element {
   );
 }
 
+// Funciones para cargar datos dinámicos (ERRORES_1VERIFICACION.MD)
+async function loadHomepageContent(): Promise<{
+  bannerImageUrl?: string;
+  bannerTitle?: string;
+  bannerSubtitle?: string;
+  bannerButtonText?: string;
+  bannerButtonLink?: string;
+} | null> {
+  try {
+    // Llamar a Cloud Function getHomepageContent
+    const getHomepageContent = httpsCallable(functions, 'getHomepageContent');
+    const result = await getHomepageContent();
+    const data = result.data as { success: boolean; content: any };
+
+    if (data.success && data.content) {
+      return {
+        bannerImageUrl: data.content.bannerImageUrl,
+        bannerTitle: data.content.bannerTitle_es, // Se manejará bilingüe en el componente
+        bannerSubtitle: data.content.bannerSubtitle_es,
+        bannerButtonText: data.content.bannerButtonText_es,
+        bannerButtonLink: data.content.bannerButtonLink,
+      };
+    }
+
+    return null;
+  } catch (error) {
+    console.error('Error cargando contenido de homepage:', error);
+    return null;
+  }
+}
+
+async function loadFeaturedArticles() {
+  try {
+    const articlesResponse = await getArticles();
+    
+    if (articlesResponse.success && articlesResponse.data) {
+      // Filtrar artículos destacados y publicados
+      return articlesResponse.data.filter(
+        (article) => article.isFeatured && article.status === 'published'
+      );
+    }
+
+    return [];
+  } catch (error) {
+    console.error('Error cargando artículos destacados:', error);
+    return [];
+  }
+}
+
 // Página principal de inicio
 export default async function HomePage(props: PageProps): Promise<JSX.Element> {
   const params = await props.params;
   const { locale } = params;
 
+  // Cargar datos dinámicos en paralelo
+  const [homepageContent, featuredArticles] = await Promise.all([
+    loadHomepageContent(),
+    loadFeaturedArticles(),
+  ]);
+
   return (
     <>
-      {/* Banner principal - Imagen editable desde panel */}
-      <HomepageBanner />
+      {/* Banner principal - Contenido dinámico desde Firestore */}
+      <HomepageBanner
+        bannerImageUrl={homepageContent?.bannerImageUrl}
+        bannerTitle={homepageContent?.bannerTitle}
+        bannerSubtitle={homepageContent?.bannerSubtitle}
+        bannerButtonText={homepageContent?.bannerButtonText}
+        bannerButtonLink={homepageContent?.bannerButtonLink}
+      />
 
       {/* Propuesta de valor con 3 columnas (escudo, llave, brújula) */}
       <ValueProposition />
 
-      {/* Carrusel de artículos destacados (4-5 posts) */}
-      <Suspense
-        fallback={
-          <div className="flex h-64 items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
-          </div>
-        }
-      >
-        <FeaturedPostsCarousel />
-      </Suspense>
+      {/* Carrusel de artículos destacados (datos dinámicos) */}
+      <FeaturedPostsCarousel articles={featuredArticles} />
 
       {/* Sección de herramientas según PAGINAS.MD */}
       <ToolsSection locale={locale} />

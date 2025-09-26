@@ -12,6 +12,25 @@ export { trackUsage } from './api/trackUsage';
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || 'https://us-central1-brujula-cripto.cloudfunctions.net';
 
+// Interfaces para homepage y feedback según ERRORES_1VERIFICACION.MD
+interface HomepageContent {
+  bannerImageUrl: string;
+  bannerTitle_es: string;
+  bannerTitle_en: string;
+  bannerSubtitle_es: string;
+  bannerSubtitle_en: string;
+  bannerButtonText_es: string;
+  bannerButtonText_en: string;
+  bannerButtonLink: string;
+}
+
+interface FeedbackData {
+  subject: string;
+  message: string;
+  priority: 'low' | 'medium' | 'high';
+  category: 'technical' | 'content' | 'billing' | 'general';
+}
+
 // Tipos para las respuestas de la API
 interface ApiResponse<T> {
   success: boolean;
@@ -147,6 +166,70 @@ class ApiClient {
     });
   }
 
+  // === HOMEPAGE CONTENT (ERRORES_1VERIFICACION.MD) ===
+
+  // GET /api/admin/homepage - Obtener contenido de homepage (solo admin)
+  getHomepageContent(authToken?: string): Promise<ApiResponse<HomepageContent>> {
+    const headers = authToken ? { Authorization: `Bearer ${authToken}` } : undefined;
+    return this.makeRequest<HomepageContent>('/api/admin/homepage', {
+      headers,
+    });
+  }
+
+  // POST /api/admin/homepage - Actualizar contenido de homepage (solo admin)
+  updateHomepageContent(
+    content: HomepageContent,
+    authToken: string,
+  ): Promise<ApiResponse<HomepageContent>> {
+    return this.makeRequest<HomepageContent>('/api/admin/homepage', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify(content),
+    });
+  }
+
+  // DELETE /api/admin/homepage - Resetear contenido a valores por defecto (solo admin)
+  resetHomepageContent(authToken: string): Promise<ApiResponse<null>> {
+    return this.makeRequest<null>('/api/admin/homepage', {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
+  }
+
+  // === FEEDBACK SYSTEM (ERRORES_1VERIFICACION.MD) ===
+
+  // POST /api/feedback - Enviar feedback (usuarios registrados)
+  submitFeedback(feedback: FeedbackData, authToken: string): Promise<ApiResponse<any>> {
+    return this.makeRequest<any>('/api/feedback', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify(feedback),
+    });
+  }
+
+  // GET /api/feedback - Obtener historial de feedback del usuario
+  getUserFeedback(
+    authToken: string,
+    page?: number,
+    limit?: number,
+  ): Promise<ApiResponse<any>> {
+    const params = new URLSearchParams();
+    if (page) params.append('page', page.toString());
+    if (limit) params.append('limit', limit.toString());
+    
+    return this.makeRequest<any>(`/api/feedback?${params.toString()}`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
+  }
+
   // === CHATBOT ENDPOINTS (PROYEC_PARTE7.MD) ===
 
   // GET /conversations - Obtener todas las conversaciones del usuario
@@ -276,3 +359,27 @@ export const streamChatMessage = (
   onChunk?: (chunk: string) => null,
 ): Promise<ReadableStream<Uint8Array> | null> =>
   api.streamChatMessage(conversationId, message, onChunk);
+
+// Exportaciones para homepage content (ERRORES_1VERIFICACION.MD)
+export const getHomepageContent = (authToken?: string): Promise<ApiResponse<HomepageContent>> =>
+  api.getHomepageContent(authToken);
+export const updateHomepageContent = (
+  content: HomepageContent,
+  authToken: string,
+): Promise<ApiResponse<HomepageContent>> => api.updateHomepageContent(content, authToken);
+export const resetHomepageContent = (authToken: string): Promise<ApiResponse<null>> =>
+  api.resetHomepageContent(authToken);
+
+// Exportaciones para feedback system (ERRORES_1VERIFICACION.MD)
+export const submitFeedback = (
+  feedback: FeedbackData,
+  authToken: string,
+): Promise<ApiResponse<any>> => api.submitFeedback(feedback, authToken);
+export const getUserFeedback = (
+  authToken: string,
+  page?: number,
+  limit?: number,
+): Promise<ApiResponse<any>> => api.getUserFeedback(authToken, page, limit);
+
+// Exportaciones para herramientas de recuperación de archivos eliminados
+export { analyzeFileRecovery } from './api/deleted-files';

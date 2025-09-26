@@ -215,10 +215,37 @@
       }
     },
     "passwordEngine": {
+      "title": "Recuperación de Contraseña de Wallet",
+      "description": "Recupera el acceso a tu wallet usando partes conocidas de tu contraseña",
       "seo": {
         "title": "Recuperación de Contraseña de Wallet - Motor WASM | Brújula Cripto",
         "description": "Motor de recuperación de contraseñas con tecnología WebAssembly. Intenta recuperar el acceso usando partes conocidas de tu contraseña de forma segura y privada.",
         "keywords": "recuperar contraseña wallet, wasm password recovery, keystore recovery, wallet password, recuperación segura"
+      },
+      "freeVersion": {
+        "title": "Versión Gratuita",
+        "maxAttempts": "Máximo {max} intentos",
+        "timeLimit": "Límite de {minutes} minutos",
+        "basicDictionary": "Diccionario básico únicamente",
+        "upgradeButton": "Actualizar a Premium"
+      },
+      "form": {
+        "partialPassword": "Contraseña Parcial",
+        "partialPasswordPlaceholder": "Introduce las partes que recuerdes...",
+        "passwordLength": "Longitud de Contraseña",
+        "passwordLengthPlaceholder": "Ej: 12",
+        "characterTypes": "Tipos de Caracteres",
+        "lowercase": "Minúsculas",
+        "uppercase": "Mayúsculas", 
+        "numbers": "Números",
+        "symbols": "Símbolos",
+        "dictionaryFile": "Archivo de Diccionario",
+        "walletFile": "Archivo de Wallet",
+        "startRecovery": "Iniciar Recuperación"
+      },
+      "disclaimer": {
+        "text": "Esta herramienta no garantiza la recuperación exitosa. Los resultados dependen de la información proporcionada.",
+        "link": "Leer más"
       },
       "setup": {
         "title": "Configuración de Recuperación de Contraseña",
@@ -246,6 +273,99 @@
       "error": {
         "title": "Error en Recuperación",
         "message": "Ha ocurrido un error durante el proceso"
+      }
+    },
+    "deletedFiles": {
+      "title": "Recuperación de Archivos Eliminados",
+      "description": "Guía paso a paso para recuperar archivos de wallet eliminados según tu sistema operativo y tipo de archivo",
+      "seo": {
+        "title": "Recuperación de Archivos de Wallet Eliminados | Brújula Cripto",
+        "description": "Herramientas y guías especializadas para recuperar archivos de wallet eliminados accidentalmente. Soluciones para Windows, macOS, Linux y móviles.",
+        "keywords": "recuperar archivo wallet eliminado, recuperación datos criptomonedas, archivos borrados wallet, herramientas recuperación blockchain"
+      },
+      "freeVersion": {
+        "title": "Versión Gratuita",
+        "limitedAnalysis": "Análisis básico únicamente",
+        "basicTools": "Herramientas gratuitas limitadas",
+        "timeLimit": "Límite de {minutes} minutos",
+        "upgradeButton": "Actualizar a Premium"
+      },
+      "form": {
+        "walletType": "Tipo de Archivo de Wallet",
+        "operatingSystem": "Sistema Operativo",
+        "timeElapsed": "Tiempo Transcurrido desde Eliminación",
+        "estimatedValue": "Valor Estimado (Opcional)",
+        "estimatedValuePlaceholder": "Ej: 1000",
+        "analyzeButton": "Analizar Caso"
+      },
+      "walletTypes": {
+        "bitcoinCore": "Bitcoin Core (wallet.dat)",
+        "ethereumKeystore": "Ethereum Keystore (.json)",
+        "electrum": "Electrum Wallet",
+        "metamask": "MetaMask",
+        "exodus": "Exodus",
+        "ledgerLive": "Ledger Live",
+        "trezor": "Trezor Suite",
+        "myetherwallet": "MyEtherWallet",
+        "other": "Otro"
+      },
+      "operatingSystems": {
+        "windows": "Windows",
+        "macos": "macOS",
+        "linux": "Linux",
+        "android": "Android",
+        "ios": "iOS"
+      },
+      "timeRanges": {
+        "under24h": "Menos de 24 horas",
+        "under7d": "Menos de 7 días",
+        "under30d": "Menos de 30 días",
+        "over30d": "Más de 30 días"
+      },
+      "analyzing": {
+        "title": "Analizando tu Caso",
+        "description": "Evaluando las mejores opciones de recuperación para tu situación específica...",
+        "timeElapsed": "Tiempo transcurrido",
+        "cancel": "Cancelar"
+      },
+      "results": {
+        "title": "Análisis Completado",
+        "recoveryProbability": "Probabilidad de Recuperación",
+        "difficulty": "Dificultad",
+        "urgency": "Urgencia",
+        "recommendedTools": "Herramientas Recomendadas",
+        "successRate": "Tasa de éxito",
+        "estimatedTime": "Tiempo estimado",
+        "cost": "Costo",
+        "downloadTool": "Descargar herramienta",
+        "showInstructions": "Ver instrucciones",
+        "moreSteps": "pasos más...",
+        "newAnalysis": "Nuevo Análisis",
+        "downloadGuide": "Descargar Guía Completa"
+      },
+      "difficulty": {
+        "easy": "Fácil",
+        "medium": "Medio",
+        "hard": "Difícil"
+      },
+      "urgency": {
+        "low": "Baja",
+        "medium": "Media",
+        "high": "Alta"
+      },
+      "toolTypes": {
+        "free": "Gratuita",
+        "paid": "De pago",
+        "professional": "Profesional"
+      },
+      "error": {
+        "title": "Error en el Análisis",
+        "description": "No se pudo completar el análisis. Por favor, inténtalo de nuevo.",
+        "tryAgain": "Intentar de Nuevo"
+      },
+      "disclaimer": {
+        "text": "Esta herramienta proporciona guías educativas sin garantías de recuperación. Los resultados dependen de múltiples factores técnicos.",
+        "link": "Leer descargo completo"
       }
     }
   },
@@ -609,7 +729,8 @@
   "common": {
     "tags": "Etiquetas",
     "articles": "Artículos",
-    "categories": "Categorías"
+    "categories": "Categorías",
+    "characters": "caracteres"
   },
   "admin": {
     "title": "Panel Admin",
@@ -696,6 +817,7 @@
       "loading": "Cargando artículos...",
       "noResults": "No se encontraron artículos",
       "searchPlaceholder": "Buscar artículos...",
+      "retry": "Reintentar",
       "errors": {
         "loadFailed": "Error al cargar el blog",
         "unknown": "Error desconocido"

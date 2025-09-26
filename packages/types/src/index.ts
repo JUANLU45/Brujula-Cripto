@@ -318,3 +318,6 @@ export interface StripePaymentIntent {
   currency: string;
   created: number;
 }
+
+// Exportar tipos para herramienta de archivos eliminados
+export * from './deleted-files';

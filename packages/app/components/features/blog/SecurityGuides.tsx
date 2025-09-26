@@ -17,7 +17,7 @@ export function SecurityGuides({
   articles = [],
   className = '',
 }: SecurityGuidesProps): JSX.Element {
-  const t = useTranslations('navigation');
+  const t = useTranslations('security');
 
   // Filtrar artículos por categoría "seguridad"
   const securityArticles = articles.filter(
@@ -32,10 +32,10 @@ export function SecurityGuides({
       <Card className="border-0 bg-gradient-to-r from-blue-50 to-indigo-50 p-8 dark:from-blue-950/20 dark:to-indigo-950/20">
         <div className="text-center">
           <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
-            {t('security.title')}
+            {t('title')}
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            {t('security.subtitle')}
+            {t('subtitle')}
           </p>
         </div>
       </Card>

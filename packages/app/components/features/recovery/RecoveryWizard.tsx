@@ -78,7 +78,7 @@ export function RecoveryWizard({
       icon: '🗂️',
       title: t('options.deleted.title'),
       description: t('options.deleted.description'),
-      link: '/contacto',
+      link: '/recuperacion/deleted-files',
       difficulty: 'easy',
       estimatedTime: t('options.deleted.time'),
       isPremium: false,

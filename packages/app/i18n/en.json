@@ -163,6 +163,33 @@
       "card4": "I need to track a transaction"
     },
     "passwordEngine": {
+      "title": "Wallet Password Recovery", 
+      "description": "Recover access to your wallet using known parts of your password",
+      "freeVersion": {
+        "title": "Free Version",
+        "maxAttempts": "Maximum {max} attempts",
+        "timeLimit": "Time limit of {minutes} minutes",
+        "basicDictionary": "Basic dictionary only",
+        "upgradeButton": "Upgrade to Premium"
+      },
+      "form": {
+        "partialPassword": "Partial Password",
+        "partialPasswordPlaceholder": "Enter the parts you remember...",
+        "passwordLength": "Password Length", 
+        "passwordLengthPlaceholder": "Ex: 12",
+        "characterTypes": "Character Types",
+        "lowercase": "Lowercase",
+        "uppercase": "Uppercase",
+        "numbers": "Numbers", 
+        "symbols": "Symbols",
+        "dictionaryFile": "Dictionary File",
+        "walletFile": "Wallet File",
+        "startRecovery": "Start Recovery"
+      },
+      "disclaimer": {
+        "text": "This tool does not guarantee successful recovery. Results depend on the information provided.",
+        "link": "Read more"
+      },
       "setup": {
         "title": "Password Recovery Setup",
         "partialPassword": "Partial password",
@@ -189,6 +216,99 @@
       "error": {
         "title": "Recovery Error",
         "message": "An error occurred during the process"
+      }
+    },
+    "deletedFiles": {
+      "title": "Deleted Files Recovery",
+      "description": "Step-by-step guide to recover deleted wallet files based on your operating system and file type",
+      "seo": {
+        "title": "Deleted Wallet Files Recovery | Crypto Compass",
+        "description": "Specialized tools and guides to recover accidentally deleted wallet files. Solutions for Windows, macOS, Linux and mobile devices.",
+        "keywords": "recover deleted wallet file, cryptocurrency data recovery, deleted wallet files, blockchain recovery tools"
+      },
+      "freeVersion": {
+        "title": "Free Version",
+        "limitedAnalysis": "Basic analysis only",
+        "basicTools": "Limited free tools",
+        "timeLimit": "Time limit of {minutes} minutes",
+        "upgradeButton": "Upgrade to Premium"
+      },
+      "form": {
+        "walletType": "Wallet File Type",
+        "operatingSystem": "Operating System",
+        "timeElapsed": "Time Since Deletion",
+        "estimatedValue": "Estimated Value (Optional)",
+        "estimatedValuePlaceholder": "Ex: 1000",
+        "analyzeButton": "Analyze Case"
+      },
+      "walletTypes": {
+        "bitcoinCore": "Bitcoin Core (wallet.dat)",
+        "ethereumKeystore": "Ethereum Keystore (.json)",
+        "electrum": "Electrum Wallet",
+        "metamask": "MetaMask",
+        "exodus": "Exodus",
+        "ledgerLive": "Ledger Live",
+        "trezor": "Trezor Suite",
+        "myetherwallet": "MyEtherWallet",
+        "other": "Other"
+      },
+      "operatingSystems": {
+        "windows": "Windows",
+        "macos": "macOS",
+        "linux": "Linux",
+        "android": "Android",
+        "ios": "iOS"
+      },
+      "timeRanges": {
+        "under24h": "Less than 24 hours",
+        "under7d": "Less than 7 days",
+        "under30d": "Less than 30 days",
+        "over30d": "More than 30 days"
+      },
+      "analyzing": {
+        "title": "Analyzing Your Case",
+        "description": "Evaluating the best recovery options for your specific situation...",
+        "timeElapsed": "Time elapsed",
+        "cancel": "Cancel"
+      },
+      "results": {
+        "title": "Analysis Complete",
+        "recoveryProbability": "Recovery Probability",
+        "difficulty": "Difficulty",
+        "urgency": "Urgency",
+        "recommendedTools": "Recommended Tools",
+        "successRate": "Success rate",
+        "estimatedTime": "Estimated time",
+        "cost": "Cost",
+        "downloadTool": "Download tool",
+        "showInstructions": "View instructions",
+        "moreSteps": "more steps...",
+        "newAnalysis": "New Analysis",
+        "downloadGuide": "Download Complete Guide"
+      },
+      "difficulty": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
+      },
+      "urgency": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      },
+      "toolTypes": {
+        "free": "Free",
+        "paid": "Paid",
+        "professional": "Professional"
+      },
+      "error": {
+        "title": "Analysis Error",
+        "description": "Could not complete the analysis. Please try again.",
+        "tryAgain": "Try Again"
+      },
+      "disclaimer": {
+        "text": "This tool provides educational guides without recovery guarantees. Results depend on multiple technical factors.",
+        "link": "Read full disclaimer"
       }
     }
   },
@@ -744,6 +864,7 @@
       "loading": "Loading articles...",
       "noResults": "No articles found",
       "searchPlaceholder": "Search articles...",
+      "retry": "Try again",
       "errors": {
         "loadFailed": "Failed to load blog",
         "unknown": "Unknown error"
@@ -1139,6 +1260,7 @@
   "common": {
     "tags": "Tags",
     "articles": "Articles",
-    "categories": "Categories"
+    "categories": "Categories",
+    "characters": "characters"
   }
 }
